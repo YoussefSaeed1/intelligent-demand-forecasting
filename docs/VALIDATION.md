@@ -337,3 +337,30 @@ limited validation seasonal coverage and unsupported direct transfer. No finding
 hidden through imputation or target filtering. The future Claude audit remains after
 Phase 4 and before Phase 5; critical/high findings must be resolved and independently
 revalidated. No such audit was conducted in Phase 2.
+
+## Final visualisation enhancement
+
+The enhanced visual layer contains 29 figures (58 PNG/SVG files), including separate
+M5 class counts, SNAP, departments and two source-specific extreme-value figures. It
+uses the existing 39 tables; no expensive EDA run or canonical transformation is repeated.
+All raw/canonical hashes and table hashes remain unchanged. Date-bearing target tables
+remain bounded by the initial EDA training cutoffs; full-history price-quality coverage
+remains an explicitly label-free exception.
+
+Department totals reconcile to each daily aggregate; exposure uses published department
+series counts. SNAP mean × observed store-days reconciles to 61,066,490 M5 training
+units and state store-day exposures reconcile to 1,801 days per state store. The saved
+histograms reconcile all training rows/units/zeros; retained extreme maxima remain 231
+and 763 units. Charts do not label these values errors or infer causal SNAP/event effects.
+
+Final results: Ruff passed, **85 tests passed**, pip check passed. The additional three
+tests cover department-rate denominators, histogram survival probabilities and complete
+unique figure coverage. Offline Chrome rendered all 29 HTML charts and all 58 PNG/SVG
+files, with zero external requests. All card findings, implications, KPIs, relative links
+and anchors are present; desktop/mobile overflow and print-style checks passed.
+
+Current renderer hashes, table/image hashes and numerical checks are in
+[visualisation_audit.json](../reports/eda/visualisation_audit.json). Detailed resolved
+issues and remaining limits are in [VISUAL_QA_SUMMARY.md](../reports/eda/VISUAL_QA_SUMMARY.md).
+The original Phase 2 run manifest remains historical evidence with its original code
+hashes; it has not been rewritten to imply a new full analytical run. Phase 3 has not begun.

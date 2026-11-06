@@ -194,3 +194,31 @@ imputations, acquisition or canonical transformation occurred.
 Phase 2 is ready for review when the accompanying automated checks pass. This does
 not authorise Phase 3. The independent Claude audit remains a future gate after Phase 4
 and before Phase 5, as recorded in [ROADMAP.md](ROADMAP.md).
+
+## Final visual presentation enhancement
+
+The original analytical run and its 24-figure manifest above are preserved as historical
+execution evidence. The enhanced presentation now contains **29 figures / 58 PNG/SVG
+files**, generated entirely from the same 39 saved analytical tables. No EDA quantity,
+ADI/CV² classification, source/canonical data or proposed split has changed.
+
+Store Item's CV histogram now uses decimal linear ticks, the one zero is explicitly
+annotated, and its entirely smooth population is described without empty class bars.
+M5's scatter and class-distribution figures are separate; minority groups have exact
+counts/shares. Price categories show exact counts and shares rather than hiding small
+groups behind a dominant bar. Zero/single-positive representative examples now show full
+training histories, with nonnegative axes and explicit date windows. Event/category
+labels and small-value annotations are readable.
+
+New SNAP plots divide units by observed state/flag store-days. New department plots
+divide each department's daily units by its number of published store/product series;
+partial boundary months are labelled. These are descriptive rates, not causal effects
+or independently observed assortment measures. New extreme-value plots use the exact
+full-population histogram for tail probabilities and explicitly label the retained
+top-20 examples; ties are not exhaustive and high values are not diagnosed as errors.
+
+The [offline visual report](../reports/eda/EDA_VISUAL_REVIEW.html) supplies a Key Finding
+and Forecasting Implication for every chart, with coverage and limitations. The
+[visual QA summary](../reports/eda/VISUAL_QA_SUMMARY.md) records checks and remaining
+interpretation limits. Current renderer hashes belong to visualisation_audit.json;
+run_manifest.json retains the original analytical run's source hashes and revision.

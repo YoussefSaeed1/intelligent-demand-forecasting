@@ -48,6 +48,12 @@ reports/figures/**
 !reports/figures/phase2/cross_dataset_comparison.svg
 !reports/figures/phase2/m5_price_missingness.png
 !reports/figures/phase2/m5_price_missingness.svg
+!reports/figures/phase2/m5_classification.png
+!reports/figures/phase2/m5_classification.svg
+!reports/figures/phase2/m5_snap.png
+!reports/figures/phase2/m5_snap.svg
+!reports/figures/phase2/m5_departments.png
+!reports/figures/phase2/m5_departments.svg
 reports/exports/**
 !reports/exports/.gitkeep
 *.pkl

@@ -46,8 +46,8 @@ accepted automatically. Profiling publishes reconciled observed daily sales to
 `data/processed/<dataset>/daily_sales.parquet`. It does not clean, impute or model.
 Reports and status JSON live in `reports/data_quality/`; selected small validation
 reports are allowlisted in Git. Raw data, Parquet outputs and large generated tables
-remain ignored. Two small Phase 2 figures (cross-dataset comparison and M5 price
-missingness, PNG/SVG) are retained; other figures stay local and can be regenerated.
+remain ignored. Five selected Phase 2 figures (comparison, price coverage, M5 classes,
+SNAP and departments, PNG/SVG) are retained; other figures stay local and can be regenerated.
 
 ## Phase 2 EDA and proposed experiments
 
@@ -58,14 +58,31 @@ missingness, PNG/SVG) are retained; other figures stay local and can be regenera
 This command reads verified Parquet without rewriting it. All series enter training-
 prefix EDA; four 28-day validation windows and the final 28 days are reserved before
 detailed target exploration. Full-history exceptions are integrity reconciliation and
-label-free price coverage. It produces 39 reusable tables, 24 PNG/SVG figure pairs,
+label-free price coverage. The enhanced presentation produces 39 reusable tables and
+29 PNG/SVG figure pairs,
 dataset/comparison reports and validation evidence under `reports/eda/` and
-`reports/figures/phase2/`. The observed full run took 132.60 seconds and peaked at
+`reports/figures/phase2/`. The original 24-figure analytical run took 132.60 seconds and peaked at
 1.123 GiB worker working set. No forecasting models are trained.
 
 Read [EDA findings](docs/EDA_FINDINGS.md) and the
 [proposed forecasting protocol](docs/FORECASTING_EXPERIMENTAL_PROTOCOL.md) for actual
 results, exact splits, model candidates, metrics, leakage rules and limitations.
+
+Review all charts in the [offline HTML report](reports/eda/EDA_VISUAL_REVIEW.html),
+with its [figure index](reports/eda/VISUALISATION_INDEX.md) and
+[visual QA summary](reports/eda/VISUAL_QA_SUMMARY.md). Open the HTML in a browser;
+keep `reports/eda/` and `reports/figures/` together. No server or internet is needed.
+
+To refresh only figures and the report from existing validated summaries, without
+rerunning full EDA, downloading data or rewriting canonical Parquet:
+
+```powershell
+.\.venv\Scripts\python.exe -m intelligent_demand.exploration.visual_review --refresh-figures
+```
+
+Omit `--refresh-figures` to verify the existing images against comparison renders.
+The added SNAP/department/extreme-value views use existing training summaries; event
+and SNAP associations remain descriptive, and the final evaluation targets stay protected.
 
 ## Proposed methodology
 

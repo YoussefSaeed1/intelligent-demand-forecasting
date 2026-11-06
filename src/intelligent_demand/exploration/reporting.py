@@ -7,7 +7,7 @@ import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.ticker import EngFormatter, FixedLocator, FuncFormatter, NullFormatter
+from matplotlib.ticker import EngFormatter
 
 from intelligent_demand.config import ProjectConfig
 from intelligent_demand.exploration.statistics import PATTERNS
@@ -18,8 +18,8 @@ COLORS = {
     "m5": "#c47a28",
     "smooth": "#2463a0",
     "erratic": "#b24d78",
-    "intermittent": "#b7a53b",
-    "lumpy": "#617f3d",
+    "intermittent": "#007f73",
+    "lumpy": "#76569b",
     "all_zero": "#7c858c",
     "insufficient_positive_history": "#bfbfbf",
 }
@@ -50,11 +50,18 @@ def _style() -> None:
 
 def _dates(axis, values) -> None:
     values = pd.DatetimeIndex(values)
-    # Annual ticks keep nearby boundary dates from acquiring overlapping labels.
-    ticks = list(pd.date_range(values.min(), values.max(), freq="YS"))
-    axis.set_xticks(ticks if ticks else [values.min(), values.max()])
-    axis.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
-    axis.tick_params(axis="x", labelrotation=0)
+    ticks = [values.min(), *pd.date_range(values.min(), values.max(), freq="YS"), values.max()]
+    selected = []
+    for tick in sorted(set(ticks)):
+        if not selected or (tick - selected[-1]).days >= 210:
+            selected.append(tick)
+    if selected[-1] != values.max():
+        if len(selected) > 1 and (values.max() - selected[-1]).days < 210:
+            selected.pop()
+        selected.append(values.max())
+    axis.set_xticks(selected)
+    axis.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m-%d"))
+    axis.tick_params(axis="x", labelrotation=0, labelsize=8)
 
 
 def _save(config: ProjectConfig, fig, name: str, result: dict, title: str) -> None:
@@ -73,7 +80,18 @@ def _save(config: ProjectConfig, fig, name: str, result: dict, title: str) -> No
     stem = f"{result['dataset']}_{name}"
     fig.savefig(directory / f"{stem}.png", dpi=result["settings"]["figure_dpi"])
     fig.savefig(directory / f"{stem}.svg")
+    _clean_svg(directory / f"{stem}.svg")
     plt.close(fig)
+
+
+def _clean_svg(path) -> None:
+    """Remove exporter trailing whitespace without changing SVG drawing content."""
+    value = path.read_text(encoding="utf-8")
+    path.write_text(
+        "\n".join(line.rstrip() for line in value.splitlines()) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
 
 
 def figures(config: ProjectConfig, result: dict) -> None:
@@ -86,7 +104,6 @@ def figures(config: ProjectConfig, result: dict) -> None:
 
     distribution = load("distribution")
     daily, monthly = load("daily"), load("monthly")
-    series, patterns = load("series"), load("patterns")
     fig, axes = plt.subplots(1, 2, figsize=(11, 4))
     axes[0].bar(distribution.units, distribution.observations, color=color, width=0.95)
     axes[0].set_yscale("log")
@@ -162,78 +179,17 @@ def figures(config: ProjectConfig, result: dict) -> None:
     )
     _save(config, fig, "calendar_patterns", result, "Weekly and annual calendar structure")
 
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.4))
-    for label in PATTERNS[:4]:
-        selected = series[series.pattern == label]
-        if selected.empty:
-            continue
-        axes[0].scatter(
-            selected.adi,
-            selected.cv2_positive.clip(lower=0.001),
-            s=6,
-            alpha=0.25,
-            color=COLORS[label],
-            label=label.capitalize(),
-            rasterized=True,
-        )
-    axes[0].axvline(
-        result["settings"]["adi_threshold"], color="#333", linestyle="--", linewidth=0.8
+    from intelligent_demand.exploration.presentation import (
+        demand_patterns,
+        extra_figures,
+        representatives,
+        sparsity,
+        store_comparison,
+        volatility,
     )
-    axes[0].axhline(
-        result["settings"]["cv2_threshold"], color="#333", linestyle="--", linewidth=0.8
-    )
-    axes[0].set(
-        xscale="log",
-        yscale="log",
-        xlabel="ADI (daily periods, log scale)",
-        ylabel="Positive-size CV² (log scale)",
-        title="Defined statistics only; CV²=0 shown at 0.001",
-    )
-    axes[0].legend(frameon=False, fontsize=8)
-    max_adi = max(1.5, float(series.adi.dropna().max()) * 1.05)
-    axes[0].set_xlim(0.95, max_adi)
-    ticks = (
-        [1, 1.32] if max_adi < 3 else [value for value in (1, 10, 100, 1000) if value <= max_adi]
-    )
-    axes[0].xaxis.set_major_locator(FixedLocator(ticks))
-    axes[0].xaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:g}"))
-    axes[0].xaxis.set_minor_formatter(NullFormatter())
-    labels = [p.replace("_", " ").capitalize() for p in patterns.pattern]
-    labels = [
-        label.replace("Insufficient positive history", "Insufficient positive\nhistory")
-        for label in labels
-    ]
-    bars = axes[1].barh(
-        labels,
-        100 * patterns.series / result["series"],
-        color=[COLORS[p] for p in patterns.pattern],
-    )
-    axes[1].bar_label(bars, labels=[f"{v:,}" for v in patterns.series], padding=3, fontsize=8)
-    axes[1].set(
-        xlabel="Percentage of all series",
-        xlim=(0, 110),
-        title="Full-window ADI/CV² descriptive classes",
-    )
-    axes[1].invert_yaxis()
-    _save(config, fig, "intermittency", result, "Daily-sales intermittency and variability")
 
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4))
-    axes[0].hist(series.zero_percent, bins=np.linspace(0, 100, 21), color=color, rwidth=0.96)
-    axes[0].set(xlabel="Zero-sales observations per series (%)", ylabel="Series", xlim=(0, 100))
-    cv = (series.std_units / series.mean_units.replace(0, np.nan)).dropna()
-    positive_cv = cv[cv > 0]
-    axes[1].hist(
-        positive_cv,
-        bins=np.geomspace(positive_cv.min(), positive_cv.max() * 1.001, 30),
-        color=color,
-    )
-    axes[1].set(
-        xscale="log",
-        xlabel="Series CV of all daily sales (log scale)",
-        ylabel="Series",
-        title=f"Positive CV only; {(cv == 0).sum()} constant series excluded",
-    )
-    _save(config, fig, "zeros_variability", result, "Sales sparsity and variability")
+    demand_patterns(config, result)
+    sparsity(config, result)
 
     products = load("products")
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
@@ -256,17 +212,7 @@ def figures(config: ProjectConfig, result: dict) -> None:
     axes[1].xaxis.set_major_formatter(EngFormatter())
     _save(config, fig, "concentration", result, "Product sales concentration")
 
-    stores = load("stores")
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4))
-    axes[0].bar(stores.store_id, stores.mean_units_per_series_day, color=color)
-    axes[0].set(ylabel="Units per store-product day", title="Exposure-adjusted store comparison")
-    axes[1].bar(stores.store_id, stores.mean_zero_percent, color=color)
-    axes[1].set(
-        ylabel="Zero-sales observations (%)",
-        title="Store sparsity, same observed daily grid",
-        ylim=(0, 100),
-    )
-    _save(config, fig, "stores", result, "Store-level volume and sparsity")
+    store_comparison(config, result)
 
     components, correlations = load("components"), load("acf")
     fig, axes = plt.subplots(3, 1, figsize=(11, 8))
@@ -303,37 +249,9 @@ def figures(config: ProjectConfig, result: dict) -> None:
         _dates(ax, components.date)
     _save(config, fig, "diagnostics", result, "Trend, annual structure and serial dependence")
 
-    fig, axes = plt.subplots(2, 1, figsize=(11, 5.5))
-    axes[0].plot(daily.date, daily.cv_28d, color=color)
-    axes[0].set(
-        ylabel="28-day coefficient of variation", title="Local variation in aggregate daily sales"
-    )
-    axes[1].plot(daily.date, daily.zero_percent, color=color)
-    axes[1].set(
-        ylabel="Zero-sales series (%)", ylim=(0, 100), title="Daily breadth of zero observed sales"
-    )
-    for ax in axes:
-        _dates(ax, daily.date)
-    _save(config, fig, "volatility", result, "Volatility and zero-sales breadth over time")
-
-    representatives = load("representative_series")
-    groups = list(representatives.groupby("pattern", sort=False))
-    fig, axes = plt.subplots(len(groups), 1, figsize=(11, max(3, 2.2 * len(groups))), squeeze=False)
-    for ax, (pattern, frame) in zip(axes[:, 0], groups, strict=True):
-        frame = frame.tail(180)
-        ax.plot(frame.date, frame.sales_units, color=COLORS[pattern], linewidth=0.8)
-        ax.set(
-            ylabel="Units/day", title=f"{pattern}: {frame.series_id.iloc[0]} (individual y-scale)"
-        )
-        ax.xaxis.set_major_locator(mdates.MonthLocator(interval=2))
-        ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y-%m"))
-    _save(
-        config,
-        fig,
-        "representatives",
-        result,
-        "Median-ranked class illustrations: last 180 EDA days",
-    )
+    volatility(config, result)
+    representatives(config, result)
+    extra_figures(config, result)
     if name == "m5":
         _price_figures(config, result)
 
@@ -342,58 +260,10 @@ def _price_figures(config: ProjectConfig, result: dict) -> None:
     def load(name):
         return _load(config, "m5", name)
 
-    dates, years = load("price_by_date_full_quality"), load("price_by_year_full_quality")
-    stores, products = load("price_by_store_full_quality"), load("price_by_product_full_quality")
-    fig, axes = plt.subplots(2, 2, figsize=(12, 7))
-    axes[0, 0].plot(dates.date, 100 * dates.missing_prices / dates.observations, color=COLORS["m5"])
-    cutoff = pd.Timestamp(result["split_plan"]["eda_end"])
-    axes[0, 0].axvline(cutoff, color="#333", linestyle="--", linewidth=1)
-    axes[0, 0].axvspan(
-        cutoff, dates.date.max(), color="#eee", label="Reserved: price coverage only"
-    )
-    axes[0, 0].legend(frameon=False, fontsize=8)
-    axes[0, 0].set(
-        ylabel="Missing prices (%)", ylim=(0, 100), title="Full-history label-free price coverage"
-    )
-    _dates(axes[0, 0], dates.date)
-    parts = result["price_missingness"]["eda_activity_partition"]
-    keys = [
-        "missing_before_first_positive",
-        "missing_between_first_last_positive",
-        "missing_after_last_positive",
-        "missing_no_positive_in_eda",
-    ]
-    labels = [
-        "Before first positive",
-        "Within positive span",
-        "After last positive",
-        "No positive in EDA",
-    ]
-    axes[0, 1].barh(labels, [parts[k] for k in keys], color=COLORS["m5"])
-    axes[0, 1].set(
-        xlabel="Missing-price observations",
-        title="EDA sales activity proxies, not stock availability",
-    )
-    axes[0, 1].xaxis.set_major_formatter(EngFormatter())
-    axes[1, 0].bar(
-        stores.store_id, 100 * stores.missing_prices / stores.observations, color=COLORS["m5"]
-    )
-    axes[1, 0].set(ylabel="Missing prices (%)", ylim=(0, 100), title="Full-history store coverage")
-    axes[1, 1].bar(
-        years.year.astype(str), 100 * years.missing_prices / years.observations, color=COLORS["m5"]
-    )
-    axes[1, 1].set(
-        ylabel="Missing prices (%)",
-        ylim=(0, 100),
-        title="Full-history year coverage (boundary years partial)",
-    )
-    _save(
-        config,
-        fig,
-        "price_missingness",
-        result,
-        "Historical price missingness: full quality coverage and EDA activity",
-    )
+    from intelligent_demand.exploration.presentation import events_categories, price_coverage
+
+    price_coverage(config, result)
+    products = load("price_by_product_full_quality")
     fig, axes = plt.subplots(1, 2, figsize=(11, 4))
     axes[0].hist(
         100 * products.missing_prices / products.observations,
@@ -424,33 +294,7 @@ def _price_figures(config: ProjectConfig, result: dict) -> None:
     _save(
         config, fig, "price_products", result, "Price coverage varies by product and sales history"
     )
-    events = load("calendar_events").sort_values("mean_total_units").head(10)
-    category = load("cat_id_daily")
-    metadata = load("series")
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.5))
-    axes[0].barh(
-        [f"{r.event} (n={r.days})" for r in events.itertuples()],
-        events.mean_total_units,
-        color=COLORS["m5"],
-    )
-    axes[0].set(
-        xlabel="Mean aggregate units on event dates",
-        title="Ten lowest-mean named events; descriptive association",
-    )
-    axes[0].xaxis.set_major_formatter(EngFormatter())
-    for number, (group, frame) in enumerate(category.groupby("group")):
-        exposure = int(metadata.cat_id.eq(group).sum())
-        smoothed = (frame.sales_units / exposure).rolling(28).mean()
-        axes[1].plot(
-            frame.date, smoothed, color=["#2463a0", "#c47a28", "#617f3d"][number], label=group
-        )
-    axes[1].set(
-        ylabel="Trailing mean units per series/day",
-        title="Product-category differences, normalised by series count",
-    )
-    axes[1].legend(frameon=False, fontsize=8)
-    _dates(axes[1], category.date)
-    _save(config, fig, "events_groups", result, "Calendar associations and product groups")
+    events_categories(config, result)
 
 
 def dataset_report(config: ProjectConfig, result: dict) -> None:
@@ -710,7 +554,18 @@ def comparative_report(config: ProjectConfig, results: dict) -> None:
         ("Zero-sales observations (%)", "Median series CV", "Top 10% product sales share"),
         strict=True,
     ):
-        ax.bar(["Store Item", "M5"], [a[key], b[key]], color=[COLORS["store_item"], COLORS["m5"]])
+        values = [a[key], b[key]]
+        if key == "product_top10_percent_share":
+            values = [100 * value for value in values]
+            title = "Top 10% product sales share (%)"
+        bars = ax.bar(["Store Item", "M5"], values, color=[COLORS["store_item"], COLORS["m5"]])
+        labels = (
+            [f"{value:.9f}%" if value < 0.01 else f"{value:.4f}%" for value in values]
+            if key == "eda_zero_percent"
+            else [f"{value:.3f}" for value in values]
+        )
+        ax.bar_label(bars, labels=labels, padding=4, fontsize=9)
+        ax.set_ylim(0, max(values) * 1.22)
         ax.set_title(title, fontsize=11)
         ax.set_ylim(bottom=0)
         ax.grid(axis="y")
@@ -721,6 +576,8 @@ def comparative_report(config: ProjectConfig, results: dict) -> None:
         fig.savefig(
             directory_fig / f"cross_dataset_comparison.{extension}", dpi=a["settings"]["figure_dpi"]
         )
+        if extension == "svg":
+            _clean_svg(directory_fig / "cross_dataset_comparison.svg")
     plt.close(fig)
     manifest = {name: result["split_plan"] for name, result in results.items()}
     write_json(directory / "proposed_splits.json", manifest)

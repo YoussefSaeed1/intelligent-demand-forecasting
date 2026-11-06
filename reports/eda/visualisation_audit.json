@@ -1,0 +1,673 @@
+{
+  "status": "passed_with_presentation_notes",
+  "reviewed_at_utc": "2026-11-06T15:41:31.297756+00:00",
+  "figure_count": 29,
+  "image_file_count": 58,
+  "table_checks": {
+    "store_item": "saved chart inputs reconcile with EDA quantities, scope and reported ratios",
+    "m5": "saved chart inputs reconcile with EDA quantities, scope and reported ratios"
+  },
+  "saved_tables_unchanged": true,
+  "raw_and_canonical_hashes_unchanged": true,
+  "saved_tables_sha256": {
+    "reports\\eda\\tables\\m5\\acf.parquet": "a7f72e53d0dc423d9df8b61dcd8871e4f1b7c772f443f2aa03b5d338a4856a13",
+    "reports\\eda\\tables\\m5\\calendar_events.parquet": "cba300749506ceb455abfe71cf4aecefb9d828909b76b160b6caa69086c3be1c",
+    "reports\\eda\\tables\\m5\\cat_id_daily.parquet": "2c2b4830dd4a9f5b5df126ec8d7cbd387d199db3be56342381c15e8207663d2e",
+    "reports\\eda\\tables\\m5\\components.parquet": "f60b9802488b0f869feb04fd6301618d8fa33a447541af8588cb560541f2eeeb",
+    "reports\\eda\\tables\\m5\\daily.parquet": "5e3d4cbd15bd0e385f8acc09188cedc11e720168f9396bef33ec26db6924e190",
+    "reports\\eda\\tables\\m5\\dept_id_daily.parquet": "de94ef398536a0ae4b328b8cfe23823d277057387e917c5e878888c283d01cbb",
+    "reports\\eda\\tables\\m5\\distribution.parquet": "cbaf9ab5f7c29ec7e02cc029ce9dd20e0259f3e1178e3d0d555a1f9cf00b1631",
+    "reports\\eda\\tables\\m5\\largest_observations.parquet": "5fadca87b4fde388ccec82dc3421e12e2e67633422707a594acd9089e8bdc2e0",
+    "reports\\eda\\tables\\m5\\monthly.parquet": "14ccc7c5aea14b80403e766114a3b288c0b3cc54b6ff30e15333433a4dcf176a",
+    "reports\\eda\\tables\\m5\\month_year.parquet": "429732ff04012047b0841f186ff765d9a0d672bfb1cde099b1b8a911c7b6d7e4",
+    "reports\\eda\\tables\\m5\\patterns.parquet": "b56f88ad1477da777c92f50d5ba6c28c6a9d144b22c62777c677f3e8f106fe0e",
+    "reports\\eda\\tables\\m5\\price_by_date_full_quality.parquet": "4480e337785df92eacd62211de5989063dd23c350dcc45b0462d86e7cf2d4e67",
+    "reports\\eda\\tables\\m5\\price_by_product_full_quality.parquet": "c74bd49ba52bad027e45eef0a80c95d3476bb6658e65534a342617276d808fd6",
+    "reports\\eda\\tables\\m5\\price_by_series_eda.parquet": "2bf4ffd372d9380f01f7d8f1c8bfe70f3f9a566b08238c37ac108986facf043a",
+    "reports\\eda\\tables\\m5\\price_by_store_full_quality.parquet": "3630b3f147b8f561043faf06ea92b7ead7e07f3611694ccc21380ae1e359d28d",
+    "reports\\eda\\tables\\m5\\price_by_year_full_quality.parquet": "b075e368278cdaa1f1a3e61654ad5463a094559c6921a5f5a9a59788ffb9377b",
+    "reports\\eda\\tables\\m5\\products.parquet": "ea7a518a03c79adabcdaae98b569c46e926a6ec5fa7f614c07f22e7cd9c9ed49",
+    "reports\\eda\\tables\\m5\\representative_series.parquet": "b99353e8f2ba7dab808b77984dbb4f671f08f6b77de87ed12e1ac647e5278fd0",
+    "reports\\eda\\tables\\m5\\series.parquet": "ffcc11e35c2d2bc71a1a1cfac89c0a06d9b1bd23e6fd050bb24718f913dc8745",
+    "reports\\eda\\tables\\m5\\snap_associations.parquet": "614fd48bd381248b60f368ecb6cd4fea741c1d0815dd4931cb3715f3d64c7af9",
+    "reports\\eda\\tables\\m5\\stores.parquet": "2926c74665704bd39bd203225529a33fd39bcfb007ea7abc9441d28d97dc7e91",
+    "reports\\eda\\tables\\m5\\store_daily.parquet": "9bc509b0fd66341f9ac168e17c3a54323838f488eadf64a9cf2c814ade8e2304",
+    "reports\\eda\\tables\\m5\\store_weekday.parquet": "984836d40ec6858f8a4c20ce78599ef947b1f789d1bb325129f065772ea730ec",
+    "reports\\eda\\tables\\m5\\weekdays.parquet": "049ae68fd512daad343fe7ef14b3e694c1108d7562d910b7064e6e3d88c26793",
+    "reports\\eda\\tables\\store_item\\acf.parquet": "df991bf5751f664b506bc879a0c72ec94173605e850044ce710e6b25cf82dd1a",
+    "reports\\eda\\tables\\store_item\\components.parquet": "b5e3612771bdbe4c7edce4c7f5fc330b37a28ebeb8d81f69420c90aab1b10151",
+    "reports\\eda\\tables\\store_item\\daily.parquet": "fc324e1c1632e8f0bd94fef8c0ff4c743e4881ab707f9591508f56cbbb21390f",
+    "reports\\eda\\tables\\store_item\\distribution.parquet": "83a4df060a5e2b5a389d74234473e3076a6ee640ed7e336eb2bfe6291f801e0f",
+    "reports\\eda\\tables\\store_item\\largest_observations.parquet": "b3080b1292ce4df9c0ce1ed2b982b51678c7019fbb9cbdba48503d3b569813f2",
+    "reports\\eda\\tables\\store_item\\monthly.parquet": "226761c42ec6ced50bf9fb12b3bc7b98d310aa7a747df1f118c305dbd9215619",
+    "reports\\eda\\tables\\store_item\\month_year.parquet": "9cb82d1718ce81672e5088e4ce6a5155ef2c0be1f7d763e6be65ca62e069d4a1",
+    "reports\\eda\\tables\\store_item\\patterns.parquet": "b226c2c1344e0739241a140640ebec5994e447055a3933bb574a9f31452ce877",
+    "reports\\eda\\tables\\store_item\\products.parquet": "8751cd0921b00ec555d83a6101011c6de18cc7475e6e00f8bcc8bf512a24145d",
+    "reports\\eda\\tables\\store_item\\representative_series.parquet": "840ea55dca4198f328c1a72375ecbe1be23685e8da34aa0dc08a80d6ee13342d",
+    "reports\\eda\\tables\\store_item\\series.parquet": "b5bc148df5d6fc04b506e0ed95df5bfa39d61925db5da4777b30f4f345ea1af3",
+    "reports\\eda\\tables\\store_item\\stores.parquet": "632ba58ac388d4e7ed0a35ccdc46c7b21b96c8149519ef6e22ec99766eca6e25",
+    "reports\\eda\\tables\\store_item\\store_daily.parquet": "07004de0db6f63248a27abb488565942994b1e3eec169d9090634cbbbb0fae8a",
+    "reports\\eda\\tables\\store_item\\store_weekday.parquet": "a7d19e63c94b54ee92fd07b606f18814dfc7d0bc6cf774c7cbedca4f8e1a13c1",
+    "reports\\eda\\tables\\store_item\\weekdays.parquet": "5f2d9e3fc9aeb6967a36bc602db9c44f861e5ba59799211b7234312eb2fccc5d"
+  },
+  "figures_refreshed_from_saved_tables": true,
+  "renderer_sha256": {
+    "pipeline.py": "2deaf2228354bf45514c98c1e5af3c559c932b85aa3bf2b7e2f107a53ad8356f",
+    "presentation.py": "81c28f36a6b4facc48f51236fb6c6140ccb0a924c4f6b64ae9e7739cb3bf6ee8",
+    "reporting.py": "be4fa6af040ebcc4f7dc7193d0765304c47511423277cc94b96609267de6d63b",
+    "statistics.py": "7a06ccd20dd9d43002883c795c9f4291fd8929d12beafd07ab462380a4a5d9cf",
+    "validation.py": "679d5355cfc4675bd14aac9fb190e55e59bbd31be8e5896ecf9512c34435778e",
+    "visual_review.py": "d4d0c667b61438482d85dbc477bb0a7d9de9f210ea99f4d0fb8f435fc302aed4",
+    "__init__.py": "44d11e8b1066ffbec5eff2a21675882430325c1ff6266bbf5e2c262affed487c"
+  },
+  "full_analysis_or_transformation_rerun": false,
+  "models_trained": 0,
+  "limitations": [
+    "ADI/CV\u00b2 thresholds and aggregate seasonality are descriptive, not guarantees of individual-series forecastability.",
+    "M5's 45 zero-CV\u00b2 histories need a labelled positive display floor on a log scatter; 21 undefined histories appear in the separate classification figure.",
+    "SNAP and event comparisons are descriptive: date composition, holidays, assortment and other confounders are uncontrolled.",
+    "Department rates use a fixed published series universe, not independently observed assortment or stock availability; boundary heatmap months may be partial.",
+    "Retained extreme examples are not an exhaustive tie list or proof of invalid data; only the histogram tail is a full-population distribution.",
+    "Representative panels have independent y-scales and explicitly different windows. They are illustrations, not sampling-based population estimates.",
+    "Historical price coverage extends through 2016-05-22 without inspecting reserved sales targets. The 465 reserved-period price gaps have no activity interpretation.",
+    "Observed sales may be constrained demand. No measured inventory savings, causal effects, forecasting winner or direct cross-source transfer is established."
+  ],
+  "images": [
+    {
+      "stem": "store_item_distribution",
+      "dataset": "store_item",
+      "kind": "distribution",
+      "title": "Daily sales distribution",
+      "purpose": "Exact daily-unit frequencies and the cumulative distribution of positive sales.",
+      "tables": [
+        "tables/store_item/distribution.parquet",
+        "tables/store_item/largest_observations.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        800
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "a83b3359caad886890da047b8b56615894b2f0373ecd64462b5ddc98914d5276",
+      "svg_sha256": "e052fa5d95d06efca35b5cca60ea373b484ba09fcc54c9eeda19fbdc17bb66c6"
+    },
+    {
+      "stem": "store_item_trends",
+      "dataset": "store_item",
+      "kind": "trends",
+      "title": "Daily and monthly sales",
+      "purpose": "Daily aggregate units, trailing 28-day mean and complete calendar-month totals.",
+      "tables": [
+        "tables/store_item/daily.parquet",
+        "tables/store_item/monthly.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        1240
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "71d6fb833dde2bb5a87253067e427f28d32c4e553600932e2040543acb76df56",
+      "svg_sha256": "ecb528d722fe688f5e8d830755ecda29d861da6a5c5847685004b1222df15556"
+    },
+    {
+      "stem": "store_item_calendar_patterns",
+      "dataset": "store_item",
+      "kind": "calendar_patterns",
+      "title": "Weekly and annual calendar structure",
+      "purpose": "Within-week ratios with pointwise bootstrap intervals and normalised monthly profiles.",
+      "tables": [
+        "tables/store_item/weekdays.parquet",
+        "tables/store_item/month_year.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        800
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "255523000b1f3744fe4d7580f6e77a5a2ad0bcbd60c2787e157203c9699f4a03",
+      "svg_sha256": "3791a8e1072ae599bfe4b983d711ea7b57b95bc5325d5dd7ab7dc63426167e78"
+    },
+    {
+      "stem": "store_item_intermittency",
+      "dataset": "store_item",
+      "kind": "intermittency",
+      "title": "Demand-pattern classifications",
+      "purpose": "Store Item positive-size variability and smooth-population facts; M5 ADI/CV\u00b2 scatter.",
+      "tables": [
+        "tables/store_item/series.parquet",
+        "tables/store_item/patterns.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        880
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "08b84e07d7a634b10397a6ff07aea5afccdfb8d493c614233e4d9e07b1ce0b0e",
+      "svg_sha256": "f4d1c8e129c0a465e568ffed3f69be6e322b3f104ff882beaee9832e6588af13"
+    },
+    {
+      "stem": "store_item_zeros_variability",
+      "dataset": "store_item",
+      "kind": "zeros_variability",
+      "title": "Zero-sales frequency and variability",
+      "purpose": "Series-level zero percentages and the distribution of defined positive all-sales CVs.",
+      "tables": [
+        "tables/store_item/series.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        860
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "0a823e9099aefdc895ed179cae081345ff05081a67af9b3ad9a51383c8dbe49f",
+      "svg_sha256": "4427029f9e9a95ef59fd817d7baea571a6d3f28238c66cacc3a735842afd8f20"
+    },
+    {
+      "stem": "store_item_concentration",
+      "dataset": "store_item",
+      "kind": "concentration",
+      "title": "Product sales concentration",
+      "purpose": "Cumulative sales shares ordered by product volume and the ten highest-volume products.",
+      "tables": [
+        "tables/store_item/products.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        900
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "d43fcf3885f399e3f0cf7ed78ee2b5bc1db3d1b511a33f8be10ab6113003febe",
+      "svg_sha256": "ccf7c36d5284545d32b9dc16637ac953a7e24ccf00f26923d9fe1c449a706d21"
+    },
+    {
+      "stem": "store_item_stores",
+      "dataset": "store_item",
+      "kind": "stores",
+      "title": "Store-level comparisons",
+      "purpose": "Units per store-product day and zero-sales percentages, with equal historical exposure.",
+      "tables": [
+        "tables/store_item/stores.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        900
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "770be8b851f410c078cde718a02018134b88a11029e5a7aa63acdb4004c1f53c",
+      "svg_sha256": "d3dc82ef9518b5d6dc7e2cd22694a5001ad246a950c7ecd7ab0192edfe2e9c90"
+    },
+    {
+      "stem": "store_item_diagnostics",
+      "dataset": "store_item",
+      "kind": "diagnostics",
+      "title": "Trend, annual structure and autocorrelation",
+      "purpose": "Log aggregate sales/trend, approximate annual component and first-differenced log ACF.",
+      "tables": [
+        "tables/store_item/components.parquet",
+        "tables/store_item/acf.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        1600
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "88bd4e378a743d5beaea2c1f6eff3f6e9cdaa5522ce2995cc828943cd8e61bd0",
+      "svg_sha256": "6feeefcbd56e9adf83aaca185ea87bfab5319a5036b45300a73c62fc05a9a2d7"
+    },
+    {
+      "stem": "store_item_volatility",
+      "dataset": "store_item",
+      "kind": "volatility",
+      "title": "Rolling volatility and zero-sales breadth",
+      "purpose": "Aggregate 28-day coefficient of variation and the daily percentage of zero-selling series.",
+      "tables": [
+        "tables/store_item/daily.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        1140
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "afb96bf2a05e73cdc0daf746d2bb3e1205083ab0c6781de5f6a10654d5feec57",
+      "svg_sha256": "9ad9530a72fc483a41542cfd71e869bb9b987b1c2a43986ef00db2015e7ad7e7"
+    },
+    {
+      "stem": "store_item_representatives",
+      "dataset": "store_item",
+      "kind": "representatives",
+      "title": "Representative demand histories",
+      "purpose": "Deterministic examples with explicit windows; zero/single-positive M5 cases show full training histories.",
+      "tables": [
+        "tables/store_item/representative_series.parquet",
+        "tables/store_item/series.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        740
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "f8c6eda55fe5548599aa8751361c9f15a4fb3127757eaf7e4cee7cd4a1d0976f",
+      "svg_sha256": "732976c21a9d0cc4b0d4980df1e3cd3e3b695c74cd272f4d6639bb7f2310b8dd"
+    },
+    {
+      "stem": "store_item_extremes",
+      "dataset": "store_item",
+      "kind": "extremes",
+      "title": "Unusual sales and the empirical tail",
+      "purpose": "Full-population tail probabilities and clearly labelled retained extreme examples.",
+      "tables": [
+        "tables/store_item/distribution.parquet",
+        "tables/store_item/largest_observations.parquet",
+        "tables/store_item/series.parquet"
+      ],
+      "png_dimensions": [
+        2600,
+        1140
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "55d7cd087a437aae56c13b65c55875d580185028f278609f1abfeab070da35f7",
+      "svg_sha256": "5cb0e2717f43b0dccdc7b939050c3b28c7b678905ce8c0ea61161ea41559ea67"
+    },
+    {
+      "stem": "m5_distribution",
+      "dataset": "m5",
+      "kind": "distribution",
+      "title": "Daily sales distribution",
+      "purpose": "Exact daily-unit frequencies and the cumulative distribution of positive sales.",
+      "tables": [
+        "tables/m5/distribution.parquet",
+        "tables/m5/largest_observations.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        800
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "585f79f9516925174e5c6b16198500d60f4cd4d9565fc6439de10b31ed73d27a",
+      "svg_sha256": "b7834e746d873cc507e9ff16b3bef8e3e5c9270877f012dcff088ae688381a57"
+    },
+    {
+      "stem": "m5_trends",
+      "dataset": "m5",
+      "kind": "trends",
+      "title": "Daily and monthly sales",
+      "purpose": "Daily aggregate units, trailing 28-day mean and complete calendar-month totals.",
+      "tables": [
+        "tables/m5/daily.parquet",
+        "tables/m5/monthly.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        1240
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "27d915aeb34b2ecc4b9930ded706fdfaf649e72b9b89c969bfd79b303e7e2af0",
+      "svg_sha256": "d464a7d0310ab5068b69add3b8e8b35ce2d9b519aa81fee5cc3e3f27a07e9902"
+    },
+    {
+      "stem": "m5_calendar_patterns",
+      "dataset": "m5",
+      "kind": "calendar_patterns",
+      "title": "Weekly and annual calendar structure",
+      "purpose": "Within-week ratios with pointwise bootstrap intervals and normalised monthly profiles.",
+      "tables": [
+        "tables/m5/weekdays.parquet",
+        "tables/m5/month_year.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        800
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "643e6f36a7100147d24ba86f630e0093543c59cfdbae6c4cd51ff34cf794f1ea",
+      "svg_sha256": "9e0d9f1eeffd4b5afa0f8fe97dd4f954eb0f22580309a63ba8dc7eeab60b6d5a"
+    },
+    {
+      "stem": "m5_intermittency",
+      "dataset": "m5",
+      "kind": "intermittency",
+      "title": "Demand-pattern classifications",
+      "purpose": "Store Item positive-size variability and smooth-population facts; M5 ADI/CV\u00b2 scatter.",
+      "tables": [
+        "tables/m5/series.parquet",
+        "tables/m5/patterns.parquet"
+      ],
+      "png_dimensions": [
+        2100,
+        1140
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "3366534d13983cec9178841b8247d4a026a1df2e45e5d4458c76dd6388c1fc5d",
+      "svg_sha256": "c5e8e8aae63ca821dbe70c9eab8ddde9989be8f978bd1339f08b5dbff888a446"
+    },
+    {
+      "stem": "m5_zeros_variability",
+      "dataset": "m5",
+      "kind": "zeros_variability",
+      "title": "Zero-sales frequency and variability",
+      "purpose": "Series-level zero percentages and the distribution of defined positive all-sales CVs.",
+      "tables": [
+        "tables/m5/series.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        860
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "09c2651f3e39a1e67cc42a64137fe08550fc6e6376cd367d215bb10b5ed02625",
+      "svg_sha256": "2dbb3b5974d92af07130f323107db9d0908ab53bfc9938c5387313570d8c1f7c"
+    },
+    {
+      "stem": "m5_concentration",
+      "dataset": "m5",
+      "kind": "concentration",
+      "title": "Product sales concentration",
+      "purpose": "Cumulative sales shares ordered by product volume and the ten highest-volume products.",
+      "tables": [
+        "tables/m5/products.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        900
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "58285beddadc1a0454fa32573c872678c1766e5deeacc588df4c5f1bd1f4e75b",
+      "svg_sha256": "a0caf2c16024199aabff99714229f61e60ed3074817d2613dad30fd65ea1ac7a"
+    },
+    {
+      "stem": "m5_stores",
+      "dataset": "m5",
+      "kind": "stores",
+      "title": "Store-level comparisons",
+      "purpose": "Units per store-product day and zero-sales percentages, with equal historical exposure.",
+      "tables": [
+        "tables/m5/stores.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        900
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "5ea4c30643139161a83f634955119c759fd64dc7aa9a4a8210cb7a021ed578ef",
+      "svg_sha256": "8deaa03b70a73b58d47511b105b1f08199a21b44a7d98c7ea086758afc829447"
+    },
+    {
+      "stem": "m5_diagnostics",
+      "dataset": "m5",
+      "kind": "diagnostics",
+      "title": "Trend, annual structure and autocorrelation",
+      "purpose": "Log aggregate sales/trend, approximate annual component and first-differenced log ACF.",
+      "tables": [
+        "tables/m5/components.parquet",
+        "tables/m5/acf.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        1600
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "9ae082b52f82b0bf9372f93584e43ea85963021cadd38c367805fd5b85ee52f3",
+      "svg_sha256": "ae5a49e4fb08cf5e223b40220d3a91ba90d6ab8be4867f69c22e29446e4a5df2"
+    },
+    {
+      "stem": "m5_volatility",
+      "dataset": "m5",
+      "kind": "volatility",
+      "title": "Rolling volatility and zero-sales breadth",
+      "purpose": "Aggregate 28-day coefficient of variation and the daily percentage of zero-selling series.",
+      "tables": [
+        "tables/m5/daily.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        1140
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "73b5c38708c75601696906e8160308ae2c555be959c0971df3fdaf53f6c85a3c",
+      "svg_sha256": "68c1e05eea4f33bbfc802479b2796fe3a962f7af46ceea08fb2f9dc2b3053a94"
+    },
+    {
+      "stem": "m5_representatives",
+      "dataset": "m5",
+      "kind": "representatives",
+      "title": "Representative demand histories",
+      "purpose": "Deterministic examples with explicit windows; zero/single-positive M5 cases show full training histories.",
+      "tables": [
+        "tables/m5/representative_series.parquet",
+        "tables/m5/series.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        3240
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "02ca46c6aefcd9d382cc0fdb81ef7aa201ed31067f0d67032419a80501524017",
+      "svg_sha256": "119a66f53245ee5316c531fa78d732d4074d411a38a57c41b5d66d32ace17276"
+    },
+    {
+      "stem": "m5_extremes",
+      "dataset": "m5",
+      "kind": "extremes",
+      "title": "Unusual sales and the empirical tail",
+      "purpose": "Full-population tail probabilities and clearly labelled retained extreme examples.",
+      "tables": [
+        "tables/m5/distribution.parquet",
+        "tables/m5/largest_observations.parquet",
+        "tables/m5/series.parquet"
+      ],
+      "png_dimensions": [
+        2600,
+        1140
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "6a5ac99bf03552869d88f516cec366ca2aa8cd855b7295739fb92306d58e4ed6",
+      "svg_sha256": "d960925f4a7bfd4b17e7b950913046f8ebd6a8f6cacd32d397a88382a71a0f96"
+    },
+    {
+      "stem": "m5_classification",
+      "dataset": "m5",
+      "kind": "classification",
+      "title": "All M5 demand classes",
+      "purpose": "Log-position counts with exact counts and percentages, including minority histories.",
+      "tables": [
+        "tables/m5/patterns.parquet",
+        "tables/m5/series.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        900
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "f04fd5a0acac2acb351bfa28ebc009517894f22f075ca2b16a6fdc225fe29331",
+      "svg_sha256": "49964e2061ac9668384abeced2fe4d34571b2895da4b346d116780d84e829596"
+    },
+    {
+      "stem": "m5_price_missingness",
+      "dataset": "m5",
+      "kind": "price_missingness",
+      "title": "Historical price coverage and sales activity",
+      "purpose": "Full-history price gaps by date/store/year, plus the training-only activity partition.",
+      "tables": [
+        "tables/m5/price_by_date_full_quality.parquet",
+        "tables/m5/price_by_store_full_quality.parquet",
+        "tables/m5/price_by_year_full_quality.parquet",
+        "tables/m5/price_by_series_eda.parquet"
+      ],
+      "png_dimensions": [
+        2400,
+        1500
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "14e77719d4d4b71088ff0253069065577af42011f81ce86aa1fedbb6c7a838c0",
+      "svg_sha256": "b7e128d41cd5efef070d123614da39adf55c5ad3cbcfc0f4a10271c94474af54"
+    },
+    {
+      "stem": "m5_price_products",
+      "dataset": "m5",
+      "kind": "price_products",
+      "title": "Price coverage by product and series",
+      "purpose": "Product missing-price rates and their descriptive relationship to series zero-sales rates.",
+      "tables": [
+        "tables/m5/price_by_product_full_quality.parquet",
+        "tables/m5/price_by_series_eda.parquet",
+        "tables/m5/series.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        800
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "dd2e6728b924e87ccefbc97ed8f3a5a40e3e50576662011a92b33b2a3feee144",
+      "svg_sha256": "977ce0b81e79b8c7b3bc5f19539f4550a5c3df8345ab8d56968cdccb19f39d93"
+    },
+    {
+      "stem": "m5_events_groups",
+      "dataset": "m5",
+      "kind": "events_groups",
+      "title": "Calendar events and product categories",
+      "purpose": "Ten lowest-mean named events and category-level trailing means adjusted by series count.",
+      "tables": [
+        "tables/m5/calendar_events.parquet",
+        "tables/m5/cat_id_daily.parquet",
+        "tables/m5/series.parquet"
+      ],
+      "png_dimensions": [
+        2600,
+        1080
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "48cf3c781cb16b637080201c111fd0bf52f524d751b8645f9b13aa38b772d578",
+      "svg_sha256": "91d089ccac5b97decbbcc03a18cec0542440a855a1ea297dd28ccb47f929dbfd"
+    },
+    {
+      "stem": "m5_snap",
+      "dataset": "m5",
+      "kind": "snap",
+      "title": "SNAP versus non-SNAP calendar days",
+      "purpose": "Within-state units per store-day, with the actual flagged/non-flagged exposures.",
+      "tables": [
+        "tables/m5/snap_associations.parquet"
+      ],
+      "png_dimensions": [
+        2200,
+        960
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "2406072f318a26e493980d9d50b78c50d7eb3f818b32e7a47046a344388f39eb",
+      "svg_sha256": "9fdd54bf9f479dc58c1e72dcb193829b7d7e64643ae1d09e8b0478a80aa653e6"
+    },
+    {
+      "stem": "m5_departments",
+      "dataset": "m5",
+      "kind": "departments",
+      "title": "Department-level demand",
+      "purpose": "Daily rates per department series and monthly mean daily rates, not raw unequal totals.",
+      "tables": [
+        "tables/m5/dept_id_daily.parquet",
+        "tables/m5/series.parquet"
+      ],
+      "png_dimensions": [
+        2600,
+        1080
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "8acf363ef5249ad566301e95f9c4d777d91143b7c2d3812c4ae2516f8c44f4df",
+      "svg_sha256": "9e6430b12e0b87df07701d3b33764cacd11becf3c45e9b63f1a1522ed46efd15"
+    },
+    {
+      "stem": "cross_dataset_comparison",
+      "dataset": "both",
+      "kind": "comparison",
+      "title": "Different sales structures across datasets",
+      "purpose": "Compare zero-sales frequency, median series CV and product concentration.",
+      "tables": [
+        "store_item_results.json",
+        "m5_results.json"
+      ],
+      "png_dimensions": [
+        2400,
+        800
+      ],
+      "png_pixel_match": true,
+      "svg_artist_match": true,
+      "png_sha256": "bad80cfbcb8b8ef29b46df20520eefbe38e14882ba464ba5dc0ec2347480b7f3",
+      "svg_sha256": "0dbdb8dbc1c5de5dd4585af8b0b5d445d72936d3484bd00cc1b3a5ce6f859ac8"
+    }
+  ],
+  "browser_verification": {
+    "print": {
+      "navigationHidden": true,
+      "cards": 29
+    },
+    "status": "passed",
+    "browser": "Chrome headless",
+    "network_offline": true,
+    "external_network_requests": 0,
+    "report_png_images_loaded": 29,
+    "native_png_svg_images_loaded": 58,
+    "desktop": {
+      "title": "Phase 2 \u00c2\u00b7 EDA visual review",
+      "articles": 29,
+      "viewport": 1440,
+      "scrollWidth": 1425,
+      "findings": 29,
+      "implications": 29,
+      "kpis": 4,
+      "links": true
+    },
+    "narrow": {
+      "viewport": 480,
+      "scrollWidth": 480
+    },
+    "local_file_url": true,
+    "html_sha256": "f929c1db1a4b58b6797b10bc6d277e96a62efb15df850102e4e0aed98aaf3606"
+  },
+  "local_reference_validation": {
+    "status": "passed",
+    "html_images": 29,
+    "indexed_png_svg_files": 58,
+    "broken_local_links": 0,
+    "external_resources": 0
+  },
+  "visual_inspection": {
+    "all_29_figures": "inspected in contact sheets",
+    "targeted_and_new_charts": "inspected at full resolution",
+    "desktop_mobile_screenshots": "inspected",
+    "print_css": "verified with browser print emulation"
+  },
+  "automated_checks": {
+    "ruff": "passed",
+    "pytest_passed": 85,
+    "pytest_failed": 0,
+    "pytest_elapsed_seconds": 5.37,
+    "pip_check": "No broken requirements found"
+  }
+}

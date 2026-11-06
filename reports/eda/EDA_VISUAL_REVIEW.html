@@ -1,0 +1,467 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<meta name='description' content='Offline review of all verified Phase 2 EDA figures.'>
+<title>Phase 2 · EDA visual review</title>
+<style>
+:root{color-scheme:light;
+--ink:#182b42;
+--muted:#526174;
+--line:#dce3eb;
+--blue:#2463a0;
+--orange:#a66019}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;
+scroll-padding-top:24px}
+
+body{margin:0;
+background:#f2f5f8;
+color:var(--ink);
+font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+
+a{color:#195c99;
+text-underline-offset:3px}
+a:focus-visible{outline:3px solid #ca811d;
+outline-offset:3px}
+
+.layout{max-width:1500px;
+margin:auto;
+display:grid;
+grid-template-columns:210px minmax(0,1fr);
+gap:36px;
+padding:32px}
+
+nav{position:sticky;
+top:30px;
+align-self:start}
+nav strong{display:block;
+margin-bottom:16px}
+nav a{display:block;
+padding:8px 0}
+
+main{min-width:0;
+max-width:1120px}
+header{padding:20px 0 32px}
+.eyebrow{font-size:13px;
+letter-spacing:.12em;
+text-transform:uppercase;
+color:var(--muted)}
+
+h1{font-size:clamp(28px,3.4vw,46px);
+line-height:1.15;
+max-width:850px;
+margin:14px 0 18px;
+letter-spacing:-.025em}
+
+h2{font-size:29px;
+margin:42px 0 16px;
+line-height:1.25}
+h3{font-size:21px;
+line-height:1.3;
+margin:0 0 10px}
+
+p{margin:10px 0}
+section{margin-bottom:28px}
+.summary,.scope,.limitations{background:white;
+padding:24px 28px;
+border:1px solid var(--line)}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:24px}.kpi-grid div{background:white;border:1px solid #dce3eb;padding:18px}.kpi-grid strong{display:block;font-size:28px}.kpi-grid span{display:block;font-size:13px}.key-finding{border-left:3px solid #2463a0;padding-left:12px}.implication{font-size:14px;color:#44576e}details{overflow-wrap:anywhere}.summary h2{margin:0 0 12px;
+font-size:23px}
+.scope{border-left:4px solid var(--blue)}
+
+table{width:100%;
+border-collapse:collapse;
+font-size:14px;
+margin:18px 0}
+th,td{text-align:left;
+border-bottom:1px solid var(--line);
+padding:12px 8px;
+vertical-align:top}
+
+th{background:#e9eff5}
+td:not(:first-child){font-variant-numeric:tabular-nums}
+.table-wrap{overflow:auto}
+
+.figure-card{background:#fff;
+border:1px solid var(--line);
+margin:24px 0;
+padding:24px;
+break-inside:avoid}
+
+.figure-card figure{margin:18px 0 0}
+.figure-card img{display:block;
+width:100%;
+height:auto;
+background:white}
+
+.scope-label{font-size:13px;
+color:var(--muted)}
+.note{border-left:3px solid #c47a28;
+padding:8px 14px;
+background:#fff9f1;
+font-size:14px}
+
+figcaption{font-size:14px}
+.file-links{display:flex;
+flex-wrap:wrap;
+gap:8px 20px;
+margin:12px 0}
+
+details{font-size:13px;
+color:var(--muted)}
+summary{cursor:pointer}
+details ul{padding-left:20px}
+.status{color:#355d43;
+font-size:14px}
+
+.limitations li{margin:12px 0}
+footer{border-top:1px solid var(--line);
+padding:24px 0;
+font-size:13px;
+color:var(--muted)}
+
+@media(max-width:950px){.layout{display:block;
+padding:18px}
+nav{position:static;
+border-bottom:1px solid var(--line);
+padding-bottom:14px}
+nav a{display:inline-block;
+margin-right:18px;
+padding:4px 0}
+nav strong{margin-bottom:5px}
+.figure-card{padding:16px}
+.summary,.scope,.limitations{padding:18px}
+h2{font-size:26px}
+}
+
+@media print{body{background:white}
+.layout{display:block;
+padding:0}
+nav{display:none}
+main{max-width:none}
+.figure-card{padding:8px;
+margin:14px 0}
+.file-links{display:none}
+h2{break-after:avoid}
+.figure-card img{max-height:210mm;object-fit:contain}
+.figure-card{break-inside:auto}
+figure{break-inside:avoid}
+}
+
+</style></head><body>
+<div class='layout'><nav aria-label='Report sections'><strong>Phase 2 visual review</strong>
+<a href='#summary'>Executive summary</a><a href='#comparison'>Dataset comparison</a>
+<a href='#store-item'>Store Item · 11 figures</a><a href='#m5'>M5 · 12 figures</a>
+<a href='#prices'>M5 prices, SNAP &amp; groups · 5</a><a href='#limitations'>Review limitations</a>
+<a href='#methods'>Evidence &amp; methods</a><a href='VISUALISATION_INDEX.md'>Figure index</a></nav><main>
+<header><div class='eyebrow'>Intelligent Demand Forecasting &amp; Inventory Optimisation</div>
+<h1>Regular seasonal sales and sparse demand require different benchmarks</h1>
+<p>All 29 enhanced Phase 2 figures, with findings, exact coverage and interpretation notes.</p>
+<p class='status'>29 PNG + 29 SVG files verified · data preserved · no forecasting models trained</p></header>
+<div class='kpi-grid'><div><strong>500</strong><span>Store Item series · 100% smooth</span></div><div><strong>30,490</strong><span>M5 series · all included</span></div><div><strong>68.84%</strong><span>M5 training zeros</span></div><div><strong>28 days</strong><span>Proposed horizon · no models trained</span></div></div><section id='summary' class='summary'><h2>Executive Summary</h2><ul>
+<li>Store Item has regular sales: all 500 series are descriptively smooth, with one zero in its EDA period.</li>
+<li>M5's EDA observations are 68.84% zero; 23,044 series are intermittent and 5,953 lumpy.</li>
+<li>Both sources show weekday structure. Store Item has a pronounced annual monthly profile; M5 adds sparse histories and strong calendar-event contrasts.</li>
+<li>M5 price gaps concentrate before first positive sales in training. Missing prices do not establish stock availability or known future prices.</li></ul></section>
+<section class='scope'><h2>Read the periods correctly</h2>
+<p>Detailed target EDA stops before four 28-day validation windows and a final 28-day holdout. The figures cover every series, not an arbitrary sample.</p>
+<div class='table-wrap'><table><thead><tr><th>EDA population</th><th>Store Item</th><th>M5</th></tr></thead><tbody>
+<tr><th>Dates</th><td>2013-01-01–2017-08-13</td><td>2011-01-29–2016-01-03</td></tr>
+<tr><th>Series</th><td>500</td><td>30,490</td></tr>
+<tr><th>Observations</th><td>843,000</td><td>54,912,490</td></tr>
+<tr><th>Sales units</th><td>43,666,945</td><td>61,066,490</td></tr>
+<tr><th>Zero-sales observations</th><td>1 (0.000118624%)</td><td>37,800,354 (68.837443%)</td></tr>
+</tbody></table></div><p class='scope-label'>Full-history exceptions are known Phase 1 integrity totals and label-free price coverage. Unlabelled competition test rows are excluded.</p></section>
+<section id='comparison'><h2>Cross-dataset comparison</h2>
+<article class='figure-card' id='cross_dataset_comparison' data-dataset='both'>
+<h3>Different sales structures across datasets</h3><p>Compare zero-sales frequency, median series CV and product concentration.</p>
+<p class='scope-label'>Store Item: 2013-01-01–2017-08-13; M5: 2011-01-29–2016-01-03.</p>
+<p class='key-finding'><strong>Key Finding:</strong> M5 has 68.84% zero-sale observations, versus one in Store Item; its top 10% of products account for 51.68% of units versus 16.28%.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Compare methods independently on each source, with source-specific baselines and explicit metric coverage.</p>
+<figure><img src='../figures/phase2/cross_dataset_comparison.png' width='2400' height='800' alt='Different sales structures across datasets: Compare zero-sales frequency, median series CV and product concentration.' decoding='async'>
+<figcaption><p class='note'>Different dates, identities and unit semantics permit methodological comparison, not direct model transfer or pooled raw-unit error comparisons.</p>
+<div class='file-links'><a href='../figures/phase2/cross_dataset_comparison.png'>Open PNG</a><a href='../figures/phase2/cross_dataset_comparison.svg'>Open SVG</a><a href='#cross_dataset_comparison'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='store_item_results.json'>store_item_results.json</a></li><li><a href='m5_results.json'>m5_results.json</a></li></ul></details></figcaption></figure></article>
+</section>
+<section id='store-item'><h2>Store Item: regular sales and strong calendar structure</h2>
+<article class='figure-card' id='store_item_distribution' data-dataset='store_item'>
+<h3>Daily sales distribution</h3><p>Exact daily-unit frequencies and the cumulative distribution of positive sales.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Training sales total 43,666,945 units across 843,000 observations; dates and complete-month rules are labelled.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Use chronological backtests and report scale-dependent errors separately by source.</p>
+<figure><img src='../figures/phase2/store_item_distribution.png' width='2200' height='800' alt='Daily sales distribution: Exact daily-unit frequencies and the cumulative distribution of positive sales.' decoding='async'>
+<figcaption><p class='note'>Frequency axis is logarithmic; the positive CDF excludes zeros. No sales were imputed or removed.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_distribution.png'>Open PNG</a><a href='../figures/phase2/store_item_distribution.svg'>Open SVG</a><a href='#store_item_distribution'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/distribution.parquet'>tables/store_item/distribution.parquet</a></li><li><a href='tables/store_item/largest_observations.parquet'>tables/store_item/largest_observations.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='store_item_trends' data-dataset='store_item'>
+<h3>Daily and monthly sales</h3><p>Daily aggregate units, trailing 28-day mean and complete calendar-month totals.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Training sales total 43,666,945 units across 843,000 observations; dates and complete-month rules are labelled.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Use chronological backtests and report scale-dependent errors separately by source.</p>
+<figure><img src='../figures/phase2/store_item_trends.png' width='2200' height='1240' alt='Daily and monthly sales: Daily aggregate units, trailing 28-day mean and complete calendar-month totals.' decoding='async'>
+<figcaption><p class='note'>Complete monthly totals are shown; boundary months are excluded. Raw units are source-specific.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_trends.png'>Open PNG</a><a href='../figures/phase2/store_item_trends.svg'>Open SVG</a><a href='#store_item_trends'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/daily.parquet'>tables/store_item/daily.parquet</a></li><li><a href='tables/store_item/monthly.parquet'>tables/store_item/monthly.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='store_item_calendar_patterns' data-dataset='store_item'>
+<h3>Weekly and annual calendar structure</h3><p>Within-week ratios with pointwise bootstrap intervals and normalised monthly profiles.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Sunday has the highest normalised weekday ratio (1.192); monthly profiles also vary.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Include weekly seasonal naive as a baseline and test origin-safe calendar effects; aggregate seasonality is not a forecast score.</p>
+<figure><img src='../figures/phase2/store_item_calendar_patterns.png' width='2200' height='800' alt='Weekly and annual calendar structure: Within-week ratios with pointwise bootstrap intervals and normalised monthly profiles.' decoding='async'>
+<figcaption><p class='note'>500 four-week-block resamples, seed 42; pointwise 95% intervals, not causal estimates. Monthly profiles use complete years.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_calendar_patterns.png'>Open PNG</a><a href='../figures/phase2/store_item_calendar_patterns.svg'>Open SVG</a><a href='#store_item_calendar_patterns'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/weekdays.parquet'>tables/store_item/weekdays.parquet</a></li><li><a href='tables/store_item/month_year.parquet'>tables/store_item/month_year.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='store_item_intermittency' data-dataset='store_item'>
+<h3>Demand-pattern classifications</h3><p>Store Item positive-size variability and smooth-population facts; M5 ADI/CV² scatter.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> All 500 Store Item histories are descriptively smooth.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Test suitable model families by training-only demand stratum; classifications do not prove a winning method.</p>
+<figure><img src='../figures/phase2/store_item_intermittency.png' width='2200' height='880' alt='Demand-pattern classifications: Store Item positive-size variability and smooth-population facts; M5 ADI/CV² scatter.' decoding='async'>
+<figcaption><p class='note'>ADI=1.32 and positive-size CV²=0.49 are descriptive cutoffs, not a model-selection rule. Undefined histories are counted separately.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_intermittency.png'>Open PNG</a><a href='../figures/phase2/store_item_intermittency.svg'>Open SVG</a><a href='#store_item_intermittency'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/series.parquet'>tables/store_item/series.parquet</a></li><li><a href='tables/store_item/patterns.parquet'>tables/store_item/patterns.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='store_item_zeros_variability' data-dataset='store_item'>
+<h3>Zero-sales frequency and variability</h3><p>Series-level zero percentages and the distribution of defined positive all-sales CVs.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> There are 1 zero-sale observations (0.000118624%) in this training prefix.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Preserve zeros and use denominator-safe metrics; changing aggregate volatility may warrant checking stability across rolling origins.</p>
+<figure><img src='../figures/phase2/store_item_zeros_variability.png' width='2200' height='860' alt='Zero-sales frequency and variability: Series-level zero percentages and the distribution of defined positive all-sales CVs.' decoding='async'>
+<figcaption><p class='note'>Recorded zeros are retained. All-sales CV is undefined for M5&#x27;s 16 all-zero histories. Store Item CV uses readable linear decimal ticks.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_zeros_variability.png'>Open PNG</a><a href='../figures/phase2/store_item_zeros_variability.svg'>Open SVG</a><a href='#store_item_zeros_variability'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/series.parquet'>tables/store_item/series.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='store_item_concentration' data-dataset='store_item'>
+<h3>Product sales concentration</h3><p>Cumulative sales shares ordered by product volume and the ten highest-volume products.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> The top 10% of products account for 16.28% of training units.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Report macro per-series and pooled metrics separately so high-volume products do not obscure minority performance.</p>
+<figure><img src='../figures/phase2/store_item_concentration.png' width='2200' height='900' alt='Product sales concentration: Cumulative sales shares ordered by product volume and the ten highest-volume products.' decoding='async'>
+<figcaption><p class='note'>Products aggregate over stores. The curve uses fractions; compare within-source shares rather than physical units across datasets.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_concentration.png'>Open PNG</a><a href='../figures/phase2/store_item_concentration.svg'>Open SVG</a><a href='#store_item_concentration'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/products.parquet'>tables/store_item/products.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='store_item_stores' data-dataset='store_item'>
+<h3>Store-level comparisons</h3><p>Units per store-product day and zero-sales percentages, with equal historical exposure.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Store 2 has the highest training rate: 66.446 units per series-day.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Check store-level error coverage and avoid comparing raw totals with unequal exposure.</p>
+<figure><img src='../figures/phase2/store_item_stores.png' width='2200' height='900' alt='Store-level comparisons: Units per store-product day and zero-sales percentages, with equal historical exposure.' decoding='async'>
+<figcaption><p class='note'>Rates divide by each store&#x27;s observed series-days. Store Item&#x27;s one zero is annotated explicitly, rather than hidden on a broad percentage axis.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_stores.png'>Open PNG</a><a href='../figures/phase2/store_item_stores.svg'>Open SVG</a><a href='#store_item_stores'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/stores.parquet'>tables/store_item/stores.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='store_item_diagnostics' data-dataset='store_item'>
+<h3>Trend, annual structure and autocorrelation</h3><p>Log aggregate sales/trend, approximate annual component and first-differenced log ACF.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Aggregate weekly strength is 0.976; annual diagnostic strength is 0.993.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Use these diagnostics to motivate seasonal candidates, then judge them on matched chronological windows.</p>
+<figure><img src='../figures/phase2/store_item_diagnostics.png' width='2200' height='1600' alt='Trend, annual structure and autocorrelation: Log aggregate sales/trend, approximate annual component and first-differenced log ACF.' decoding='async'>
+<figcaption><p class='note'>Historical STL diagnostics do not forecast. A 365-day period approximates the leap calendar; aggregate patterns need not hold at leaf level.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_diagnostics.png'>Open PNG</a><a href='../figures/phase2/store_item_diagnostics.svg'>Open SVG</a><a href='#store_item_diagnostics'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/components.parquet'>tables/store_item/components.parquet</a></li><li><a href='tables/store_item/acf.parquet'>tables/store_item/acf.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='store_item_volatility' data-dataset='store_item'>
+<h3>Rolling volatility and zero-sales breadth</h3><p>Aggregate 28-day coefficient of variation and the daily percentage of zero-selling series.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> There are 1 zero-sale observations (0.000118624%) in this training prefix.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Preserve zeros and use denominator-safe metrics; changing aggregate volatility may warrant checking stability across rolling origins.</p>
+<figure><img src='../figures/phase2/store_item_volatility.png' width='2200' height='1140' alt='Rolling volatility and zero-sales breadth: Aggregate 28-day coefficient of variation and the daily percentage of zero-selling series.' decoding='async'>
+<figcaption><p class='note'>The first 27 rolling statistics are undefined. Store Item zero breadth is shown as an exact count; M5 breadth is a percentage.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_volatility.png'>Open PNG</a><a href='../figures/phase2/store_item_volatility.svg'>Open SVG</a><a href='#store_item_volatility'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/daily.parquet'>tables/store_item/daily.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='store_item_representatives' data-dataset='store_item'>
+<h3>Representative demand histories</h3><p>Deterministic examples with explicit windows; zero/single-positive M5 cases show full training histories.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> The displayed smooth example shows variation over its labelled 180-day window.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Keep cold-start and insufficient-history fallbacks explicit; examples do not determine population model rankings.</p>
+<figure><img src='../figures/phase2/store_item_representatives.png' width='2200' height='740' alt='Representative demand histories: Deterministic examples with explicit windows; zero/single-positive M5 cases show full training histories.' decoding='async'>
+<figcaption><p class='note'>These median-ranked examples do not estimate the population. Independent y-scales and date windows are explicit; all quantities are non-negative.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_representatives.png'>Open PNG</a><a href='../figures/phase2/store_item_representatives.svg'>Open SVG</a><a href='#store_item_representatives'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/representative_series.parquet'>tables/store_item/representative_series.parquet</a></li><li><a href='tables/store_item/series.parquet'>tables/store_item/series.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='store_item_extremes' data-dataset='store_item'>
+<h3>Unusual sales and the empirical tail</h3><p>Full-population tail probabilities and clearly labelled retained extreme examples.</p>
+<p class='scope-label'>2013-01-01–2017-08-13; all 500 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> The maximum recorded training observation is 231 units; the 99th percentile is 134.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Report both MAE and RMSE so large misses remain visible; retain source observations unless independently shown erroneous.</p>
+<figure><img src='../figures/phase2/store_item_extremes.png' width='2600' height='1140' alt='Unusual sales and the empirical tail: Full-population tail probabilities and clearly labelled retained extreme examples.' decoding='async'>
+<figcaption><p class='note'>The empirical tail uses every training observation. The saved top-20 table supplies ten labelled examples; ties are not exhaustive and extremes are not declared errors.</p>
+<div class='file-links'><a href='../figures/phase2/store_item_extremes.png'>Open PNG</a><a href='../figures/phase2/store_item_extremes.svg'>Open SVG</a><a href='#store_item_extremes'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/store_item/distribution.parquet'>tables/store_item/distribution.parquet</a></li><li><a href='tables/store_item/largest_observations.parquet'>tables/store_item/largest_observations.parquet</a></li><li><a href='tables/store_item/series.parquet'>tables/store_item/series.parquet</a></li></ul></details></figcaption></figure></article>
+</section>
+<section id='m5'><h2>M5: sparse histories and concentrated product volume</h2>
+<article class='figure-card' id='m5_distribution' data-dataset='m5'>
+<h3>Daily sales distribution</h3><p>Exact daily-unit frequencies and the cumulative distribution of positive sales.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Training sales total 61,066,490 units across 54,912,490 observations; dates and complete-month rules are labelled.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Use chronological backtests and report scale-dependent errors separately by source.</p>
+<figure><img src='../figures/phase2/m5_distribution.png' width='2200' height='800' alt='Daily sales distribution: Exact daily-unit frequencies and the cumulative distribution of positive sales.' decoding='async'>
+<figcaption><p class='note'>Frequency axis is logarithmic; the positive CDF excludes zeros. No sales were imputed or removed.</p>
+<div class='file-links'><a href='../figures/phase2/m5_distribution.png'>Open PNG</a><a href='../figures/phase2/m5_distribution.svg'>Open SVG</a><a href='#m5_distribution'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/distribution.parquet'>tables/m5/distribution.parquet</a></li><li><a href='tables/m5/largest_observations.parquet'>tables/m5/largest_observations.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_trends' data-dataset='m5'>
+<h3>Daily and monthly sales</h3><p>Daily aggregate units, trailing 28-day mean and complete calendar-month totals.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Training sales total 61,066,490 units across 54,912,490 observations; dates and complete-month rules are labelled.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Use chronological backtests and report scale-dependent errors separately by source.</p>
+<figure><img src='../figures/phase2/m5_trends.png' width='2200' height='1240' alt='Daily and monthly sales: Daily aggregate units, trailing 28-day mean and complete calendar-month totals.' decoding='async'>
+<figcaption><p class='note'>Complete monthly totals are shown; boundary months are excluded. Raw units are source-specific.</p>
+<div class='file-links'><a href='../figures/phase2/m5_trends.png'>Open PNG</a><a href='../figures/phase2/m5_trends.svg'>Open SVG</a><a href='#m5_trends'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/daily.parquet'>tables/m5/daily.parquet</a></li><li><a href='tables/m5/monthly.parquet'>tables/m5/monthly.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_calendar_patterns' data-dataset='m5'>
+<h3>Weekly and annual calendar structure</h3><p>Within-week ratios with pointwise bootstrap intervals and normalised monthly profiles.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Saturday has the highest normalised weekday ratio (1.210); monthly profiles also vary.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Include weekly seasonal naive as a baseline and test origin-safe calendar effects; aggregate seasonality is not a forecast score.</p>
+<figure><img src='../figures/phase2/m5_calendar_patterns.png' width='2200' height='800' alt='Weekly and annual calendar structure: Within-week ratios with pointwise bootstrap intervals and normalised monthly profiles.' decoding='async'>
+<figcaption><p class='note'>500 four-week-block resamples, seed 42; pointwise 95% intervals, not causal estimates. Monthly profiles use complete years.</p>
+<div class='file-links'><a href='../figures/phase2/m5_calendar_patterns.png'>Open PNG</a><a href='../figures/phase2/m5_calendar_patterns.svg'>Open SVG</a><a href='#m5_calendar_patterns'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/weekdays.parquet'>tables/m5/weekdays.parquet</a></li><li><a href='tables/m5/month_year.parquet'>tables/m5/month_year.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_intermittency' data-dataset='m5'>
+<h3>Demand-pattern classifications</h3><p>Store Item positive-size variability and smooth-population facts; M5 ADI/CV² scatter.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> M5 includes 23,044 intermittent, 5,953 lumpy, 983 smooth, 489 erratic, 16 all-zero and 5 single-positive histories.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Test suitable model families by training-only demand stratum; classifications do not prove a winning method.</p>
+<figure><img src='../figures/phase2/m5_intermittency.png' width='2100' height='1140' alt='Demand-pattern classifications: Store Item positive-size variability and smooth-population facts; M5 ADI/CV² scatter.' decoding='async'>
+<figcaption><p class='note'>ADI=1.32 and positive-size CV²=0.49 are descriptive cutoffs, not a model-selection rule. Undefined histories are counted separately.</p>
+<div class='file-links'><a href='../figures/phase2/m5_intermittency.png'>Open PNG</a><a href='../figures/phase2/m5_intermittency.svg'>Open SVG</a><a href='#m5_intermittency'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/series.parquet'>tables/m5/series.parquet</a></li><li><a href='tables/m5/patterns.parquet'>tables/m5/patterns.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_zeros_variability' data-dataset='m5'>
+<h3>Zero-sales frequency and variability</h3><p>Series-level zero percentages and the distribution of defined positive all-sales CVs.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> There are 37,800,354 zero-sale observations (68.837442993%) in this training prefix.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Preserve zeros and use denominator-safe metrics; changing aggregate volatility may warrant checking stability across rolling origins.</p>
+<figure><img src='../figures/phase2/m5_zeros_variability.png' width='2200' height='860' alt='Zero-sales frequency and variability: Series-level zero percentages and the distribution of defined positive all-sales CVs.' decoding='async'>
+<figcaption><p class='note'>Recorded zeros are retained. All-sales CV is undefined for M5&#x27;s 16 all-zero histories. Store Item CV uses readable linear decimal ticks.</p>
+<div class='file-links'><a href='../figures/phase2/m5_zeros_variability.png'>Open PNG</a><a href='../figures/phase2/m5_zeros_variability.svg'>Open SVG</a><a href='#m5_zeros_variability'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/series.parquet'>tables/m5/series.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_concentration' data-dataset='m5'>
+<h3>Product sales concentration</h3><p>Cumulative sales shares ordered by product volume and the ten highest-volume products.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> The top 10% of products account for 51.68% of training units.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Report macro per-series and pooled metrics separately so high-volume products do not obscure minority performance.</p>
+<figure><img src='../figures/phase2/m5_concentration.png' width='2200' height='900' alt='Product sales concentration: Cumulative sales shares ordered by product volume and the ten highest-volume products.' decoding='async'>
+<figcaption><p class='note'>Products aggregate over stores. The curve uses fractions; compare within-source shares rather than physical units across datasets.</p>
+<div class='file-links'><a href='../figures/phase2/m5_concentration.png'>Open PNG</a><a href='../figures/phase2/m5_concentration.svg'>Open SVG</a><a href='#m5_concentration'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/products.parquet'>tables/m5/products.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_stores' data-dataset='m5'>
+<h3>Store-level comparisons</h3><p>Units per store-product day and zero-sales percentages, with equal historical exposure.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Store CA_3 has the highest training rate: 1.908 units per series-day.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Check store-level error coverage and avoid comparing raw totals with unequal exposure.</p>
+<figure><img src='../figures/phase2/m5_stores.png' width='2200' height='900' alt='Store-level comparisons: Units per store-product day and zero-sales percentages, with equal historical exposure.' decoding='async'>
+<figcaption><p class='note'>Rates divide by each store&#x27;s observed series-days. Store Item&#x27;s one zero is annotated explicitly, rather than hidden on a broad percentage axis.</p>
+<div class='file-links'><a href='../figures/phase2/m5_stores.png'>Open PNG</a><a href='../figures/phase2/m5_stores.svg'>Open SVG</a><a href='#m5_stores'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/stores.parquet'>tables/m5/stores.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_diagnostics' data-dataset='m5'>
+<h3>Trend, annual structure and autocorrelation</h3><p>Log aggregate sales/trend, approximate annual component and first-differenced log ACF.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Aggregate weekly strength is 0.109; annual diagnostic strength is 0.774.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Use these diagnostics to motivate seasonal candidates, then judge them on matched chronological windows.</p>
+<figure><img src='../figures/phase2/m5_diagnostics.png' width='2200' height='1600' alt='Trend, annual structure and autocorrelation: Log aggregate sales/trend, approximate annual component and first-differenced log ACF.' decoding='async'>
+<figcaption><p class='note'>Historical STL diagnostics do not forecast. A 365-day period approximates the leap calendar; aggregate patterns need not hold at leaf level.</p>
+<div class='file-links'><a href='../figures/phase2/m5_diagnostics.png'>Open PNG</a><a href='../figures/phase2/m5_diagnostics.svg'>Open SVG</a><a href='#m5_diagnostics'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/components.parquet'>tables/m5/components.parquet</a></li><li><a href='tables/m5/acf.parquet'>tables/m5/acf.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_volatility' data-dataset='m5'>
+<h3>Rolling volatility and zero-sales breadth</h3><p>Aggregate 28-day coefficient of variation and the daily percentage of zero-selling series.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> There are 37,800,354 zero-sale observations (68.837442993%) in this training prefix.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Preserve zeros and use denominator-safe metrics; changing aggregate volatility may warrant checking stability across rolling origins.</p>
+<figure><img src='../figures/phase2/m5_volatility.png' width='2200' height='1140' alt='Rolling volatility and zero-sales breadth: Aggregate 28-day coefficient of variation and the daily percentage of zero-selling series.' decoding='async'>
+<figcaption><p class='note'>The first 27 rolling statistics are undefined. Store Item zero breadth is shown as an exact count; M5 breadth is a percentage.</p>
+<div class='file-links'><a href='../figures/phase2/m5_volatility.png'>Open PNG</a><a href='../figures/phase2/m5_volatility.svg'>Open SVG</a><a href='#m5_volatility'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/daily.parquet'>tables/m5/daily.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_representatives' data-dataset='m5'>
+<h3>Representative demand histories</h3><p>Deterministic examples with explicit windows; zero/single-positive M5 cases show full training histories.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> The full training view reveals the single-positive M5 example; the all-zero example has no training positives.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Keep cold-start and insufficient-history fallbacks explicit; examples do not determine population model rankings.</p>
+<figure><img src='../figures/phase2/m5_representatives.png' width='2200' height='3240' alt='Representative demand histories: Deterministic examples with explicit windows; zero/single-positive M5 cases show full training histories.' decoding='async'>
+<figcaption><p class='note'>These median-ranked examples do not estimate the population. Independent y-scales and date windows are explicit; all quantities are non-negative.</p>
+<div class='file-links'><a href='../figures/phase2/m5_representatives.png'>Open PNG</a><a href='../figures/phase2/m5_representatives.svg'>Open SVG</a><a href='#m5_representatives'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/representative_series.parquet'>tables/m5/representative_series.parquet</a></li><li><a href='tables/m5/series.parquet'>tables/m5/series.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_extremes' data-dataset='m5'>
+<h3>Unusual sales and the empirical tail</h3><p>Full-population tail probabilities and clearly labelled retained extreme examples.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> The maximum recorded training observation is 763 units; the 99th percentile is 15.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Report both MAE and RMSE so large misses remain visible; retain source observations unless independently shown erroneous.</p>
+<figure><img src='../figures/phase2/m5_extremes.png' width='2600' height='1140' alt='Unusual sales and the empirical tail: Full-population tail probabilities and clearly labelled retained extreme examples.' decoding='async'>
+<figcaption><p class='note'>The empirical tail uses every training observation. The saved top-20 table supplies ten labelled examples; ties are not exhaustive and extremes are not declared errors.</p>
+<div class='file-links'><a href='../figures/phase2/m5_extremes.png'>Open PNG</a><a href='../figures/phase2/m5_extremes.svg'>Open SVG</a><a href='#m5_extremes'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/distribution.parquet'>tables/m5/distribution.parquet</a></li><li><a href='tables/m5/largest_observations.parquet'>tables/m5/largest_observations.parquet</a></li><li><a href='tables/m5/series.parquet'>tables/m5/series.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_classification' data-dataset='m5'>
+<h3>All M5 demand classes</h3><p>Log-position counts with exact counts and percentages, including minority histories.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> M5 includes 23,044 intermittent, 5,953 lumpy, 983 smooth, 489 erratic, 16 all-zero and 5 single-positive histories.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Test suitable model families by training-only demand stratum; classifications do not prove a winning method.</p>
+<figure><img src='../figures/phase2/m5_classification.png' width='2200' height='900' alt='All M5 demand classes: Log-position counts with exact counts and percentages, including minority histories.' decoding='async'>
+<figcaption><p class='note'>Every published M5 series is included. The log count axis makes small groups visible; labels give exact shares of 30,490 series.</p>
+<div class='file-links'><a href='../figures/phase2/m5_classification.png'>Open PNG</a><a href='../figures/phase2/m5_classification.svg'>Open SVG</a><a href='#m5_classification'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/patterns.parquet'>tables/m5/patterns.parquet</a></li><li><a href='tables/m5/series.parquet'>tables/m5/series.parquet</a></li></ul></details></figcaption></figure></article>
+</section>
+<section id='prices'><h2>M5: historical prices and calendar associations</h2>
+<article class='figure-card' id='m5_price_missingness' data-dataset='m5'>
+<h3>Historical price coverage and sales activity</h3><p>Full-history price gaps by date/store/year, plus the training-only activity partition.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series. Label-free price coverage additionally extends through 2016-05-22.</p>
+<p class='key-finding'><strong>Key Finding:</strong> 12,299,413 full-history price gaps remain null; 12,270,132 training gaps precede first positive sale, and 28,816 occur in histories with no training positives.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Use only origin-available prices and explicit missingness indicators; no automatic backfill or stockout inference.</p>
+<figure><img src='../figures/phase2/m5_price_missingness.png' width='2400' height='1500' alt='Historical price coverage and sales activity: Full-history price gaps by date/store/year, plus the training-only activity partition.' decoding='async'>
+<figcaption><p class='note'>Coverage panels use full-history price fields only. Activity categories use training sales only; the 465 reserved gaps have no sales-activity analysis.</p>
+<div class='file-links'><a href='../figures/phase2/m5_price_missingness.png'>Open PNG</a><a href='../figures/phase2/m5_price_missingness.svg'>Open SVG</a><a href='#m5_price_missingness'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/price_by_date_full_quality.parquet'>tables/m5/price_by_date_full_quality.parquet</a></li><li><a href='tables/m5/price_by_store_full_quality.parquet'>tables/m5/price_by_store_full_quality.parquet</a></li><li><a href='tables/m5/price_by_year_full_quality.parquet'>tables/m5/price_by_year_full_quality.parquet</a></li><li><a href='tables/m5/price_by_series_eda.parquet'>tables/m5/price_by_series_eda.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_price_products' data-dataset='m5'>
+<h3>Price coverage by product and series</h3><p>Product missing-price rates and their descriptive relationship to series zero-sales rates.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series. Label-free price coverage additionally extends through 2016-05-22.</p>
+<p class='key-finding'><strong>Key Finding:</strong> 12,299,413 full-history price gaps remain null; 12,270,132 training gaps precede first positive sale, and 28,816 occur in histories with no training positives.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Use only origin-available prices and explicit missingness indicators; no automatic backfill or stockout inference.</p>
+<figure><img src='../figures/phase2/m5_price_products.png' width='2200' height='800' alt='Price coverage by product and series: Product missing-price rates and their descriptive relationship to series zero-sales rates.' decoding='async'>
+<figcaption><p class='note'>The left panel uses full-history price coverage; the right uses training-only sales/price summaries. Neither establishes stock availability.</p>
+<div class='file-links'><a href='../figures/phase2/m5_price_products.png'>Open PNG</a><a href='../figures/phase2/m5_price_products.svg'>Open SVG</a><a href='#m5_price_products'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/price_by_product_full_quality.parquet'>tables/m5/price_by_product_full_quality.parquet</a></li><li><a href='tables/m5/price_by_series_eda.parquet'>tables/m5/price_by_series_eda.parquet</a></li><li><a href='tables/m5/series.parquet'>tables/m5/series.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_events_groups' data-dataset='m5'>
+<h3>Calendar events and product categories</h3><p>Ten lowest-mean named events and category-level trailing means adjusted by series count.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Christmas averages 15.6 aggregate units across five training dates; category daily rates differ after adjusting for series counts.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Treat event/calendar signals as candidate covariates with known-at-origin rules, not causal demand lifts.</p>
+<figure><img src='../figures/phase2/m5_events_groups.png' width='2600' height='1080' alt='Calendar events and product categories: Ten lowest-mean named events and category-level trailing means adjusted by series count.' decoding='async'>
+<figcaption><p class='note'>Only ten lowest-mean named events are displayed. Exact labels expose Christmas&#x27;s small total; event groups overlap and are not causal effects.</p>
+<div class='file-links'><a href='../figures/phase2/m5_events_groups.png'>Open PNG</a><a href='../figures/phase2/m5_events_groups.svg'>Open SVG</a><a href='#m5_events_groups'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/calendar_events.parquet'>tables/m5/calendar_events.parquet</a></li><li><a href='tables/m5/cat_id_daily.parquet'>tables/m5/cat_id_daily.parquet</a></li><li><a href='tables/m5/series.parquet'>tables/m5/series.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_snap' data-dataset='m5'>
+<h3>SNAP versus non-SNAP calendar days</h3><p>Within-state units per store-day, with the actual flagged/non-flagged exposures.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> SNAP / non-SNAP mean units per store-day: CA: 3,909.9 versus 3,609.2; TX: 3,519.2 versus 3,146.7; WI: 3,516.1 versus 2,879.6.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> Consider calendar flags only under an origin-availability contract; do not interpret these differences causally.</p>
+<figure><img src='../figures/phase2/m5_snap.png' width='2200' height='960' alt='SNAP versus non-SNAP calendar days: Within-state units per store-day, with the actual flagged/non-flagged exposures.' decoding='async'>
+<figcaption><p class='note'>Means divide by actual observed store-days within each state/flag. Different dates, holidays and assortment remain confounders; flags are not observed customer benefit use.</p>
+<div class='file-links'><a href='../figures/phase2/m5_snap.png'>Open PNG</a><a href='../figures/phase2/m5_snap.svg'>Open SVG</a><a href='#m5_snap'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/snap_associations.parquet'>tables/m5/snap_associations.parquet</a></li></ul></details></figcaption></figure></article>
+<article class='figure-card' id='m5_departments' data-dataset='m5'>
+<h3>Department-level demand</h3><p>Daily rates per department series and monthly mean daily rates, not raw unequal totals.</p>
+<p class='scope-label'>2011-01-29–2016-01-03; all 30,490 series.</p>
+<p class='key-finding'><strong>Key Finding:</strong> Mean daily rates range from 0.182 (HOBBIES_2) to 2.042 (FOODS_3) units per series.</p>
+<p class='implication'><strong>Forecasting Implication:</strong> A global model may share information within hierarchy groups; compare rate and sparsity differences before choosing that structure.</p>
+<figure><img src='../figures/phase2/m5_departments.png' width='2600' height='1080' alt='Department-level demand: Daily rates per department series and monthly mean daily rates, not raw unequal totals.' decoding='async'>
+<figcaption><p class='note'>Each rate divides by the department&#x27;s published series count. Complete daily training coverage is used; monthly heatmap boundary months may be partial.</p>
+<div class='file-links'><a href='../figures/phase2/m5_departments.png'>Open PNG</a><a href='../figures/phase2/m5_departments.svg'>Open SVG</a><a href='#m5_departments'>Figure permalink</a></div>
+<details><summary>Underlying saved EDA inputs</summary><ul><li><a href='tables/m5/dept_id_daily.parquet'>tables/m5/dept_id_daily.parquet</a></li><li><a href='tables/m5/series.parquet'>tables/m5/series.parquet</a></li></ul></details></figcaption></figure></article>
+</section>
+<section id='limitations' class='limitations'><h2>Remaining interpretation limits</h2>
+<p>No expected image files are missing or unreadable. The targeted presentation issues are resolved; these analytical limits remain.</p><ul>
+<li>ADI/CV² thresholds and aggregate seasonality are descriptive, not guarantees of individual-series forecastability.</li>
+<li>M5&#x27;s 45 zero-CV² histories need a labelled positive display floor on a log scatter; 21 undefined histories appear in the separate classification figure.</li>
+<li>SNAP and event comparisons are descriptive: date composition, holidays, assortment and other confounders are uncontrolled.</li>
+<li>Department rates use a fixed published series universe, not independently observed assortment or stock availability; boundary heatmap months may be partial.</li>
+<li>Retained extreme examples are not an exhaustive tie list or proof of invalid data; only the histogram tail is a full-population distribution.</li>
+<li>Representative panels have independent y-scales and explicitly different windows. They are illustrations, not sampling-based population estimates.</li>
+<li>Historical price coverage extends through 2016-05-22 without inspecting reserved sales targets. The 465 reserved-period price gaps have no activity interpretation.</li>
+<li>Observed sales may be constrained demand. No measured inventory savings, causal effects, forecasting winner or direct cross-source transfer is established.</li>
+</ul><h3>Training-period price-gap reconciliation</h3>
+<div class='table-wrap'><table><thead><tr><th>Training-period missing-price relation</th><th>Observations</th></tr></thead><tbody>
+<tr><th>Before first positive</th><td>12,270,132</td></tr>
+<tr><th>Within positive-sales span</th><td>0</td></tr>
+<tr><th>After last positive</th><td>0</td></tr>
+<tr><th>No positive in EDA</th><td>28,816</td></tr>
+</tbody></table></div><p>Training missing-price total: 12,298,948. Another 465 gaps occur in reserved periods: only their price coverage was examined. Whole-history total: 12,299,413. No prices were imputed.</p></section>
+<section id='methods'><h2>Evidence, verification and next steps</h2>
+<p>Existing images were decoded and compared with disposable chart renders from the current small EDA tables: exact PNG pixels and normalised SVG artist content. Saved counts, ratios, date limits and major marginal sums were cross-checked. This confirms the figures' bindings to saved inputs; it does not constitute a new independent raw-data audit.</p>
+<p>Reference evidence: <a href='visualisation_audit.json'>visualisation checks</a>, <a href='validation.json'>Phase 2 reconciliation</a>, <a href='VISUALISATION_INDEX.md'>complete figure index</a>, <a href='../../docs/EDA_FINDINGS.md'>EDA findings</a>, and <a href='../../docs/FORECASTING_EXPERIMENTAL_PROTOCOL.md'>proposed forecasting protocol</a>.</p>
+<p>The next planned task is review of the 28-day protocol, with separate source benchmarks, origin-safe inputs and explicit metric coverage. Phase 3 has not begun. The independent Claude audit remains after Phase 4 and before Phase 5.</p>
+<p class='scope-label'>Rebuild this review: python -m intelligent_demand.exploration.visual_review. No server, CDN, web font, external script or internet connection is needed. Move the reports/eda and reports/figures directories together; some images and all analytical tables are intentionally excluded from Git.</p></section>
+<footer>Historical measurements: Store Item through 2017-08-13; M5 through 2016-01-03, with explicitly labelled full-history price coverage through 2016-05-22. Generated with the Data reporting and visualisation skills.</footer></main></div></body></html>
