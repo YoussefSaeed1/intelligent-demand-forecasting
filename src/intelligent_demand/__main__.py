@@ -16,6 +16,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=Path("configs/default.yaml"))
     commands = parser.add_subparsers(dest="command")
+    for name in ("forecast-plan", "forecast-models", "experiment-status"):
+        command = commands.add_parser(name)
+        command.add_argument("--settings", type=Path, default=Path("configs/forecasting.yaml"))
+        if name == "experiment-status":
+            command.add_argument("--run-id", required=True)
     for name in (
         "download-data",
         "discover-data",
@@ -42,6 +47,38 @@ def main() -> None:
     logging.info("Configuration valid: %s", config.project_name)
     if args.command is None:
         logging.info("Planned horizon: %s days; no data required", config.forecast_horizon_days)
+        return
+    if args.command in ("forecast-plan", "forecast-models", "experiment-status"):
+        import json
+        from dataclasses import asdict
+
+        from intelligent_demand.evaluation.splits import load_splits
+        from intelligent_demand.experiments.config import load_experiment_config
+        from intelligent_demand.experiments.registry import ExperimentRegistry
+        from intelligent_demand.models.base import ModelRegistry
+
+        try:
+            settings = load_experiment_config(args.settings)
+            if args.command == "forecast-plan":
+                folds = load_splits(settings.split_manifest)
+                output = {
+                    "status": "validated_plan_only",
+                    "models_executed": 0,
+                    "settings": settings.metadata(),
+                    "validation_folds": {
+                        name: [asdict(fold) for fold in rows] for name, rows in folds.items()
+                    },
+                }
+            elif args.command == "forecast-models":
+                output = {"registered_models": ModelRegistry().registered(), "models_executed": 0}
+            else:
+                registry = ExperimentRegistry(settings.registry_directory)
+                output = registry.read(args.run_id)
+                if output["status"] == "completed":
+                    output = registry.completed(args.run_id)
+            print(json.dumps(output, default=str, indent=2, allow_nan=False))
+        except (OSError, ValueError, yaml.YAMLError) as exc:
+            parser.exit(2, f"Forecast infrastructure validation failed: {exc}\n")
         return
     if args.command == "eda":
         from intelligent_demand.exploration.pipeline import run_eda

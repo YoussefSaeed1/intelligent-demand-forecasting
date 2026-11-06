@@ -1,0 +1,12 @@
+# Phase 3A infrastructure only; no model or benchmark execution is enabled by this file.
+schema_version: 1
+split_manifest: reports/eda/proposed_splits.json
+registry_directory: artifacts/experiments/forecasting
+horizon_days: 28
+season_days: 7
+random_seed: 42
+batch_rows: 65536
+max_workers: 1
+max_threads: 4
+max_evaluation_rows: 1000000
+nonnegative_predictions: true

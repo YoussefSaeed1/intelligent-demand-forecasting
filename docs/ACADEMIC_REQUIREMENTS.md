@@ -9,17 +9,17 @@ Offline test fixtures are not forecasting results on the real datasets.
 | Partial | Source documentation | Provenance/layout documented; detailed competition terms still require user's recorded review |
 | Complete | Data quality assessment | Independent source-to-Parquet audits, VALIDATION.md, immutable hash checks |
 | Partial | Cleaning/preprocessing | Canonical representation verified; zeros/null prices preserved; any future preprocessing must remain fold-safe |
-| Complete | Training-prefix EDA | EDA_FINDINGS.md, dataset reports, all-series ADI/CV², 39 tables and 24 PNG/SVG figure pairs |
+| Complete | Training-prefix EDA | EDA_FINDINGS.md, dataset reports, all-series ADI/CV², 39 tables and 29 enhanced PNG/SVG figure pairs |
 | Design complete | Explicit forecast horizon | 28 daily steps; exact dates and rationale in FORECASTING_EXPERIMENTAL_PROTOCOL.md |
 | Design complete | Chronological train/validation/test | Four expanding rolling origins and final protected holdout; date-only construction tested |
-| Design complete | Relevant error metrics | MAE/RMSE/WAPE/bias plus weekly MASE/RMSSE definitions and edge-case tests; no real prediction scores yet |
+| Infrastructure implemented | Relevant error metrics | Scalar and pooled/macro/horizon/class MAE/RMSE/WAPE/bias plus weekly MASE/RMSSE, strict alignment and coverage tests; no real prediction scores |
 | Future | Appropriate baseline implementation | Naive, weekly seasonal naive and moving average; matched-window evidence required |
 | Future | Comparison of forecasting approaches | Statistical, intermittent and ML family recommendations; actual implementations/scores not produced |
 | Future | Systematic hyperparameter optimisation | Freeze spaces/caps; record validation trials, failures and selected settings in Phase 4 |
 | Future | Evaluation/comparison | Identical series/target windows; final holdout only after model choices freeze |
 | Partial | Cross-dataset evaluation where feasible | EDA comparison and independent benchmark design ready; baseline-relative performance still future; direct transfer unsupported |
 | Partial | Interpretation/discussion | Source-backed EDA and limitations complete; forecasting/error discussion remains future |
-| Partial | Reproducibility | Tested pipelines, settings, hashes, seeds, source-code manifest and measured resource use; future experiment logs still required |
+| Partial | Reproducibility | Tested pipelines/settings, hashes, seeds and Phase 3A local registry/status/provenance; real forecasting run evidence remains future |
 | Mandatory future gate | Independent Claude technical audit | After Phase 4 and before Phase 5; critical/high findings resolved and independently revalidated |
 | Future | Inventory implications | Assumption registry, simulator and sensitivity report; no simulation or business savings claim yet |
 

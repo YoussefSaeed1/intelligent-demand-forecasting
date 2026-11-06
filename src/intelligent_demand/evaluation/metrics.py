@@ -8,7 +8,7 @@ def scaling_denominators(
 ) -> tuple[float | None, float | None]:
     """Compute absolute/squared seasonal-difference scales on origin-available training."""
     values = np.asarray(training, dtype=float)
-    if values.ndim != 1 or not np.isfinite(values).all() or season < 1:
+    if values.ndim != 1 or not np.isfinite(values).all() or type(season) is not int or season < 1:
         raise ValueError("Finite one-dimensional training values and positive season required")
     if len(values) <= season:
         return None, None

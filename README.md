@@ -1,7 +1,7 @@
 # Intelligent Demand Forecasting & Inventory Optimisation
 
 Individual postgraduate Data Science diploma graduation project, Cairo University.
-**Status: Phase 1 closed; Phase 2 EDA and experimental design ready for review.**
+**Status: Phases 0–2 checkpointed; Phase 3A infrastructure integrity reviewed; Phase 3B unstarted.**
 Source files are held locally outside Git. No forecasting models, experimental model
 results, inventory simulation or dashboards are included. Offline tests are separate
 from real-data evidence; see [VALIDATION.md](docs/VALIDATION.md).
@@ -94,6 +94,29 @@ scikit-learn models. Consider LightGBM later if justified by resources and evide
 Use systematic search on rolling validation folds, freeze choices, then assess the final
 chronological holdout. See [experimental design](docs/EXPERIMENTAL_DESIGN.md).
 
+## Phase 3A infrastructure
+
+The model registry, origin-bounded data access, complete prediction persistence,
+pooled/macro metrics, coverage and restart-safe local experiment registry are implemented.
+There are no production forecasting implementations, fitted models or real benchmark
+runs. Validation uses small synthetic fixtures and lifecycle test doubles only.
+
+```powershell
+.\.venv\Scripts\python.exe -m intelligent_demand forecast-plan
+.\.venv\Scripts\python.exe -m intelligent_demand forecast-models
+```
+
+These read-only commands validate the original four 28-day validation origins and list
+the currently empty production model registry. They read configuration/protocol metadata,
+not canonical targets. Final holdout target access remains unavailable. No execution CLI
+is supplied in Phase 3A.
+
+See [forecasting engine](docs/FORECASTING_ENGINE.md),
+[metric definitions](docs/METRIC_DEFINITIONS.md) and
+[Phase 3 progress](docs/PHASE3_PROGRESS.md). The existing experimental protocol is preserved.
+The [integrity review](docs/PHASE3A_INTEGRITY_REVIEW.md) records the fixes, validation
+results and capacity limits for the authorised local checkpoint.
+
 Inventory work will compare baseline and forecast-driven policies with assumed lead times
 and costs. It will report scenario outcomes, not actual business savings. Power BI exports
 and four planned pages are described in [powerbi/README.md](powerbi/README.md).
@@ -136,9 +159,10 @@ src/intelligent_demand/
   preprocessing/          Future dataset-specific cleaning
   exploration/            Population EDA, figures, reports and saved-output validation
   features/               Future leakage-safe feature construction
-  models/                 Future baseline, statistical and ML forecasting
+  models/                 Model contract/registration; actual forecasting methods future
   tuning/                 Future chronological hyperparameter search
-  evaluation/             Tested date plans and metrics; forecasting backtests future
+  evaluation/             Validated folds, prediction publication, grouped metrics and coverage
+  experiments/            Origin data capabilities, configuration, registry and orchestration
   inventory/              Future scenario simulation
   reporting/              Future export contracts
   utils/                  Future shared utilities only when justified
@@ -160,8 +184,8 @@ snapshot in `docs/environment-freeze.txt`, when available, records this setup on
 No licence is granted for source datasets by this repository. Academic requirements
 and optional enhancements are tracked separately in [ACADEMIC_REQUIREMENTS.md](docs/ACADEMIC_REQUIREMENTS.md).
 
-Next: review Phase 2 findings and protocol before explicitly authorising Phase 3.
+Next: explicitly authorise Phase 3B when ready; no baseline implementation has started.
 The independent Claude audit remains mandatory after Phase 4 and before Phase 5.
-See [ROADMAP.md](docs/ROADMAP.md). No model training has begun.
+See [ROADMAP.md](docs/ROADMAP.md). No forecasting model training has begun.
 
 Verified setup results and environment limitations: [VALIDATION.md](docs/VALIDATION.md).

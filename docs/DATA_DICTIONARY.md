@@ -28,10 +28,12 @@ Target is sales, not unconstrained demand. Availability, lead times, costs and s
 balances must not be invented as observed fields. Future covariates need an availability
 timestamp or explicit known-in-advance policy; observed future prices cannot be assumed known.
 
-Planned prediction contract: dataset_id, series_id, forecast_origin, target_date,
-horizon_step, model_id, run_id, prediction, actual (nullable). Inventory outputs use a
-separate scenario_id with assumptions and simulated status. These contracts also remain
-provisional until the reporting phase; no output records exist yet.
+The foundation's prediction proposal is now implemented by Phase 3A with dataset_id,
+series_id, forecast_origin, target_date, horizon_step, model_id, model_version, run_id,
+prediction, raw_prediction, is_fallback and was_clipped. Actual targets remain separate
+and are joined only by the evaluator after predictions are sealed. No real forecasting
+output records exist; tests use synthetic fixture records only. See FORECASTING_ENGINE.md.
+Inventory outputs remain a future proposal with separate scenario_id and simulated status.
 
 ## Verified source mappings and coverage
 
