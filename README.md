@@ -1,7 +1,7 @@
 # Intelligent Demand Forecasting & Inventory Optimisation
 
 Individual postgraduate Data Science diploma graduation project, Cairo University.
-**Status: Phase 1 closed; Store Item and M5 passed independent persisted-file audits.**
+**Status: Phase 1 closed; Phase 2 EDA and experimental design ready for review.**
 Source files are held locally outside Git. No forecasting models, experimental model
 results, inventory simulation or dashboards are included. Offline tests are separate
 from real-data evidence; see [VALIDATION.md](docs/VALIDATION.md).
@@ -22,9 +22,9 @@ and reproducibility. Cross-dataset comparisons require compatible tasks and defi
 - [Store Item Demand Forecasting Challenge](https://www.kaggle.com/competitions/demand-forecasting-kernels-only/data)
 - [M5 Forecasting Accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data)
 
-Dataset A is planned as the store/item forecasting benchmark. Dataset B's official
-Kaggle listing describes a Walmart retail unit-sales task. It will provide a second
-independent forecasting benchmark; exact file layouts and hierarchy will be verified locally.
+Store Item supplies 500 daily store/product series; M5 supplies 30,490 Walmart series.
+Both source layouts, canonical outputs and exact quantities passed independent local
+audits. They provide separate benchmarks; direct model transfer is not established.
 
 Use the official Kaggle client after configuring user-level authentication and manually
 reviewing competition rules. [DATASETS.md](docs/DATASETS.md) contains secure setup,
@@ -44,7 +44,28 @@ validate the archive, skip existing structurally valid files by default, compare
 hashes when available, and replace raw files only with explicit `--force`. No rules are
 accepted automatically. Profiling publishes reconciled observed daily sales to
 `data/processed/<dataset>/daily_sales.parquet`. It does not clean, impute or model.
-Reports and status JSON live in `reports/data_quality/` and are ignored by Git.
+Reports and status JSON live in `reports/data_quality/`; selected small validation
+reports are allowlisted in Git. Raw data, Parquet outputs and large generated tables
+remain ignored. Two small Phase 2 figures (cross-dataset comparison and M5 price
+missingness, PNG/SVG) are retained; other figures stay local and can be regenerated.
+
+## Phase 2 EDA and proposed experiments
+
+```powershell
+.\.venv\Scripts\python.exe -m intelligent_demand eda --dataset all --settings configs/eda.yaml
+```
+
+This command reads verified Parquet without rewriting it. All series enter training-
+prefix EDA; four 28-day validation windows and the final 28 days are reserved before
+detailed target exploration. Full-history exceptions are integrity reconciliation and
+label-free price coverage. It produces 39 reusable tables, 24 PNG/SVG figure pairs,
+dataset/comparison reports and validation evidence under `reports/eda/` and
+`reports/figures/phase2/`. The observed full run took 132.60 seconds and peaked at
+1.123 GiB worker working set. No forecasting models are trained.
+
+Read [EDA findings](docs/EDA_FINDINGS.md) and the
+[proposed forecasting protocol](docs/FORECASTING_EXPERIMENTAL_PROTOCOL.md) for actual
+results, exact splits, model candidates, metrics, leakage rules and limitations.
 
 ## Proposed methodology
 
@@ -96,11 +117,11 @@ src/intelligent_demand/
   ingestion/              Official-client acquisition, file inventory and source adapters
   validation/             Incremental quality checks, reports and Parquet reconciliation
   preprocessing/          Future dataset-specific cleaning
-  exploration/            Future reusable EDA helpers
+  exploration/            Population EDA, figures, reports and saved-output validation
   features/               Future leakage-safe feature construction
   models/                 Future baseline, statistical and ML forecasting
   tuning/                 Future chronological hyperparameter search
-  evaluation/             Future backtests and metrics
+  evaluation/             Tested date plans and metrics; forecasting backtests future
   inventory/              Future scenario simulation
   reporting/              Future export contracts
   utils/                  Future shared utilities only when justified
@@ -108,7 +129,7 @@ notebooks/                Future numbered exploratory notebooks
 artifacts/{models,experiments}/  Ignored generated artefacts
 reports/{figures,exports}/      Ignored generated outputs
 powerbi/                  Reporting plan; no dashboard yet
-tests/                    Configuration boundary tests
+tests/                    Configuration, ingestion, independent audits and EDA/metric tests
 docs/                     Proposal, design, provenance and roadmap
 ```
 
@@ -122,7 +143,8 @@ snapshot in `docs/environment-freeze.txt`, when available, records this setup on
 No licence is granted for source datasets by this repository. Academic requirements
 and optional enhancements are tracked separately in [ACADEMIC_REQUIREMENTS.md](docs/ACADEMIC_REQUIREMENTS.md).
 
-Next: review the verified schema, null-price policy and quality warnings before authorising
-Phase 2. See [ROADMAP.md](docs/ROADMAP.md). Phase 2 has not started.
+Next: review Phase 2 findings and protocol before explicitly authorising Phase 3.
+The independent Claude audit remains mandatory after Phase 4 and before Phase 5.
+See [ROADMAP.md](docs/ROADMAP.md). No model training has begun.
 
 Verified setup results and environment limitations: [VALIDATION.md](docs/VALIDATION.md).

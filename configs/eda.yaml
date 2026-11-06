@@ -1,0 +1,10 @@
+# Phase 2 analytical settings; no forecasting model is fitted.
+horizon_days: 28
+validation_windows: 4
+batch_rows: 65536
+random_seed: 42
+adi_threshold: 1.32
+cv2_threshold: 0.49
+bootstrap_replicates: 500
+bootstrap_block_weeks: 4
+figure_dpi: 200

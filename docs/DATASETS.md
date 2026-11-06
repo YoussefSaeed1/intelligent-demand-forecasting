@@ -152,7 +152,7 @@ numeric quantities and many-to-one calendar/price joins. Evaluation history is p
 validation history is the fallback. When both exist, common-day values and series coverage
 are compared using row fingerprints. Histories are never concatenated. Sales melt in
 256-series batches and write incrementally; the categorical price dimension remains in
-memory. Full-scale runtime and memory are unmeasured. Missing prices remain null and are
+memory. Measured Phase 1 runtime and worker memory are recorded in VALIDATION.md. Missing prices remain null and are
 reported. Dates and sales are not imputed. Historical prices are not guaranteed future
 predictors; sales may be constrained by availability.
 
@@ -184,3 +184,26 @@ future source versions must be verified again rather than assumed compatible.
 
 Phase 1 stops at acquisition, quality gates and canonical representation. It performs no
 forecasting, model selection, cleaning/EDA study, inventory simulation or BI build.
+
+## Phase 2 read-only analytical use — 2026-11-06
+
+Phase 2 EDA uses every published series and only the initial training prefix for target
+exploration: Store Item through 2017-08-13; M5 through 2016-01-03. Four subsequent
+28-day validation windows and the final 28 days are reserved before detailed analysis.
+Full-history exceptions are previously known integrity quantities and label-free price
+coverage. Unlabelled competition test observations remain excluded.
+
+The canonical scan independently rechecks the Phase 1 totals. A separate bounded CSV
+summation also confirms training-prefix rows/units/zeros: Store Item 843,000 / 43,666,945 /
+1; M5 54,912,490 / 61,066,490 / 37,800,354. Both raw and canonical hashes still match
+the independent Phase 1 audits. No download or canonical transformation was repeated.
+
+M5 retains all 12,299,413 missing prices. In the EDA prefix, 12,270,132 are before first
+positive sale and 28,816 belong to histories with no positive sale. None overlap positive
+EDA sales. The remaining 465 are in reserved periods; only their price coverage was
+examined. This does not establish stock availability or known future prices. Store Item's
+one zero and structurally absent price/category fields remain unchanged.
+
+See [EDA_FINDINGS.md](EDA_FINDINGS.md) for measured patterns and resource observations,
+and [FORECASTING_EXPERIMENTAL_PROTOCOL.md](FORECASTING_EXPERIMENTAL_PROTOCOL.md) for
+origin-availability contracts. Direct cross-dataset transfer remains unsupported.

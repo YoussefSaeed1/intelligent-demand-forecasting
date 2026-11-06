@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-11-06T15:00:49.782907+00:00",
+  "package_imports": "passed",
+  "eda_configuration": "passed",
+  "proposed_splits": "passed",
+  "phase1_raw_and_canonical_hashes": "unchanged",
+  "analysis_code_and_settings_hashes": "match_eda_manifest",
+  "markdown_files_checked": 15,
+  "broken_local_document_links": 0,
+  "png_files_verified": 24,
+  "svg_files_verified": 24,
+  "expensive_eda_or_transformations_rerun": false,
+  "ruff": "passed",
+  "pytest": {
+    "passed": 82,
+    "failed": 0,
+    "elapsed_seconds": 5.68
+  },
+  "pip_check": "No broken requirements found",
+  "candidate_security_review": "passed",
+  "selected_figures": [
+    "cross_dataset_comparison.png",
+    "cross_dataset_comparison.svg",
+    "m5_price_missingness.png",
+    "m5_price_missingness.svg"
+  ],
+  "excluded_outputs": "39 analytical Parquet tables and the other 44 figure files remain local and ignored",
+  "generation_manifest_note": "run_manifest.json intentionally preserves the original Phase 1 base revision and dirty generation state; this checkpoint does not rewrite historical execution evidence.",
+  "selected_svg_normalisation": "Trailing whitespace removed; XML structure, geometry and labels verified unchanged."
+}

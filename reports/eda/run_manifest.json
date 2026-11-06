@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "datasets": [
+    "store_item",
+    "m5"
+  ],
+  "settings_sha256": "e749e0cc77395da92d4a20467b799e7a8d3276cab370cafa3c637f2e19bcebd6",
+  "analysis_source_sha256": {
+    "exploration\\pipeline.py": "2deaf2228354bf45514c98c1e5af3c559c932b85aa3bf2b7e2f107a53ad8356f",
+    "exploration\\reporting.py": "ef7f9b363ce4d2ec4f4aae7d67c123057fe48b7e78754926f36ef7107c94faca",
+    "exploration\\statistics.py": "7a06ccd20dd9d43002883c795c9f4291fd8929d12beafd07ab462380a4a5d9cf",
+    "exploration\\validation.py": "679d5355cfc4675bd14aac9fb190e55e59bbd31be8e5896ecf9512c34435778e",
+    "exploration\\__init__.py": "44d11e8b1066ffbec5eff2a21675882430325c1ff6266bbf5e2c262affed487c",
+    "evaluation\\design.py": "2dcdbddea41b30e0b6912b9cccb7fac0ce9916e78d364f561278016da0fc9928",
+    "evaluation\\metrics.py": "e8de7be32752515d5e563a4d3ea29e32ea55360967fa6ed73c0786b5dce85b41",
+    "evaluation\\__init__.py": "425952b450ac91efbd1818feb6c2b10ab55d434fc20d6d33ec93321113dcba58",
+    "__main__.py": "6b94efc9f5422c0deb744d2a2a56b9a74a07a31af320d188117f298b9ba75fef"
+  },
+  "elapsed_seconds": 132.60186330007855,
+  "models_trained": 0,
+  "validation_test_targets_explored": false,
+  "full_history_scope_exception": "Audited totals and label-free price coverage only",
+  "peak_worker_working_set_bytes": 1205829632,
+  "git_revision": "74cbeded4ffb0444df6a83ce55dcd381c52bdb73",
+  "git_working_tree_dirty": true,
+  "python": "3.14.0",
+  "package_versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "pyarrow": "26.0.1",
+    "statsmodels": "0.15.0",
+    "matplotlib": "3.11.2"
+  },
+  "post_run_verification": {
+    "status": "passed",
+    "elapsed_seconds": 37.1764220999321,
+    "scope": "Figure layout regenerated from unchanged analytical tables; saved-output and independent bounded CSV training reconciliation performed. Original elapsed_seconds and peak remain the full analytical run measurements."
+  }
+}

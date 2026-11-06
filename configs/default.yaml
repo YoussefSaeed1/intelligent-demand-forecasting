@@ -1,6 +1,6 @@
 project_name: Intelligent Demand Forecasting & Inventory Optimisation
 random_seed: 42
-# Provisional daily multi-step horizon; freeze before inspecting test outcomes.
+# Phase 2 daily horizon; exact proposed splits are generated from configs/eda.yaml.
 forecast_horizon_days: 28
 paths:
   raw: data/raw

@@ -1,30 +1,29 @@
 # Academic traceability checklist
 
-All research evidence below is **planned**, not completed. Phase 0 only supplies the
-foundation; check off requirements only when linked evidence is produced and verified.
+Status distinguishes verified empirical evidence from proposed forecasting work.
+Offline test fixtures are not forecasting results on the real datasets.
 
-| Status | Required item | Planned implementation | Planned evidence |
-|---|---|---|---|
-| [ ] | Two published datasets | Separate source adapters (Phase 1–2) | Source manifests and permitted hashes |
-| [ ] | Dataset source documentation | DATASETS.md verified and completed | Access dates, terms and provenance records |
-| [ ] | Data quality assessment | validation/ and profiling | reports/data_quality.md with checks and coverage |
-| [ ] | Cleaning/preprocessing | preprocessing/ source policies | Cleaning log and validated canonical tables |
-| [ ] | Baseline implementation | models/ naive and seasonal naive | Baseline code, tests and backtest records |
-| [ ] | Systematic hyperparameter optimisation | tuning/ grid/random/Optuna | Search spaces, budgets, fold scores and chosen settings |
-| [ ] | Evaluation/comparison | evaluation/ common windows | Matched prediction exports and comparison report |
-| [ ] | Cross-dataset evaluation where feasible | Independent protocol; conditional transfer | Compatibility assessment, replicated comparisons or infeasibility rationale |
-| [ ] | Interpretation/discussion | reporting/ and academic writeup | Error analysis, limitations and supported conclusions |
-| [ ] | Reproducible experiments/configuration | configs/ plus run manifests | Hashes, versions, seeds, revision, splits and run instructions |
-| [ ] | Explicit forecast horizon | Freeze provisional 28-day proposal | Final experiment config and rationale |
-| [ ] | Chronological train/test | Date-based splits and rolling validation | Split manifests and leakage checks |
-| [ ] | Appropriate forecasting baselines | History-aware naive/weekly seasonal naive | Baseline rationale and identical-window results |
-| [ ] | Comparison of forecasting approaches | Baseline/statistical/ML families | Final comparison tables with coverage |
-| [ ] | Relevant error metrics | MAE, RMSE, WAPE, signed bias | Metric tests, zero policies and evaluation exports |
-| [ ] | Inventory implications | Explicit scenario assumptions | Simulation sensitivity report and qualified discussion |
+| Status | Required item | Current evidence / remaining work |
+|---|---|---|
+| Complete | Two published datasets | DATASETS.md; independent audits in reports/data_quality; both source adapters and hashes |
+| Partial | Source documentation | Provenance/layout documented; detailed competition terms still require user's recorded review |
+| Complete | Data quality assessment | Independent source-to-Parquet audits, VALIDATION.md, immutable hash checks |
+| Partial | Cleaning/preprocessing | Canonical representation verified; zeros/null prices preserved; any future preprocessing must remain fold-safe |
+| Complete | Training-prefix EDA | EDA_FINDINGS.md, dataset reports, all-series ADI/CV², 39 tables and 24 PNG/SVG figure pairs |
+| Design complete | Explicit forecast horizon | 28 daily steps; exact dates and rationale in FORECASTING_EXPERIMENTAL_PROTOCOL.md |
+| Design complete | Chronological train/validation/test | Four expanding rolling origins and final protected holdout; date-only construction tested |
+| Design complete | Relevant error metrics | MAE/RMSE/WAPE/bias plus weekly MASE/RMSSE definitions and edge-case tests; no real prediction scores yet |
+| Future | Appropriate baseline implementation | Naive, weekly seasonal naive and moving average; matched-window evidence required |
+| Future | Comparison of forecasting approaches | Statistical, intermittent and ML family recommendations; actual implementations/scores not produced |
+| Future | Systematic hyperparameter optimisation | Freeze spaces/caps; record validation trials, failures and selected settings in Phase 4 |
+| Future | Evaluation/comparison | Identical series/target windows; final holdout only after model choices freeze |
+| Partial | Cross-dataset evaluation where feasible | EDA comparison and independent benchmark design ready; baseline-relative performance still future; direct transfer unsupported |
+| Partial | Interpretation/discussion | Source-backed EDA and limitations complete; forecasting/error discussion remains future |
+| Partial | Reproducibility | Tested pipelines, settings, hashes, seeds, source-code manifest and measured resource use; future experiment logs still required |
+| Mandatory future gate | Independent Claude technical audit | After Phase 4 and before Phase 5; critical/high findings resolved and independently revalidated |
+| Future | Inventory implications | Assumption registry, simulator and sensitivity report; no simulation or business savings claim yet |
 
-The research proposal and experimental protocol define the planned methodology; no
-empirical requirement is satisfied by documentation alone. See ROADMAP.md dependencies.
-
-Optional professional enhancements, separate from university requirements: LightGBM,
-SHAP explanations, MLflow tracking, advanced uncertainty modelling. Power BI and inventory
-simulation are project deliverables; build them after the academic forecasting core.
+The protocol defines experiments; documentation alone does not satisfy implementation,
+tuning or forecasting-evaluation requirements. See [ROADMAP.md](ROADMAP.md) for gates.
+Optional LightGBM, SHAP, MLflow and advanced uncertainty methods remain separate from
+core academic requirements. Inventory and Power BI follow the audited forecasting core.

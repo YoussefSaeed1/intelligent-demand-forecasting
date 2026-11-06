@@ -277,3 +277,63 @@ is 67.997766%. This is a zero-sales comparison, not a claim about latent demand.
 
 No acquisition, data repair, M5 re-transformation, EDA, feature engineering, model training,
 inventory simulation or Power BI work was performed in this final audit iteration.
+
+## Phase 2 EDA and experimental-design verification — 2026-11-06
+
+The preceding sections are historical Phase 0/1 evidence. Phase 2 now implements and
+executes training-prefix EDA for all series. It does not train forecasting models,
+generate forecasting features, tune, simulate inventory or build Power BI.
+
+| Check | Observed result |
+|---|---|
+| Full canonical scan | Store Item 913,000 rows / 47,704,512 units; M5 59,181,090 / 66,927,173; zero counts also match Phase 1 |
+| EDA population | All 500 Store Item and all 30,490 M5 series, with complete training-prefix coverage |
+| Independent raw CSV training sum | Store Item 843,000 rows / 43,666,945 units / 1 zero; M5 54,912,490 / 61,066,490 / 37,800,354 zeros |
+| Saved-output reconciliation | Series, daily, store, product and exact histogram sales totals all agree |
+| Target date boundaries | Detailed target summaries end at 2017-08-13 (Store Item) / 2016-01-03 (M5); reserved target tails not explored |
+| M5 price quality marginals | Date, year, store and product missing counts each sum to 12,299,413 |
+| M5 EDA price activity partition | 12,270,132 before first positive + 28,816 with no positive = 12,298,948; other spans 0; no positive-sales overlap |
+| Reserved-period price coverage | 465 missing prices; no activity/target analysis of those periods |
+| Raw/canonical hashes | Unchanged; match independent Phase 1 audits before and after analysis |
+| Unusual-value raw checks | Store 2/item 15, 2017-07-02 = 231; M5 CA_3/FOODS_3_090, 2013-09-14 (d_960) = 763 |
+| Analytical outputs | 39 compressed Parquet tables, 24 PNG figures and 24 SVG counterparts, reports and JSON evidence |
+| Full analytical runtime | 132.60 seconds; actual worker peak working set 1,205,829,632 bytes (1.123 GiB) |
+| Subsequent export/source verification | 37.18 seconds for layout regeneration, saved-output validation and independent CSV reconciliation; no repeated transformation |
+| Ruff | Passed |
+| Pytest | 82 passed in 4.16 seconds; no warnings reported |
+| pip check | No broken requirements found |
+
+The 22 additional analytical tests cover positive-size variance, ADI, zero percentages,
+classification boundaries/undefined histories, leading-zero sensitivity, price partitions,
+invalid shapes, date boundaries/nonoverlap/leap day, deterministic bootstrap, histogram
+aggregation, metric/scale edge cases and independent CSV reconciliation with deliberately
+large reserved targets excluded. All 60 previous tests still pass. These fixtures verify
+calculation behaviour; empirical quantities above come from the actual local datasets.
+
+Full-population scans project five Parquet columns in 65,536-row batches. The EDA numeric
+matrix covers only training dates; statistical calculations operate in 256-series blocks.
+Independent source reconciliation reads Store Item in 65,536-row chunks and M5 in
+512-series CSV chunks with training day columns projected. No full long M5 Pandas table
+or extra dataset copy is created. Peak memory is the Windows worker working-set high
+water, not total system memory; observed runtime is machine-specific.
+
+Evidence: [validation.json](../reports/eda/validation.json),
+[run_manifest.json](../reports/eda/run_manifest.json),
+[source_spotchecks.json](../reports/eda/source_spotchecks.json), dataset result JSON and
+[EDA findings](EDA_FINDINGS.md). The manifest records the Phase 1 Git base revision,
+dirty status, exact current analysis-code hashes, settings, versions and original runtime.
+It explicitly separates subsequent export/verification from the analytical run.
+
+To repeat only saved-output and independent source reconciliation, without rerunning EDA:
+
+```powershell
+.\.venv\Scripts\python.exe -c "from pathlib import Path; from intelligent_demand.config import load_config; from intelligent_demand.exploration.validation import validate_outputs; print(validate_outputs(load_config(Path('configs/default.yaml'))))"
+```
+
+Phase 2 is ready for review. Remaining limitations include constrained observed sales,
+unknown stock/assortment availability, historical price nulls and future availability,
+descriptive ADI/CV² cutoffs, aggregate/leap-calendar diagnostics, bootstrap assumptions,
+limited validation seasonal coverage and unsupported direct transfer. No findings were
+hidden through imputation or target filtering. The future Claude audit remains after
+Phase 4 and before Phase 5; critical/high findings must be resolved and independently
+revalidated. No such audit was conducted in Phase 2.

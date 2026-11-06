@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checks": {
+    "store_item": {
+      "aggregation_reconciled": true,
+      "training_target_boundaries_valid": true,
+      "all_series_covered": true,
+      "raw_canonical_hashes_unchanged": true
+    },
+    "m5": {
+      "aggregation_reconciled": true,
+      "training_target_boundaries_valid": true,
+      "all_series_covered": true,
+      "raw_canonical_hashes_unchanged": true
+    }
+  },
+  "independent_training_csv_reconciliation": {
+    "store_item": {
+      "rows": 843000,
+      "sales_units": 43666945,
+      "zero_count": 1
+    },
+    "m5": {
+      "rows": 54912490,
+      "sales_units": 61066490,
+      "zero_count": 37800354
+    }
+  },
+  "tables": 39,
+  "png_figures": 24
+}

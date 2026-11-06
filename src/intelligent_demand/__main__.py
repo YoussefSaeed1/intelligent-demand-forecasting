@@ -22,6 +22,7 @@ def main() -> None:
         "check-access",
         "profile-data",
         "audit-store-item",
+        "eda",
     ):
         command = commands.add_parser(name)
         if name == "audit-store-item":
@@ -30,6 +31,8 @@ def main() -> None:
             command.add_argument("--dataset", choices=["all", "store_item", "m5"], default="all")
         if name == "download-data":
             command.add_argument("--force", action="store_true")
+        if name == "eda":
+            command.add_argument("--settings", type=Path, default=Path("configs/eda.yaml"))
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
     try:
@@ -39,6 +42,12 @@ def main() -> None:
     logging.info("Configuration valid: %s", config.project_name)
     if args.command is None:
         logging.info("Planned horizon: %s days; no data required", config.forecast_horizon_days)
+        return
+    if args.command == "eda":
+        from intelligent_demand.exploration.pipeline import run_eda
+
+        result = run_eda(config, args.dataset, args.settings)
+        logging.info("Phase 2 EDA status: %s; no forecasting models trained", result["status"])
         return
     results = {}
     report = config.paths["reports"] / "data_quality" / f"{args.command}.json"

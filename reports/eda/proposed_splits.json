@@ -1,0 +1,80 @@
+{
+  "store_item": {
+    "horizon_days": 28,
+    "eda_start": "2013-01-01",
+    "eda_end": "2017-08-13",
+    "validation_folds": [
+      {
+        "fold": 1,
+        "train_start": "2013-01-01",
+        "origin": "2017-08-13",
+        "validation_start": "2017-08-14",
+        "validation_end": "2017-09-10"
+      },
+      {
+        "fold": 2,
+        "train_start": "2013-01-01",
+        "origin": "2017-09-10",
+        "validation_start": "2017-09-11",
+        "validation_end": "2017-10-08"
+      },
+      {
+        "fold": 3,
+        "train_start": "2013-01-01",
+        "origin": "2017-10-08",
+        "validation_start": "2017-10-09",
+        "validation_end": "2017-11-05"
+      },
+      {
+        "fold": 4,
+        "train_start": "2013-01-01",
+        "origin": "2017-11-05",
+        "validation_start": "2017-11-06",
+        "validation_end": "2017-12-03"
+      }
+    ],
+    "final_origin": "2017-12-03",
+    "test_start": "2017-12-04",
+    "test_end": "2017-12-31",
+    "status": "proposed_not_executed"
+  },
+  "m5": {
+    "horizon_days": 28,
+    "eda_start": "2011-01-29",
+    "eda_end": "2016-01-03",
+    "validation_folds": [
+      {
+        "fold": 1,
+        "train_start": "2011-01-29",
+        "origin": "2016-01-03",
+        "validation_start": "2016-01-04",
+        "validation_end": "2016-01-31"
+      },
+      {
+        "fold": 2,
+        "train_start": "2011-01-29",
+        "origin": "2016-01-31",
+        "validation_start": "2016-02-01",
+        "validation_end": "2016-02-28"
+      },
+      {
+        "fold": 3,
+        "train_start": "2011-01-29",
+        "origin": "2016-02-28",
+        "validation_start": "2016-02-29",
+        "validation_end": "2016-03-27"
+      },
+      {
+        "fold": 4,
+        "train_start": "2011-01-29",
+        "origin": "2016-03-27",
+        "validation_start": "2016-03-28",
+        "validation_end": "2016-04-24"
+      }
+    ],
+    "final_origin": "2016-04-24",
+    "test_start": "2016-04-25",
+    "test_end": "2016-05-22",
+    "status": "proposed_not_executed"
+  }
+}

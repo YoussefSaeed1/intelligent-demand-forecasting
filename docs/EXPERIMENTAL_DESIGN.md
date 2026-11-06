@@ -1,9 +1,12 @@
-# Planned experimental protocol
+# Experimental design and verified dataset readiness
 
 Phase 1 source and independent persisted-file gates are closed as of 2026-11-06.
-The following protocol is still a plan: no EDA, feature generation or model training
-has started. The common 28-day design is feasible on both verified histories; exact
-origins, folds, history requirements and series inclusion must be frozen before modelling.
+Phase 2 EDA is now complete on the initial training prefixes. Forecasting feature
+generation, training and tuning have not started. The authoritative detailed plan is
+[FORECASTING_EXPERIMENTAL_PROTOCOL.md](FORECASTING_EXPERIMENTAL_PROTOCOL.md), with exact
+28-day split dates generated from coverage before detailed EDA. It supersedes the
+earlier provisional settings below. See [EDA_FINDINGS.md](EDA_FINDINGS.md) for actual
+training-period patterns; the Phase 1 readiness evidence below remains valid.
 
 - Task: daily multi-step sales forecasting; provisional H=28 days. Finalise horizon,
   series selection, minimum history and exact date boundaries after schema validation,
@@ -62,8 +65,9 @@ it infeasible with evidence. Do not call replicated rankings proof of generalisa
 | Covariate missingness | Price/category absent; canonical nulls are structural | 12,299,413 missing historical prices (20.782674%); optional calendar event nulls retained |
 | Seasonality potential | Multi-year daily coverage permits future weekly/annual assessment | Multi-year daily coverage plus event/calendar fields permits future assessment |
 
-Seasonality potential is based on coverage and schema, not an empirical seasonality
-finding. No ACF, decomposition, trend analysis or seasonal feature construction was run.
+The seasonality-potential row records the Phase 1 coverage/schema assessment. Phase 2
+has since produced training-prefix ACF, decomposition and trend diagnostics, documented
+separately in EDA_FINDINGS.md. No forecasting feature construction has run.
 Zero frequencies describe observed sales, not verified unconstrained demand.
 
 Readiness decisions:
@@ -75,7 +79,8 @@ Readiness decisions:
    MAE/RMSE/WAPE and signed bias. The sources' final labelled dates differ; identical
    relative windows do not mean identical calendar/economic conditions. A separate
    calendar-aligned design can use their 2013-01-01–2016-05-22 overlap if justified.
-   Final split dates remain to be configured, without using held-out results to choose them.
+   Exact Phase 2 split dates are now recorded in the detailed protocol and split manifest,
+   without using held-out outcomes to choose them.
 3. Methodological replication/comparison: supported. Report source-specific performance,
    coverage, zero-denominator cases and relative improvement over each source's baseline.
    Distinguish pooled and macro-series results. Raw unit MAE/RMSE values do not establish

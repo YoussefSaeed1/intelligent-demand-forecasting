@@ -1,0 +1,168 @@
+{
+  "dataset": "store_item",
+  "scope": "all series, EDA training prefix only unless marked full-history quality",
+  "split_plan": {
+    "horizon_days": 28,
+    "eda_start": "2013-01-01",
+    "eda_end": "2017-08-13",
+    "validation_folds": [
+      {
+        "fold": 1,
+        "train_start": "2013-01-01",
+        "origin": "2017-08-13",
+        "validation_start": "2017-08-14",
+        "validation_end": "2017-09-10"
+      },
+      {
+        "fold": 2,
+        "train_start": "2013-01-01",
+        "origin": "2017-09-10",
+        "validation_start": "2017-09-11",
+        "validation_end": "2017-10-08"
+      },
+      {
+        "fold": 3,
+        "train_start": "2013-01-01",
+        "origin": "2017-10-08",
+        "validation_start": "2017-10-09",
+        "validation_end": "2017-11-05"
+      },
+      {
+        "fold": 4,
+        "train_start": "2013-01-01",
+        "origin": "2017-11-05",
+        "validation_start": "2017-11-06",
+        "validation_end": "2017-12-03"
+      }
+    ],
+    "final_origin": "2017-12-03",
+    "test_start": "2017-12-04",
+    "test_end": "2017-12-31",
+    "status": "proposed_not_executed"
+  },
+  "eda_rows": 843000,
+  "eda_days": 1686,
+  "series": 500,
+  "eda_sales_units": 43666945,
+  "eda_zero_count": 1,
+  "eda_zero_percent": 0.00011862396204033214,
+  "full_history_reference": {
+    "rows": 913000,
+    "sales_units": 47704512,
+    "zero_count": 1
+  },
+  "distribution_quantiles": {
+    "0.5": 46,
+    "0.9": 92,
+    "0.95": 107,
+    "0.99": 134,
+    "0.999": 164,
+    "1.0": 231
+  },
+  "patterns": {
+    "smooth": 500,
+    "erratic": 0,
+    "intermittent": 0,
+    "lumpy": 0,
+    "all_zero": 0,
+    "insufficient_positive_history": 0
+  },
+  "active_span_patterns": {
+    "smooth": 500,
+    "erratic": 0,
+    "intermittent": 0,
+    "lumpy": 0,
+    "all_zero": 0,
+    "insufficient_positive_history": 0
+  },
+  "classification_changed_after_removing_leading_zeros": 0,
+  "median_series_cv": 0.287700417025459,
+  "median_series_corr_lag7": 0.727472555421343,
+  "median_series_corr_lag365": 0.5458318929282382,
+  "product_top10_percent_share": 0.16275990912577007,
+  "product_hhi": 0.023326862602604356,
+  "weekday_ratios": [
+    {
+      "weekday": 0,
+      "mean_within_week_ratio": 0.7912958283717313,
+      "ci_low": 0.7878566636565625,
+      "ci_high": 0.7953178445390449,
+      "complete_weeks": 240
+    },
+    {
+      "weekday": 1,
+      "mean_within_week_ratio": 0.9225478449668186,
+      "ci_low": 0.9198970720286126,
+      "ci_high": 0.9257698633698006,
+      "complete_weeks": 240
+    },
+    {
+      "weekday": 2,
+      "mean_within_week_ratio": 0.9249434463780942,
+      "ci_low": 0.922536089037369,
+      "ci_high": 0.9276023504642341,
+      "complete_weeks": 240
+    },
+    {
+      "weekday": 3,
+      "mean_within_week_ratio": 0.9886630476924108,
+      "ci_low": 0.9863543276299745,
+      "ci_high": 0.9908011880265676,
+      "complete_weeks": 240
+    },
+    {
+      "weekday": 4,
+      "mean_within_week_ratio": 1.0566323811142608,
+      "ci_low": 1.0539677115153405,
+      "ci_high": 1.0594832863355332,
+      "complete_weeks": 240
+    },
+    {
+      "weekday": 5,
+      "mean_within_week_ratio": 1.1243349248024535,
+      "ci_low": 1.1215054848972998,
+      "ci_high": 1.1272794827005643,
+      "complete_weeks": 240
+    },
+    {
+      "weekday": 6,
+      "mean_within_week_ratio": 1.1915825266742297,
+      "ci_low": 1.1871568418732883,
+      "ci_high": 1.1957778660921128,
+      "complete_weeks": 240
+    }
+  ],
+  "diagnostics": {
+    "aggregate_weekly_strength": 0.9759855854191108,
+    "aggregate_annual_strength_after_weekly": 0.99325951465802,
+    "annual_period_caveat": "365-day approximation; leap-calendar misalignment; aggregate only"
+  },
+  "illustration_selection": [
+    {
+      "pattern": "smooth",
+      "series_id": "1:339",
+      "selection": "median rank by zero percentage, mean units, then ID within class"
+    }
+  ],
+  "sampling_seed": 42,
+  "input_canonical_sha256": "eed83d489c4ee9033fec0aab6588e1f830b93de6540819873c428c2c1ce279ec",
+  "input_raw_sha256": {
+    "train.csv": "038f25690a65149c94f86ddd3deceda20c037a5cfd754cafdfc539a72992f2ed",
+    "test.csv": "16eb2eec677628c8ed62312a9d6749ebf46f59196dd2fece6fd1e5c147a918fb",
+    "sample_submission.csv": "b797330d1171538cf749abf6a76bef6743783d6eb74f81722465d86cf062ad3f"
+  },
+  "output_reconciliation_passed": true,
+  "elapsed_analysis_seconds": 13.764842500095256,
+  "peak_worker_working_set_bytes_cumulative": 291426304,
+  "settings": {
+    "horizon_days": 28,
+    "validation_windows": 4,
+    "batch_rows": 65536,
+    "random_seed": 42,
+    "adi_threshold": 1.32,
+    "cv2_threshold": 0.49,
+    "bootstrap_replicates": 500,
+    "bootstrap_block_weeks": 4,
+    "figure_dpi": 200
+  }
+}
