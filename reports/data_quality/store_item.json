@@ -1,0 +1,160 @@
+{
+  "dataset": "store_item",
+  "status": "passed_with_warnings",
+  "inventory": {
+    "dataset": "store_item",
+    "competition": "demand-forecasting-kernels-only",
+    "checked_at_utc": "2026-11-06T12:54:17.676021+00:00",
+    "ready_for_profiling": true,
+    "files": [
+      {
+        "filename": "train.csv",
+        "status": "header_valid",
+        "size_bytes": 17333449,
+        "sha256": "038f25690a65149c94f86ddd3deceda20c037a5cfd754cafdfc539a72992f2ed",
+        "columns": [
+          "date",
+          "store",
+          "item",
+          "sales"
+        ]
+      },
+      {
+        "filename": "test.csv",
+        "status": "header_valid",
+        "size_bytes": 975309,
+        "sha256": "16eb2eec677628c8ed62312a9d6749ebf46f59196dd2fece6fd1e5c147a918fb",
+        "columns": [
+          "id",
+          "date",
+          "store",
+          "item"
+        ]
+      },
+      {
+        "filename": "sample_submission.csv",
+        "status": "header_valid",
+        "size_bytes": 393899,
+        "sha256": "b797330d1171538cf749abf6a76bef6743783d6eb74f81722465d86cf062ad3f",
+        "columns": [
+          "id",
+          "sales"
+        ]
+      }
+    ],
+    "warnings": [],
+    "validation_scope": "Header and local SHA-256 only; full data checks require profile-data"
+  },
+  "critical_errors": [],
+  "warnings": [
+    "Sales are observations, not verified unconstrained demand."
+  ],
+  "profiles": {
+    "train.csv": {
+      "rows": 913000,
+      "columns": [
+        "date",
+        "store",
+        "item",
+        "sales"
+      ],
+      "parser_dtypes": {
+        "date": "string",
+        "store": "string",
+        "item": "string",
+        "sales": "string"
+      },
+      "missing": {
+        "date": 0,
+        "store": 0,
+        "item": 0,
+        "sales": 0
+      },
+      "date_min": "2013-01-01",
+      "date_max": "2017-12-31",
+      "duplicate_keys_after_first": 0,
+      "stores": 10,
+      "products": 50,
+      "series": 500,
+      "missing_share": {
+        "date": 0.0,
+        "store": 0.0,
+        "item": 0.0,
+        "sales": 0.0
+      },
+      "missing_historical_dates": 0
+    },
+    "test.csv": {
+      "rows": 45000,
+      "columns": [
+        "id",
+        "date",
+        "store",
+        "item"
+      ],
+      "parser_dtypes": {
+        "id": "string",
+        "date": "string",
+        "store": "string",
+        "item": "string"
+      },
+      "missing": {
+        "id": 0,
+        "date": 0,
+        "store": 0,
+        "item": 0
+      },
+      "date_min": "2018-01-01",
+      "date_max": "2018-03-31",
+      "duplicate_keys_after_first": 0,
+      "missing_share": {
+        "id": 0.0,
+        "date": 0.0,
+        "store": 0.0,
+        "item": 0.0
+      },
+      "stores": 10,
+      "products": 50,
+      "series": 500,
+      "missing_historical_dates": 0
+    }
+  },
+  "quantities": {
+    "train.sales": {
+      "observations": 913000,
+      "zero": 1,
+      "negative": 0,
+      "invalid_or_missing": 0,
+      "fractional": 0,
+      "finite_value_sum": 47704512.0,
+      "zero_share": 1.095290251916758e-06
+    }
+  },
+  "transformation": {
+    "expected_rows": 913000,
+    "source_sales_units_sum": 47704512.0,
+    "rows": 913000,
+    "sales_units_sum": 47704512.0,
+    "schema_verified": true,
+    "row_and_quantity_reconciliation": true,
+    "output": "data\\processed\\store_item\\daily_sales.parquet",
+    "sha256": "eed83d489c4ee9033fec0aab6588e1f830b93de6540819873c428c2c1ce279ec",
+    "output_published": true
+  },
+  "sales_summary": {
+    "min": 0.0,
+    "max": 231.0
+  },
+  "notes": [
+    "Independent audit found zero missing historical dates in every store/item series. The earlier missing-date warning described a no-imputation policy, not a data gap."
+  ],
+  "independent_audit": {
+    "status": "passed",
+    "checked_at_utc": "2026-11-06T13:50:52.891970+00:00",
+    "missing_dates_global_window": 0,
+    "duplicate_business_keys": 0,
+    "row_level_sales_mismatches": 0,
+    "canonical_sha256": "eed83d489c4ee9033fec0aab6588e1f830b93de6540819873c428c2c1ce279ec",
+    "report": "reports/data_quality/store_item_canonical_audit.json"
+  }
+}

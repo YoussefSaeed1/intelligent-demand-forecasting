@@ -1,0 +1,2 @@
+# Audit JSON hashes are referenced by the readiness evidence; preserve their exact bytes.
+reports/data_quality/*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

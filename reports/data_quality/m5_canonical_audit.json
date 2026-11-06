@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-11-06T13:30:51.254996+00:00",
+  "canonical_rows": 59181090,
+  "expected_rows": 59181090,
+  "source_observations": 59181090,
+  "series": 30490,
+  "stores": 10,
+  "products": 3049,
+  "days": 1941,
+  "date_min": "2011-01-29",
+  "date_max": "2016-05-22",
+  "source_sales_units_sum": 66927173.0,
+  "canonical_sales_units_sum": 66927173.0,
+  "duplicate_business_keys": 0,
+  "business_key": [
+    "dataset_id",
+    "store_id",
+    "item_id",
+    "date"
+  ],
+  "business_key_coverage_complete": true,
+  "zero_sales_observations": 40241819,
+  "missing_price_observations": 12299413,
+  "raw_hashes_unchanged": true,
+  "source_sha256": {
+    "calendar.csv": "d12b5914ef03e66649adf5dd9e996e6602251c22b7a6af8f1f7e3aa12f8860f5",
+    "sell_prices.csv": "9da3ad1f8b8ccacdbdc70612191dd375ec24a4ac6625c24b75b3bc60b0bed2ef",
+    "sales_train_validation.csv": "f368e66ed1dbecb48b2cc8fc589bf68b3deddbbb36bf5c88b4d6d0a09b9b6724",
+    "sales_train_evaluation.csv": "4b4a47c44c38380d2a9168216fea8c9ff2f31b1ddb772f8a0995952a038b8aa0"
+  },
+  "elapsed_seconds": 35.95711050007958,
+  "peak_worker_working_set_bytes": 353267712,
+  "method": "131072-row Parquet batches; one NumPy bool per series/day for key coverage; independent 512-series source summation",
+  "canonical_sha256": "3907628a0231ebd9a3d7db0bfec994cdeb92066c4e66e26b7e46a84d586ba10d"
+}

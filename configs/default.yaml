@@ -1,0 +1,10 @@
+project_name: Intelligent Demand Forecasting & Inventory Optimisation
+random_seed: 42
+# Provisional daily multi-step horizon; freeze before inspecting test outcomes.
+forecast_horizon_days: 28
+paths:
+  raw: data/raw
+  interim: data/interim
+  processed: data/processed
+  artifacts: artifacts
+  reports: reports

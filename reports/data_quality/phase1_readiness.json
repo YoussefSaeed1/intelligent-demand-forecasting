@@ -1,0 +1,86 @@
+{
+  "phase1_status": "closed_with_documented_limitations",
+  "phase2_status": "not_started",
+  "checked_at_utc": "2026-11-06T13:50:54.543504+00:00",
+  "quality_gates": {
+    "store_item": {
+      "independent_gate": "passed",
+      "current_hash_binding": true,
+      "audit_sha256": "b4b8028d2837a0d78cdc9874fa2920925130d1d607a9cf1e86dab0097e9dacbd",
+      "canonical_sha256": "eed83d489c4ee9033fec0aab6588e1f830b93de6540819873c428c2c1ce279ec",
+      "source_sha256": {
+        "train.csv": "038f25690a65149c94f86ddd3deceda20c037a5cfd754cafdfc539a72992f2ed",
+        "test.csv": "16eb2eec677628c8ed62312a9d6749ebf46f59196dd2fece6fd1e5c147a918fb",
+        "sample_submission.csv": "b797330d1171538cf749abf6a76bef6743783d6eb74f81722465d86cf062ad3f"
+      }
+    },
+    "m5": {
+      "independent_gate": "passed",
+      "current_hash_binding": true,
+      "audit_sha256": "f7079b07319bf8be155fd3dc107597b34512bd067777110d72b0e50e8900e9ae",
+      "canonical_sha256": "3907628a0231ebd9a3d7db0bfec994cdeb92066c4e66e26b7e46a84d586ba10d",
+      "source_sha256": {
+        "calendar.csv": "d12b5914ef03e66649adf5dd9e996e6602251c22b7a6af8f1f7e3aa12f8860f5",
+        "sell_prices.csv": "9da3ad1f8b8ccacdbdc70612191dd375ec24a4ac6625c24b75b3bc60b0bed2ef",
+        "sales_train_validation.csv": "f368e66ed1dbecb48b2cc8fc589bf68b3deddbbb36bf5c88b4d6d0a09b9b6724",
+        "sales_train_evaluation.csv": "4b4a47c44c38380d2a9168216fea8c9ff2f31b1ddb772f8a0995952a038b8aa0"
+      }
+    }
+  },
+  "both_independent_quality_gates_passed": true,
+  "comparison": {
+    "store_item": {
+      "date_min": "2013-01-01",
+      "date_max": "2017-12-31",
+      "days": 1826,
+      "observations": 913000,
+      "series": 500,
+      "stores": 10,
+      "products": 50,
+      "sales_units_sum": 47704512,
+      "zero_sales_observations": 1,
+      "zero_sales_percent": 0.0001095290251916758,
+      "missing_historical_keys": 0,
+      "missing_sales": 0,
+      "unlabelled_test_rows": 45000,
+      "unlabelled_test_rows_counted_as_observed": 0,
+      "price_availability": "not supplied; all canonical unit_price values null"
+    },
+    "m5": {
+      "date_min": "2011-01-29",
+      "date_max": "2016-05-22",
+      "days": 1941,
+      "observations": 59181090,
+      "series": 30490,
+      "stores": 10,
+      "products": 3049,
+      "sales_units_sum": 66927173.0,
+      "zero_sales_observations": 40241819,
+      "zero_sales_percent": 67.99776584040612,
+      "missing_historical_keys": 0,
+      "missing_sales": 0,
+      "missing_historical_price_observations": 12299413,
+      "missing_historical_price_percent": 20.782673992655425,
+      "warnings_preserved": [
+        "Missing historical prices retained as null; no imputation performed.",
+        "Historical prices are observed covariates, not guaranteed future information.",
+        "Sales zeros do not prove item availability or zero unconstrained demand."
+      ]
+    }
+  },
+  "granularity": "observed daily sales per source-specific store/product series",
+  "readiness": {
+    "independent_benchmarking": true,
+    "common_28_day_horizon_feasible": true,
+    "common_metrics_feasible": [
+      "MAE",
+      "RMSE",
+      "WAPE",
+      "signed forecast bias"
+    ],
+    "cross_dataset_methodological_comparison": true,
+    "direct_model_transfer_justified": false,
+    "empirical_seasonality_established": false
+  },
+  "m5_transformation_rerun": false
+}
