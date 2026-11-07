@@ -137,7 +137,17 @@ def execute_validation(
             raise ValueError("Source data fingerprint changed")
         view = source.at_origin(fold, series)
         LOGGER.info("%s: computing training-only weekly scales", run_id)
-        scales = training_scales(view.history(), fold, series, config.season_days)
+        scales = (
+            source.scales(fold, series)
+            if hasattr(source, "scales")
+            else training_scales(view.history(), fold, series, config.season_days)
+        )
+        stages = {
+            "training_preparation_seconds": time.perf_counter() - started,
+            "model_fit_seconds": 0.0,
+            "prediction_publication_seconds": 0.0,
+            "model_artifacts_seconds": 0.0,
+        }
         writer = PredictionWriter(
             attempt / "predictions.parquet", fold, series, model_info, run_id, config.batch_rows
         )
@@ -148,6 +158,7 @@ def execute_validation(
             for number, population in enumerate(populations):
                 model = models.create(model_info.identifier, model_info.version)
                 training = source.at_origin(fold, population)
+                stage_started = time.perf_counter()
                 model.fit(
                     training,
                     {
@@ -156,12 +167,16 @@ def execute_validation(
                         "max_threads": config.max_threads,
                     },
                 )
+                stages["model_fit_seconds"] += time.perf_counter() - stage_started
+                stage_started = time.perf_counter()
                 predicted = model.predict(fold.origin, fold.horizon, training.calendar_features())
                 if isinstance(predicted, pd.DataFrame):
                     predicted = [predicted]
                 for batch in predicted:
                     validate_prediction_frame(batch, fold, population)
                     writer.write(batch)
+                stages["prediction_publication_seconds"] += time.perf_counter() - stage_started
+                stage_started = time.perf_counter()
                 model_dir = attempt / "models" / str(number)
                 model_dir.mkdir(parents=True)
                 for key, value in model.save_artifacts(model_dir).items():
@@ -177,15 +192,19 @@ def execute_validation(
                         )
                     artifacts[f"model_{number}_{key}"] = artifact
                 metadata.append(model.metadata())
+                stages["model_artifacts_seconds"] += time.perf_counter() - stage_started
                 if number % 100 == 0:
                     LOGGER.info(
                         "%s: model units processed %s/%s", run_id, number + 1, len(populations)
                     )
+            stage_started = time.perf_counter()
             writer.finish()
+            stages["prediction_publication_seconds"] += time.perf_counter() - stage_started
             LOGGER.info("%s: complete predictions sealed; validation scoring starts", run_id)
         finally:
             writer.close()
         # Validation targets become visible to the evaluator only after predictions are sealed.
+        stage_started = time.perf_counter()
         chunks, count = [], 0
         for batch in source.validation_targets(fold, series):
             count += len(batch)
@@ -198,6 +217,8 @@ def execute_validation(
         actuals = actuals.rename(columns={"date": "target_date", "sales_units": "actual"})
         predictions = pd.read_parquet(attempt / "predictions.parquet")
         scores = score_predictions(actuals, predictions, scales, fold, series, classes, class_as_of)
+        stages["validation_read_and_scoring_seconds"] = time.perf_counter() - stage_started
+        scores["runtime_stages"] = stages
         scores["elapsed_seconds"] = time.perf_counter() - started
         atomic_json(attempt / "metrics.json", scores)
         atomic_json(attempt / "model_metadata.json", metadata)

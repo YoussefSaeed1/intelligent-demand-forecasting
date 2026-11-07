@@ -1,4 +1,61 @@
-# Phase 0 validation — 2026-11-06
+# Validation record
+
+## Final Phase 3 scientific review and checkpoint gate — 2026-11-07
+
+The separate [integrity review](PHASE3_INTEGRITY_REVIEW.md) recalculated all 224 saved
+evaluations directly from predictions and canonical validation rows. All 56 model
+summaries and 56 HTML table rows agree. Sixteen persisted ML training-sample cases
+reproduce seed 42 exactly and reconcile every sampled feature/label to historical
+source values. All nine raw/canonical hashes and the frozen protocol remain unchanged.
+No actual-data estimator was refitted and no final holdout target was used.
+
+Current checks: **320 tests passed in 49.76 seconds**, Ruff passed, pip check passed,
+registry/prediction checks passed. The report-QA Git guard was repaired to accept
+authorised descendant commits while retaining ancestry/frozen-protocol validation;
+an optional ignored output path avoids dirtying a checkpoint during later verification.
+Historical price publication latency remains unverified: M5 price-enabled results are
+conditional research findings, not an approved operational availability contract.
+
+The user authorises a local Phase 3 checkpoint after the staged security review.
+No push, history rewrite, source deletion or Phase 4 execution is authorised. Earlier
+sections below retain their original pre-checkpoint test counts and Git state.
+
+## Phase 3B–3E final validation — 2026-11-07
+
+All four milestones passed their sequential independent and automated gates. The
+original Phase 3A checkpoint remains `23c1ddeaca0cf6cced2bdf161904f8fb114d4646`;
+no new commit, staging, push or upload was performed.
+
+| Check | Actual outcome |
+|---|---|
+| Complete Pytest suite | 318 passed in 51.92 seconds; no warnings |
+| Ruff | All checks passed |
+| pip check | No broken requirements found |
+| CLI | Read-only plan and 15-model catalogue passed without fitting; completed-run status/hash verification passed |
+| Baselines | 40 original runs; 17,354,400 predictions independently reconciled |
+| Statistical/intermittent | 64 original runs and 40 matched baseline projections; eligibility, formula, native/fallback and convergence evidence retained |
+| Global ML | 16 full-evaluation runs; 6,941,760 predictions; every sampled historical training feature/label independently checked; estimator reloads verified |
+| Final registry audit | 224 completed evaluations: 120 original runs and 104 no-refit projections; no incomplete runs entered comparisons |
+| Final prediction audit | 45,296,160 saved forecast records including projections; exact keys, dates, 28 horizons, raw/clipped predictions and delivery flags passed |
+| Metrics | Independent NumPy reconciliation of all series, macro, pooled, horizon and demand-class values; weekly training-only scales; undefined values remain null |
+| Populations | All 500/30,490 series for 13 methods; exactly matched 53/51 statistical subsets for all 15 methods; four unchanged origins each |
+| Holdouts and sources | No protected final targets used; two frozen protocol files unchanged; nine raw/canonical hashes match Phase 1 |
+| Resources | One experiment at a time, four threads, 2 GiB worker cap; maximum recorded experiment working set/RSS 1,447.89 MiB |
+| Final independent audit | 356.70 seconds, peak OS working set 1,309.64 MiB; hierarchy summaries streamed per run |
+| Report and figures | Source-backed tables, nine consolidated PNG/SVG pairs plus three milestone pairs; offline HTML uses only relative local assets |
+| Browser preview | WARNING: automation URL policy blocks `file://`; no workaround or upload. PNG/SVG decoding, agent image inspection and local HTML link/navigation validation remain separate checks |
+| Git scope | Dataset/model/cache outputs ignored; no Git-visible credentials, datasets or files above 10 MiB detected; working changes intentionally uncommitted |
+
+Evidence: [scientific report](PHASE3_BENCHMARK_REPORT.md),
+[comparison](PHASE3_MODEL_COMPARISON.md), [limitations](PHASE3_LIMITATIONS.md),
+[progress](PHASE3_PROGRESS.md), and `reports/forecasting/phase3{b,c,d,e}_gate.json`.
+The environment snapshot is [environment-phase3-freeze.txt](environment-phase3-freeze.txt).
+Final summary/link/image checks are retained in `reports/forecasting/phase3_final_qa.json`.
+Older records below describe their historical checkpoints, not current milestone status.
+Phase 4 and final holdout evaluation have not started. The mandatory independent Claude
+audit is still after Phase 4 and before Phase 5.
+
+## Phase 0 validation — 2026-11-06
 
 Environment: Windows, Python 3.14.0, editable intelligent-demand 0.1.0.
 Python 3.11 is preferred but was not available as a working interpreter on this machine.

@@ -1,0 +1,24 @@
+schema_version: 1
+strategy: recursive_28
+feature_history_days: 56
+feature_batch_rows: 8192
+random_forest:
+  n_estimators: 80
+  max_depth: 12
+  max_leaf_nodes: 512
+  min_samples_leaf: 20
+  max_features: 0.8
+  max_samples: 0.7
+  criterion: squared_error
+lightgbm:
+  num_boost_round: 200
+  objective: regression
+  learning_rate: 0.05
+  num_leaves: 31
+  min_data_in_leaf: 50
+  min_data_per_group: 20
+  max_bin: 63
+  deterministic: true
+  force_col_wise: true
+  device_type: cpu
+  verbosity: -1

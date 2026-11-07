@@ -12,18 +12,18 @@ Offline test fixtures are not forecasting results on the real datasets.
 | Complete | Training-prefix EDA | EDA_FINDINGS.md, dataset reports, all-series ADI/CV², 39 tables and 29 enhanced PNG/SVG figure pairs |
 | Design complete | Explicit forecast horizon | 28 daily steps; exact dates and rationale in FORECASTING_EXPERIMENTAL_PROTOCOL.md |
 | Design complete | Chronological train/validation/test | Four expanding rolling origins and final protected holdout; date-only construction tested |
-| Infrastructure implemented | Relevant error metrics | Scalar and pooled/macro/horizon/class MAE/RMSE/WAPE/bias plus weekly MASE/RMSSE, strict alignment and coverage tests; no real prediction scores |
-| Future | Appropriate baseline implementation | Naive, weekly seasonal naive and moving average; matched-window evidence required |
-| Future | Comparison of forecasting approaches | Statistical, intermittent and ML family recommendations; actual implementations/scores not produced |
+| Complete for validation | Relevant error metrics | Independently reconciled real predictions; pooled/macro/horizon/class MAE/RMSE/WAPE/bias and weekly MASE/RMSSE; explicit undefined denominators |
+| Complete | Appropriate baseline implementation | Five baselines, four origins, full populations; BASELINE_RESULTS.md and Phase 3B gate |
+| Implemented and executed | Comparison of forecasting approaches | Eight statistical/intermittent and two global ML methods; exact population rules; Phase 3C/3D gates and final consolidation |
 | Future | Systematic hyperparameter optimisation | Freeze spaces/caps; record validation trials, failures and selected settings in Phase 4 |
-| Future | Evaluation/comparison | Identical series/target windows; final holdout only after model choices freeze |
-| Partial | Cross-dataset evaluation where feasible | EDA comparison and independent benchmark design ready; baseline-relative performance still future; direct transfer unsupported |
-| Partial | Interpretation/discussion | Source-backed EDA and limitations complete; forecasting/error discussion remains future |
-| Partial | Reproducibility | Tested pipelines/settings, hashes, seeds and Phase 3A local registry/status/provenance; real forecasting run evidence remains future |
+| Validation implemented; final test future | Evaluation/comparison | Four unchanged origins, full and explicitly matched subsets; final holdout only after choices freeze in Phase 4 |
+| Validation implemented | Cross-dataset evaluation where feasible | Separate source-specific scores and baseline-relative comparisons; direct transfer unsupported |
+| Validation discussion implemented | Interpretation/discussion | Actual errors, sparse-demand coverage, bias, horizon, class and resource limitations; no significance claim |
+| Implemented locally | Reproducibility | Fixed configurations, seeds, package/code/source hashes, frozen splits, immutable predictions and registry; no upload or new commit |
 | Mandatory future gate | Independent Claude technical audit | After Phase 4 and before Phase 5; critical/high findings resolved and independently revalidated |
 | Future | Inventory implications | Assumption registry, simulator and sensitivity report; no simulation or business savings claim yet |
 
 The protocol defines experiments; documentation alone does not satisfy implementation,
 tuning or forecasting-evaluation requirements. See [ROADMAP.md](ROADMAP.md) for gates.
-Optional LightGBM, SHAP, MLflow and advanced uncertainty methods remain separate from
+CPU LightGBM is implemented; optional SHAP, MLflow and advanced uncertainty remain separate from
 core academic requirements. Inventory and Power BI follow the audited forecasting core.

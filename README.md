@@ -1,9 +1,9 @@
 # Intelligent Demand Forecasting & Inventory Optimisation
 
 Individual postgraduate Data Science diploma graduation project, Cairo University.
-**Status: Phases 0–2 checkpointed; Phase 3A infrastructure integrity reviewed; Phase 3B unstarted.**
-Source files are held locally outside Git. No forecasting models, experimental model
-results, inventory simulation or dashboards are included. Offline tests are separate
+**Status: Phase 3B–3E complete; fixed initial forecasting benchmarks validated. Phase 4 not started.**
+Source files and generated experiment outputs are held locally outside Git. Baseline,
+statistical and global ML milestones and final consolidation passed their gates. Offline tests are separate
 from real-data evidence; see [VALIDATION.md](docs/VALIDATION.md).
 
 ## Problem and research objectives
@@ -90,16 +90,18 @@ Acquire and hash source files; profile keys, dates, missingness, zeros and dupli
 validate dataset-specific transformations into a provisional long daily schema; perform
 training-only EDA; construct leakage-safe lag/calendar features; establish naive and weekly
 seasonal naive baselines; compare suitable exponential smoothing/ARIMA-family and
-scikit-learn models. Consider LightGBM later if justified by resources and evidence.
+scikit-learn models and CPU LightGBM with fixed initial configurations.
 Use systematic search on rolling validation folds, freeze choices, then assess the final
 chronological holdout. See [experimental design](docs/EXPERIMENTAL_DESIGN.md).
 
-## Phase 3A infrastructure
+## Phase 3 forecasting
 
 The model registry, origin-bounded data access, complete prediction persistence,
 pooled/macro metrics, coverage and restart-safe local experiment registry are implemented.
-There are no production forecasting implementations, fitted models or real benchmark
-runs. Validation uses small synthetic fixtures and lifecycle test doubles only.
+Five baselines, eight statistical/intermittent methods and two global ML methods are
+implemented and executed under independent milestone gates. Statistical ARIMA/SARIMA
+use declared training-only 53/51-series subsets; the other methods evaluate all
+500/30,490 series. ML training is resource bounded, while evaluation remains complete.
 
 ```powershell
 .\.venv\Scripts\python.exe -m intelligent_demand forecast-plan
@@ -107,9 +109,41 @@ runs. Validation uses small synthetic fixtures and lifecycle test doubles only.
 ```
 
 These read-only commands validate the original four 28-day validation origins and list
-the currently empty production model registry. They read configuration/protocol metadata,
-not canonical targets. Final holdout target access remains unavailable. No execution CLI
-is supplied in Phase 3A.
+all 15 model definitions. They read configuration/protocol metadata, not canonical
+targets, and execute no models. Final holdout target access remains unavailable.
+
+Actual experiments use an explicit sequential command, reusing valid completed runs:
+
+```powershell
+.\.venv\Scripts\python.exe -m intelligent_demand.experiments.benchmark run --phase 3b
+.\.venv\Scripts\python.exe -m intelligent_demand.experiments.benchmark run --phase 3c
+.\.venv\Scripts\python.exe -m intelligent_demand.experiments.benchmark run --phase 3d
+```
+
+Each next milestone requires the previous independent audit and automated gate.
+Read [baseline results](docs/BASELINE_RESULTS.md),
+[statistical results](docs/STATISTICAL_RESULTS.md), [ML results](docs/ML_RESULTS.md),
+and [feature availability](docs/FEATURE_AVAILABILITY.md). No systematic tuning or
+final holdout evaluation has occurred. Large models, predictions, caches and figures
+remain local and ignored. The subsequent final scientific integrity review authorises
+a secure local Phase 3 checkpoint; no push or upload is authorised.
+
+Open the [offline forecasting benchmark report](reports/forecasting/PHASE3_BENCHMARK_REPORT.html)
+in your browser, keeping the `reports/forecasting/` and `reports/figures/` directories
+together. The [scientific report](docs/PHASE3_BENCHMARK_REPORT.md),
+[model comparison](docs/PHASE3_MODEL_COMPARISON.md) and
+[limitations](docs/PHASE3_LIMITATIONS.md) retain actual values, populations and caveats.
+Final validation: 318 tests; Ruff and pip check passed; 224 saved evaluations
+independently reconciled; all nine source hashes unchanged. Browser automation cannot
+preview local file URLs, but PNG/SVG decoding, visual inspection and relative-link
+validation are performed locally.
+
+The subsequent [final scientific integrity review](docs/PHASE3_INTEGRITY_REVIEW.md)
+recalculated all saved comparisons and audited exact training-sample reproducibility.
+The current suite has **320 passing tests**. M5 RF's small mean lead over MA28 does
+not extend to a majority of individual series; price publication latency remains a
+conditional research assumption. A secure local checkpoint is authorised after review;
+Phase 4 and protected final holdout evaluation remain unstarted.
 
 See [forecasting engine](docs/FORECASTING_ENGINE.md),
 [metric definitions](docs/METRIC_DEFINITIONS.md) and
@@ -158,13 +192,13 @@ src/intelligent_demand/
   validation/             Incremental quality checks, reports and Parquet reconciliation
   preprocessing/          Future dataset-specific cleaning
   exploration/            Population EDA, figures, reports and saved-output validation
-  features/               Future leakage-safe feature construction
-  models/                 Model contract/registration; actual forecasting methods future
+  features/               Shifted, origin-safe recursive features and validated caches
+  models/                 Baselines, statistical/intermittent, RF and LightGBM adapters
   tuning/                 Future chronological hyperparameter search
   evaluation/             Validated folds, prediction publication, grouped metrics and coverage
   experiments/            Origin data capabilities, configuration, registry and orchestration
   inventory/              Future scenario simulation
-  reporting/              Future export contracts
+  reporting/              Verified benchmark reports, figures and offline HTML
   utils/                  Future shared utilities only when justified
 notebooks/                Future numbered exploratory notebooks
 artifacts/{models,experiments}/  Ignored generated artefacts
@@ -184,8 +218,8 @@ snapshot in `docs/environment-freeze.txt`, when available, records this setup on
 No licence is granted for source datasets by this repository. Academic requirements
 and optional enhancements are tracked separately in [ACADEMIC_REQUIREMENTS.md](docs/ACADEMIC_REQUIREMENTS.md).
 
-Next: explicitly authorise Phase 3B when ready; no baseline implementation has started.
+Next: review the final Phase 3 validation evidence before authorising Phase 4.
 The independent Claude audit remains mandatory after Phase 4 and before Phase 5.
-See [ROADMAP.md](docs/ROADMAP.md). No forecasting model training has begun.
+See [ROADMAP.md](docs/ROADMAP.md). Phase 4 has not started.
 
 Verified setup results and environment limitations: [VALIDATION.md](docs/VALIDATION.md).

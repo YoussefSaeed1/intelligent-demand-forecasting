@@ -1,0 +1,12 @@
+# Frozen initial experiments, not a hyperparameter search. Evaluation remains full population.
+schema_version: 1
+seed: 42
+worker_rss_limit_mb: 2048
+minimum_available_mb: 512
+baseline_timeout_seconds: 900
+statistical_timeout_seconds: 1800
+ml_timeout_seconds: 1800
+threads: 4
+training_rows_store_item: 150000
+training_rows_m5: 183000
+baseline_models: [naive, seasonal_naive, moving_average_28, seasonal_moving_average, zero]

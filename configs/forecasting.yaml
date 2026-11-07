@@ -1,4 +1,4 @@
-# Phase 3A infrastructure only; no model or benchmark execution is enabled by this file.
+# Shared strict evaluation settings. Execution requires an explicit benchmark command.
 schema_version: 1
 split_manifest: reports/eda/proposed_splits.json
 registry_directory: artifacts/experiments/forecasting

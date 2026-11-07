@@ -569,7 +569,13 @@ def test_readonly_cli_smoke_plan_models_and_no_implicit_training(monkeypatch, ca
         if command == "forecast-plan":
             assert all(len(folds) == 4 for folds in value["validation_folds"].values())
         else:
-            assert value["registered_models"] == []
+            from intelligent_demand.models.baselines import BASELINES
+            from intelligent_demand.models.global_ml import ML_METHODS
+            from intelligent_demand.models.statistical import STATISTICAL
+
+            assert {row["identifier"] for row in value["registered_models"]} == set(
+                (*BASELINES, *STATISTICAL, *ML_METHODS)
+            )
 
 
 @pytest.mark.parametrize(
@@ -759,17 +765,27 @@ def test_every_origin_filters_poison_future_and_protects_final_holdout(
     tmp_path, dataset_id, number
 ):
     boundary = load_splits(MANIFEST)[dataset_id][number]
-    frame = pd.DataFrame({
-        "dataset_id": [dataset_id] * 4,
-        "series_id": ["s1"] * 4,
-        "date": [boundary.origin - timedelta(days=1), boundary.origin,
-                 boundary.validation_start, boundary.holdout_start],
-        "sales_units": [3, 4, 987654321, 987654322],
-    })
-    schema = pa.schema([
-        ("dataset_id", pa.string()), ("series_id", pa.string()),
-        ("date", pa.date32()), ("sales_units", pa.int64()),
-    ])
+    frame = pd.DataFrame(
+        {
+            "dataset_id": [dataset_id] * 4,
+            "series_id": ["s1"] * 4,
+            "date": [
+                boundary.origin - timedelta(days=1),
+                boundary.origin,
+                boundary.validation_start,
+                boundary.holdout_start,
+            ],
+            "sales_units": [3, 4, 987654321, 987654322],
+        }
+    )
+    schema = pa.schema(
+        [
+            ("dataset_id", pa.string()),
+            ("series_id", pa.string()),
+            ("date", pa.date32()),
+            ("sales_units", pa.int64()),
+        ]
+    )
     path = tmp_path / "poison.parquet"
     pq.write_table(pa.Table.from_pandas(frame, schema=schema, preserve_index=False), path)
     reader = ParquetSource(path, dataset_id, batch_rows=1)
@@ -778,8 +794,11 @@ def test_every_origin_filters_poison_future_and_protects_final_holdout(
     with pytest.raises(LeakageError):
         list(reader.at_origin(boundary, ("s1",)).history(end=boundary.validation_start))
     with pytest.raises(LeakageError):
-        list(reader._read(boundary, boundary.origin, boundary.holdout_start,
-                          ["sales_units"], ("s1",)))
+        list(
+            reader._read(
+                boundary, boundary.origin, boundary.holdout_start, ["sales_units"], ("s1",)
+            )
+        )
 
 
 @pytest.mark.parametrize("entry", ["source", "capability", "reader", "prediction", "scales"])
@@ -790,10 +809,12 @@ def test_forged_fold_cannot_change_public_access_boundaries(source, fold, tmp_pa
     calls = {
         "source": lambda: source.at_origin(forged, ("s1",)),
         "capability": lambda: OriginData(source, forged, ("s1",)),
-        "reader": lambda: list(source._read(forged, fold.origin, forged.origin,
-                                            ["sales_units"], ("s1",))),
-        "prediction": lambda: PredictionWriter(tmp_path / "bad.parquet", forged,
-                                               ("s1",), ModelInfo("fixture", "1", "local"), "x"),
+        "reader": lambda: list(
+            source._read(forged, fold.origin, forged.origin, ["sales_units"], ("s1",))
+        ),
+        "prediction": lambda: PredictionWriter(
+            tmp_path / "bad.parquet", forged, ("s1",), ModelInfo("fixture", "1", "local"), "x"
+        ),
         "scales": lambda: training_scales([], forged, ("s1",)),
     }
     with pytest.raises(ValueError, match="ValidationFold"):
@@ -835,8 +856,18 @@ def completed_fixture_run(registry, specification):
     return run_id
 
 
-@pytest.mark.parametrize("mutation", ["empty", "missing", "unknown_attempt", "escaped_attempt",
-                                       "partial", "missing_file", "malformed"])
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        "empty",
+        "missing",
+        "unknown_attempt",
+        "escaped_attempt",
+        "partial",
+        "missing_file",
+        "malformed",
+    ],
+)
 def test_completed_manifest_requires_all_owned_outputs(tmp_path, mutation):
     registry = ExperimentRegistry(tmp_path)
     run_id = completed_fixture_run(registry, {"fixture": True})
@@ -874,12 +905,20 @@ def test_incomplete_status_cannot_enter_comparison(tmp_path, status):
         registry.comparison_candidates([run_id])
 
 
-@pytest.mark.parametrize("changed", [None, "series_sha256", "source_fingerprint", "protocol_sha256",
-                                      "fold", "settings"])
+@pytest.mark.parametrize(
+    "changed", [None, "series_sha256", "source_fingerprint", "protocol_sha256", "fold", "settings"]
+)
 def test_comparison_gate_accepts_only_verified_same_cohort(config, fold, tmp_path, changed):
     registry = ExperimentRegistry(tmp_path)
-    spec = experiment_specification(config, fold, ModelInfo("fixture-a", "1", "global"), {},
-                                    ("s1", "s2"), "a" * 64, {"git_revision": "fixture"})
+    spec = experiment_specification(
+        config,
+        fold,
+        ModelInfo("fixture-a", "1", "global"),
+        {},
+        ("s1", "s2"),
+        "a" * 64,
+        {"git_revision": "fixture"},
+    )
     first = completed_fixture_run(registry, spec)
     other = json.loads(canonical_json(spec))
     other["model"]["identifier"] = "fixture-b"
@@ -936,8 +975,9 @@ def test_failed_prediction_replace_never_publishes_final(tmp_path, fold, monkeyp
 def test_full_population_capacity_without_forecasts(tmp_path, config, dataset_id, population):
     boundary = load_splits(MANIFEST)[dataset_id][0]
     series = tuple(f"fixture-{i}" for i in range(population))
-    writer = PredictionWriter(tmp_path / "capacity.parquet", boundary, series,
-                              ModelInfo("fixture", "1", "global"), "x")
+    writer = PredictionWriter(
+        tmp_path / "capacity.parquet", boundary, series, ModelInfo("fixture", "1", "global"), "x"
+    )
     try:
         assert writer.seen.size == population * 28 <= config.max_evaluation_rows
         assert writer.seen.nbytes < 1_000_000
@@ -956,8 +996,14 @@ def test_boolean_predictions_are_not_sales_quantities(fold):
 @pytest.mark.parametrize("batch_rows", [0, -1, True, 1.5])
 def test_invalid_batch_size_cannot_skip_prediction_validation(tmp_path, fold, batch_rows):
     with pytest.raises(ValueError, match="batch size"):
-        PredictionWriter(tmp_path / "invalid.parquet", fold, ("s1",),
-                         ModelInfo("fixture", "1", "local"), "x", batch_rows=batch_rows)
+        PredictionWriter(
+            tmp_path / "invalid.parquet",
+            fold,
+            ("s1",),
+            ModelInfo("fixture", "1", "local"),
+            "x",
+            batch_rows=batch_rows,
+        )
 
 
 def test_equivalent_string_dates_cannot_disguise_duplicate_future_feature_keys(source, fold):
@@ -995,3 +1041,23 @@ def test_failed_final_status_publication_cannot_enter_comparison(tmp_path, monke
     assert not (registry.directory(run_id) / "execution.lock").exists()
     with pytest.raises(ValueError, match="no completed result"):
         registry.comparison_candidates([run_id])
+
+
+@pytest.mark.parametrize("changed", ["models/other.py", "evaluation/metrics.py"])
+def test_comparison_code_contract_allows_different_models_but_not_metric_code(
+    config, fold, tmp_path, changed
+):
+    registry = ExperimentRegistry(tmp_path)
+    code = {"code_sha256": {"models/other.py": "a", "evaluation/metrics.py": "b"}}
+    spec = experiment_specification(
+        config, fold, ModelInfo("fixture", "1", "global"), {}, ("s1",), "a" * 64, code
+    )
+    first = completed_fixture_run(registry, spec)
+    other = json.loads(canonical_json(spec))
+    other["code"]["code_sha256"][changed] = "different"
+    second = completed_fixture_run(registry, other)
+    if changed == "models/other.py":
+        assert len(registry.comparison_candidates([first, second])) == 2
+    else:
+        with pytest.raises(ValueError, match="matching protocol"):
+            registry.comparison_candidates([first, second])

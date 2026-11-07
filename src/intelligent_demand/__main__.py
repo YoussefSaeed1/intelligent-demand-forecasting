@@ -55,7 +55,7 @@ def main() -> None:
         from intelligent_demand.evaluation.splits import load_splits
         from intelligent_demand.experiments.config import load_experiment_config
         from intelligent_demand.experiments.registry import ExperimentRegistry
-        from intelligent_demand.models.base import ModelRegistry
+        from intelligent_demand.models.catalog import registered_models
 
         try:
             settings = load_experiment_config(args.settings)
@@ -70,7 +70,10 @@ def main() -> None:
                     },
                 }
             elif args.command == "forecast-models":
-                output = {"registered_models": ModelRegistry().registered(), "models_executed": 0}
+                output = {
+                    "registered_models": registered_models(),
+                    "models_executed": 0,
+                }
             else:
                 registry = ExperimentRegistry(settings.registry_directory)
                 output = registry.read(args.run_id)

@@ -2,7 +2,9 @@
 
 Phase 1 source and independent persisted-file gates are closed as of 2026-11-06.
 Phase 2 EDA is now complete on the initial training prefixes. Forecasting feature
-generation, training and tuning have not started. The authoritative detailed plan is
+generation and fixed-configuration training are now implemented in authorised Phase 3;
+tuning remains reserved for Phase 4. See [progress](PHASE3_PROGRESS.md).
+The authoritative detailed plan is
 [FORECASTING_EXPERIMENTAL_PROTOCOL.md](FORECASTING_EXPERIMENTAL_PROTOCOL.md), with exact
 28-day split dates generated from coverage before detailed EDA. It supersedes the
 earlier provisional settings below. See [EDA_FINDINGS.md](EDA_FINDINGS.md) for actual
@@ -67,7 +69,8 @@ it infeasible with evidence. Do not call replicated rankings proof of generalisa
 
 The seasonality-potential row records the Phase 1 coverage/schema assessment. Phase 2
 has since produced training-prefix ACF, decomposition and trend diagnostics, documented
-separately in EDA_FINDINGS.md. No forecasting feature construction has run.
+separately in EDA_FINDINGS.md. Phase 3 feature availability is documented in
+[FEATURE_AVAILABILITY.md](FEATURE_AVAILABILITY.md).
 Zero frequencies describe observed sales, not verified unconstrained demand.
 
 Readiness decisions:

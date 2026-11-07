@@ -1,8 +1,9 @@
 # Forecast metric definitions and coverage
 
 Definitions implement the existing [experimental protocol](FORECASTING_EXPERIMENTAL_PROTOCOL.md).
-No real forecast scores have been produced. Synthetic tests verify arithmetic and
-alignment; they do not establish benchmark performance.
+Synthetic tests verify arithmetic and alignment; actual Phase 3 results additionally
+require independent reconciliation of persisted validation predictions. See
+[progress](PHASE3_PROGRESS.md) and the milestone gate JSON under `reports/forecasting/`.
 
 For matched actual sales y and point predictions p, error e=p−y. Positive bias means
 overforecasting. Data must be finite, nonnegative daily observed quantities; missing
@@ -77,11 +78,13 @@ and records its defined/undefined series counts. No epsilon or zero replaces a n
 
 Infrastructure clips negative point predictions to zero uniformly, retains raw values
 and reports clipping incidence. It does not round expected sales to integers. Adapters
-must flag any fallback; no forecasting/fallback method has been implemented in Phase 3A.
+must flag any fallback. Phase 3B–3D now implement explicit eligibility and fallback
+methods, retaining requested/actual delivery and reason for every series-origin case.
 
 The selection objective remains the mean of the four folds' macro per-series MAE,
 separately for each source. The registry's comparison eligibility gate rejects incomplete
-runs and mismatched evaluation cohorts. Model selection and fold-ranking logic are not
-implemented or executed here. Report fold dispersion, coverage and source-specific baseline-relative
-improvement in later phases, with zero-baseline ratios undefined. Weekly leaf-level
+runs and mismatched evaluation cohorts. Current benchmark reporting computes four-fold
+summaries, fold dispersion, coverage and source-specific baseline-relative improvement,
+with zero-baseline ratios undefined. Pooled summaries across origins use summed errors
+and quantities rather than averaging roots or ratios. Weekly leaf-level
 RMSSE is not official hierarchical M5 WRMSSE or a leaderboard reproduction.

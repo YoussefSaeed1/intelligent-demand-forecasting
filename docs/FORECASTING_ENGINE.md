@@ -1,9 +1,16 @@
-# Phase 3A forecasting infrastructure
+# Forecasting infrastructure
 
-This layer implements contracts, validation orchestration and persistence. It contains
-**no forecasting method**, trained model, search procedure or real-data benchmark.
-The production model registry is empty. Synthetic fixture doubles exercise lifecycle
-hooks without learning parameters. Phase 3B–3E remain unstarted.
+This layer implements contracts, validation orchestration and persistence. The Phase 3A
+checkpoint contained only infrastructure and fixture models. Authorised Phase 3B–3E
+execution now adds five baselines, eight statistical methods and two global ML methods.
+The read-only model catalogue lists all 15; listing never fits an estimator. Actual
+execution is explicit through `intelligent_demand.experiments.benchmark` and dependent
+milestones require independently reconciled scientific and automated gates.
+
+See [progress](PHASE3_PROGRESS.md), [baseline methods](BASELINE_MODELS.md),
+[statistical methods](STATISTICAL_MODELS.md), [ML design](ML_FORECASTING.md), and
+[feature availability](FEATURE_AVAILABILITY.md). The historical component descriptions
+below retain the Phase 3A interface contract.
 
 The [existing experimental protocol](FORECASTING_EXPERIMENTAL_PROTOCOL.md) remains the
 source of truth. Its original Markdown and saved split manifest are unchanged.
@@ -167,8 +174,12 @@ still match. Tampered, missing or escaped output paths are rejected.
 Verification also requires all three mandatory outputs and a valid recorded attempt;
 an empty completed manifest is rejected. `comparison_candidates(run_ids)` admits only
 checksum-verified completed runs with identical source, fold, population, classes,
-protocol, seed, settings and code provenance. It does not sort scores or select a model;
-future ranking code must use this eligibility gate and validate four-fold coverage.
+protocol, seed, settings and the six core evaluation-module hashes. Full model/source
+provenance remains recorded, but different model implementations may have different
+hashes. Phase 3 regression tests reject evaluation-code changes while allowing different
+family code on an otherwise identical cohort. Reporting uses this eligibility gate,
+requires all four origins and keeps full/subset scopes separate. Evaluation projections
+retain a checksummed parent chain; changed or incomplete parent output invalidates them.
 
 Caught KeyboardInterrupt/SystemExit marks interrupted; other execution exceptions mark
 failed. A failed/interrupted restart requires `resume=True`, an identical specification
@@ -186,14 +197,20 @@ History reads are projected and streamed with configurable batch rows (default 6
 without threaded Arrow scans. Training scales keep seven values plus accumulators per
 series. The scheduler currently runs serially; worker count is a validated capacity
 ceiling, not a claim of an implemented parallel scheduler. Model adapters receive a
-four-thread maximum and must respect it. GPU training and hard process/time enforcement
-are not implemented. Their model-specific resource tests remain future work.
+four-thread maximum and must respect it. The Phase 3 sequential supervisor enforces
+2 GiB worker RSS and fixed time budgets (900 seconds baseline; 1,800 statistical/ML),
+with stopped-owner confirmation before interrupted recovery. GPU training is unused.
+Origin-keyed checksummed read-only panels accelerate repeated histories and weekly
+scales; they cannot extend beyond the validated origin. Features use separate validated
+bounded caches. Actual stage timings and resource evidence accompany current runs.
 
 Prediction writes are batched. The evaluation join is bounded by a configurable row
 budget (default one million; M5's 30,490 × 28 = 853,720 fits). Both declared population
 and actual rows are checked. Grouped metrics are vectorised; per-series records are
-stored once rather than repeated for every horizon. No real-scale time/memory benchmark
-was executed during this infrastructure phase.
+stored once rather than repeated for every horizon. The Phase 3A checkpoint had only
+fixture measurements; current real-scale evidence is in the milestone results. Final
+independent hierarchy summaries stream one run at a time instead of accumulating all
+groups across all models in memory.
 
 ```powershell
 .\.venv\Scripts\python.exe -m intelligent_demand forecast-plan
@@ -203,8 +220,10 @@ was executed during this infrastructure phase.
 
 The first two commands require only configuration and saved protocol metadata; they
 do not read canonical sales or create experiment runs. All current CLI commands added
-in Phase 3A are read-only. No forecasting execution CLI is supplied yet. Importing the
-engine or registering a factory does not execute it. Review Phase 3A before authorising
-Phase 3B. The independent Claude audit still follows Phase 4 and precedes Phase 5.
+in Phase 3A remain read-only. Explicit execution now uses
+`python -m intelligent_demand.experiments.benchmark run --phase 3b` (or `3c`/`3d`),
+with scientific/automated gates between milestones. Importing the engine or registering
+a factory does not execute it. The independent Claude audit still follows Phase 4 and
+precedes Phase 5.
 
 Integrity findings and readiness limits: [PHASE3A_INTEGRITY_REVIEW.md](PHASE3A_INTEGRITY_REVIEW.md).

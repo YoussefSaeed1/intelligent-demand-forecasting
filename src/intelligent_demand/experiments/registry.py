@@ -154,7 +154,9 @@ class ExperimentRegistry:
         state.update(status="completed", ended_at=utc_now(), outputs=paths)
         atomic_json(directory / "status.json", state)
 
-    def completed(self, run_id):
+    def completed(self, run_id, _lineage=()):
+        if run_id in _lineage:
+            raise ValueError("Cyclic result derivation lineage")
         state = self.read(run_id)
         if state["status"] != "completed":
             raise ValueError("Partial/failed/interrupted runs have no completed result")
@@ -183,6 +185,16 @@ class ExperimentRegistry:
                     raise ValueError("Completed output is changed, partial or outside its attempt")
         except (OSError, KeyError, TypeError) as exc:
             raise ValueError("Completed experiment output is missing or malformed") from exc
+        derived = state["specification"].get("derived_from")
+        if derived is not None:
+            if not isinstance(derived, dict) or derived.get("models_refitted") is not False:
+                raise ValueError("Invalid evaluation-projection lineage")
+            parent = self.completed(derived.get("run_id"), (*_lineage, run_id))
+            if derived.get("prediction_sha256") != parent["outputs"]["predictions"]["sha256"]:
+                raise ValueError("Projection parent prediction identity changed")
+            for key in ("dataset_id", "fold", "source_fingerprint", "protocol_sha256", "model"):
+                if state["specification"].get(key) != parent["specification"].get(key):
+                    raise ValueError("Projection changed its parent's scientific identity")
         return state
 
     def comparison_candidates(self, run_ids):
@@ -192,16 +204,42 @@ class ExperimentRegistry:
             raise ValueError("Nonempty unique comparison run IDs required")
         states = [self.completed(run_id) for run_id in run_ids]
         fields = (
-            "schema_version", "dataset_id", "fold", "settings", "random_seed",
-            "source_fingerprint", "protocol_sha256", "series_count", "series_sha256",
-            "classes_sha256", "class_as_of", "code",
+            "schema_version",
+            "dataset_id",
+            "fold",
+            "settings",
+            "random_seed",
+            "source_fingerprint",
+            "protocol_sha256",
+            "series_count",
+            "series_sha256",
+            "classes_sha256",
+            "class_as_of",
         )
         cohorts = []
         for state in states:
             specification = state["specification"]
             if not set(fields).issubset(specification):
                 raise ValueError("Comparison requires a complete forecasting specification")
-            cohorts.append(identity({key: specification[key] for key in fields}))
+            cohort = {key: specification[key] for key in fields}
+            # Model implementations necessarily differ across families and milestones.
+            # Require identical evaluation code while retaining full code provenance per run.
+            code = specification.get("code", {})
+            evaluation = {
+                key: value
+                for key, value in code.get("code_sha256", {}).items()
+                if key
+                in {
+                    "evaluation/__init__.py",
+                    "evaluation/design.py",
+                    "evaluation/metrics.py",
+                    "evaluation/predictions.py",
+                    "evaluation/scoring.py",
+                    "evaluation/splits.py",
+                }
+            }
+            cohort["evaluation_code"] = evaluation or code
+            cohorts.append(identity(cohort))
         if len(set(cohorts)) != 1:
             raise ValueError(
                 "Comparison requires matching protocol, source, population and settings"

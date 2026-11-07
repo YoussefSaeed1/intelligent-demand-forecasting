@@ -1,0 +1,14 @@
+schema_version: 1
+alpha: 0.2
+trend_beta: 0.05
+seasonal_gamma: 0.05
+damping_phi: 0.98
+occurrence_beta: 0.1
+season: 7
+arima_order: [1, 0, 0]
+sarima_order: [1, 0, 0]
+sarima_seasonal_order: [1, 0, 0, 7]
+maximum_likelihood_iterations: 80
+subset_seed: 42
+subset_primary_strata: [pattern, store_id]
+subset_volume_bands: 3
