@@ -1,0 +1,14 @@
+[
+  {
+    "module": "experiments/benchmark.py",
+    "original_concurrent_preparation_entries": 2,
+    "archived_code_reproduction": true,
+    "source_or_model_reads": 0
+  },
+  {
+    "module": "tuning/runner.py",
+    "original_concurrent_preparation_entries": 2,
+    "archived_code_reproduction": true,
+    "source_or_model_reads": 0
+  }
+]

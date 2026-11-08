@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "selection_sha256": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+  "historical_inventory_files_verified": 4592,
+  "historical_inventory_bytes": 5233386883,
+  "unchanged_live_inventory_entries": 4590,
+  "archived_current_metadata_inventory_entries": [
+    ".gitignore",
+    "README.md"
+  ],
+  "frozen_source_snapshots_verified": 89,
+  "registry_completed_runs_verified": {
+    "artifacts/experiments/forecasting": 224,
+    "artifacts/experiments/phase4/registry": 108
+  },
+  "raw_canonical_fingerprints_verified": 9,
+  "declared_current_code_document_overlays": 8,
+  "ledger_events": 12,
+  "ledger_sha256": "fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204",
+  "ledger_head_sha256": "d5044b81ccc65bbbfa4ec49b0da73c77e433683f9541fc799413ba20cbc1fe9d",
+  "canonical_targets_decoded": 0,
+  "model_fits": 0,
+  "scores_published": 0,
+  "original_ledger_writes": 0,
+  "historical_source_is_current_execution_source": false
+}

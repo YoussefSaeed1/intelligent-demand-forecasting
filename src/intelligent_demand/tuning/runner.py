@@ -4,6 +4,7 @@ import argparse
 import json
 import logging
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -22,6 +23,7 @@ from intelligent_demand.experiments.engine import (
     experiment_specification,
     provenance,
 )
+from intelligent_demand.experiments.ownership import CaseLock
 from intelligent_demand.experiments.preparation import PreparedSource
 from intelligent_demand.experiments.registry import (
     ExperimentRegistry,
@@ -149,6 +151,16 @@ def job_path(case_id, fold):
 
 
 def worker(case_id, number):
+    if ledger_events():
+        raise ValueError("Optimisation is prohibited after final assessment access began")
+    if (not isinstance(case_id, str) or not re.fullmatch(r"[a-z0-9_]{1,128}", case_id)
+            or type(number) is not int or not 1 <= number <= 4):
+        raise ValueError("Invalid optimisation worker case")
+    with CaseLock(OUTPUT / "worker_locks" / f"{case_id}_f{number}.json"):
+        return _worker_owned(case_id, number)
+
+
+def _worker_owned(case_id, number):
     require_phase("4a")
     if ledger_events():
         raise ValueError("Optimisation is prohibited after final assessment access began")

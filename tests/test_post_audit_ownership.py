@@ -8,8 +8,9 @@ from concurrent.futures import ThreadPoolExecutor
 
 import pytest
 
+from intelligent_demand.experiments import benchmark
 from intelligent_demand.experiments.ownership import CaseLock, CaseOwnedError, recover_abandoned
-from intelligent_demand.tuning import final
+from intelligent_demand.tuning import final, runner
 
 
 def test_same_case_cannot_be_owned_in_another_process(tmp_path):
@@ -110,3 +111,30 @@ def test_closed_assessment_fails_before_lock_model_or_scorer(tmp_path, monkeypat
         else:
             final.assess_once()
     assert not list(tmp_path.iterdir())
+
+
+@pytest.mark.parametrize("module,args", [(benchmark, ("3b", "m5", 1, "naive")),
+                                        (runner, ("m5_synthetic", 1))])
+def test_validation_worker_case_is_owned_before_preparation(tmp_path, monkeypatch, module, args):
+    monkeypatch.setattr(module, "OUTPUT", tmp_path)
+    if module is runner:
+        monkeypatch.setattr(runner, "ledger_events", lambda: [])
+    entered, release = threading.Event(), threading.Event()
+
+    def prepare(*args):
+        entered.set()
+        assert release.wait(10)
+        return "single_owner"
+
+    monkeypatch.setattr(module, "_worker_owned", prepare)
+    with ThreadPoolExecutor(2) as pool:
+        owner = pool.submit(module.worker, *args)
+        assert entered.wait(10)
+        other = pool.submit(module.worker, *args)
+        try:
+            with pytest.raises(CaseOwnedError):
+                other.result(timeout=10)
+        finally:
+            release.set()
+        assert owner.result(timeout=10) == "single_owner"
+    assert not list((tmp_path / "worker_locks").glob("*.json"))

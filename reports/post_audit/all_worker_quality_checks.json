@@ -1,0 +1,48 @@
+{
+  "backup": {
+    "bytes": 5233386883,
+    "destination": "C:/Project_Backups/Demand_Forecasting_Phase4_Evidence_verified_20261108",
+    "files": 4592,
+    "independent_off_device": false,
+    "mismatched": 0,
+    "missing": 0,
+    "same_device": true,
+    "status": "passed"
+  },
+  "claude": "not_invoked",
+  "documentation_relative_links_verified": 50,
+  "follow_up": "Same exclusive guard applied to all public legacy validation and final worker entry points; original source and first remediation commit preserved.",
+  "gate": "READY WITH LIMITATIONS for independent audit",
+  "ledger_events": 12,
+  "overlay_sha256": "cedfe7235a036e64dd9a5878f3b3a21dcc2adf1c78a3e10ba624cf3a81ca443a",
+  "phase5": "not_started",
+  "pip_check": {
+    "output": "No broken requirements found.",
+    "status": "passed"
+  },
+  "pytest": {
+    "command": ".venv/Scripts/python.exe -m pytest -q -p no:cacheprovider --basetemp artifacts/test_runs/post_audit_all_workers_final_20261108",
+    "log_sha256": "2f620c786d23aa93a423bf69ec81a98f25ac256d7a7e1ce2b522b0b5a006f3ca",
+    "new_post_audit_regressions": 46,
+    "seconds": 49.62,
+    "tests": 398
+  },
+  "raw_canonical_files": 9,
+  "ruff": {
+    "command": ".venv/Scripts/python.exe -m ruff check . --no-cache",
+    "status": "passed"
+  },
+  "saved_snapshot_arithmetic": {
+    "canonical_final_reads": 0,
+    "final_saved_cases": 8,
+    "new_scoring_publications": 0,
+    "peak_working_set_bytes": 1044320256,
+    "seconds": 118.71208730000217,
+    "status": "passed",
+    "validation_runs": 332
+  },
+  "scientific_originals_preserved": true,
+  "source_snapshot_files": 89,
+  "status": "passed",
+  "worker_scientific_runs": 0
+}

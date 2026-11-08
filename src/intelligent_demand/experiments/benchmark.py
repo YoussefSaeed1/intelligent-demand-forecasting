@@ -4,6 +4,7 @@ import argparse
 import json
 import logging
 import os
+import re
 import subprocess
 import sys
 import time
@@ -16,6 +17,7 @@ import yaml
 from intelligent_demand.evaluation.splits import load_splits
 from intelligent_demand.experiments.config import identity, load_experiment_config
 from intelligent_demand.experiments.engine import execute_validation, provenance
+from intelligent_demand.experiments.ownership import CaseLock
 from intelligent_demand.experiments.preparation import PreparedSource
 from intelligent_demand.experiments.registry import ExperimentRegistry, atomic_json, file_digest
 from intelligent_demand.models.baselines import BASELINES, baseline_registry
@@ -73,6 +75,16 @@ def experiment_models(phase):
 
 
 def worker(phase, dataset, fold_number, method):
+    if (phase not in ("3b", "3c", "3d") or dataset not in ("store_item", "m5")
+            or type(fold_number) is not int or not 1 <= fold_number <= 4
+            or not isinstance(method, str) or not re.fullmatch(r"[a-z0-9_]{1,128}", method)):
+        raise ValueError("Invalid validation worker case")
+    path = OUTPUT / "worker_locks" / f"{phase}_{dataset}_{fold_number}_{method}.json"
+    with CaseLock(path):
+        return _worker_owned(phase, dataset, fold_number, method)
+
+
+def _worker_owned(phase, dataset, fold_number, method):
     if phase in ("3c", "3d"):
         from intelligent_demand.experiments.gates import require_gate
 

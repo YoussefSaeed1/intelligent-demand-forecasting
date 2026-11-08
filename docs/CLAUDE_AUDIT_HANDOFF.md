@@ -8,8 +8,11 @@ or treat this internal remediation as an independent scientific sign-off.
 Intelligent Demand Forecasting & Inventory Optimisation, Cairo University
 Postgraduate Diploma in Data Science. Original Phase 4 checkpoint:
 `54a689b7cb07970556bbf2fc164adf934307eab8` (58 files).
-The later remediation commit is discoverable with `git log -1 --format=fuller`;
-its intended message is `fix: remediate post-phase4 audit findings`.
+The initial remediation commit is
+`b9ff00d20460b6e91dcec28947d55b461ce71e59`, with message
+`fix: remediate post-phase4 audit findings`. The final legacy-worker ownership
+follow-up is discoverable with `git log -1 --format=fuller`; its message is
+`fix: extend exclusive ownership to validation workers`.
 History was not rewritten. No remote push or Claude invocation was performed.
 
 Start with the unchanged [internal audit](CODEX_INTERNAL_AUDIT_PHASES_0_4.md), then
@@ -43,7 +46,7 @@ All paths below are relative to the project root; the backup preserves them.
 | Frozen scientific report and figures | `reports/forecasting/PHASE4_FORECASTING_REPORT.html`, `reports/figures/phase4/` |
 | Internal audit reproductions | `reports/internal_audit/`, especially `independent_metrics.json`, model/protocol tests and data controls |
 | Remediation numerical evidence | `reports/post_audit/independent_metrics.json`, `sampling_diagnostics.json`, `selected_feature_availability.json` |
-| Remediation verification/quality | `reports/post_audit/final_preserved_evidence_verification.json`, `relocated_backup_verification.json`, `relocation_probe.json`, `quality_checks.json` |
+| Remediation verification/quality | `reports/post_audit/final_preserved_evidence_verification.json`, `relocated_backup_verification.json`, `relocation_probe.json`, `all_worker_quality_checks.json` |
 | Backup receipt/tool | `reports/preservation/phase4_local_backup_verified.json`; `src/intelligent_demand/preservation/backup.py` |
 | New safeguards | `experiments/ownership.py`, edited canonical writer/Store adapter/final entry; `tests/test_post_audit_*`, `test_evidence_*` |
 
@@ -78,7 +81,7 @@ From the project root with its existing environment:
 
 ```powershell
 git status --short --branch
-git log -2 --oneline
+git log -3 --oneline
 .venv\Scripts\python.exe -m pip check
 .venv\Scripts\python.exe -m ruff check . --no-cache
 .venv\Scripts\python.exe -m pytest -q -p no:cacheprovider --basetemp artifacts/test_runs/NEW_UNIQUE_CLAUDE_REVIEW

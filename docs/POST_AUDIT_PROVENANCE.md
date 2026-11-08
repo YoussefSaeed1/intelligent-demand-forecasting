@@ -14,27 +14,29 @@ rejects the modified checkout. We did not weaken that verifier or update the fre
 to make new code appear old. Closed final worker/forecast/assessment commands now
 also refuse access before creating jobs or reaching fitting/scoring paths.
 
-The forward-looking corrections change three existing source files:
+The forward-looking corrections change five existing source files:
 
 - `ingestion/store_item.py`: duplicate keys use canonical calendar dates.
 - `validation/quality.py`: normalized canonical keys are checked across all batches
   with a bounded-cache, disk-backed unique index, before publication.
 - `tuning/final.py`: exclusive case ownership and early closed-assessment refusal.
+- `experiments/benchmark.py` and `tuning/runner.py`: the same ownership guard before
+  legacy validation-case preparation and job-pointer creation.
 
-Three current documentation/ignore files also change. The six exact original files
+Three current documentation/ignore files also change. The eight exact original files
 are preserved in `reports/post_audit/original_source/`. Original scientific code is
 additionally unchanged in `artifacts/experiments/phase4/code_snapshot/` and the
 verified local backup. Scoped Git attributes retain original text bytes on checkout.
 
 `reports/post_audit/baseline.json` records the state before remediation.
-`reports/post_audit/remediation_overlay.json` lists only the six reviewed old/new
+`reports/post_audit/remediation_overlay.json` lists only the eight reviewed old/new
 hashes and the exact preserved original copies. This is a change receipt, not
 permission for another final execution. New modules/tests are separate additions.
 
 The historical inventory contains 4,592 entries. **4,590 original live inventory
 paths remain unchanged**. Its two current metadata paths, `README.md` and
 `.gitignore`, now have forward-facing updates; their exact inventoried bytes remain
-in the verified backup and archived originals. The three changed runtime source
+in the verified backup and archived originals. The five changed runtime source
 files are checked against their original immutable snapshots and archived copies.
 No original scientific evidence is silently substituted with a current version.
 

@@ -45,7 +45,7 @@ Temporary key files are cleaned; no original canonical dataset is rebuilt.
 
 The original final worker had a check-then-create race before its job pointer was
 written. Atomic JSON replacement did not own the complete case. The corrected
-public entry uses an exclusive filesystem-created lock, random execution token,
+public entries use an exclusive filesystem-created lock, random execution token,
 PID and process creation time. Cleanup verifies ownership. A dead owner is never
 automatically taken over; explicit token-matched recovery proves original-process
 exit and archives the old lock. Alive/uncertain owners are refused. This works
@@ -53,21 +53,27 @@ across Windows processes and does not rely on a threading lock.
 
 Final worker, forecast and assessment entry points now check the closed ledger
 before reaching jobs, models or scoring. Original `ExperimentRegistry` attempt
-ownership remains intact; validation jobs already use exclusive publication and
-registry attempt locks. Controller locks and per-case ownership serve different
-purposes. No real experiment worker was run to test these changes.
+ownership remains intact. Final inspection additionally reproduced two concurrent
+preparation entries in archived Phase 3 and Phase 4 validation workers, without
+source or model access. Their public entries now acquire the same per-case lock
+before preparation or pointer creation. Controller locks, case locks and registry
+attempt locks serve different purposes. No real experiment worker ran to test this.
 
 ## Regression coverage and actual validation
 
-New regression coverage comprises 44 tests for backup safety, canonical date/key
+New regression coverage comprises 46 tests for backup safety, canonical date/key
 normalisation, duplicate joins, invalid/timezone dates, valid-source preservation,
 cross-process ownership, interruption, dead/live/uncertain owners, repeated calls,
 sealed assessment guards and evidence relocation/traversal/hash checks.
 
-The first complete post-fix suite passed 395 tests in 50.20 seconds. The final suite
-adds the explicit duplicate-report diagnostic regression: **396 tests passed in
-57.75 seconds**. Ruff and `pip check` passed. Exact commands and outcomes are recorded in
-`reports/post_audit/quality_checks.json`. No original test was removed or weakened.
+The first complete post-fix suite passed 395 tests in 50.20 seconds. The next suite
+added the explicit duplicate-report diagnostic regression: 396 tests passed in
+57.75 seconds. Two further legacy-worker ownership regressions were then added.
+The final complete suite passed **398 tests in 49.62 seconds**; Ruff and pip check
+also passed. Final results and exact commands are recorded in
+`reports/post_audit/all_worker_quality_checks.json`. No original test was removed or weakened. The initial remediation commit
+`b9ff00d20460b6e91dcec28947d55b461ce71e59` remains in history; the legacy-worker
+follow-up is a separate commit, without amendment or rewrite.
 The audit's historical race counterexample is reproduced against archived code;
 the corrected worker is tested separately for rejection of the competing owner.
 
@@ -86,11 +92,11 @@ The original ledger remains twelve events with file SHA-256
 All original predictions, final actuals, score files, registries and 89 immutable
 source snapshots remain byte-identical. All nine raw/canonical fingerprints match.
 
-The pre-change baseline and six explicit old/new source/document overlays preserve
+The pre-change baseline and eight explicit old/new source/document overlays preserve
 the provenance of safe current edits. Among the 4,592 inventoried paths, the only
 updated live metadata are README and `.gitignore`; their exact old bytes remain
 archived and in backup. All other original inventory paths remain unchanged.
-Original source snapshots additionally retain the three edited source files.
+Original source snapshots additionally retain the five edited source files.
 See [provenance details](POST_AUDIT_PROVENANCE.md) for the distinction between
 historical evidence verification and current-code execution checks. The original
 strict frozen runtime verifier was not relaxed and does not certify changed code.
@@ -160,6 +166,7 @@ Run from the project root using `.venv/Scripts/python.exe`:
 .venv\Scripts\python.exe -m pytest -q -p no:cacheprovider --basetemp artifacts/test_runs/NEW_UNIQUE_REMEDIATION_RUN
 .venv\Scripts\python.exe -m intelligent_demand.preservation.verify --workspace-root . --overlay reports/post_audit/remediation_overlay.json
 .venv\Scripts\python.exe -m intelligent_demand.preservation.verify --workspace-root . --overlay reports/post_audit/remediation_overlay.json --inventory-root C:\Project_Backups\Demand_Forecasting_Phase4_Evidence_verified_20261108
+.venv\Scripts\python.exe reports/post_audit/reproduce_legacy_workers.py --receipt reports/post_audit/NEW_LEGACY_REPRODUCTION.json
 ```
 
 To create a further backup, choose a **new** destination and new receipt path:

@@ -20,6 +20,8 @@ ALLOWED = {
     "src/intelligent_demand/ingestion/store_item.py",
     "src/intelligent_demand/validation/quality.py",
     "src/intelligent_demand/tuning/final.py",
+    "src/intelligent_demand/experiments/benchmark.py",
+    "src/intelligent_demand/tuning/runner.py",
     ".gitignore", "README.md", "docs/ACADEMIC_REQUIREMENTS.md",
 }
 

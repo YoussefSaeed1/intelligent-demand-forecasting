@@ -19,6 +19,12 @@
       "original_sha256": "399915ebdd3f7aa7df72f970c7c84cfa92761e84ff83aa711c3c804189b7448b",
       "type": "current_documentation_or_ignore_rules"
     },
+    "src/intelligent_demand/experiments/benchmark.py": {
+      "current_sha256": "4b3b6a86097391ca09f8467d2500339c17fd2cbdec1426653fd38ed46837e7cb",
+      "original_copy": "reports/post_audit/original_source/src/intelligent_demand/experiments/benchmark.py",
+      "original_sha256": "eca9ee54835216a95a8b57702b61b00b8687705c701719ba60dbbfd12d6fc4dd",
+      "type": "forward_code"
+    },
     "src/intelligent_demand/ingestion/store_item.py": {
       "current_sha256": "6717e4e8f4067c0dcc471aa7459a8a8c00c4ae699c10e9d4d871779ccd00fa86",
       "original_copy": "reports/post_audit/original_source/src/intelligent_demand/ingestion/store_item.py",
@@ -29,6 +35,12 @@
       "current_sha256": "05211c356cde208287b04bf8bd5ddbf9a982e9894fba90ecf9e69b0154ba798c",
       "original_copy": "reports/post_audit/original_source/src/intelligent_demand/tuning/final.py",
       "original_sha256": "acf9e9059118ccd022d84a9ce3205b38823bc8d1b3c72cb8c0eaba180c64a9fc",
+      "type": "forward_code"
+    },
+    "src/intelligent_demand/tuning/runner.py": {
+      "current_sha256": "272f3dd68a5d8cf174dd53876b8fd2d5829e3fd274d285afbabb1c8fc4ada733",
+      "original_copy": "reports/post_audit/original_source/src/intelligent_demand/tuning/runner.py",
+      "original_sha256": "972159e211728390dd5bb0231322eccb6ccaf813aefd7ab6926ae69022badc65",
       "type": "forward_code"
     },
     "src/intelligent_demand/validation/quality.py": {
