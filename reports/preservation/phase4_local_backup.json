@@ -1,0 +1,19 @@
+{
+  "backup_kind": "LOCAL BACKUP ON THE SAME DEVICE; not independent off-device backup",
+  "completed_at_utc": "2026-11-08T13:21:51.482367+00:00",
+  "created_at_utc": "2026-11-08T13:21:51.481876+00:00",
+  "destination": "C:/Project_Backups/Demand_Forecasting_Phase4_Evidence",
+  "error_type": "FileExistsError",
+  "files": [],
+  "free_bytes_before": 264924442624,
+  "inventory_bytes": 5233386883,
+  "inventory_files": 4592,
+  "inventory_sha256": "0b1de21020f2e1d2ceaeddd10845fd723a2f6f8e75161d15fa7efb9c29f5e1ee",
+  "mismatched": [],
+  "missing": [],
+  "originals_deleted_moved_or_rewritten": false,
+  "reserve_bytes": 1073741824,
+  "schema_version": 1,
+  "status": "failed",
+  "verified_files": 0
+}

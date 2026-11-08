@@ -1,0 +1,55 @@
+{
+  "verdict": "Ready for independent audit with limitations",
+  "phase5": "CONDITIONAL; mandatory external independent audit not yet performed",
+  "findings": {
+    "critical": 0,
+    "high": 0,
+    "medium": 6,
+    "low": 2,
+    "informational": 1
+  },
+  "original_tests": {
+    "passed": 352,
+    "seconds": 52.23
+  },
+  "new_audit_tests": {
+    "passed": 23,
+    "seconds": 5.05
+  },
+  "recomposition": {
+    "store_item": {
+      "rows": 913000,
+      "sales_units": 47704512,
+      "method": "Disjoint canonical EDA prefix + four canonical validation windows + original checksummed saved final actuals",
+      "canonical_final_targets_decoded": false
+    },
+    "m5": {
+      "rows": 59181090,
+      "sales_units": 66927173,
+      "method": "Disjoint canonical EDA prefix + four canonical validation windows + original checksummed saved final actuals",
+      "canonical_final_targets_decoded": false
+    }
+  },
+  "prediction_records": {
+    "phase3": 45296160,
+    "phase4": 45177440
+  },
+  "final_prediction_records": 3470880,
+  "model_fits_on_real_data": 0,
+  "canonical_final_target_reads": 0,
+  "final_forecasts_regenerated": 0,
+  "original_ledger_unchanged": true,
+  "ledger_sha256": "fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204",
+  "selection_sha256": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+  "original_inventory_files": 4592,
+  "original_implementation_files_changed": 0,
+  "git_commit_created": false,
+  "claude_invoked": false,
+  "new_audit_file_security_review": {
+    "text_files_scanned": 27,
+    "private_path_findings_after_redaction": 0,
+    "secret_pattern_findings": 0,
+    "redaction": "Project root redacted in new CLI evidence copy; original exact command output preserved in ignored artifacts only"
+  },
+  "scope_limitations": "Native library optimizer mathematics, clean environment reproduction, full/final replay, browser rendering and trusted historical chronology not independently verified"
+}

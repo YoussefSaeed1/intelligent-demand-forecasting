@@ -4,6 +4,7 @@ import argparse
 import json
 import logging
 import os
+import re
 import subprocess
 import sys
 import time
@@ -29,6 +30,7 @@ from intelligent_demand.evaluation.predictions import PredictionWriter
 from intelligent_demand.evaluation.scoring import score_predictions
 from intelligent_demand.experiments.benchmark import population, verify_sources
 from intelligent_demand.experiments.config import identity
+from intelligent_demand.experiments.ownership import CaseLock
 from intelligent_demand.experiments.registry import atomic_json, file_digest, utc_now
 from intelligent_demand.tuning.authority import (
     append_access,
@@ -80,6 +82,17 @@ def verify_forecast(record):
 
 
 def forecast_worker(dataset, trial_id):
+    # Fail before creating a lock/job or reading a model on the closed assessment.
+    assert_unopened()
+    if (dataset not in ("store_item", "m5") or not isinstance(trial_id, str)
+            or not re.fullmatch(r"[a-z0-9_]{1,128}", trial_id)):
+        raise ValueError("Invalid dataset or trial identifier")
+    lock = OUTPUT / "worker_locks" / f"{dataset}_{trial_id}.json"
+    with CaseLock(lock):
+        return _forecast_worker_owned(dataset, trial_id)
+
+
+def _forecast_worker_owned(dataset, trial_id):
     frozen = verify_frozen()
     if environment_versions() != frozen["package_versions"]:
         raise ValueError("Final environment differs from the pre-holdout freeze")
@@ -274,6 +287,7 @@ def forecast_lock():
 
 
 def forecast_all():
+    assert_unopened()
     with forecast_lock():
         _forecast_all()
 
@@ -573,6 +587,7 @@ def verify_pre_target_bundle():
 
 
 def assess_once():
+    assert_unopened()
     bundle = verify_pre_target_bundle()
     assert_unopened()
     publish_once(

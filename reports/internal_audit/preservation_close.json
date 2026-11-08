@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "all_original_inventory_files_still_match": 4592,
+  "original_evidence_bytes": 5233386883,
+  "report_relative_links_checked": 7,
+  "git_head": "54a689b7cb07970556bbf2fc164adf934307eab8",
+  "git_status": "## main\n?? docs/CODEX_INTERNAL_AUDIT_PHASES_0_4.md\n?? reports/internal_audit/",
+  "tracked_modifications": 0,
+  "staged_files": 0,
+  "seconds": 5.685412700004235,
+  "ruff": "passed",
+  "pip_check": "passed",
+  "implementation_changed": false,
+  "original_ledger_changed": false,
+  "audit_created_no_git_commit": true
+}

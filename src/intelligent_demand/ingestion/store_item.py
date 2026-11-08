@@ -31,10 +31,13 @@ def transform_store_item(raw: Path, writer: CanonicalWriter, report: dict) -> No
             dates = pd.to_datetime(chunk["date"], format="%Y-%m-%d", errors="coerce")
             if dates.isna().any() or chunk[["store", "item"]].isna().any().any():
                 issue(report, f"{filename}: invalid dates or missing identifiers")
-            keys = list(zip(chunk["store"], chunk["item"], chunk["date"], strict=True))
+            # Compare the same normalised day and identifiers that reach date32 output.
+            keys = list(zip(chunk["store"], chunk["item"], dates.dt.date, strict=True))
             for key in keys:
                 duplicate_count += key in seen
                 seen.add(key)
+            if duplicate_count:
+                issue(report, f"{filename}: duplicate canonical store/item/date keys")
             if dates.notna().any():
                 bounds = [dates.min().strftime("%Y-%m-%d"), dates.max().strftime("%Y-%m-%d")]
                 profile = report["profiles"][filename]

@@ -1,0 +1,1288 @@
+{
+  "status": "passed",
+  "final_outcomes_used": false,
+  "training_samples_modified": false,
+  "model_refits": 0,
+  "records": [
+    {
+      "fold": "1",
+      "origin": "2016-01-03",
+      "labels": 182940,
+      "all_sampled_labels_zero_series": 7225,
+      "all_sampled_zero_with_initial_positive_history": 7209,
+      "positive_label_count_distribution": {
+        "0": 7225,
+        "1": 7576,
+        "2": 5927,
+        "3": 4351,
+        "4": 2835,
+        "5": 1777,
+        "6": 799
+      },
+      "zero_labels": 125438,
+      "positive_labels": 57502,
+      "coverage": {
+        "store_id": {
+          "groups": 10,
+          "groups_with_positive_labels": 10,
+          "series_count_min": 3049,
+          "series_count_max": 3049,
+          "details": [
+            {
+              "store_id": "CA_1",
+              "series": 3049,
+              "all_sampled_zero": 538,
+              "positive_labels": 6592
+            },
+            {
+              "store_id": "CA_2",
+              "series": 3049,
+              "all_sampled_zero": 772,
+              "positive_labels": 5540
+            },
+            {
+              "store_id": "CA_3",
+              "series": 3049,
+              "all_sampled_zero": 446,
+              "positive_labels": 7367
+            },
+            {
+              "store_id": "CA_4",
+              "series": 3049,
+              "all_sampled_zero": 865,
+              "positive_labels": 4990
+            },
+            {
+              "store_id": "TX_1",
+              "series": 3049,
+              "all_sampled_zero": 824,
+              "positive_labels": 5344
+            },
+            {
+              "store_id": "TX_2",
+              "series": 3049,
+              "all_sampled_zero": 650,
+              "positive_labels": 5986
+            },
+            {
+              "store_id": "TX_3",
+              "series": 3049,
+              "all_sampled_zero": 809,
+              "positive_labels": 5394
+            },
+            {
+              "store_id": "WI_1",
+              "series": 3049,
+              "all_sampled_zero": 707,
+              "positive_labels": 5596
+            },
+            {
+              "store_id": "WI_2",
+              "series": 3049,
+              "all_sampled_zero": 796,
+              "positive_labels": 5309
+            },
+            {
+              "store_id": "WI_3",
+              "series": 3049,
+              "all_sampled_zero": 818,
+              "positive_labels": 5384
+            }
+          ]
+        },
+        "item_id": {
+          "groups": 3049,
+          "groups_with_positive_labels": 3042,
+          "series_count_min": 10,
+          "series_count_max": 10
+        },
+        "dept_id": {
+          "groups": 7,
+          "groups_with_positive_labels": 7,
+          "series_count_min": 1490,
+          "series_count_max": 8230,
+          "details": [
+            {
+              "dept_id": "FOODS_1",
+              "series": 2160,
+              "all_sampled_zero": 345,
+              "positive_labels": 4732
+            },
+            {
+              "dept_id": "FOODS_2",
+              "series": 3980,
+              "all_sampled_zero": 942,
+              "positive_labels": 7370
+            },
+            {
+              "dept_id": "FOODS_3",
+              "series": 8230,
+              "all_sampled_zero": 1194,
+              "positive_labels": 20148
+            },
+            {
+              "dept_id": "HOBBIES_1",
+              "series": 4160,
+              "all_sampled_zero": 1177,
+              "positive_labels": 6626
+            },
+            {
+              "dept_id": "HOBBIES_2",
+              "series": 1490,
+              "all_sampled_zero": 774,
+              "positive_labels": 1059
+            },
+            {
+              "dept_id": "HOUSEHOLD_1",
+              "series": 5320,
+              "all_sampled_zero": 917,
+              "positive_labels": 11558
+            },
+            {
+              "dept_id": "HOUSEHOLD_2",
+              "series": 5150,
+              "all_sampled_zero": 1876,
+              "positive_labels": 6009
+            }
+          ]
+        },
+        "cat_id": {
+          "groups": 3,
+          "groups_with_positive_labels": 3,
+          "series_count_min": 5650,
+          "series_count_max": 14370,
+          "details": [
+            {
+              "cat_id": "FOODS",
+              "series": 14370,
+              "all_sampled_zero": 2481,
+              "positive_labels": 32250
+            },
+            {
+              "cat_id": "HOBBIES",
+              "series": 5650,
+              "all_sampled_zero": 1951,
+              "positive_labels": 7685
+            },
+            {
+              "cat_id": "HOUSEHOLD",
+              "series": 10470,
+              "all_sampled_zero": 2793,
+              "positive_labels": 17567
+            }
+          ]
+        },
+        "state_id": {
+          "groups": 3,
+          "groups_with_positive_labels": 3,
+          "series_count_min": 9147,
+          "series_count_max": 12196,
+          "details": [
+            {
+              "state_id": "CA",
+              "series": 12196,
+              "all_sampled_zero": 2621,
+              "positive_labels": 24489
+            },
+            {
+              "state_id": "TX",
+              "series": 9147,
+              "all_sampled_zero": 2283,
+              "positive_labels": 16724
+            },
+            {
+              "state_id": "WI",
+              "series": 9147,
+              "all_sampled_zero": 2321,
+              "positive_labels": 16289
+            }
+          ]
+        },
+        "pattern": {
+          "groups": 6,
+          "groups_with_positive_labels": 5,
+          "series_count_min": 5,
+          "series_count_max": 23044,
+          "details": [
+            {
+              "pattern": "all_zero",
+              "series": 16,
+              "all_sampled_zero": 16,
+              "positive_labels": 0
+            },
+            {
+              "pattern": "erratic",
+              "series": 489,
+              "all_sampled_zero": 0,
+              "positive_labels": 2428
+            },
+            {
+              "pattern": "insufficient_positive_history",
+              "series": 5,
+              "all_sampled_zero": 4,
+              "positive_labels": 1
+            },
+            {
+              "pattern": "intermittent",
+              "series": 23044,
+              "all_sampled_zero": 6451,
+              "positive_labels": 36032
+            },
+            {
+              "pattern": "lumpy",
+              "series": 5953,
+              "all_sampled_zero": 754,
+              "positive_labels": 13996
+            },
+            {
+              "pattern": "smooth",
+              "series": 983,
+              "all_sampled_zero": 0,
+              "positive_labels": 5045
+            }
+          ]
+        }
+      },
+      "sampled_time_index_min": 56,
+      "sampled_time_index_max": 1800,
+      "seed": 42,
+      "validation_only_error_comparison": {
+        "all_sampled_zero": {
+          "series": 7225,
+          "rf_macro_mae": 0.4526816531591108,
+          "ma28_macro_mae": 0.4411362191935598,
+          "rf_minus_ma28_mae": 0.011545433965551022,
+          "rf_lower_mae_series": 2564
+        },
+        "sampled_positive": {
+          "series": 23265,
+          "rf_macro_mae": 1.168254588536909,
+          "ma28_macro_mae": 1.1931492519638416,
+          "rf_minus_ma28_mae": -0.024894663426932473,
+          "rf_lower_mae_series": 12126
+        }
+      }
+    },
+    {
+      "fold": "2",
+      "origin": "2016-01-31",
+      "labels": 182940,
+      "all_sampled_labels_zero_series": 7179,
+      "all_sampled_zero_with_initial_positive_history": 7163,
+      "positive_label_count_distribution": {
+        "0": 7179,
+        "1": 7603,
+        "2": 5876,
+        "3": 4252,
+        "4": 2978,
+        "5": 1799,
+        "6": 803
+      },
+      "zero_labels": 125104,
+      "positive_labels": 57836,
+      "coverage": {
+        "store_id": {
+          "groups": 10,
+          "groups_with_positive_labels": 10,
+          "series_count_min": 3049,
+          "series_count_max": 3049,
+          "details": [
+            {
+              "store_id": "CA_1",
+              "series": 3049,
+              "all_sampled_zero": 535,
+              "positive_labels": 6656
+            },
+            {
+              "store_id": "CA_2",
+              "series": 3049,
+              "all_sampled_zero": 777,
+              "positive_labels": 5569
+            },
+            {
+              "store_id": "CA_3",
+              "series": 3049,
+              "all_sampled_zero": 451,
+              "positive_labels": 7445
+            },
+            {
+              "store_id": "CA_4",
+              "series": 3049,
+              "all_sampled_zero": 836,
+              "positive_labels": 5036
+            },
+            {
+              "store_id": "TX_1",
+              "series": 3049,
+              "all_sampled_zero": 846,
+              "positive_labels": 5278
+            },
+            {
+              "store_id": "TX_2",
+              "series": 3049,
+              "all_sampled_zero": 661,
+              "positive_labels": 6051
+            },
+            {
+              "store_id": "TX_3",
+              "series": 3049,
+              "all_sampled_zero": 741,
+              "positive_labels": 5591
+            },
+            {
+              "store_id": "WI_1",
+              "series": 3049,
+              "all_sampled_zero": 692,
+              "positive_labels": 5546
+            },
+            {
+              "store_id": "WI_2",
+              "series": 3049,
+              "all_sampled_zero": 804,
+              "positive_labels": 5308
+            },
+            {
+              "store_id": "WI_3",
+              "series": 3049,
+              "all_sampled_zero": 836,
+              "positive_labels": 5356
+            }
+          ]
+        },
+        "item_id": {
+          "groups": 3049,
+          "groups_with_positive_labels": 3036,
+          "series_count_min": 10,
+          "series_count_max": 10
+        },
+        "dept_id": {
+          "groups": 7,
+          "groups_with_positive_labels": 7,
+          "series_count_min": 1490,
+          "series_count_max": 8230,
+          "details": [
+            {
+              "dept_id": "FOODS_1",
+              "series": 2160,
+              "all_sampled_zero": 344,
+              "positive_labels": 4765
+            },
+            {
+              "dept_id": "FOODS_2",
+              "series": 3980,
+              "all_sampled_zero": 887,
+              "positive_labels": 7475
+            },
+            {
+              "dept_id": "FOODS_3",
+              "series": 8230,
+              "all_sampled_zero": 1192,
+              "positive_labels": 20211
+            },
+            {
+              "dept_id": "HOBBIES_1",
+              "series": 4160,
+              "all_sampled_zero": 1173,
+              "positive_labels": 6627
+            },
+            {
+              "dept_id": "HOBBIES_2",
+              "series": 1490,
+              "all_sampled_zero": 792,
+              "positive_labels": 991
+            },
+            {
+              "dept_id": "HOUSEHOLD_1",
+              "series": 5320,
+              "all_sampled_zero": 899,
+              "positive_labels": 11720
+            },
+            {
+              "dept_id": "HOUSEHOLD_2",
+              "series": 5150,
+              "all_sampled_zero": 1892,
+              "positive_labels": 6047
+            }
+          ]
+        },
+        "cat_id": {
+          "groups": 3,
+          "groups_with_positive_labels": 3,
+          "series_count_min": 5650,
+          "series_count_max": 14370,
+          "details": [
+            {
+              "cat_id": "FOODS",
+              "series": 14370,
+              "all_sampled_zero": 2423,
+              "positive_labels": 32451
+            },
+            {
+              "cat_id": "HOBBIES",
+              "series": 5650,
+              "all_sampled_zero": 1965,
+              "positive_labels": 7618
+            },
+            {
+              "cat_id": "HOUSEHOLD",
+              "series": 10470,
+              "all_sampled_zero": 2791,
+              "positive_labels": 17767
+            }
+          ]
+        },
+        "state_id": {
+          "groups": 3,
+          "groups_with_positive_labels": 3,
+          "series_count_min": 9147,
+          "series_count_max": 12196,
+          "details": [
+            {
+              "state_id": "CA",
+              "series": 12196,
+              "all_sampled_zero": 2599,
+              "positive_labels": 24706
+            },
+            {
+              "state_id": "TX",
+              "series": 9147,
+              "all_sampled_zero": 2248,
+              "positive_labels": 16920
+            },
+            {
+              "state_id": "WI",
+              "series": 9147,
+              "all_sampled_zero": 2332,
+              "positive_labels": 16210
+            }
+          ]
+        },
+        "pattern": {
+          "groups": 6,
+          "groups_with_positive_labels": 4,
+          "series_count_min": 5,
+          "series_count_max": 23044,
+          "details": [
+            {
+              "pattern": "all_zero",
+              "series": 16,
+              "all_sampled_zero": 16,
+              "positive_labels": 0
+            },
+            {
+              "pattern": "erratic",
+              "series": 489,
+              "all_sampled_zero": 0,
+              "positive_labels": 2425
+            },
+            {
+              "pattern": "insufficient_positive_history",
+              "series": 5,
+              "all_sampled_zero": 5,
+              "positive_labels": 0
+            },
+            {
+              "pattern": "intermittent",
+              "series": 23044,
+              "all_sampled_zero": 6379,
+              "positive_labels": 36211
+            },
+            {
+              "pattern": "lumpy",
+              "series": 5953,
+              "all_sampled_zero": 779,
+              "positive_labels": 14118
+            },
+            {
+              "pattern": "smooth",
+              "series": 983,
+              "all_sampled_zero": 0,
+              "positive_labels": 5082
+            }
+          ]
+        }
+      },
+      "sampled_time_index_min": 56,
+      "sampled_time_index_max": 1828,
+      "seed": 42,
+      "validation_only_error_comparison": {
+        "all_sampled_zero": {
+          "series": 7179,
+          "rf_macro_mae": 0.46838885398086394,
+          "ma28_macro_mae": 0.4535450619863491,
+          "rf_minus_ma28_mae": 0.014843791994514854,
+          "rf_lower_mae_series": 2350
+        },
+        "sampled_positive": {
+          "series": 23311,
+          "rf_macro_mae": 1.1892461454318142,
+          "ma28_macro_mae": 1.2118197242433502,
+          "rf_minus_ma28_mae": -0.022573578811535988,
+          "rf_lower_mae_series": 11911
+        }
+      }
+    },
+    {
+      "fold": "3",
+      "origin": "2016-02-28",
+      "labels": 182940,
+      "all_sampled_labels_zero_series": 7166,
+      "all_sampled_zero_with_initial_positive_history": 7150,
+      "positive_label_count_distribution": {
+        "0": 7166,
+        "1": 7504,
+        "2": 5930,
+        "3": 4328,
+        "4": 2923,
+        "5": 1752,
+        "6": 887
+      },
+      "zero_labels": 124818,
+      "positive_labels": 58122,
+      "coverage": {
+        "store_id": {
+          "groups": 10,
+          "groups_with_positive_labels": 10,
+          "series_count_min": 3049,
+          "series_count_max": 3049,
+          "details": [
+            {
+              "store_id": "CA_1",
+              "series": 3049,
+              "all_sampled_zero": 570,
+              "positive_labels": 6632
+            },
+            {
+              "store_id": "CA_2",
+              "series": 3049,
+              "all_sampled_zero": 799,
+              "positive_labels": 5515
+            },
+            {
+              "store_id": "CA_3",
+              "series": 3049,
+              "all_sampled_zero": 456,
+              "positive_labels": 7433
+            },
+            {
+              "store_id": "CA_4",
+              "series": 3049,
+              "all_sampled_zero": 857,
+              "positive_labels": 5078
+            },
+            {
+              "store_id": "TX_1",
+              "series": 3049,
+              "all_sampled_zero": 828,
+              "positive_labels": 5331
+            },
+            {
+              "store_id": "TX_2",
+              "series": 3049,
+              "all_sampled_zero": 608,
+              "positive_labels": 6206
+            },
+            {
+              "store_id": "TX_3",
+              "series": 3049,
+              "all_sampled_zero": 777,
+              "positive_labels": 5441
+            },
+            {
+              "store_id": "WI_1",
+              "series": 3049,
+              "all_sampled_zero": 684,
+              "positive_labels": 5687
+            },
+            {
+              "store_id": "WI_2",
+              "series": 3049,
+              "all_sampled_zero": 776,
+              "positive_labels": 5411
+            },
+            {
+              "store_id": "WI_3",
+              "series": 3049,
+              "all_sampled_zero": 811,
+              "positive_labels": 5388
+            }
+          ]
+        },
+        "item_id": {
+          "groups": 3049,
+          "groups_with_positive_labels": 3038,
+          "series_count_min": 10,
+          "series_count_max": 10
+        },
+        "dept_id": {
+          "groups": 7,
+          "groups_with_positive_labels": 7,
+          "series_count_min": 1490,
+          "series_count_max": 8230,
+          "details": [
+            {
+              "dept_id": "FOODS_1",
+              "series": 2160,
+              "all_sampled_zero": 347,
+              "positive_labels": 4707
+            },
+            {
+              "dept_id": "FOODS_2",
+              "series": 3980,
+              "all_sampled_zero": 926,
+              "positive_labels": 7552
+            },
+            {
+              "dept_id": "FOODS_3",
+              "series": 8230,
+              "all_sampled_zero": 1135,
+              "positive_labels": 20372
+            },
+            {
+              "dept_id": "HOBBIES_1",
+              "series": 4160,
+              "all_sampled_zero": 1166,
+              "positive_labels": 6723
+            },
+            {
+              "dept_id": "HOBBIES_2",
+              "series": 1490,
+              "all_sampled_zero": 773,
+              "positive_labels": 1050
+            },
+            {
+              "dept_id": "HOUSEHOLD_1",
+              "series": 5320,
+              "all_sampled_zero": 883,
+              "positive_labels": 11771
+            },
+            {
+              "dept_id": "HOUSEHOLD_2",
+              "series": 5150,
+              "all_sampled_zero": 1936,
+              "positive_labels": 5947
+            }
+          ]
+        },
+        "cat_id": {
+          "groups": 3,
+          "groups_with_positive_labels": 3,
+          "series_count_min": 5650,
+          "series_count_max": 14370,
+          "details": [
+            {
+              "cat_id": "FOODS",
+              "series": 14370,
+              "all_sampled_zero": 2408,
+              "positive_labels": 32631
+            },
+            {
+              "cat_id": "HOBBIES",
+              "series": 5650,
+              "all_sampled_zero": 1939,
+              "positive_labels": 7773
+            },
+            {
+              "cat_id": "HOUSEHOLD",
+              "series": 10470,
+              "all_sampled_zero": 2819,
+              "positive_labels": 17718
+            }
+          ]
+        },
+        "state_id": {
+          "groups": 3,
+          "groups_with_positive_labels": 3,
+          "series_count_min": 9147,
+          "series_count_max": 12196,
+          "details": [
+            {
+              "state_id": "CA",
+              "series": 12196,
+              "all_sampled_zero": 2682,
+              "positive_labels": 24658
+            },
+            {
+              "state_id": "TX",
+              "series": 9147,
+              "all_sampled_zero": 2213,
+              "positive_labels": 16978
+            },
+            {
+              "state_id": "WI",
+              "series": 9147,
+              "all_sampled_zero": 2271,
+              "positive_labels": 16486
+            }
+          ]
+        },
+        "pattern": {
+          "groups": 6,
+          "groups_with_positive_labels": 5,
+          "series_count_min": 5,
+          "series_count_max": 23044,
+          "details": [
+            {
+              "pattern": "all_zero",
+              "series": 16,
+              "all_sampled_zero": 16,
+              "positive_labels": 0
+            },
+            {
+              "pattern": "erratic",
+              "series": 489,
+              "all_sampled_zero": 0,
+              "positive_labels": 2473
+            },
+            {
+              "pattern": "insufficient_positive_history",
+              "series": 5,
+              "all_sampled_zero": 4,
+              "positive_labels": 1
+            },
+            {
+              "pattern": "intermittent",
+              "series": 23044,
+              "all_sampled_zero": 6357,
+              "positive_labels": 36446
+            },
+            {
+              "pattern": "lumpy",
+              "series": 5953,
+              "all_sampled_zero": 789,
+              "positive_labels": 14086
+            },
+            {
+              "pattern": "smooth",
+              "series": 983,
+              "all_sampled_zero": 0,
+              "positive_labels": 5116
+            }
+          ]
+        }
+      },
+      "sampled_time_index_min": 56,
+      "sampled_time_index_max": 1856,
+      "seed": 42,
+      "validation_only_error_comparison": {
+        "all_sampled_zero": {
+          "series": 7166,
+          "rf_macro_mae": 0.48053578254197515,
+          "ma28_macro_mae": 0.4683326023683266,
+          "rf_minus_ma28_mae": 0.012203180173648576,
+          "rf_lower_mae_series": 2744
+        },
+        "sampled_positive": {
+          "series": 23324,
+          "rf_macro_mae": 1.2047946934459601,
+          "ma28_macro_mae": 1.2231594897434193,
+          "rf_minus_ma28_mae": -0.01836479629745913,
+          "rf_lower_mae_series": 12151
+        }
+      }
+    },
+    {
+      "fold": "4",
+      "origin": "2016-03-27",
+      "labels": 182940,
+      "all_sampled_labels_zero_series": 6976,
+      "all_sampled_zero_with_initial_positive_history": 6961,
+      "positive_label_count_distribution": {
+        "0": 6976,
+        "1": 7631,
+        "2": 5859,
+        "3": 4325,
+        "4": 3054,
+        "5": 1784,
+        "6": 861
+      },
+      "zero_labels": 124314,
+      "positive_labels": 58626,
+      "coverage": {
+        "store_id": {
+          "groups": 10,
+          "groups_with_positive_labels": 10,
+          "series_count_min": 3049,
+          "series_count_max": 3049,
+          "details": [
+            {
+              "store_id": "CA_1",
+              "series": 3049,
+              "all_sampled_zero": 579,
+              "positive_labels": 6490
+            },
+            {
+              "store_id": "CA_2",
+              "series": 3049,
+              "all_sampled_zero": 711,
+              "positive_labels": 5761
+            },
+            {
+              "store_id": "CA_3",
+              "series": 3049,
+              "all_sampled_zero": 455,
+              "positive_labels": 7473
+            },
+            {
+              "store_id": "CA_4",
+              "series": 3049,
+              "all_sampled_zero": 854,
+              "positive_labels": 5085
+            },
+            {
+              "store_id": "TX_1",
+              "series": 3049,
+              "all_sampled_zero": 815,
+              "positive_labels": 5390
+            },
+            {
+              "store_id": "TX_2",
+              "series": 3049,
+              "all_sampled_zero": 594,
+              "positive_labels": 6275
+            },
+            {
+              "store_id": "TX_3",
+              "series": 3049,
+              "all_sampled_zero": 763,
+              "positive_labels": 5495
+            },
+            {
+              "store_id": "WI_1",
+              "series": 3049,
+              "all_sampled_zero": 614,
+              "positive_labels": 5846
+            },
+            {
+              "store_id": "WI_2",
+              "series": 3049,
+              "all_sampled_zero": 781,
+              "positive_labels": 5373
+            },
+            {
+              "store_id": "WI_3",
+              "series": 3049,
+              "all_sampled_zero": 810,
+              "positive_labels": 5438
+            }
+          ]
+        },
+        "item_id": {
+          "groups": 3049,
+          "groups_with_positive_labels": 3045,
+          "series_count_min": 10,
+          "series_count_max": 10
+        },
+        "dept_id": {
+          "groups": 7,
+          "groups_with_positive_labels": 7,
+          "series_count_min": 1490,
+          "series_count_max": 8230,
+          "details": [
+            {
+              "dept_id": "FOODS_1",
+              "series": 2160,
+              "all_sampled_zero": 319,
+              "positive_labels": 4867
+            },
+            {
+              "dept_id": "FOODS_2",
+              "series": 3980,
+              "all_sampled_zero": 874,
+              "positive_labels": 7610
+            },
+            {
+              "dept_id": "FOODS_3",
+              "series": 8230,
+              "all_sampled_zero": 1136,
+              "positive_labels": 20479
+            },
+            {
+              "dept_id": "HOBBIES_1",
+              "series": 4160,
+              "all_sampled_zero": 1151,
+              "positive_labels": 6701
+            },
+            {
+              "dept_id": "HOBBIES_2",
+              "series": 1490,
+              "all_sampled_zero": 751,
+              "positive_labels": 1066
+            },
+            {
+              "dept_id": "HOUSEHOLD_1",
+              "series": 5320,
+              "all_sampled_zero": 849,
+              "positive_labels": 11910
+            },
+            {
+              "dept_id": "HOUSEHOLD_2",
+              "series": 5150,
+              "all_sampled_zero": 1896,
+              "positive_labels": 5993
+            }
+          ]
+        },
+        "cat_id": {
+          "groups": 3,
+          "groups_with_positive_labels": 3,
+          "series_count_min": 5650,
+          "series_count_max": 14370,
+          "details": [
+            {
+              "cat_id": "FOODS",
+              "series": 14370,
+              "all_sampled_zero": 2329,
+              "positive_labels": 32956
+            },
+            {
+              "cat_id": "HOBBIES",
+              "series": 5650,
+              "all_sampled_zero": 1902,
+              "positive_labels": 7767
+            },
+            {
+              "cat_id": "HOUSEHOLD",
+              "series": 10470,
+              "all_sampled_zero": 2745,
+              "positive_labels": 17903
+            }
+          ]
+        },
+        "state_id": {
+          "groups": 3,
+          "groups_with_positive_labels": 3,
+          "series_count_min": 9147,
+          "series_count_max": 12196,
+          "details": [
+            {
+              "state_id": "CA",
+              "series": 12196,
+              "all_sampled_zero": 2599,
+              "positive_labels": 24809
+            },
+            {
+              "state_id": "TX",
+              "series": 9147,
+              "all_sampled_zero": 2172,
+              "positive_labels": 17160
+            },
+            {
+              "state_id": "WI",
+              "series": 9147,
+              "all_sampled_zero": 2205,
+              "positive_labels": 16657
+            }
+          ]
+        },
+        "pattern": {
+          "groups": 6,
+          "groups_with_positive_labels": 5,
+          "series_count_min": 5,
+          "series_count_max": 23044,
+          "details": [
+            {
+              "pattern": "all_zero",
+              "series": 16,
+              "all_sampled_zero": 15,
+              "positive_labels": 1
+            },
+            {
+              "pattern": "erratic",
+              "series": 489,
+              "all_sampled_zero": 0,
+              "positive_labels": 2428
+            },
+            {
+              "pattern": "insufficient_positive_history",
+              "series": 5,
+              "all_sampled_zero": 5,
+              "positive_labels": 0
+            },
+            {
+              "pattern": "intermittent",
+              "series": 23044,
+              "all_sampled_zero": 6244,
+              "positive_labels": 36691
+            },
+            {
+              "pattern": "lumpy",
+              "series": 5953,
+              "all_sampled_zero": 712,
+              "positive_labels": 14379
+            },
+            {
+              "pattern": "smooth",
+              "series": 983,
+              "all_sampled_zero": 0,
+              "positive_labels": 5127
+            }
+          ]
+        }
+      },
+      "sampled_time_index_min": 56,
+      "sampled_time_index_max": 1884,
+      "seed": 42,
+      "validation_only_error_comparison": {
+        "all_sampled_zero": {
+          "series": 6976,
+          "rf_macro_mae": 0.4856236472408673,
+          "ma28_macro_mae": 0.4725512983289646,
+          "rf_minus_ma28_mae": 0.013072348911902731,
+          "rf_lower_mae_series": 2585
+        },
+        "sampled_positive": {
+          "series": 23514,
+          "rf_macro_mae": 1.1882435853026314,
+          "ma28_macro_mae": 1.209815298918751,
+          "rf_minus_ma28_mae": -0.021571713616119537,
+          "rf_lower_mae_series": 12596
+        }
+      }
+    },
+    {
+      "fold": "final_training_only",
+      "origin": "2016-04-24",
+      "labels": 182940,
+      "all_sampled_labels_zero_series": 6878,
+      "all_sampled_zero_with_initial_positive_history": 6864,
+      "positive_label_count_distribution": {
+        "0": 6878,
+        "1": 7508,
+        "2": 5998,
+        "3": 4437,
+        "4": 3004,
+        "5": 1853,
+        "6": 812
+      },
+      "zero_labels": 123972,
+      "positive_labels": 58968,
+      "coverage": {
+        "store_id": {
+          "groups": 10,
+          "groups_with_positive_labels": 10,
+          "series_count_min": 3049,
+          "series_count_max": 3049,
+          "details": [
+            {
+              "store_id": "CA_1",
+              "series": 3049,
+              "all_sampled_zero": 526,
+              "positive_labels": 6655
+            },
+            {
+              "store_id": "CA_2",
+              "series": 3049,
+              "all_sampled_zero": 701,
+              "positive_labels": 5676
+            },
+            {
+              "store_id": "CA_3",
+              "series": 3049,
+              "all_sampled_zero": 447,
+              "positive_labels": 7500
+            },
+            {
+              "store_id": "CA_4",
+              "series": 3049,
+              "all_sampled_zero": 856,
+              "positive_labels": 5182
+            },
+            {
+              "store_id": "TX_1",
+              "series": 3049,
+              "all_sampled_zero": 815,
+              "positive_labels": 5396
+            },
+            {
+              "store_id": "TX_2",
+              "series": 3049,
+              "all_sampled_zero": 586,
+              "positive_labels": 6232
+            },
+            {
+              "store_id": "TX_3",
+              "series": 3049,
+              "all_sampled_zero": 761,
+              "positive_labels": 5575
+            },
+            {
+              "store_id": "WI_1",
+              "series": 3049,
+              "all_sampled_zero": 639,
+              "positive_labels": 5795
+            },
+            {
+              "store_id": "WI_2",
+              "series": 3049,
+              "all_sampled_zero": 743,
+              "positive_labels": 5487
+            },
+            {
+              "store_id": "WI_3",
+              "series": 3049,
+              "all_sampled_zero": 804,
+              "positive_labels": 5470
+            }
+          ]
+        },
+        "item_id": {
+          "groups": 3049,
+          "groups_with_positive_labels": 3040,
+          "series_count_min": 10,
+          "series_count_max": 10
+        },
+        "dept_id": {
+          "groups": 7,
+          "groups_with_positive_labels": 7,
+          "series_count_min": 1490,
+          "series_count_max": 8230,
+          "details": [
+            {
+              "dept_id": "FOODS_1",
+              "series": 2160,
+              "all_sampled_zero": 323,
+              "positive_labels": 4817
+            },
+            {
+              "dept_id": "FOODS_2",
+              "series": 3980,
+              "all_sampled_zero": 872,
+              "positive_labels": 7648
+            },
+            {
+              "dept_id": "FOODS_3",
+              "series": 8230,
+              "all_sampled_zero": 1039,
+              "positive_labels": 20760
+            },
+            {
+              "dept_id": "HOBBIES_1",
+              "series": 4160,
+              "all_sampled_zero": 1165,
+              "positive_labels": 6687
+            },
+            {
+              "dept_id": "HOBBIES_2",
+              "series": 1490,
+              "all_sampled_zero": 763,
+              "positive_labels": 1068
+            },
+            {
+              "dept_id": "HOUSEHOLD_1",
+              "series": 5320,
+              "all_sampled_zero": 823,
+              "positive_labels": 11947
+            },
+            {
+              "dept_id": "HOUSEHOLD_2",
+              "series": 5150,
+              "all_sampled_zero": 1893,
+              "positive_labels": 6041
+            }
+          ]
+        },
+        "cat_id": {
+          "groups": 3,
+          "groups_with_positive_labels": 3,
+          "series_count_min": 5650,
+          "series_count_max": 14370,
+          "details": [
+            {
+              "cat_id": "FOODS",
+              "series": 14370,
+              "all_sampled_zero": 2234,
+              "positive_labels": 33225
+            },
+            {
+              "cat_id": "HOBBIES",
+              "series": 5650,
+              "all_sampled_zero": 1928,
+              "positive_labels": 7755
+            },
+            {
+              "cat_id": "HOUSEHOLD",
+              "series": 10470,
+              "all_sampled_zero": 2716,
+              "positive_labels": 17988
+            }
+          ]
+        },
+        "state_id": {
+          "groups": 3,
+          "groups_with_positive_labels": 3,
+          "series_count_min": 9147,
+          "series_count_max": 12196,
+          "details": [
+            {
+              "state_id": "CA",
+              "series": 12196,
+              "all_sampled_zero": 2530,
+              "positive_labels": 25013
+            },
+            {
+              "state_id": "TX",
+              "series": 9147,
+              "all_sampled_zero": 2162,
+              "positive_labels": 17203
+            },
+            {
+              "state_id": "WI",
+              "series": 9147,
+              "all_sampled_zero": 2186,
+              "positive_labels": 16752
+            }
+          ]
+        },
+        "pattern": {
+          "groups": 6,
+          "groups_with_positive_labels": 5,
+          "series_count_min": 5,
+          "series_count_max": 23044,
+          "details": [
+            {
+              "pattern": "all_zero",
+              "series": 16,
+              "all_sampled_zero": 14,
+              "positive_labels": 2
+            },
+            {
+              "pattern": "erratic",
+              "series": 489,
+              "all_sampled_zero": 0,
+              "positive_labels": 2432
+            },
+            {
+              "pattern": "insufficient_positive_history",
+              "series": 5,
+              "all_sampled_zero": 5,
+              "positive_labels": 0
+            },
+            {
+              "pattern": "intermittent",
+              "series": 23044,
+              "all_sampled_zero": 6145,
+              "positive_labels": 37196
+            },
+            {
+              "pattern": "lumpy",
+              "series": 5953,
+              "all_sampled_zero": 714,
+              "positive_labels": 14253
+            },
+            {
+              "pattern": "smooth",
+              "series": 983,
+              "all_sampled_zero": 0,
+              "positive_labels": 5085
+            }
+          ]
+        }
+      },
+      "sampled_time_index_min": 56,
+      "sampled_time_index_max": 1912,
+      "seed": 42
+    }
+  ],
+  "interpretation": "Complete membership is not complete positive-label supervision. Subgroup errors are descriptive validation diagnostics, not a replacement sampling search."
+}

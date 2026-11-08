@@ -1,0 +1,54 @@
+{
+  "selection": [
+    {
+      "dataset": "m5",
+      "independently_selected_trial_id": "m5_random_forest_02",
+      "primary_score": 1.0200669850841517,
+      "ties": 1
+    },
+    {
+      "dataset": "store_item",
+      "independently_selected_trial_id": "store_item_lightgbm_00",
+      "primary_score": 6.308039821969917,
+      "ties": 1
+    }
+  ],
+  "trial_registry_statuses": {
+    "completed": 108
+  },
+  "recorded_chronology": {
+    "plan_before_first_recorded_fit": true,
+    "freeze_before_all_final_fit_start": true,
+    "all_final_predictions_sealed_before_first_canonical_access": true
+  },
+  "chronology_limit": "Local unsigned wall-clock records and dirty source hashes; no independent historical timestamp or access attestation",
+  "absolute_settings_field_counts": {
+    "registry_directory": 108,
+    "split_manifest": 108
+  },
+  "resource_records": 108,
+  "resource_statuses": {
+    "completed": 108
+  },
+  "cumulative_worker_seconds": 2064.905347099877,
+  "peak_worker_mib": 1239.7109375,
+  "recorded_prior_attempts": 0,
+  "environment_declared_python": ">=3.11,<3.15",
+  "actual_python": "3.14.0",
+  "recorded_core_versions": {
+    "lightgbm": "4.6.0",
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "pyarrow": "26.0.1",
+    "python": "3.14.0",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.1",
+    "statsmodels": "0.15.0"
+  },
+  "extra_runtime_versions": {
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.8.0",
+    "psutil": "7.2.2",
+    "PyYAML": "6.0.3"
+  }
+}

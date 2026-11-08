@@ -1,0 +1,47 @@
+{
+  "backup": {
+    "bytes": 5233386883,
+    "destination": "C:/Project_Backups/Demand_Forecasting_Phase4_Evidence_verified_20261108",
+    "files": 4592,
+    "independent_off_device": false,
+    "mismatched": 0,
+    "missing": 0,
+    "same_device": true,
+    "status": "passed"
+  },
+  "claude": "not_invoked",
+  "documentation_relative_links_verified": 50,
+  "gate": "READY WITH LIMITATIONS for independent audit",
+  "ledger_events": 12,
+  "overlay_sha256": "64f2ec9ef73c12da105544affad4bd2d6009edae890aeef155237f47bd4885f6",
+  "phase5": "not_started",
+  "pip_check": {
+    "output": "No broken requirements found.",
+    "status": "passed"
+  },
+  "pytest": {
+    "command": ".venv/Scripts/python.exe -m pytest -q -p no:cacheprovider --basetemp artifacts/test_runs/post_audit_full_20261108_final",
+    "log_sha256": "13c35f261a61d85e84ec0554927c5d8c18bba39b4988136e6a1ba41dbfc6ba00",
+    "new_post_audit_regressions": 44,
+    "seconds": 57.75,
+    "tests": 396
+  },
+  "raw_canonical_files": 9,
+  "ruff": {
+    "command": ".venv/Scripts/python.exe -m ruff check . --no-cache",
+    "status": "passed"
+  },
+  "saved_snapshot_arithmetic": {
+    "canonical_final_reads": 0,
+    "final_saved_cases": 8,
+    "new_scoring_publications": 0,
+    "peak_working_set_bytes": 1044320256,
+    "seconds": 118.71208730000217,
+    "status": "passed",
+    "validation_runs": 332
+  },
+  "scientific_originals_preserved": true,
+  "source_snapshot_files": 89,
+  "status": "passed",
+  "worker_scientific_runs": 0
+}

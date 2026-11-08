@@ -1,0 +1,16 @@
+[
+  {
+    "dataset": "m5",
+    "logical_artifact": "artifacts/experiments/phase4/feature_cache/48572fa38eefaa236f0f6351f7397730391111681c008f5a112f13f23b549d1c/complete.json",
+    "sha256": "917c9a3889b7a75a5a822a9330086f39fe7b672a2baa22374f1c09323d7da38c",
+    "old_absolute_path_resolved_at_new_root": true,
+    "metadata_rewritten": false
+  },
+  {
+    "dataset": "store_item",
+    "logical_artifact": "artifacts/experiments/phase4/feature_cache/3ac318e7c7de1b9a20f336ea393ffeba3377e8e21d293e951603e8323ab3ae14/complete.json",
+    "sha256": "a2b31539a2cf2236c0d7828bcddcc1b64703941a836c24a6768735f03839b7cb",
+    "old_absolute_path_resolved_at_new_root": true,
+    "metadata_rewritten": false
+  }
+]

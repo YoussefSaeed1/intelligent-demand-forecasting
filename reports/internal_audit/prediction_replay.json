@@ -1,0 +1,22 @@
+[
+  {
+    "trial_id": "store_item_lightgbm_00",
+    "origin": "2017-08-13",
+    "series": 500,
+    "forecast_records": 14000,
+    "maximum_absolute_difference": 0.0,
+    "status": "passed",
+    "research_refits": 0,
+    "final_forecasts_regenerated": 0
+  },
+  {
+    "trial_id": "m5_random_forest_02",
+    "origin": "2016-01-03",
+    "series": 128,
+    "forecast_records": 3584,
+    "maximum_absolute_difference": 0.0,
+    "status": "passed",
+    "research_refits": 0,
+    "final_forecasts_regenerated": 0
+  }
+]

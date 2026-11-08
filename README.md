@@ -259,6 +259,15 @@ rendering was unavailable under the local-file navigation policy.
 - [Completion checklist](docs/PHASE4_COMPLETION_CHECKLIST.md)
 - [Independent audit package guide](docs/PHASE4_AUDIT_PACKAGE.md)
 
-Phase 4 development remains uncommitted as requested. Raw/canonical datasets,
+Phase 4 development was subsequently checkpointed locally at
+`54a689b7cb07970556bbf2fc164adf934307eab8`. Raw/canonical datasets,
 models, predictions and training caches remain local and ignored. No Phase 5,
 Claude invocation, Git push or new repository creation was performed.
+
+The subsequent [internal audit](docs/CODEX_INTERNAL_AUDIT_PHASES_0_4.md) and
+[post-audit remediation](docs/POST_AUDIT_REMEDIATION_REPORT.md) preserve that
+scientific baseline while adding forward-looking ingestion/ownership safeguards.
+Use the [read-only evidence verification and handoff](docs/CLAUDE_AUDIT_HANDOFF.md)
+for the preserved assessment; modified runtime code is not the historical frozen
+program. A verified local backup on the same device is recorded; off-device backup
+and the independent Claude audit remain outstanding. Phase 5 has not started.

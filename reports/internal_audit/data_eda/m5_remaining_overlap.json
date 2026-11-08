@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "day_columns": "d_1802..d_1913",
+  "days": 112,
+  "final_canonical_or_raw_holdout_values_selected": false,
+  "prior_evidence": "data_eda_checks.json verifies all d_1..d_1801; together all1913 overlappingdays covered",
+  "checks": {
+    "sales_train_evaluation.csv": {
+      "rows": 3414880,
+      "units": 4628919,
+      "zeros": 1976740,
+      "series": 30490
+    },
+    "sales_train_validation.csv": {
+      "rows": 3414880,
+      "units": 4628919,
+      "zeros": 1976740,
+      "series": 30490
+    }
+  }
+}

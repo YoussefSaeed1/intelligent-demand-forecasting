@@ -1,0 +1,204 @@
+[
+  {
+    "command": "python -m intelligent_demand --help",
+    "exit_code": 0,
+    "stderr": "",
+    "help_nonempty": true
+  },
+  {
+    "command": "python -m intelligent_demand forecast-plan",
+    "exit_code": 0,
+    "stderr": "INFO: Configuration valid: Intelligent Demand Forecasting & Inventory Optimisation",
+    "output": {
+      "status": "validated_plan_only",
+      "models_executed": 0,
+      "settings": {
+        "split_manifest": "<PROJECT_ROOT>\\reports\\eda\\proposed_splits.json",
+        "registry_directory": "<PROJECT_ROOT>\\artifacts\\experiments\\forecasting",
+        "horizon_days": 28,
+        "season_days": 7,
+        "random_seed": 42,
+        "batch_rows": 65536,
+        "max_workers": 1,
+        "max_threads": 4,
+        "max_evaluation_rows": 1000000,
+        "nonnegative_predictions": true
+      },
+      "validation_folds": {
+        "store_item": [
+          {
+            "dataset_id": "store_item",
+            "number": 1,
+            "train_start": "2013-01-01",
+            "origin": "2017-08-13",
+            "validation_start": "2017-08-14",
+            "validation_end": "2017-09-10",
+            "holdout_start": "2017-12-04"
+          },
+          {
+            "dataset_id": "store_item",
+            "number": 2,
+            "train_start": "2013-01-01",
+            "origin": "2017-09-10",
+            "validation_start": "2017-09-11",
+            "validation_end": "2017-10-08",
+            "holdout_start": "2017-12-04"
+          },
+          {
+            "dataset_id": "store_item",
+            "number": 3,
+            "train_start": "2013-01-01",
+            "origin": "2017-10-08",
+            "validation_start": "2017-10-09",
+            "validation_end": "2017-11-05",
+            "holdout_start": "2017-12-04"
+          },
+          {
+            "dataset_id": "store_item",
+            "number": 4,
+            "train_start": "2013-01-01",
+            "origin": "2017-11-05",
+            "validation_start": "2017-11-06",
+            "validation_end": "2017-12-03",
+            "holdout_start": "2017-12-04"
+          }
+        ],
+        "m5": [
+          {
+            "dataset_id": "m5",
+            "number": 1,
+            "train_start": "2011-01-29",
+            "origin": "2016-01-03",
+            "validation_start": "2016-01-04",
+            "validation_end": "2016-01-31",
+            "holdout_start": "2016-04-25"
+          },
+          {
+            "dataset_id": "m5",
+            "number": 2,
+            "train_start": "2011-01-29",
+            "origin": "2016-01-31",
+            "validation_start": "2016-02-01",
+            "validation_end": "2016-02-28",
+            "holdout_start": "2016-04-25"
+          },
+          {
+            "dataset_id": "m5",
+            "number": 3,
+            "train_start": "2011-01-29",
+            "origin": "2016-02-28",
+            "validation_start": "2016-02-29",
+            "validation_end": "2016-03-27",
+            "holdout_start": "2016-04-25"
+          },
+          {
+            "dataset_id": "m5",
+            "number": 4,
+            "train_start": "2011-01-29",
+            "origin": "2016-03-27",
+            "validation_start": "2016-03-28",
+            "validation_end": "2016-04-24",
+            "holdout_start": "2016-04-25"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "command": "python -m intelligent_demand forecast-models",
+    "exit_code": 0,
+    "stderr": "INFO: Configuration valid: Intelligent Demand Forecasting & Inventory Optimisation",
+    "output": {
+      "registered_models": [
+        {
+          "identifier": "arima_100",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "croston",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "holt",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "holt_winters_additive",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "lightgbm",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "moving_average_28",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "naive",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "random_forest",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "sarima_100_100_7",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "sba",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "seasonal_moving_average",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "seasonal_naive",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "ses",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "tsb",
+          "version": "1",
+          "scope": "global"
+        },
+        {
+          "identifier": "zero",
+          "version": "1",
+          "scope": "global"
+        }
+      ],
+      "models_executed": 0
+    }
+  },
+  {
+    "command": "python -m intelligent_demand.tuning.runner --help",
+    "exit_code": 0,
+    "stderr": "",
+    "help_nonempty": true
+  },
+  {
+    "command": "python -m intelligent_demand.tuning.final --help",
+    "exit_code": 0,
+    "stderr": "",
+    "help_nonempty": true
+  }
+]

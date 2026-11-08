@@ -1,0 +1,10 @@
+{
+  "status": "demonstrated_guard_defect",
+  "fixture": "Equivalent ISO dates with/without padding are distinct strings but same calendar day",
+  "profile_status": "passed_with_warnings",
+  "reported_source_duplicate_business_keys": 0,
+  "critical_errors": [],
+  "canonical_published": true,
+  "actual_published_duplicate_business_keys": 1,
+  "scientific_impact": "No demonstrated impact on preserved real data; independent source-to-Parquet/key audits and unchanged fingerprints protect the existing results. A malformed replacement source can nevertheless be mislabelled passed by profile-data alone."
+}

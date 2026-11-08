@@ -1,0 +1,129 @@
+{
+  "canonical_holdout_targets_selected": false,
+  "original_files_modified": false,
+  "source_headers": {
+    "store_item": {
+      "sample_submission.csv": {
+        "columns": 2,
+        "unique_header": true,
+        "sales_column": true
+      },
+      "test.csv": {
+        "columns": 4,
+        "unique_header": true,
+        "sales_column": false
+      },
+      "train.csv": {
+        "columns": 4,
+        "unique_header": true,
+        "sales_column": true
+      }
+    },
+    "m5": {
+      "calendar.csv": {
+        "columns": 14,
+        "unique_header": true,
+        "sales_column": false
+      },
+      "sales_train_evaluation.csv": {
+        "columns": 1947,
+        "unique_header": true,
+        "sales_column": false
+      },
+      "sales_train_validation.csv": {
+        "columns": 1919,
+        "unique_header": true,
+        "sales_column": false
+      },
+      "sell_prices.csv": {
+        "columns": 4,
+        "unique_header": true,
+        "sales_column": false
+      }
+    }
+  },
+  "store_item": {
+    "status": "passed",
+    "canonical_metadata_rows": 913000,
+    "full_history_quality": "Original exact Phase 1 evidence retained; current full-target scan prohibited",
+    "prefix_start": "2013-01-01",
+    "prefix_end": "2017-08-13",
+    "prefix_rows": 843000,
+    "prefix_series": 500,
+    "prefix_sales_units": 43666945,
+    "prefix_zero_observations": 1,
+    "prefix_null_prices": 843000,
+    "duplicate_keys": 0,
+    "missing_keys": 0,
+    "negative_sales": 0,
+    "all_series_adi_cv2_patterns_match": true,
+    "leading_zero_sensitivity_matches": true,
+    "prefix_group_and_daily_totals_match": true,
+    "canonical_schema": {
+      "dataset_id": "string",
+      "series_id": "string",
+      "date": "date32[day]",
+      "sales_units": "double",
+      "store_id": "string",
+      "item_id": "string",
+      "category_id": "string",
+      "unit_price": "double",
+      "is_observed": "bool"
+    }
+  },
+  "m5": {
+    "status": "passed",
+    "canonical_metadata_rows": 59181090,
+    "full_history_quality": "Original exact Phase 1 evidence retained; current full-target scan prohibited",
+    "prefix_start": "2011-01-29",
+    "prefix_end": "2016-01-03",
+    "prefix_rows": 54912490,
+    "prefix_series": 30490,
+    "prefix_sales_units": 61066490,
+    "prefix_zero_observations": 37800354,
+    "prefix_null_prices": 12298948,
+    "duplicate_keys": 0,
+    "missing_keys": 0,
+    "negative_sales": 0,
+    "all_series_adi_cv2_patterns_match": true,
+    "leading_zero_sensitivity_matches": true,
+    "prefix_group_and_daily_totals_match": true,
+    "canonical_schema": {
+      "dataset_id": "string",
+      "series_id": "string",
+      "date": "date32[day]",
+      "sales_units": "double",
+      "store_id": "string",
+      "item_id": "string",
+      "category_id": "string",
+      "unit_price": "double",
+      "is_observed": "bool"
+    }
+  },
+  "m5_raw_prefix_overlap": {
+    "status": "passed",
+    "prefix_day_columns": 1801,
+    "results": {
+      "sales_train_evaluation.csv": {
+        "rows": 54912490,
+        "sales_units": 61066490,
+        "zeros": 37800354,
+        "series": 30490
+      },
+      "sales_train_validation.csv": {
+        "rows": 54912490,
+        "sales_units": 61066490,
+        "zeros": 37800354,
+        "series": 30490
+      }
+    },
+    "scope": "d_1..d_1801 only; canonical/raw final targets not projected"
+  },
+  "synthetic_reference_checks": {
+    "status": "passed",
+    "cases": "leading zeros, one/all-zero positives, constant, price partition"
+  },
+  "seconds": 24.510690899995097,
+  "current_rss_bytes": 422887424,
+  "peak_working_set_bytes": 800985088
+}

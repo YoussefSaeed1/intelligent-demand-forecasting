@@ -95,3 +95,8 @@ coverage.xml
 Thumbs.db
 # Prune deep generated test trees rather than traversing their ignored UUID files.
 artifacts/test_runs/
+# Backups belong outside this repository; exclude accidental nested backup copies too.
+Demand_Forecasting_Phase4_Evidence*/
+Project_Backups/
+backups/
+.canonical-keys-*.sqlite

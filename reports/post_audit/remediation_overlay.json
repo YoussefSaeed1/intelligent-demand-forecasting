@@ -1,0 +1,44 @@
+{
+  "baseline_checkpoint": "54a689b7cb07970556bbf2fc164adf934307eab8",
+  "files": {
+    ".gitignore": {
+      "current_sha256": "f4fe80f7d068089791285043f8e3207ce5aa1156874379c0d6eb772e3ec75d9e",
+      "original_copy": "reports/post_audit/original_source/.gitignore",
+      "original_sha256": "5f80920be85053ec4d343c4fa68dcee04403b11eaca6abd984a35a5eb1c53f77",
+      "type": "current_documentation_or_ignore_rules"
+    },
+    "README.md": {
+      "current_sha256": "45a60a43bfdfb2dc8ee563873fe4885d376b2f2d0a595c9ce1d65692b6f43340",
+      "original_copy": "reports/post_audit/original_source/README.md",
+      "original_sha256": "358b178535edfc7ca542217d5a902b0eb67c4c402ec4c010565b9f6c6a264421",
+      "type": "current_documentation_or_ignore_rules"
+    },
+    "docs/ACADEMIC_REQUIREMENTS.md": {
+      "current_sha256": "66110536f7a4992f14cf44fa4bac3a44d0f792509ed994c37624e9a06512baff",
+      "original_copy": "reports/post_audit/original_source/docs/ACADEMIC_REQUIREMENTS.md",
+      "original_sha256": "399915ebdd3f7aa7df72f970c7c84cfa92761e84ff83aa711c3c804189b7448b",
+      "type": "current_documentation_or_ignore_rules"
+    },
+    "src/intelligent_demand/ingestion/store_item.py": {
+      "current_sha256": "6717e4e8f4067c0dcc471aa7459a8a8c00c4ae699c10e9d4d871779ccd00fa86",
+      "original_copy": "reports/post_audit/original_source/src/intelligent_demand/ingestion/store_item.py",
+      "original_sha256": "6d73ddabf731f2338201006fbdccd75124bd4e831033e24ed74d1f1b783543f6",
+      "type": "forward_code"
+    },
+    "src/intelligent_demand/tuning/final.py": {
+      "current_sha256": "05211c356cde208287b04bf8bd5ddbf9a982e9894fba90ecf9e69b0154ba798c",
+      "original_copy": "reports/post_audit/original_source/src/intelligent_demand/tuning/final.py",
+      "original_sha256": "acf9e9059118ccd022d84a9ce3205b38823bc8d1b3c72cb8c0eaba180c64a9fc",
+      "type": "forward_code"
+    },
+    "src/intelligent_demand/validation/quality.py": {
+      "current_sha256": "9a6910e5f9395ed140a27aa99c85e6781b2830476641ca14b6e392d4fffca598",
+      "original_copy": "reports/post_audit/original_source/src/intelligent_demand/validation/quality.py",
+      "original_sha256": "e38ee2c9f6ee7ed6ec6f93430731b0043932a3f0a4dc4ebbd1bc579c5fa56193",
+      "type": "forward_code"
+    }
+  },
+  "meaning": "Explicit current-code overlays; original frozen snapshots and scientific records remain immutable. This does not authorise any new final execution.",
+  "schema_version": 1,
+  "selection_fingerprint_unchanged": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb"
+}
