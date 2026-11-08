@@ -110,9 +110,9 @@ use declared training-only 53/51-series subsets; the other methods evaluate all
 
 These read-only commands validate the original four 28-day validation origins and list
 all 15 model definitions. They read configuration/protocol metadata, not canonical
-targets, and execute no models. Final holdout target access remains unavailable.
+targets, and execute no models. Their ordinary target reader still cannot access protected final targets; the separately authorised Phase 4C assessment is complete.
 
-Actual experiments use an explicit sequential command, reusing valid completed runs:
+The original Phase 3 execution used these sequential commands. For review, use the saved-evidence commands in the Phase 4 reproducibility guide instead:
 
 ```powershell
 .\.venv\Scripts\python.exe -m intelligent_demand.experiments.benchmark run --phase 3b
@@ -123,8 +123,8 @@ Actual experiments use an explicit sequential command, reusing valid completed r
 Each next milestone requires the previous independent audit and automated gate.
 Read [baseline results](docs/BASELINE_RESULTS.md),
 [statistical results](docs/STATISTICAL_RESULTS.md), [ML results](docs/ML_RESULTS.md),
-and [feature availability](docs/FEATURE_AVAILABILITY.md). No systematic tuning or
-final holdout evaluation has occurred. Large models, predictions, caches and figures
+and [feature availability](docs/FEATURE_AVAILABILITY.md). At the Phase 3 checkpoint, systematic tuning and
+final holdout evaluation had not yet occurred. The completed Phase 4 results are linked below. Large models, predictions, caches and figures
 remain local and ignored. The subsequent final scientific integrity review authorises
 a secure local Phase 3 checkpoint; no push or upload is authorised.
 
@@ -143,7 +143,7 @@ recalculated all saved comparisons and audited exact training-sample reproducibi
 The current suite has **320 passing tests**. M5 RF's small mean lead over MA28 does
 not extend to a majority of individual series; price publication latency remains a
 conditional research assumption. A secure local checkpoint is authorised after review;
-Phase 4 and protected final holdout evaluation remain unstarted.
+That review preceded the now-completed, separately authorised Phase 4 assessment.
 
 See [forecasting engine](docs/FORECASTING_ENGINE.md),
 [metric definitions](docs/METRIC_DEFINITIONS.md) and
@@ -194,7 +194,7 @@ src/intelligent_demand/
   exploration/            Population EDA, figures, reports and saved-output validation
   features/               Shifted, origin-safe recursive features and validated caches
   models/                 Baselines, statistical/intermittent, RF and LightGBM adapters
-  tuning/                 Future chronological hyperparameter search
+  tuning/                 Frozen seeded search, final selection authority and one-time assessment
   evaluation/             Validated folds, prediction publication, grouped metrics and coverage
   experiments/            Origin data capabilities, configuration, registry and orchestration
   inventory/              Future scenario simulation
@@ -218,8 +218,47 @@ snapshot in `docs/environment-freeze.txt`, when available, records this setup on
 No licence is granted for source datasets by this repository. Academic requirements
 and optional enhancements are tracked separately in [ACADEMIC_REQUIREMENTS.md](docs/ACADEMIC_REQUIREMENTS.md).
 
-Next: review the final Phase 3 validation evidence before authorising Phase 4.
+Next: perform the independent Claude scientific/technical audit of completed Phase 4 evidence.
 The independent Claude audit remains mandatory after Phase 4 and before Phase 5.
-See [ROADMAP.md](docs/ROADMAP.md). Phase 4 has not started.
+See [ROADMAP.md](docs/ROADMAP.md). Phase 5 has not started; no final Phase 4 Git checkpoint or push was made.
 
 Verified setup results and environment limitations: [VALIDATION.md](docs/VALIDATION.md).
+
+## Phase 4 optimisation and final assessment
+
+All 27 fixed cases (23 tuning configurations and four references), 108 validation
+fold runs and 45,177,440 forecasts passed independent reconciliation. Primary
+selection used four-origin macro MAE on full populations, with seed 42 and a
+fixed budget. All Phase 4 ML is price-free. The frozen final choices are Store
+Item LightGBM and M5 Random Forest; 3,470,880 forecasts across eight selected
+model/comparator evaluations were sealed before either holdout was opened. Each
+canonical holdout was read once, with subsequent saved-actual audit reads logged.
+
+| Selected method | Final macro MAE | Pooled RMSE | Pooled WAPE % |
+|---|---:|---:|---:|
+| Store Item LightGBM | 5.434343 | 7.066976 | 12.258462 |
+| M5 price-free Random Forest | 1.047231 | 2.201063 | 72.582278 |
+
+M5 RF improves final MAE by 1.735707% over MA28; MA28 has better macro MASE.
+These are predictive benchmark results, not proof of significance or inventory
+savings. Store Item retained its initial LightGBM configuration; additional search
+did not improve its validation MAE. No post-holdout model changes were made.
+
+The complete suite passed **352 tests**; Ruff, pip check, source/protocol hashes,
+forecast grids, ledger and independent metric checks passed. The offline report
+contains 11 PNG/SVG figure pairs and verified local links. Automated browser
+rendering was unavailable under the local-file navigation policy.
+
+- [Offline scientific report](reports/forecasting/PHASE4_FORECASTING_REPORT.html)
+- [Tuning results](docs/PHASE4_TUNING_RESULTS.md)
+- [Frozen selection](docs/PHASE4_FROZEN_MODEL_SELECTION.md)
+- [Final assessment](docs/PHASE4_FINAL_EVALUATION.md)
+- [Scientific interpretation and metric trade-offs](docs/PHASE4_SCIENTIFIC_REVIEW.md)
+- [Feature availability](docs/PHASE4_FEATURE_AVAILABILITY.md)
+- [Safe reproducibility commands](docs/PHASE4_REPRODUCIBILITY.md)
+- [Completion checklist](docs/PHASE4_COMPLETION_CHECKLIST.md)
+- [Independent audit package guide](docs/PHASE4_AUDIT_PACKAGE.md)
+
+Phase 4 development remains uncommitted as requested. Raw/canonical datasets,
+models, predictions and training caches remain local and ignored. No Phase 5,
+Claude invocation, Git push or new repository creation was performed.

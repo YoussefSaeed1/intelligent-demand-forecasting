@@ -57,7 +57,10 @@ class ValidationFold:
 def validate_fold(fold):
     """Recheck public boundary inputs rather than trusting a duck-typed date container."""
     if type(fold) is not ValidationFold:
-        raise ValueError("A frozen, protocol-validated ValidationFold is required")
+        from intelligent_demand.tuning.authority import FinalFold
+
+        if type(fold) is not FinalFold:
+            raise ValueError("A frozen, protocol-validated ValidationFold is required")
     fold.__post_init__()
 
 

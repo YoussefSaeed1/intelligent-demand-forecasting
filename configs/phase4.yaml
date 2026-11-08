@@ -1,0 +1,55 @@
+schema_version: 1
+seed: 42
+search: seeded_random_without_replacement_plus_anchor
+primary_metric: mean_four_origin_macro_mae
+folds: [1, 2, 3, 4]
+horizon: 28
+price_features: false
+training_rows: {store_item: 150000, m5: 183000}
+resources:
+  threads: 4
+  concurrent_workers: 1
+  worker_rss_mib: 2048
+  minimum_available_mib: 512
+  minimum_free_disk_gib: 10
+  worker_timeout_seconds: 1800
+  search_wall_seconds: 10800
+  maximum_attempts_per_fold: 2
+trial_counts:
+  store_item: {lightgbm: 6, random_forest: 3, holt_winters_additive: 3}
+  m5: {random_forest: 4, tsb: 4, lightgbm: 3}
+references:
+  store_item: [seasonal_naive, seasonal_moving_average]
+  m5: [seasonal_naive, moving_average_28]
+spaces:
+  lightgbm:
+    num_leaves: [15, 31, 63]
+    max_depth: [-1, 8, 12]
+    learning_rate: [0.03, 0.05, 0.1]
+    num_boost_round: [120, 200, 300]
+    min_data_in_leaf: [30, 50, 100]
+    feature_fraction: [0.75, 1.0]
+    bagging_fraction: [0.8, 1.0]
+    lambda_l1: [0.0, 0.1]
+    lambda_l2: [0.0, 1.0, 5.0]
+  random_forest:
+    n_estimators: [80, 120, 160]
+    max_depth: [8, 12, 16]
+    min_samples_leaf: [10, 20, 40]
+    max_features: [0.6, 0.8, 1.0]
+    min_samples_split: [2, 10, 20]
+  holt_winters_additive:
+    alpha: [0.1, 0.2, 0.35]
+    trend_beta: [0.02, 0.05]
+    seasonal_gamma: [0.02, 0.05, 0.1]
+    damping_phi: [0.95, 0.98, 1.0]
+  tsb:
+    alpha: [0.1, 0.2, 0.4]
+    occurrence_beta: [0.05, 0.1, 0.2]
+selection:
+  objective_tie_tolerance: 1.0e-12
+  tie_order: [moving_average_28, seasonal_naive, seasonal_moving_average, tsb, holt_winters_additive, lightgbm, random_forest]
+  minimum_complete_tuning_trials_per_family: 2
+  final_comparators:
+    store_item: [seasonal_naive, seasonal_moving_average, best_holt_winters_additive]
+    m5: [seasonal_naive, moving_average_28, best_tsb, best_random_forest]

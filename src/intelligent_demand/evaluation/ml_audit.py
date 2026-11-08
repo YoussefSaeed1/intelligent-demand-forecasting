@@ -102,7 +102,8 @@ def audit_ml_training(state, directory, panel):
         "days_since_training_start",
         *(f"{field}_code" for field in fields),
     ]
-    if spec["dataset_id"] == "m5":
+    use_prices = config["parameters"].get("use_historical_prices", True)
+    if spec["dataset_id"] == "m5" and use_prices:
         expected_names += ["origin_observed_price_mean28", "origin_price_missing_fraction28"]
     if schema["feature_names"] != expected_names:
         raise ValueError("Unexpected ML feature or unavailable covariate")
@@ -161,7 +162,7 @@ def audit_ml_training(state, directory, panel):
                 .map(schema["static_mappings"][field])
                 .to_numpy()[r]
             )
-        if spec["dataset_id"] == "m5":
+        if spec["dataset_id"] == "m5" and use_prices:
             price = panel.prices[r[:, None], t[:, None] + np.arange(-34, -6)].astype(float)
             available = np.isfinite(price)
             n = available.sum(axis=1)

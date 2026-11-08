@@ -1,0 +1,42 @@
+{
+  "bundle_fingerprint": "a06bcb32586c359d701b622fd5e2f9090d6ff988e51e98c700a859574abf20f5",
+  "canonical_target_reads_this_check": 0,
+  "final_evaluations": 8,
+  "inventory": {
+    "bytes": 5233386883,
+    "files": 4592,
+    "ignored_files": 4565,
+    "path": "reports/forecasting/PHASE4_EVIDENCE_INVENTORY.json",
+    "sha256": "0b1de21020f2e1d2ceaeddd10845fd723a2f6f8e75161d15fa7efb9c29f5e1ee"
+  },
+  "ledger_events": 12,
+  "ledger_file_sha256": "fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204",
+  "ledger_head_sha256": "d5044b81ccc65bbbfa4ec49b0da73c77e433683f9541fc799413ba20cbc1fe9d",
+  "ledger_unchanged": true,
+  "model_fits_or_metric_recomputations": 0,
+  "original_audit_package_entries": 853,
+  "original_audit_package_sha256": "ac449c9767164373025e193324997dbdcf032dfa0a7be850f15b959a2c43c8e5",
+  "phase3_base": "6e1a407de0b676e858ffec43bab1fae8d51dae1d",
+  "registries": {
+    "artifacts/experiments/forecasting": {
+      "completed": 224
+    },
+    "artifacts/experiments/phase4/registry": {
+      "completed": 108
+    }
+  },
+  "reports": {
+    "browser_render": "not_rerun; prior local-file policy limitation retained",
+    "figure_files": 22,
+    "html_relative_links": 24,
+    "markdown_relative_links": 9,
+    "status": "passed"
+  },
+  "saved_actuals_decoded_this_check": 0,
+  "scientific_files_and_snapshots": 89,
+  "selection_fingerprint": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+  "source_files": 9,
+  "status": "passed",
+  "validation_cases": 27,
+  "verified_at_utc": "2026-11-08T11:46:35.889759+00:00"
+}

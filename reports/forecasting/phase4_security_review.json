@@ -1,0 +1,14 @@
+{
+  "broken_local_links": [],
+  "datasets_and_artifacts_ignored": true,
+  "large_changed_files": [],
+  "markdown_local_links_checked": 74,
+  "reviewed_text_files": 44,
+  "scope": "Changed/untracked project text plus manual config and exclusion review; patterns do not guarantee every secret format.",
+  "secret_pattern_findings": [],
+  "staged_files": [],
+  "status": "passed",
+  "tracked_exclusion_violations": [],
+  "ignored_test_dir_pruned": true,
+  "gitignore_change": "Explicit artifacts/test_runs/ exclusion prevents Git traversing long generated test paths; no file was deleted."
+}

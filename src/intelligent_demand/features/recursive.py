@@ -79,7 +79,10 @@ def historical_price_context(prices, rows, targets):
 
 
 class FeatureEncoder:
-    def __init__(self, metadata, dataset, training_start):
+    def __init__(self, metadata, dataset, training_start, use_historical_prices=True):
+        if type(use_historical_prices) is not bool:
+            raise ValueError("Price feature policy must be an explicit boolean")
+        self.use_historical_prices = dataset == "m5" and use_historical_prices
         self.dataset, self.training_start = dataset, pd.Timestamp(training_start)
         self.static_fields = ["store_id", "item_id"] + (
             ["cat_id", "dept_id", "state_id"] if dataset == "m5" else []
@@ -103,7 +106,7 @@ class FeatureEncoder:
             *CALENDAR_NAMES,
             *(f"{field}_code" for field in self.static_fields),
         ]
-        if dataset == "m5":
+        if self.use_historical_prices:
             self.names += ["origin_observed_price_mean28", "origin_price_missing_fraction28"]
         self.categorical_indexes = [
             self.names.index(f"{field}_code") for field in self.static_fields
@@ -163,7 +166,7 @@ class FeatureEncoder:
             calendar,
             static,
         ]
-        if self.dataset == "m5":
+        if self.use_historical_prices:
             if prices is None or prices.shape != (len(history), 2):
                 raise ValueError("Origin-available historical price snapshot required")
             parts.append(prices)
@@ -189,6 +192,8 @@ class FeatureEncoder:
             "observed_activity_policy": "frozen_at_true_forecast_origin",
             "price_policy": (
                 "observed_only_28_records_ending_origin_minus6; frozen; no imputation"
+                if self.use_historical_prices
+                else "excluded_availability_safe"
                 if self.dataset == "m5"
                 else "not_supplied"
             ),
@@ -207,9 +212,19 @@ def training_positions(series_count, periods, maximum_rows, seed):
     return rows.astype("int32"), targets.ravel().astype("int32")
 
 
-def training_matrix(view, maximum_rows, seed, cache_root, fingerprint, batch_rows=8192):
+def training_matrix(
+    view,
+    maximum_rows,
+    seed,
+    cache_root,
+    fingerprint,
+    batch_rows=8192,
+    use_historical_prices=True,
+):
     panel = panel_from_view(view)
-    encoder = FeatureEncoder(panel.metadata, view.fold.dataset_id, view.fold.train_start)
+    encoder = FeatureEncoder(
+        panel.metadata, view.fold.dataset_id, view.fold.train_start, use_historical_prices
+    )
     rows, targets = training_positions(len(view.series), len(panel.dates), maximum_rows, seed)
     contract = {
         "version": 1,
@@ -266,7 +281,7 @@ def training_matrix(view, maximum_rows, seed, cache_root, fingerprint, batch_row
             validate_training_feature_lineage(lineage, view)
             prices = (
                 None
-                if panel.prices is None
+                if panel.prices is None or not encoder.use_historical_prices
                 else historical_price_context(panel.prices, selected_rows, selected_targets)
             )
             x[start : start + len(selected_rows)] = encoder.matrix(

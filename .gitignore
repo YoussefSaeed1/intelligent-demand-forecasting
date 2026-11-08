@@ -93,3 +93,5 @@ coverage.xml
 .ssh/
 .DS_Store
 Thumbs.db
+# Prune deep generated test trees rather than traversing their ignored UUID files.
+artifacts/test_runs/

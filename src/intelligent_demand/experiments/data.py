@@ -142,6 +142,9 @@ class OriginData:
 
     def __post_init__(self):
         validate_fold(self.fold)
+        from intelligent_demand.tuning.authority import assert_training_unlocked
+
+        assert_training_unlocked(self.fold)
         if self._source.dataset_id != self.fold.dataset_id:
             raise LeakageError("Dataset mismatch")
         if (

@@ -47,6 +47,7 @@ class GlobalMLModel(BaselineModel):
             configuration["feature_cache"],
             configuration["source_fingerprint"],
             parameters["feature_batch_rows"],
+            parameters.get("use_historical_prices", True),
         )
         self.feature_preparation_seconds = time.perf_counter() - started
         self.encoder, self.manifest = encoder, manifest
@@ -94,7 +95,7 @@ class GlobalMLModel(BaselineModel):
         self.static = encoder.static_codes(panel.metadata)
         self.prices = (
             None
-            if panel.prices is None
+            if panel.prices is None or not encoder.use_historical_prices
             else historical_price_context(
                 panel.prices,
                 np.arange(len(self.series)),

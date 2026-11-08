@@ -1,0 +1,41 @@
+{
+  "canonical_holdout_scans": 0,
+  "checked_at_utc": "2026-11-08T11:48:36.850298+00:00",
+  "claude_audit": "not_started",
+  "evidence_backups": "Small manifest copies committed; large ignored evidence remains local, without a separately verified backup.",
+  "holdout_score_recomputations": 0,
+  "phase5": "not_started",
+  "pip_check": {
+    "output": "No broken requirements found.",
+    "status": "passed"
+  },
+  "pytest": {
+    "command": ".venv/Scripts/python.exe -m pytest -q -p no:cacheprovider --basetemp artifacts/test_runs/phase4_git_checkpoint_20261108_01",
+    "seconds": 64.69,
+    "status": "passed",
+    "tests": 352
+  },
+  "research_model_fits": 0,
+  "ruff": {
+    "command": ".venv/Scripts/python.exe -m ruff check . --no-cache",
+    "status": "passed"
+  },
+  "scientific_internal_audit": "not_started",
+  "scope": "Version-control and evidence preservation only; no scientific audit",
+  "security": {
+    "binary_files": 0,
+    "byte_identical_original_manifest_copies": 8,
+    "excluded_optional_copy": "sealed_predictions.json remains original/local because it contains machine-specific paths",
+    "files_over_5_mib": 0,
+    "frozen_checkout_hashes_verified": 89,
+    "private_path_findings": 0,
+    "reviewed_files": 58,
+    "scan_scope": "Reviewed text candidates; pattern scan plus manual configuration/path/diff review, not a guarantee for every secret format",
+    "secret_pattern_findings": 0,
+    "staged_diff_review": "Passed; full patch retained locally in ignored checkpoint review directory",
+    "staged_files": 58,
+    "status": "staged_review_passed",
+    "tracked_ignored_files": 0
+  },
+  "tuning_runs": 0
+}
