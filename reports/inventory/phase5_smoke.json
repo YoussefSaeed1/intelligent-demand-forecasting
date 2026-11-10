@@ -1,0 +1,20 @@
+{
+  "action": "smoke",
+  "cases": [
+    {
+      "dataset": "store_item",
+      "policies": 4,
+      "series": 32
+    },
+    {
+      "dataset": "m5",
+      "policies": 4,
+      "series": 32
+    }
+  ],
+  "elapsed_seconds": 5.697515499996371,
+  "execution_sha256": "b55ba4a0c9c8fafb2ee3997f38d2f31efea99f4157033e70288814a2006c87c3",
+  "final_holdout_used": false,
+  "peak_working_set_bytes": 890286080,
+  "status": "passed"
+}

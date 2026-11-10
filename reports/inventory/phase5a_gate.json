@@ -1,0 +1,11 @@
+{
+  "cohorts": 8,
+  "design_tests": 12,
+  "final_holdout_used": false,
+  "mathematics_review": "Explicit EOD offset L+1 yields protection L+R; common cutoff",
+  "plan_sha256": "63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e",
+  "policies": 4,
+  "scenarios": 17,
+  "source_forecasts": 24,
+  "status": "passed"
+}

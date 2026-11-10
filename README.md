@@ -1,7 +1,7 @@
 # Intelligent Demand Forecasting & Inventory Optimisation
 
 Individual postgraduate Data Science diploma graduation project, Cairo University.
-**Status: Phase 3B–3E complete; fixed initial forecasting benchmarks validated. Phase 4 not started.**
+**Status: Phases 0 to 5 complete and independently audited (verdict CONDITIONAL; 0 Critical, 0 High). Phase 6 has not started.**
 Source files and generated experiment outputs are held locally outside Git. Baseline,
 statistical and global ML milestones and final consolidation passed their gates. Offline tests are separate
 from real-data evidence; see [VALIDATION.md](docs/VALIDATION.md).
@@ -218,9 +218,13 @@ snapshot in `docs/environment-freeze.txt`, when available, records this setup on
 No licence is granted for source datasets by this repository. Academic requirements
 and optional enhancements are tracked separately in [ACADEMIC_REQUIREMENTS.md](docs/ACADEMIC_REQUIREMENTS.md).
 
-Next: perform the independent Claude scientific/technical audit of completed Phase 4 evidence.
-The independent Claude audit remains mandatory after Phase 4 and before Phase 5.
-See [ROADMAP.md](docs/ROADMAP.md). Phase 5 has not started; no final Phase 4 Git checkpoint or push was made.
+Current scope: Phase 5 hypothetical inventory simulation is complete. It was authorised under the
+[limited conditional forecasting gate](docs/CLAUDE_FOCUSED_FORECASTING_GATE.md) and then
+reviewed by a broader independent Claude audit of Phases 0 to 5
+([report](docs/CLAUDE_INDEPENDENT_AUDIT_PHASES_0_5.md), verdict CONDITIONAL). Phase 6 may proceed
+only under the reporting conditions in [the audit response](docs/PHASE5_AUDIT_RESPONSE.md).
+Off-device backup remains outstanding before academic submission.
+See [ROADMAP.md](docs/ROADMAP.md) and the Phase 5 gate receipts for actual progress.
 
 Verified setup results and environment limitations: [VALIDATION.md](docs/VALIDATION.md).
 
@@ -270,4 +274,41 @@ scientific baseline while adding forward-looking ingestion/ownership safeguards.
 Use the [read-only evidence verification and handoff](docs/CLAUDE_AUDIT_HANDOFF.md)
 for the preserved assessment; modified runtime code is not the historical frozen
 program. A verified local backup on the same device is recorded; off-device backup
-and the independent Claude audit remain outstanding. Phase 5 has not started.
+remains outstanding. The subsequent limited conditional review permitted Phase 5; the broader
+independent audit of Phases 0 to 5 has since been completed (see the Phase 5 section).
+
+
+## Phase 5 hypothetical inventory simulations
+
+The frozen design evaluates four policies on all 500 Store Item and 30,490 M5
+series, at each of four original validation origins. Seventeen predefined
+scenarios give 544 cases. Selected ML is unchanged LightGBM / price-free RF;
+no forecasting model was fitted, tuned or reselected and no final holdout
+was used. Costs, lead times, initial stocks and buffers are hypothetical.
+Fixed-origin 28-day forecasts support finite episodes, not daily reforecasting.
+Base results show stockholding/service trade-offs; ML does not uniformly
+minimise cost. These validation windows were reused after forecasting selection.
+After the independent audit, headline comparisons always show selected ML, MA28 and Seasonal Naive
+by validation origin; the 17 scenarios are not independent confirmations; and simulated cost
+differences are never realised savings.
+
+- [Offline inventory report](reports/inventory/PHASE5_INVENTORY_REPORT.html)
+- [Inventory results and safe commands](docs/PHASE5_INVENTORY_RESULTS.md)
+- [Design and timing](docs/INVENTORY_SIMULATION_PROTOCOL.md)
+- [Sensitivity analysis](docs/PHASE5_SENSITIVITY_ANALYSIS.md)
+- [Limitations](docs/PHASE5_LIMITATIONS.md)
+- [Actual completion gates](docs/PHASE5_COMPLETION_CHECKLIST.md)
+- [Broader independent audit handoff](docs/PHASE5_CLAUDE_AUDIT_HANDOFF.md)
+- [Independent audit of Phases 0 to 5](docs/CLAUDE_INDEPENDENT_AUDIT_PHASES_0_5.md)
+- [Audit response, finding dispositions and corrected comparisons](docs/PHASE5_AUDIT_RESPONSE.md)
+
+Phase 5 and the audit response are checkpointed in one local commit
+(`feat: complete phase 5 and document independent audit findings`; find it with `git log -1`).
+Nothing was pushed. No Phase 6/7 work is authorised here. Detailed inventory outputs remain
+local and Git-ignored; the local inventory records their hashes but is not an independent
+backup. Both evidence backups are on the same laptop, so off-device protection is still required
+before academic submission. Phase 4 original evidence and its same-device backup are unchanged.
+Use `reports/inventory/post_audit_documentation_overlay.json` with the read-only evidence
+verifier, and `intelligent_demand.preservation.phase5_post_audit` with
+`reports/preservation/PHASE5_AUDIT_REMEDIATION_OVERLAY.json` for the Phase 5 backup; the earlier
+overlays are preserved and describe the pre-audit documents.

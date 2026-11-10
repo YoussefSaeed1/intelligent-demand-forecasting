@@ -1,0 +1,8 @@
+{
+  "cases": 544,
+  "execution_sha256": "b55ba4a0c9c8fafb2ee3997f38d2f31efea99f4157033e70288814a2006c87c3",
+  "retained_event_rows": 13969536,
+  "scope": "Every per-series ratio; all retained positive-order/stockout counters and average post-order inventory position; no target input read",
+  "series_episodes": 8429280,
+  "status": "passed"
+}

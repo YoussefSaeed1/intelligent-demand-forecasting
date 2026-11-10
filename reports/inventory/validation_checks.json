@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "command": [
+        ".venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        ".",
+        "--no-cache"
+      ],
+      "exit_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "No broken requirements found.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv\\Scripts\\python.exe",
+        "-m",
+        "intelligent_demand.inventory.plan"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv\\Scripts\\python.exe",
+        "-m",
+        "intelligent_demand.inventory.runner",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: python.exe -m intelligent_demand.inventory.runner [-h]\n                                                         {smoke,base,sensitivity}\n\nBudgeted inventory episodes; completed attempt hashes gate all later reports.\n\npositional arguments:\n  {smoke,base,sensitivity}\n\noptions:\n  -h, --help            show this help message and exit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv\\Scripts\\python.exe",
+        "-m",
+        "intelligent_demand.inventory.audit",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: python.exe -m intelligent_demand.inventory.audit [-h]\n                                                        [--receipt-directory RECEIPT_DIRECTORY]\n                                                        {base,all,metrics,inventory}\n\nIndependent scalar/stock-flow/cost reconciliation of persisted inventory\ncases.\n\npositional arguments:\n  {base,all,metrics,inventory}\n\noptions:\n  -h, --help            show this help message and exit\n  --receipt-directory RECEIPT_DIRECTORY\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv\\Scripts\\python.exe",
+        "-m",
+        "intelligent_demand.inventory.report",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: python.exe -m intelligent_demand.inventory.report [-h]\n                                                         [{build,validate}]\n\nOffline scientific reporting from independently audited validation\nsimulations.\n\npositional arguments:\n  {build,validate}\n\noptions:\n  -h, --help        show this help message and exit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv\\Scripts\\python.exe",
+        "-m",
+        "intelligent_demand",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: python.exe -m intelligent_demand [-h] [--config CONFIG]\n                                        {forecast-plan,forecast-models,experiment-status,download-data,discover-data,check-access,profile-data,audit-store-item,eda} ...\n\nConfiguration, dataset acquisition and Phase 1 quality gates.\n\npositional arguments:\n  {forecast-plan,forecast-models,experiment-status,download-data,discover-data,check-access,profile-data,audit-store-item,eda}\n\noptions:\n  -h, --help            show this help message and exit\n  --config CONFIG\n",
+      "stderr": ""
+    }
+  ]
+}

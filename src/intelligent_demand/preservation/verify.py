@@ -23,6 +23,8 @@ ALLOWED = {
     "src/intelligent_demand/experiments/benchmark.py",
     "src/intelligent_demand/tuning/runner.py",
     ".gitignore", "README.md", "docs/ACADEMIC_REQUIREMENTS.md",
+    # Phase 5 roadmap documentation only; historical bytes must still authenticate.
+    "docs/ROADMAP.md",
 }
 
 

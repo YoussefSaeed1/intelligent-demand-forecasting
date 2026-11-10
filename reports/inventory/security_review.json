@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "reviewed_project_files": 44,
+  "provider_secret_pattern_hits": [],
+  "large_unignored_files": [],
+  "forbidden_candidate_files": [],
+  "tracked_dataset_files": [],
+  "staged_files": [],
+  "scope": "Restricted provider-token pattern scan plus reviewed Phase 5 source/config/docs/report paths and Git exclusions; not a proof that arbitrary secrets cannot exist. No values printed.",
+  "branch": "main",
+  "head": "c4e5f6370392fa63ee3d43062ddfb3fce222570d"
+}

@@ -1,0 +1,172 @@
+{
+  "backups": {
+    "location": "Both are on the same laptop; neither is an off-device backup.",
+    "modified_or_overwritten": false,
+    "new_backup_created": false,
+    "phase4": "C:/Project_Backups/Demand_Forecasting_Phase4_Evidence_verified_20261108",
+    "phase5": "C:/Project_Backups/Demand_Forecasting_Phase5_Evidence_verified_20261108"
+  },
+  "date": "2026-11-10",
+  "document_edit_scope": {
+    "README.md": {
+      "archive_matches_backup_manifest": true,
+      "inserted_lines": 5,
+      "lines_deleted": 0,
+      "lines_replaced": 13
+    },
+    "docs/ACADEMIC_REQUIREMENTS.md": {
+      "archive_matches_backup_manifest": true,
+      "inserted_lines": 0,
+      "lines_deleted": 0,
+      "lines_replaced": 4
+    },
+    "docs/PHASE5_CLAUDE_AUDIT_HANDOFF.md": {
+      "archive_matches_backup_manifest": true,
+      "inserted_lines": 6,
+      "lines_deleted": 0,
+      "lines_replaced": 10
+    },
+    "docs/PHASE5_COMPLETION_CHECKLIST.md": {
+      "archive_matches_backup_manifest": true,
+      "inserted_lines": 0,
+      "lines_deleted": 0,
+      "lines_replaced": 5
+    },
+    "docs/PHASE5_INVENTORY_RESULTS.md": {
+      "archive_matches_backup_manifest": true,
+      "inserted_lines": 83,
+      "lines_deleted": 0,
+      "lines_replaced": 1
+    },
+    "docs/PHASE5_LIMITATIONS.md": {
+      "archive_matches_backup_manifest": true,
+      "inserted_lines": 0,
+      "lines_deleted": 0,
+      "lines_replaced": 1
+    },
+    "docs/PHASE5_PROGRESS.md": {
+      "archive_matches_backup_manifest": true,
+      "inserted_lines": 0,
+      "lines_deleted": 0,
+      "lines_replaced": 1
+    },
+    "docs/PHASE5_SENSITIVITY_ANALYSIS.md": {
+      "archive_matches_backup_manifest": true,
+      "inserted_lines": 15,
+      "lines_deleted": 0,
+      "lines_replaced": 0
+    },
+    "docs/ROADMAP.md": {
+      "archive_matches_backup_manifest": true,
+      "inserted_lines": 0,
+      "lines_deleted": 0,
+      "lines_replaced": 2
+    },
+    "reports/inventory/PHASE5_INVENTORY_REPORT.html": {
+      "archive_matches_backup_manifest": true,
+      "inserted_lines": 0,
+      "lines_deleted": 0,
+      "lines_replaced": 1
+    }
+  },
+  "evidence_inventory_sweep": {
+    "differing": [
+      "README.md",
+      "docs/ACADEMIC_REQUIREMENTS.md",
+      "docs/PHASE5_CLAUDE_AUDIT_HANDOFF.md",
+      "docs/PHASE5_COMPLETION_CHECKLIST.md",
+      "docs/PHASE5_INVENTORY_RESULTS.md",
+      "docs/PHASE5_LIMITATIONS.md",
+      "docs/PHASE5_PROGRESS.md",
+      "docs/PHASE5_SENSITIVITY_ANALYSIS.md",
+      "docs/ROADMAP.md",
+      "reports/inventory/PHASE5_INVENTORY_REPORT.html"
+    ],
+    "entries": 2252,
+    "missing": []
+  },
+  "frozen_state": {
+    "cases": {
+      "all_completed": true,
+      "count": 544,
+      "event_rows": 13969536,
+      "fallback_observations": 0,
+      "series_episodes": 8429280
+    },
+    "design_files_changed_since_freeze": [],
+    "execution_sha256": "b55ba4a0c9c8fafb2ee3997f38d2f31efea99f4157033e70288814a2006c87c3",
+    "inventory_code_changed_since_execution_freeze": [],
+    "ledger": {
+      "chain_linked": true,
+      "event_hashes_reproduce": true,
+      "events": 12,
+      "file_sha256": "fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204",
+      "file_sha256_expected": true,
+      "head": "d5044b81ccc65bbbfa4ec49b0da73c77e433683f9541fc799413ba20cbc1fe9d"
+    },
+    "plan_self_hash_reproduces": true,
+    "plan_sha256": "63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e",
+    "selection_fingerprint": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+    "selection_fingerprint_expected": true,
+    "selection_fingerprint_reproduces": true
+  },
+  "offline_html_report": {
+    "broken_or_absolute": [],
+    "contains_audit_banner": true,
+    "forbidden_tags": [],
+    "images": 10,
+    "links": 36
+  },
+  "parent_commit": "c4e5f6370392fa63ee3d43062ddfb3fce222570d",
+  "phase4_protected_evidence_verifier": {
+    "archived_current_metadata_inventory_entries": [
+      ".gitignore",
+      "README.md",
+      "docs/ROADMAP.md"
+    ],
+    "canonical_targets_decoded": 0,
+    "declared_current_code_document_overlays": 9,
+    "frozen_source_snapshots_verified": 89,
+    "historical_inventory_bytes": 5233386883,
+    "historical_inventory_files_verified": 4592,
+    "historical_source_is_current_execution_source": false,
+    "ledger_events": 12,
+    "ledger_head_sha256": "d5044b81ccc65bbbfa4ec49b0da73c77e433683f9541fc799413ba20cbc1fe9d",
+    "ledger_sha256": "fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204",
+    "model_fits": 0,
+    "original_ledger_writes": 0,
+    "raw_canonical_fingerprints_verified": 9,
+    "registry_completed_runs_verified": {
+      "artifacts/experiments/forecasting": 224,
+      "artifacts/experiments/phase4/registry": 108
+    },
+    "scores_published": 0,
+    "selection_sha256": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+    "status": "passed",
+    "unchanged_live_inventory_entries": 4589
+  },
+  "phase5_backup_verifier": {
+    "documents_mapped_to_archived_originals": 11,
+    "mismatched": [],
+    "missing": [],
+    "scope": "Original copied file set plus two declared verification sidecars; every source/backup SHA-256 and size checked, with reviewed documentation mapped to archived originals. No copying or scientific execution.",
+    "status": "passed",
+    "unexpected": [],
+    "verified_bytes": 1611791130,
+    "verified_files": 2593
+  },
+  "purpose": "Verification record for the post-independent-audit documentation remediation and Git checkpoint. No simulation, forecast, model fit, holdout access or evidence regeneration occurred.",
+  "reconciliation": {
+    "cases_reaggregated": 544,
+    "file": "reports/inventory/post_audit_reconciliation.json",
+    "metric_comparisons_with_saved_summary": 4896,
+    "sha256": "51175214c52429e083e6b825beeb2515f09fa96279613c360c8e47ac6d70a7f4"
+  },
+  "schema_version": 1,
+  "tests": {
+    "new_tests": "tests/test_phase5_post_audit.py (5 tests)",
+    "pip_check": "passed",
+    "pytest": "444 passed",
+    "ruff": "passed"
+  }
+}

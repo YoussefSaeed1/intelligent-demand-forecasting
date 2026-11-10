@@ -1,0 +1,161 @@
+{
+  "browser_rendering": "not performed",
+  "figures": [
+    {
+      "bytes": 88700,
+      "dimensions": [
+        1930,
+        814
+      ],
+      "path": "reports/figures/phase5/01_total_cost.png",
+      "sha256": "a7ece3a4cc0bcc273f41eda418cebc3703799087867f52a6e572ecbffc89b087"
+    },
+    {
+      "bytes": 26293,
+      "dimensions": null,
+      "path": "reports/figures/phase5/01_total_cost.svg",
+      "sha256": "46d7525323733454587395224df4e72023add15c6629a9282dc3a432d74b7620"
+    },
+    {
+      "bytes": 88820,
+      "dimensions": [
+        1930,
+        814
+      ],
+      "path": "reports/figures/phase5/02_cost_breakdown.png",
+      "sha256": "241d3c309de35a40b98597d6e9bc64cf2e95bbb2be2eaf68e23e0e4b80284762"
+    },
+    {
+      "bytes": 27969,
+      "dimensions": null,
+      "path": "reports/figures/phase5/02_cost_breakdown.svg",
+      "sha256": "ce8632a3d7e97592d320da096edb99dc469ad34ee6ecbc7bbf7b200344bc9538"
+    },
+    {
+      "bytes": 85850,
+      "dimensions": [
+        1930,
+        813
+      ],
+      "path": "reports/figures/phase5/03_fill_inventory.png",
+      "sha256": "4ed1afcbc18c9f33ade905a9d144ea58334deec547fd8b39e4e57b67613e740c"
+    },
+    {
+      "bytes": 32586,
+      "dimensions": null,
+      "path": "reports/figures/phase5/03_fill_inventory.svg",
+      "sha256": "450c8eb28240d79c32fa84a50023cef4de5d54c965a1afd83ff259a4949db496"
+    },
+    {
+      "bytes": 79251,
+      "dimensions": [
+        1930,
+        814
+      ],
+      "path": "reports/figures/phase5/04_stockout_days.png",
+      "sha256": "992af5df402e3d400aeeacd0e05f2e7562693c11e4c109878817e495e39671b5"
+    },
+    {
+      "bytes": 19719,
+      "dimensions": null,
+      "path": "reports/figures/phase5/04_stockout_days.svg",
+      "sha256": "4b555508c6d0c3343290472f56f3168f77fed4681b78053ea279283f0b534fa4"
+    },
+    {
+      "bytes": 108526,
+      "dimensions": [
+        1930,
+        814
+      ],
+      "path": "reports/figures/phase5/05_demand_patterns.png",
+      "sha256": "ca9ff07854de701f4bd50ab85c5f18de3577d6c836c5b4301c4e73e4d07117af"
+    },
+    {
+      "bytes": 31783,
+      "dimensions": null,
+      "path": "reports/figures/phase5/05_demand_patterns.svg",
+      "sha256": "f520dbc05d45776a924a15f89cbc970d2698f4ebc4d40353bd27867bb91ce9cd"
+    },
+    {
+      "bytes": 141028,
+      "dimensions": [
+        1930,
+        813
+      ],
+      "path": "reports/figures/phase5/06_lead_sensitivity.png",
+      "sha256": "6a3b0a32e3149777fd8e5184dd65b84198bcfc9c4e27c7f93cb77404f012ea1e"
+    },
+    {
+      "bytes": 35036,
+      "dimensions": null,
+      "path": "reports/figures/phase5/06_lead_sensitivity.svg",
+      "sha256": "27dba1786f8d6e16e3f85611f077cd01f55faa4b28f89c50b532857fe5f5ad7a"
+    },
+    {
+      "bytes": 136132,
+      "dimensions": [
+        1930,
+        813
+      ],
+      "path": "reports/figures/phase5/07_buffer_sensitivity.png",
+      "sha256": "018b0c7e355a30629d1ba41c00add8b3d495d9aff2dfe2328d87b62fd0cea6f3"
+    },
+    {
+      "bytes": 33449,
+      "dimensions": null,
+      "path": "reports/figures/phase5/07_buffer_sensitivity.svg",
+      "sha256": "a0dd3283841d844649643208247fc3ceeb8776a1e29952d4617f383c57188302"
+    },
+    {
+      "bytes": 100836,
+      "dimensions": [
+        1930,
+        813
+      ],
+      "path": "reports/figures/phase5/08_accuracy_inventory.png",
+      "sha256": "01cd52a3e5bb00d37db7d58c4d39ea369da37eb0ebd509429322e3bf3ab54352"
+    },
+    {
+      "bytes": 40821,
+      "dimensions": null,
+      "path": "reports/figures/phase5/08_accuracy_inventory.svg",
+      "sha256": "afa47a04b22f83b3169d4e454f6db528d35030e9444f2ba7e35dc6173762df74"
+    },
+    {
+      "bytes": 739438,
+      "dimensions": [
+        2230,
+        2945
+      ],
+      "path": "reports/figures/phase5/09_trajectories.png",
+      "sha256": "7ae71a8177a7e2502044cc37d677025f7f316387551d68e1c47a796d0f91f8ca"
+    },
+    {
+      "bytes": 196162,
+      "dimensions": null,
+      "path": "reports/figures/phase5/09_trajectories.svg",
+      "sha256": "968fc8bea32a80b0433f8d7fe75e477c37c931d96ed8d1f0a21072739f3f9fc8"
+    },
+    {
+      "bytes": 175329,
+      "dimensions": [
+        2073,
+        1476
+      ],
+      "path": "reports/figures/phase5/10_robustness.png",
+      "sha256": "150a02be2905a7fbce5732a3a6e95aa2c750542ef2122afe28f57fda6752d28e"
+    },
+    {
+      "bytes": 56832,
+      "dimensions": null,
+      "path": "reports/figures/phase5/10_robustness.svg",
+      "sha256": "4f09ff3ea8cb9a6ce74d6ec9fe76d64f9bc9e54a852304e242cb5a3954870e82"
+    }
+  ],
+  "html_sha256": "6f1f3d974fe8cb48b787cf4e19ea51f62f594ca65ee4d22f609078fd9a4af371",
+  "offline_links": 35,
+  "report_data_sha256": "45bd9d16af4c49b7f91ebe925376a39a89aee8ddd49bd68521b4f2ebc06de971",
+  "scenario_rows_reconciled": 136,
+  "scope": "Image decoding/XML, local link checks and saved chart-data accounting; visual inspection is recorded separately in the completion gate",
+  "status": "passed"
+}

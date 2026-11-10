@@ -1,0 +1,31 @@
+{
+  "conservation_timing_visibility_reference_checks": "passed",
+  "engine_files": [
+    {
+      "bytes": 9409,
+      "path": "src/intelligent_demand/inventory/engine.py",
+      "sha256": "0e764f2b064c93331b4142abf94439fa447bfb6a660f105af20e761e548da6d1"
+    },
+    {
+      "bytes": 6295,
+      "path": "src/intelligent_demand/inventory/inputs.py",
+      "sha256": "8ac5b7e3172eea6da236bd41c033f6a203eea254ef34cce41ed62302bb677b91"
+    }
+  ],
+  "final_holdout_used": false,
+  "initial_full_run": {
+    "cause": "Windows access denied on a disposable fixture atomic replacement; target not read-only; exact OS cause unconfirmed; failed fixture/log preserved",
+    "failed": 1,
+    "passed": 423
+  },
+  "pip_check": "passed",
+  "plan_sha256": "63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e",
+  "pytest": {
+    "log": "artifacts/experiments/phase5b_full_20261108_retry.log",
+    "passed": 424,
+    "seconds": 72.44
+  },
+  "ruff": "passed",
+  "status": "passed",
+  "synthetic_inventory_tests": 26
+}

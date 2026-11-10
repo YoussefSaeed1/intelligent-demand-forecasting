@@ -1,0 +1,41 @@
+schema_version: 1
+horizon: 28
+seed: 42
+fulfilment: lost_sales
+policies: [fixed_reorder_point, moving_average_28, seasonal_naive, selected_ml]
+base:
+  lead_days: 7
+  review_days: 1
+  buffer_days: 3
+  initial_cover_days: 7
+  holding_cost: 1
+  shortage_cost: 10
+  fixed_order_cost: 1
+  variable_order_cost: 0
+  terminal_cost: 0
+  variability_multiplier: 1
+variants:
+  lead_short: {lead_days: 1}
+  lead_long: {lead_days: 14}
+  buffer_zero: {buffer_days: 0}
+  buffer_high: {buffer_days: 7}
+  initial_zero: {initial_cover_days: 0}
+  initial_high: {initial_cover_days: 14}
+  holding_low: {holding_cost: 0.2}
+  holding_high: {holding_cost: 2}
+  penalty_low: {shortage_cost: 2}
+  penalty_high: {shortage_cost: 50}
+  ordering_zero: {fixed_order_cost: 0}
+  ordering_high: {fixed_order_cost: 5}
+  terminal_charge: {terminal_cost: 1}
+  variability_low: {variability_multiplier: 0.5}
+  variability_high: {variability_multiplier: 1.5}
+  weekly_review: {review_days: 7}
+resources:
+  batch_series: 4096
+  max_worker_rss_mib: 2048
+  max_wall_seconds: 900
+  max_output_gib: 8
+  minimum_free_disk_gib: 16
+  workers: 1
+events: base_full_other_representatives

@@ -1,0 +1,495 @@
+{
+  "base_by_origin": {
+    "m5": {
+      "1": {
+        "fixed_reorder_point": {
+          "forecast_mae": null,
+          "mean_cost": 201.41167595933092,
+          "pooled_fill_rate": 0.7796550343008785
+        },
+        "moving_average_28": {
+          "forecast_mae": 1.014950033801648,
+          "mean_cost": 218.45880616595605,
+          "pooled_fill_rate": 0.804718176813667
+        },
+        "seasonal_naive": {
+          "forecast_mae": 1.2055755985569039,
+          "mean_cost": 235.61787471302065,
+          "pooled_fill_rate": 0.8098701669230164
+        },
+        "selected_ml": {
+          "forecast_mae": 0.9986903229382016,
+          "mean_cost": 218.8559199737619,
+          "pooled_fill_rate": 0.8122577860525002
+        }
+      },
+      "2": {
+        "fixed_reorder_point": {
+          "forecast_mae": null,
+          "mean_cost": 204.05736306985898,
+          "pooled_fill_rate": 0.7685086265850564
+        },
+        "moving_average_28": {
+          "forecast_mae": 1.0332807343993682,
+          "mean_cost": 216.0120367333552,
+          "pooled_fill_rate": 0.8227127046070829
+        },
+        "seasonal_naive": {
+          "forecast_mae": 1.1994494682097177,
+          "mean_cost": 227.83834043948835,
+          "pooled_fill_rate": 0.81632569739076
+        },
+        "selected_ml": {
+          "forecast_mae": 1.0195172344666987,
+          "mean_cost": 218.3666448015743,
+          "pooled_fill_rate": 0.8270608709261458
+        }
+      },
+      "3": {
+        "fixed_reorder_point": {
+          "forecast_mae": null,
+          "mean_cost": 209.9348966874385,
+          "pooled_fill_rate": 0.802563969569761
+        },
+        "moving_average_28": {
+          "forecast_mae": 1.0457541281517526,
+          "mean_cost": 231.60901935060676,
+          "pooled_fill_rate": 0.842713893000994
+        },
+        "seasonal_naive": {
+          "forecast_mae": 1.210618235487045,
+          "mean_cost": 239.13958674975402,
+          "pooled_fill_rate": 0.8306014878404037
+        },
+        "selected_ml": {
+          "forecast_mae": 1.0345736584988314,
+          "mean_cost": 233.27143325680552,
+          "pooled_fill_rate": 0.8466150312864829
+        }
+      },
+      "4": {
+        "fixed_reorder_point": {
+          "forecast_mae": null,
+          "mean_cost": 205.14486716956378,
+          "pooled_fill_rate": 0.8304540454501675
+        },
+        "moving_average_28": {
+          "forecast_mae": 1.0411320038018486,
+          "mean_cost": 221.61020006559528,
+          "pooled_fill_rate": 0.8637373629845914
+        },
+        "seasonal_naive": {
+          "forecast_mae": 1.2323548704493277,
+          "mean_cost": 236.7353230567399,
+          "pooled_fill_rate": 0.8519177510463609
+        },
+        "selected_ml": {
+          "forecast_mae": 1.0274867244328751,
+          "mean_cost": 224.78556903902918,
+          "pooled_fill_rate": 0.8687389428755367
+        }
+      }
+    },
+    "store_item": {
+      "1": {
+        "fixed_reorder_point": {
+          "forecast_mae": null,
+          "mean_cost": 3762.238,
+          "pooled_fill_rate": 0.9896127320838073
+        },
+        "moving_average_28": {
+          "forecast_mae": 10.656948979591839,
+          "mean_cost": 7434.374,
+          "pooled_fill_rate": 0.9906973773607552
+        },
+        "seasonal_naive": {
+          "forecast_mae": 9.153214285714286,
+          "mean_cost": 6718.898,
+          "pooled_fill_rate": 0.9906973773607552
+        },
+        "selected_ml": {
+          "forecast_mae": 6.492088088665719,
+          "mean_cost": 6518.594,
+          "pooled_fill_rate": 0.9906973773607552
+        }
+      },
+      "2": {
+        "fixed_reorder_point": {
+          "forecast_mae": null,
+          "mean_cost": 3583.322,
+          "pooled_fill_rate": 0.9918802830247535
+        },
+        "moving_average_28": {
+          "forecast_mae": 9.385137755102042,
+          "mean_cost": 6645.956,
+          "pooled_fill_rate": 0.9925783103031416
+        },
+        "seasonal_naive": {
+          "forecast_mae": 8.783928571428573,
+          "mean_cost": 6206.062,
+          "pooled_fill_rate": 0.9925783103031416
+        },
+        "selected_ml": {
+          "forecast_mae": 6.260136069670047,
+          "mean_cost": 6047.87,
+          "pooled_fill_rate": 0.9925783103031416
+        }
+      },
+      "3": {
+        "fixed_reorder_point": {
+          "forecast_mae": null,
+          "mean_cost": 2993.984,
+          "pooled_fill_rate": 0.9901245284767146
+        },
+        "moving_average_28": {
+          "forecast_mae": 9.093714285714286,
+          "mean_cost": 5999.858,
+          "pooled_fill_rate": 0.9911145140170736
+        },
+        "seasonal_naive": {
+          "forecast_mae": 8.577285714285713,
+          "mean_cost": 5511.11,
+          "pooled_fill_rate": 0.9911011028829062
+        },
+        "selected_ml": {
+          "forecast_mae": 6.157554588806195,
+          "mean_cost": 5623.936,
+          "pooled_fill_rate": 0.9911108564350279
+        }
+      },
+      "4": {
+        "fixed_reorder_point": {
+          "forecast_mae": null,
+          "mean_cost": 2766.212,
+          "pooled_fill_rate": 0.9344898849407541
+        },
+        "moving_average_28": {
+          "forecast_mae": 9.017382653061224,
+          "mean_cost": 5578.158,
+          "pooled_fill_rate": 0.9604145660666996
+        },
+        "seasonal_naive": {
+          "forecast_mae": 10.105428571428572,
+          "mean_cost": 5986.796,
+          "pooled_fill_rate": 0.9604145660666996
+        },
+        "selected_ml": {
+          "forecast_mae": 6.322380540737706,
+          "mean_cost": 5963.37,
+          "pooled_fill_rate": 0.9604145660666996
+        }
+      }
+    }
+  },
+  "base_pooled": {
+    "m5": {
+      "fixed_reorder_point": {
+        "average_on_hand": 4.203696469568477,
+        "cost_per_demand_unit": 5.404832748207519,
+        "mean_cost": 205.13720072154806,
+        "pooled_fill_rate": 0.7956339266252013,
+        "stockout_days_per_episode": 2.639078386356182
+      },
+      "moving_average_28": {
+        "average_on_hand": 5.402169915194678,
+        "cost_per_demand_unit": 5.847082223733014,
+        "mean_cost": 221.92251557887832,
+        "pooled_fill_rate": 0.8340333887890455,
+        "stockout_days_per_episode": 2.2050672351590683
+      },
+      "seasonal_naive": {
+        "average_on_hand": 5.813157124115636,
+        "cost_per_demand_unit": 6.18723421170256,
+        "mean_cost": 234.83278123975074,
+        "pooled_fill_rate": 0.8275286303346419,
+        "stockout_days_per_episode": 2.318497868153493
+      },
+      "selected_ml": {
+        "average_on_hand": 5.54020287682144,
+        "cost_per_demand_unit": 5.897073161141942,
+        "mean_cost": 223.8198917677927,
+        "pooled_fill_rate": 0.8391890201578381,
+        "stockout_days_per_episode": 2.1486388979993443
+      }
+    },
+    "store_item": {
+      "fixed_reorder_point": {
+        "average_on_hand": 102.12339285714286,
+        "cost_per_demand_unit": 1.9177688262673371,
+        "mean_cost": 3276.439,
+        "pooled_fill_rate": 0.976763630957398,
+        "stockout_days_per_episode": 2.266
+      },
+      "moving_average_28": {
+        "average_on_hand": 218.51998214285712,
+        "cost_per_demand_unit": 3.7545927218835162,
+        "mean_cost": 6414.5865,
+        "pooled_fill_rate": 0.9838290417591474,
+        "stockout_days_per_episode": 0.971
+      },
+      "seasonal_naive": {
+        "average_on_hand": 207.48273214285712,
+        "cost_per_demand_unit": 3.573804598750691,
+        "mean_cost": 6105.7165,
+        "pooled_fill_rate": 0.9838258224931868,
+        "stockout_days_per_episode": 0.972
+      },
+      "selected_ml": {
+        "average_on_hand": 205.07853571428572,
+        "cost_per_demand_unit": 3.5344277081635904,
+        "mean_cost": 6038.4425,
+        "pooled_fill_rate": 0.9838281637775218,
+        "stockout_days_per_episode": 0.9715
+      }
+    }
+  },
+  "fixed_reorder_point": {
+    "m5": {
+      "eligible_reviews_in_base_episode": 20,
+      "mean_inventory_position_in_mean_days": 11.341345652460765,
+      "mean_orders_per_episode": 10.488613486025047,
+      "positive_mean_series_episodes": 114741,
+      "reorder_point_in_mean_days_of_demand": 11,
+      "scenarios_where_fixed_rop_fill_below_selected_ml": 17,
+      "scenarios_where_fixed_rop_has_lowest_mean_cost": 14,
+      "share_ordering_at_every_eligible_review": 0.10994326352393652
+    },
+    "store_item": {
+      "eligible_reviews_in_base_episode": 20,
+      "mean_inventory_position_in_mean_days": 7.334759808211775,
+      "mean_orders_per_episode": 19.999,
+      "positive_mean_series_episodes": 2000,
+      "reorder_point_in_mean_days_of_demand": 11,
+      "scenarios_where_fixed_rop_fill_below_selected_ml": 15,
+      "scenarios_where_fixed_rop_has_lowest_mean_cost": 14,
+      "share_ordering_at_every_eligible_review": 0.999
+    }
+  },
+  "m5_paired_ties": {
+    "1": {
+      "median_difference": 0.0,
+      "series": 30490,
+      "tied_series": 7650
+    },
+    "2": {
+      "median_difference": 0.0,
+      "series": 30490,
+      "tied_series": 7485
+    },
+    "3": {
+      "median_difference": 0.0,
+      "series": 30490,
+      "tied_series": 7454
+    },
+    "4": {
+      "median_difference": 0.0,
+      "series": 30490,
+      "tied_series": 7486
+    }
+  },
+  "m5_sparse_subgroup": {
+    "origin_sample_all_zero": {
+      "1": {
+        "cost_ml_minus_ma28_in_group": 2.483044982698962,
+        "cost_ml_minus_ma28_rest": -0.2506769825918762,
+        "ma28_mae_in_group": 0.4411362191935598,
+        "ma28_mae_rest": 1.1931492519638418,
+        "ml_mae_in_group": 0.4526816531591108,
+        "ml_mae_rest": 1.168254588536909,
+        "series": 7225
+      },
+      "2": {
+        "cost_ml_minus_ma28_in_group": 2.2940520963922553,
+        "cost_ml_minus_ma28_rest": 2.3732572605207842,
+        "ma28_mae_in_group": 0.4535450619863491,
+        "ma28_mae_rest": 1.2118197242433502,
+        "ml_mae_in_group": 0.46838885398086394,
+        "ml_mae_rest": 1.1892461454318142,
+        "series": 7179
+      },
+      "3": {
+        "cost_ml_minus_ma28_in_group": 2.0616801562936087,
+        "cost_ml_minus_ma28_rest": 1.5397444692162578,
+        "ma28_mae_in_group": 0.4683326023683266,
+        "ma28_mae_rest": 1.2231594897434193,
+        "ml_mae_in_group": 0.48053578254197515,
+        "ml_mae_rest": 1.2047946934459601,
+        "series": 7166
+      },
+      "4": {
+        "cost_ml_minus_ma28_in_group": 2.234948394495413,
+        "cost_ml_minus_ma28_rest": 3.4543676107850643,
+        "ma28_mae_in_group": 0.4725512983289646,
+        "ma28_mae_rest": 1.209815298918751,
+        "ml_mae_in_group": 0.48562364724086726,
+        "ml_mae_rest": 1.1882435853026314,
+        "series": 6976
+      }
+    },
+    "retrospective_final_training_all_zero": {
+      "1": {
+        "cost_ml_minus_ma28_in_group": 2.1248909566734517,
+        "cost_ml_minus_ma28_rest": -0.10617482635947822,
+        "ma28_mae_in_group": 0.41778763700885996,
+        "ma28_mae_rest": 1.1888989989524523,
+        "ml_mae_in_group": 0.42724494987677736,
+        "ml_mae_rest": 1.1651481103309034,
+        "series": 6878
+      },
+      "2": {
+        "cost_ml_minus_ma28_in_group": 2.7173596975865077,
+        "cost_ml_minus_ma28_rest": 2.2489412163306794,
+        "ma28_mae_in_group": 0.4397131344541306,
+        "ma28_mae_rest": 1.2061825619626132,
+        "ml_mae_in_group": 0.45744429088698524,
+        "ml_mae_rest": 1.183244902853166,
+        "series": 6878
+      },
+      "3": {
+        "cost_ml_minus_ma28_in_group": 2.5918871765047977,
+        "cost_ml_minus_ma28_rest": 1.3916652549551076,
+        "ma28_mae_in_group": 0.45771270124798974,
+        "ma28_mae_rest": 1.2170462226055931,
+        "ml_mae_in_group": 0.47249604981492305,
+        "ml_mae_rest": 1.1983026857954568,
+        "series": 6878
+      },
+      "4": {
+        "cost_ml_minus_ma28_in_group": 2.251817388775807,
+        "cost_ml_minus_ma28_rest": 3.444392681687278,
+        "ma28_mae_in_group": 0.4631804451934889,
+        "ma28_mae_rest": 1.2094849946585444,
+        "ml_mae_in_group": 0.4758403650546688,
+        "ml_mae_rest": 1.1881772063828713,
+        "series": 6878
+      }
+    }
+  },
+  "ml_comparisons": {
+    "m5": {
+      "moving_average_28": {
+        "base_difference": 1.897376188914393,
+        "base_fill_difference_points": 0.5155631368792601,
+        "base_percent": 0.8549723690564445,
+        "origins_where_ml_cheaper": 0,
+        "per_origin_difference": [
+          0.3971138078058516,
+          2.3546080682191075,
+          1.6624139061987648,
+          3.175368973433905
+        ],
+        "pooled_scenario_difference_range": [
+          -5.9297802558215835,
+          5.762299114463758
+        ],
+        "scenario_origin_cells": 68,
+        "scenario_origin_cells_ml_cheaper": 13,
+        "scenarios_ml_cheaper_by_origin": {
+          "1": 6,
+          "2": 2,
+          "3": 3,
+          "4": 2
+        },
+        "scenarios_ml_cheaper_pooled": 3
+      },
+      "seasonal_naive": {
+        "base_difference": -11.012889471958033,
+        "base_fill_difference_points": 1.1660389823196282,
+        "base_percent": -4.689672972324297,
+        "origins_where_ml_cheaper": 4,
+        "per_origin_difference": [
+          -16.761954739258755,
+          -9.471695637914053,
+          -5.868153492948494,
+          -11.949754017710717
+        ],
+        "pooled_scenario_difference_range": [
+          -28.71541489012793,
+          -4.898714332568076
+        ],
+        "scenario_origin_cells": 68,
+        "scenario_origin_cells_ml_cheaper": 65,
+        "scenarios_ml_cheaper_by_origin": {
+          "1": 17,
+          "2": 17,
+          "3": 14,
+          "4": 17
+        },
+        "scenarios_ml_cheaper_pooled": 17
+      }
+    },
+    "store_item": {
+      "moving_average_28": {
+        "base_difference": -376.14400000000023,
+        "base_fill_difference_points": -8.779816256243578e-05,
+        "base_percent": -5.863885380608714,
+        "origins_where_ml_cheaper": 3,
+        "per_origin_difference": [
+          -915.7799999999997,
+          -598.0860000000002,
+          -375.9220000000005,
+          385.21199999999953
+        ],
+        "pooled_scenario_difference_range": [
+          -752.5045000000009,
+          -75.05559999999991
+        ],
+        "scenario_origin_cells": 68,
+        "scenario_origin_cells_ml_cheaper": 52,
+        "scenarios_ml_cheaper_by_origin": {
+          "1": 17,
+          "2": 17,
+          "3": 17,
+          "4": 1
+        },
+        "scenarios_ml_cheaper_pooled": 17
+      },
+      "seasonal_naive": {
+        "base_difference": -67.27400000000034,
+        "base_fill_difference_points": 0.000234128433496128,
+        "base_percent": -1.1018199092604501,
+        "origins_where_ml_cheaper": 3,
+        "per_origin_difference": [
+          -200.3040000000001,
+          -158.192,
+          112.82600000000002,
+          -23.426000000000386
+        ],
+        "pooled_scenario_difference_range": [
+          -224.3340000000003,
+          13.959999999999127
+        ],
+        "scenario_origin_cells": 68,
+        "scenario_origin_cells_ml_cheaper": 49,
+        "scenarios_ml_cheaper_by_origin": {
+          "1": 16,
+          "2": 17,
+          "3": 1,
+          "4": 15
+        },
+        "scenarios_ml_cheaper_pooled": 16
+      }
+    }
+  },
+  "phase4_selection_asymmetry": {
+    "m5": {
+      "reference_configurations": 2,
+      "selected_trial": "m5_random_forest_02",
+      "tuning_configurations": 11
+    },
+    "store_item": {
+      "reference_configurations": 2,
+      "selected_trial": "store_item_lightgbm_00",
+      "tuning_configurations": 12
+    }
+  },
+  "plan_sha256": "63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e",
+  "purpose": "Post-independent-audit descriptive reconciliation; no simulation, forecast, target or model access",
+  "reconciliation_with_saved_summary": {
+    "cases": 544,
+    "metric_comparisons": 4896,
+    "summary_sha256": "1d817e56a6aa590dcf5b26a9b25d2a0a831dbcb3e480b39fa8aa0c1909a5ee23"
+  },
+  "scenario_count": 17,
+  "schema_version": 1
+}

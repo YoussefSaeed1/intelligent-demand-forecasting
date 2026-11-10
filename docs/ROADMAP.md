@@ -7,8 +7,8 @@
 | 2 Advanced EDA and experimental design | Complete: full-series training-prefix EDA, ADI/CV², price investigation, verified figures/tables and frozen protocol | Immutable inputs, aggregate reconciliation, protected evaluation tails and documented evidence |
 | 3 Forecasting implementation | Complete: 3A checkpoint preserved; 3B–3E validated; 318 tests and 224 independently reconciled evaluations | Independent predictions/metrics/features, matched populations, four origins, holdout isolation, source hashes and local report checks passed; automated browser preview limited by file URL policy |
 | 4 Model Optimisation & Evaluation | Complete, 2026-11-07: 27 fixed cases, 108 validation runs, immutable selection, eight one-time final comparisons, offline report and audit inventory | 352 tests; independent 45,177,440 validation and 3,470,880 final forecast checks; source/protocol hashes, once-only ledger, all technical gates passed; browser rendering not run under file URL policy |
-| Independent Claude technical audit | Mandatory future gate after Phase 4 and before Phase 5 | Review integrity, features, leakage, methodology, tuning, statistical validity, code and reproducibility; resolve all critical/high findings and independently revalidate |
-| 5 Inventory scenarios | Future, conditional on the audit gate: defined simulator, assumptions and sensitivity studies | Tested event/information ordering, comparable policies, qualified simulated outcomes; no claim of observed business savings |
+| Independent Claude technical audit | Complete, 2026-11-10: risk-based audit of Phases 0 to 5; verdict CONDITIONAL (0 Critical, 0 High, 6 Medium, 4 Low, 2 Informational); see [PHASE5_AUDIT_RESPONSE.md](PHASE5_AUDIT_RESPONSE.md) | Review integrity, features, leakage, methodology, tuning, inventory logic, code and reproducibility; no critical/high findings; reporting conditions apply to Phase 6 |
+| 5 Inventory scenarios | Implemented and executed under the owner-authorised focused gate: 17 scenarios, four policies, full populations, four validation origins; see current completion checklist | Sequential design/engine/base/report gates; independent stock/cost reconciliation; protected Phase 4 evidence; no observed business savings claim |
 | 6 BI and academic submission | Future: validated exports, four-page Power BI report, interpretation/writeup/presentation | Reconciled dashboard totals, academic traceability and defensible final conclusions |
 
 Phase 1 closure is preserved: both datasets passed independent persisted-file audits.
@@ -40,4 +40,15 @@ uncertainty methods remain optional enhancements.
 They must not displace baselines, systematic optimisation, appropriate evaluation,
 cross-dataset methodological comparison, interpretation or reproducibility.
 
-Completed Phase 4 evidence: [scientific interpretation](PHASE4_SCIENTIFIC_REVIEW.md), [completion checklist](PHASE4_COMPLETION_CHECKLIST.md), [safe review commands](PHASE4_REPRODUCIBILITY.md), and [audit inventory](PHASE4_AUDIT_PACKAGE.md). The next required gate is the independent Claude audit; resolve critical/high findings before authorising Phase 5.
+Completed Phase 4 evidence: [scientific interpretation](PHASE4_SCIENTIFIC_REVIEW.md), [completion checklist](PHASE4_COMPLETION_CHECKLIST.md), [safe review commands](PHASE4_REPRODUCIBILITY.md), and [audit inventory](PHASE4_AUDIT_PACKAGE.md). The owner subsequently accepted the limited focused conditional gate for hypothetical Phase 5. Broader Claude review of forecasting and inventory remains mandatory before Phase 6/7.
+
+
+Phase 5 uses existing frozen validation forecasts only: no final-holdout demand,
+new forecast training/tuning, daily forecast regeneration or forecasting reselection.
+See [actual gates](PHASE5_COMPLETION_CHECKLIST.md),
+[results](PHASE5_INVENTORY_RESULTS.md), and
+[broader audit handoff](PHASE5_CLAUDE_AUDIT_HANDOFF.md).
+Phase 5 and the audit response are checkpointed in one local commit; nothing was pushed.
+Off-device backup remains outstanding before academic submission.
+Phase 6 and Phase 7 are unstarted. Earlier statements above describe their historical
+phase checkpoints, not a new independent certification.

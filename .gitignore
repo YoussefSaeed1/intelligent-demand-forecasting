@@ -100,3 +100,6 @@ Demand_Forecasting_Phase4_Evidence*/
 Project_Backups/
 backups/
 .canonical-keys-*.sqlite
+# Detailed inventory audit tables remain local; small report_data/gates preserve summaries.
+reports/inventory/phase5_summary.json
+reports/inventory/phase5_base_summary.json

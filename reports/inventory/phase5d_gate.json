@@ -1,0 +1,108 @@
+{
+  "branch": "main",
+  "browser_rendering": "not performed",
+  "cases": 544,
+  "claude_invoked": false,
+  "cli_smoke": "passed",
+  "commit_created": false,
+  "critical_or_high_unresolved_gate_failures": [],
+  "documents_checked": 11,
+  "execution_sha256": "b55ba4a0c9c8fafb2ee3997f38d2f31efea99f4157033e70288814a2006c87c3",
+  "figures_visual_review": "all ten inspected; overlapping origin text replaced by marker shapes",
+  "final_holdout_used": false,
+  "forecast_reselection": false,
+  "forecast_training_or_tuning": false,
+  "head_unchanged": "c4e5f6370392fa63ee3d43062ddfb3fce222570d",
+  "internal_gate_only": true,
+  "inventory": {
+    "all_hashes_reverified": true,
+    "backup": false,
+    "bytes": 487705384,
+    "files": 2252,
+    "path": "reports/inventory/PHASE5_EVIDENCE_INVENTORY.json",
+    "sha256": "e9c80f550e93fcec336bc652ef5e382bf42d4342e2c1fac640806ee0ee0a21db"
+  },
+  "ledger_events": 12,
+  "ledger_sha256": "fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204",
+  "limitations": [
+    "Hypothetical costs/states and potentially censored demand proxy",
+    "Fixed-origin finite episodes with common late-order cutoff",
+    "Validation windows reused after model selection; no significance claim",
+    "Retrospective final-training sparse mask is report-only",
+    "Fractional near-integer ceiling sensitivity; original scalar reference grouping corrected",
+    "Local ignored Phase 5 outputs are not backed up by this inventory",
+    "Automated browser rendering unverified",
+    "Broader independent Claude audit required before Phase 6/7"
+  ],
+  "markdown_local_links_checked": 16,
+  "milestones": {
+    "5A": "COMPLETE",
+    "5B": "COMPLETE",
+    "5C": "COMPLETE",
+    "5D": "COMPLETE"
+  },
+  "original_ledger_writes": 0,
+  "phase6_or_7_started": false,
+  "pip_check": "passed",
+  "plan_sha256": "63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e",
+  "pushed": false,
+  "pytest": {
+    "log": {
+      "path": "artifacts/experiments/phase5_final_tests_20261108_frozen_tools.log",
+      "sha256": "539390f3f1d6fc43292920cd82a1c10542b60b0d0aa24883cfe3be19ef171f4e"
+    },
+    "passed": 439,
+    "seconds": 100.93
+  },
+  "receipts": {
+    "metric_validation.json": {
+      "path": "reports/inventory/metric_validation.json",
+      "sha256": "c545a656371db45269891ac7a994e86bb30fa24e856854ca7cbc42f2e043b0ca"
+    },
+    "phase5a_gate.json": {
+      "path": "reports/inventory/phase5a_gate.json",
+      "sha256": "0f967c774ca17c4ed7017ac5c60f5d57aadc127e3ea7b6f65bb5b73dc3fc0437"
+    },
+    "phase5b_gate.json": {
+      "path": "reports/inventory/phase5b_gate.json",
+      "sha256": "2577b846c743a12cd6997d3e9ce874e0c93165aa983d5a4ca49c7eacc2a70da4"
+    },
+    "phase5c_gate.json": {
+      "path": "reports/inventory/phase5c_gate.json",
+      "sha256": "c32cbf2c3dcac2c40d04cbe59cc75c33ba5b7edee01e47baff44d050f0d714cf"
+    },
+    "protected_evidence_verification.json": {
+      "path": "reports/inventory/protected_evidence_verification.json",
+      "sha256": "f51b8d3d490b11dcabcf9ec98da742c03f4bf746ce48b6bd8cc578d144c31e6a"
+    },
+    "report_validation.json": {
+      "path": "reports/inventory/report_validation.json",
+      "sha256": "2dd0800920af6c7b6e876811a85abf2828936441d62ad6ade54ff11a55829cef"
+    },
+    "security_review.json": {
+      "path": "reports/inventory/security_review.json",
+      "sha256": "351b376100d3425aa4b497a59a8adb012587103cf3cbe6f9a6c87ea39eeb9179"
+    },
+    "validation_checks.json": {
+      "path": "reports/inventory/validation_checks.json",
+      "sha256": "a2c030a922b2dc7f89e85ecee9f06ba5b170fb171c2fab0554fa0360e57f0187"
+    }
+  },
+  "retained_event_rows": 13969536,
+  "ruff": "passed",
+  "scalar_reference_episodes": 3264,
+  "security_review": {
+    "large_unignored_files": [],
+    "provider_secret_pattern_hits": [],
+    "reviewed_modified_untracked_files": 47,
+    "staged_files": 0
+  },
+  "selection_sha256": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+  "series_episodes": 8429280,
+  "status": "passed",
+  "summary": {
+    "path": "reports/inventory/phase5_summary.json",
+    "sha256": "1d817e56a6aa590dcf5b26a9b25d2a0a831dbcb3e480b39fa8aa0c1909a5ee23"
+  },
+  "working_tree": "dirty, intentionally unstaged and uncommitted"
+}

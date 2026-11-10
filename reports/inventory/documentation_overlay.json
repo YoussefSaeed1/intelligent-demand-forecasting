@@ -1,0 +1,62 @@
+{
+  "baseline_checkpoint": "54a689b7cb07970556bbf2fc164adf934307eab8",
+  "files": {
+    ".gitignore": {
+      "current_sha256": "1d65451ba7295b510baeb2498bccfb2b25cad9dc5bec33859ce136559a5fac9b",
+      "original_copy": "reports/post_audit/original_source/.gitignore",
+      "original_sha256": "5f80920be85053ec4d343c4fa68dcee04403b11eaca6abd984a35a5eb1c53f77",
+      "type": "current_documentation_or_ignore_rules"
+    },
+    "README.md": {
+      "current_sha256": "c6abc131acb886cd9d65f8bafaf9a8ba1d4f16b9afbda16f81d36ee5b05a5b18",
+      "original_copy": "reports/post_audit/original_source/README.md",
+      "original_sha256": "358b178535edfc7ca542217d5a902b0eb67c4c402ec4c010565b9f6c6a264421",
+      "type": "current_documentation_or_ignore_rules"
+    },
+    "docs/ACADEMIC_REQUIREMENTS.md": {
+      "current_sha256": "bfe2309c98daf571aaf5b10a3af87f7429ccefc16c17fa1fe24398e03b0be12a",
+      "original_copy": "reports/post_audit/original_source/docs/ACADEMIC_REQUIREMENTS.md",
+      "original_sha256": "399915ebdd3f7aa7df72f970c7c84cfa92761e84ff83aa711c3c804189b7448b",
+      "type": "current_documentation_or_ignore_rules"
+    },
+    "src/intelligent_demand/experiments/benchmark.py": {
+      "current_sha256": "4b3b6a86097391ca09f8467d2500339c17fd2cbdec1426653fd38ed46837e7cb",
+      "original_copy": "reports/post_audit/original_source/src/intelligent_demand/experiments/benchmark.py",
+      "original_sha256": "eca9ee54835216a95a8b57702b61b00b8687705c701719ba60dbbfd12d6fc4dd",
+      "type": "forward_code"
+    },
+    "src/intelligent_demand/ingestion/store_item.py": {
+      "current_sha256": "6717e4e8f4067c0dcc471aa7459a8a8c00c4ae699c10e9d4d871779ccd00fa86",
+      "original_copy": "reports/post_audit/original_source/src/intelligent_demand/ingestion/store_item.py",
+      "original_sha256": "6d73ddabf731f2338201006fbdccd75124bd4e831033e24ed74d1f1b783543f6",
+      "type": "forward_code"
+    },
+    "src/intelligent_demand/tuning/final.py": {
+      "current_sha256": "05211c356cde208287b04bf8bd5ddbf9a982e9894fba90ecf9e69b0154ba798c",
+      "original_copy": "reports/post_audit/original_source/src/intelligent_demand/tuning/final.py",
+      "original_sha256": "acf9e9059118ccd022d84a9ce3205b38823bc8d1b3c72cb8c0eaba180c64a9fc",
+      "type": "forward_code"
+    },
+    "src/intelligent_demand/tuning/runner.py": {
+      "current_sha256": "272f3dd68a5d8cf174dd53876b8fd2d5829e3fd274d285afbabb1c8fc4ada733",
+      "original_copy": "reports/post_audit/original_source/src/intelligent_demand/tuning/runner.py",
+      "original_sha256": "972159e211728390dd5bb0231322eccb6ccaf813aefd7ab6926ae69022badc65",
+      "type": "forward_code"
+    },
+    "src/intelligent_demand/validation/quality.py": {
+      "current_sha256": "9a6910e5f9395ed140a27aa99c85e6781b2830476641ca14b6e392d4fffca598",
+      "original_copy": "reports/post_audit/original_source/src/intelligent_demand/validation/quality.py",
+      "original_sha256": "e38ee2c9f6ee7ed6ec6f93430731b0043932a3f0a4dc4ebbd1bc579c5fa56193",
+      "type": "forward_code"
+    },
+    "docs/ROADMAP.md": {
+      "current_sha256": "edaa6aad3649ccac2c92164211d6521a58da439f175dee6b8a1306e15b22d5c1",
+      "original_copy": "reports/inventory/original_documents/docs/ROADMAP.md",
+      "original_sha256": "fd8309178645d2d98690965b6cf84da94caa92814df0b18447e8b5d32aad799a",
+      "type": "phase5_documentation_only"
+    }
+  },
+  "meaning": "Phase 5 documentation overlay extends original post-audit provenance; original overlay remains unchanged. No historical scientific evidence or execution snapshot replaced.",
+  "schema_version": 1,
+  "selection_fingerprint_unchanged": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb"
+}

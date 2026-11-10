@@ -1,0 +1,18 @@
+{
+  "files": {
+    ".gitattributes": {
+      "current_sha256": "c8dfc57dfa83b430abded55aed7b359a4aa3675c3293efea407d77bd1121929e",
+      "original_copy": "reports/preservation/phase5_precheckpoint_original/.gitattributes",
+      "original_sha256": "ae5af3cf3cdec3b301dadb662f64b3855a35f317163859515e49e99213b24323",
+      "reason": "Versioned checkpoint metadata only; original scientific bytes retained."
+    },
+    "docs/PHASE5_CLAUDE_AUDIT_HANDOFF.md": {
+      "current_sha256": "809c95d4f7a3c4e5198d34e06143e3d8ebae99b3302c67797bdf1b067d8e559a",
+      "original_copy": "reports/preservation/phase5_precheckpoint_original/docs/PHASE5_CLAUDE_AUDIT_HANDOFF.md",
+      "original_sha256": "32ce89e75064062760f2e390ae90221fa711d355a929bd8217c6f76135132b80",
+      "reason": "Versioned checkpoint metadata only; original scientific bytes retained."
+    }
+  },
+  "schema_version": 1,
+  "scope": "Two explicitly versioned checkpoint metadata files only; all scientific files remain byte-identical."
+}

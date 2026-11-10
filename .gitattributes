@@ -132,3 +132,29 @@ reports/forecasting/PHASE4_EVIDENCE_INVENTORY.json text eol=lf
 reports/forecasting/phase4_checkpoint_checks.json text eol=lf
 reports/forecasting/phase4_checkpoint_verification.json text eol=lf
 pyproject.toml text eol=lf
+
+# Phase 5 frozen/referenced text bytes must survive core.autocrlf checkout.
+# Explicit EOL rules retain existing normalised diffs; -text retains exact new artefacts.
+README.md text eol=crlf
+docs/ROADMAP.md text eol=crlf
+docs/ACADEMIC_REQUIREMENTS.md text eol=crlf
+src/intelligent_demand/preservation/backup.py text eol=lf
+src/intelligent_demand/preservation/paths.py text eol=lf
+src/intelligent_demand/preservation/phase5.py text eol=lf
+src/intelligent_demand/preservation/verify.py text eol=lf
+src/intelligent_demand/preservation/__init__.py text eol=lf
+configs/inventory.yaml -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/CLAUDE_FOCUSED_FORECASTING_GATE.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/INVENTORY_*.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/PHASE5_*.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+src/intelligent_demand/inventory/design.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+src/intelligent_demand/inventory/engine.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+src/intelligent_demand/inventory/inputs.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+src/intelligent_demand/inventory/plan.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+src/intelligent_demand/inventory/runner.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+src/intelligent_demand/inventory/audit.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+src/intelligent_demand/inventory/report.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tests/test_inventory_*.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+reports/inventory/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+reports/preservation/PHASE5_*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+reports/preservation/phase5_precheckpoint_original/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

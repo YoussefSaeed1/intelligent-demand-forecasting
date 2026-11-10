@@ -23,17 +23,27 @@ Offline test fixtures are not forecasting results on the real datasets.
 | Validation implemented | Cross-dataset evaluation where feasible | Separate source-specific scores and baseline-relative comparisons; direct transfer unsupported |
 | Validation discussion implemented | Interpretation/discussion | Actual errors, sparse-demand coverage, bias, horizon, class and resource limitations; no significance claim |
 | Metric reconciliation verified; prediction reproduction partial | Reproducibility | All 332 validation/eight final metric cases reconciled; sampled validation replay exact; clean-room reproduction unverified; explicit historical-root mapping |
-| Mandatory future gate | Independent Claude technical audit | After Phase 4 and before Phase 5; critical/high findings resolved and independently revalidated |
-| Future | Inventory implications | Assumption registry, simulator and sensitivity report; no simulation or business savings claim yet |
+| Complete; verdict CONDITIONAL | Independent Claude technical audit | Risk-based audit of Phases 0 to 5 (2026-11-10): 0 Critical, 0 High, 6 Medium, 4 Low, 2 Informational; response in PHASE5_AUDIT_RESPONSE.md; reporting conditions apply before Phase 6 |
+| Implemented and executed; see completion gates | Inventory implications | Frozen hypothetical scenarios, deterministic simulator, four policies, full populations, paired comparisons, sensitivity report; no realised savings claim |
 
 The Phase 4 checkpoint is `54a689b7cb07970556bbf2fc164adf934307eab8`.
 See [internal audit](CODEX_INTERNAL_AUDIT_PHASES_0_4.md),
 [remediation report](POST_AUDIT_REMEDIATION_REPORT.md) and
 [Claude handoff](CLAUDE_AUDIT_HANDOFF.md) for current verification and limitations.
 A verified local same-device evidence copy mitigates accidental loss; it is not an
-independent off-device backup. The independent Claude gate and Phase 5 remain unstarted.
+independent off-device backup. A limited conditional Claude review permitted hypothetical
+Phase 5; the broader audit of Phases 0 to 5 has since been completed (CONDITIONAL).
+Off-device backup remains required before academic submission.
 
 The protocol defines experiments; documentation alone does not satisfy implementation,
 tuning or forecasting-evaluation requirements. See [ROADMAP.md](ROADMAP.md) for gates.
 CPU LightGBM is implemented; optional SHAP, MLflow and advanced uncertainty remain separate from
 core academic requirements. Inventory and Power BI follow the audited forecasting core.
+
+
+Phase 5 evidence: [inventory results](PHASE5_INVENTORY_RESULTS.md),
+[sensitivity](PHASE5_SENSITIVITY_ANALYSIS.md),
+[limitations](PHASE5_LIMITATIONS.md), [completion gates](PHASE5_COMPLETION_CHECKLIST.md).
+Observed sales proxy demand; operational costs and service buffers are hypothetical.
+Validation-reused policy experiments do not establish realised savings or prospective
+inventory effectiveness. Audit handoff: PHASE5_CLAUDE_AUDIT_HANDOFF.md; audit response: PHASE5_AUDIT_RESPONSE.md.

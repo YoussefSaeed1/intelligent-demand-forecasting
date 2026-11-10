@@ -1,0 +1,46 @@
+{
+  "checks": [
+    {
+      "arguments": [
+        "-m",
+        "ruff",
+        "check",
+        ".",
+        "--no-cache"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "All checks passed!\n"
+    },
+    {
+      "arguments": [
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": "No broken requirements found.\n"
+    },
+    {
+      "arguments": [
+        "-m",
+        "pytest",
+        "tests/test_evidence_backup.py",
+        "tests/test_inventory_design.py",
+        "tests/test_inventory_engine.py",
+        "tests/test_inventory_integrity.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp",
+        "artifacts/test_runs/phase5_backup_checkpoint_02"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout": ".......................................................                  [100%]\n55 passed in 2.58s\n"
+    }
+  ],
+  "scope": "Preservation-only checkpoint: current lint/environment and55 focused backup/inventory tests; original439-test result authenticated separately. No experiment regeneration.",
+  "status": "passed"
+}
