@@ -158,3 +158,5 @@ tests/test_inventory_*.py -text whitespace=blank-at-eol,blank-at-eof,space-befor
 reports/inventory/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 reports/preservation/PHASE5_*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 reports/preservation/phase5_precheckpoint_original/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Phase 5 backup-manifest-bound module: keep LF bytes on checkout despite core.autocrlf.
+src/intelligent_demand/experiments/ownership.py text eol=lf

@@ -1,10 +1,10 @@
 {
   "files": {
     ".gitattributes": {
-      "current_sha256": "c8dfc57dfa83b430abded55aed7b359a4aa3675c3293efea407d77bd1121929e",
+      "current_sha256": "d6b7194652c14589c2e3d8d854c4641ef3cf115585a9450fd4973a86118f730c",
       "original_copy": "reports/preservation/phase5_precheckpoint_original/.gitattributes",
       "original_sha256": "ae5af3cf3cdec3b301dadb662f64b3855a35f317163859515e49e99213b24323",
-      "reason": "Versioned checkpoint metadata only; original scientific bytes retained."
+      "reason": "Versioned checkpoint metadata only; original scientific bytes retained. Adds an eol=lf rule for experiments/ownership.py so its backup-manifest bytes survive checkout under core.autocrlf=true."
     },
     "README.md": {
       "current_sha256": "73b32dd52ec839ca4f76810518f8bff21fd548423d4e1b82486bff832a432055",
