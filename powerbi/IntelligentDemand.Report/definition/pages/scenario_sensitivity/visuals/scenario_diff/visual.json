@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "scenario_diff",
+  "position": {
+    "x": 656,
+    "y": 226,
+    "z": 13,
+    "height": 212,
+    "width": 600,
+    "tabOrder": 13
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimScenario"
+                    }
+                  },
+                  "Property": "Scenario"
+                }
+              },
+              "queryRef": "DimScenario.Scenario",
+              "nativeQueryRef": "Scenario",
+              "active": true,
+              "displayName": "Scenario"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "ML vs MA28 Cost Difference %"
+                }
+              },
+              "queryRef": "_Measures.ML vs MA28 Cost Difference %",
+              "nativeQueryRef": "ML vs MA28 Cost Difference %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "ML vs Seasonal Naive Cost Difference %"
+                }
+              },
+              "queryRef": "_Measures.ML vs Seasonal Naive Cost Difference %",
+              "nativeQueryRef": "ML vs Seasonal Naive Cost Difference %"
+            }
+          ]
+        },
+        "Series": {
+          "projections": []
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Selected ML cost difference by scenario (% NCU)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

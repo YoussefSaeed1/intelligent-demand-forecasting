@@ -1,0 +1,127 @@
+/// Phase 4 tuning and reference trials with their saved four-origin validation scores (reported).
+table FactModelSelectionTrials
+	lineageTag: 5026576a-e1a0-5ef1-812f-1c20108330ff
+
+	column TrialId
+		dataType: string
+		lineageTag: 0c0a69d3-dc29-5420-9da8-7056554b8674
+		summarizeBy: none
+		sourceColumn: TrialId
+
+		annotation SummarizationSetBy = User
+
+	column DatasetKey
+		dataType: string
+		isHidden
+		lineageTag: 711d3dd0-661b-58a3-852d-e27b967cf58c
+		summarizeBy: none
+		sourceColumn: DatasetKey
+
+		annotation SummarizationSetBy = User
+
+	column TrialKind
+		dataType: string
+		lineageTag: 0b169868-a059-55aa-bb46-4d218f49979b
+		summarizeBy: none
+		sourceColumn: TrialKind
+
+		annotation SummarizationSetBy = User
+
+	column Algorithm
+		dataType: string
+		lineageTag: b320372f-2c1a-59a7-8eaf-0c588aff1d8b
+		summarizeBy: none
+		sourceColumn: Algorithm
+
+		annotation SummarizationSetBy = User
+
+	column ValidationMacroMAE
+		dataType: double
+		formatString: 0.0000
+		lineageTag: dc069e8f-acd7-58fc-93f4-7725175ce73d
+		summarizeBy: none
+		sourceColumn: ValidationMacroMAE
+
+		annotation SummarizationSetBy = User
+
+	column ValidationMacroMASE
+		dataType: double
+		formatString: 0.0000
+		lineageTag: b0c3f838-a120-5de0-9d3f-1a5e30063b9d
+		summarizeBy: none
+		sourceColumn: ValidationMacroMASE
+
+		annotation SummarizationSetBy = User
+
+	column ValidationMacroRMSSE
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 484d5461-f006-5ba9-9582-25bbe37407bd
+		summarizeBy: none
+		sourceColumn: ValidationMacroRMSSE
+
+		annotation SummarizationSetBy = User
+
+	column ValidationPooledRMSE
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 273eefac-3b01-5be5-b94d-33cf2637b5cd
+		summarizeBy: none
+		sourceColumn: ValidationPooledRMSE
+
+		annotation SummarizationSetBy = User
+
+	column ValidationPooledWAPEPercent
+		dataType: double
+		formatString: 0.00
+		lineageTag: 6de02895-134f-5945-9584-f19fc302c5c2
+		summarizeBy: none
+		sourceColumn: ValidationPooledWAPEPercent
+
+		annotation SummarizationSetBy = User
+
+	column ValidationBiasUnits
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 7d71c901-3ee1-57f3-bf37-74e1373dd812
+		summarizeBy: none
+		sourceColumn: ValidationBiasUnits
+
+		annotation SummarizationSetBy = User
+
+	column Observations
+		dataType: int64
+		formatString: #,##0
+		lineageTag: 8aeb9933-ba2e-5561-97f7-f799f2a1fe64
+		summarizeBy: none
+		sourceColumn: Observations
+
+		annotation SummarizationSetBy = User
+
+	column FallbackObservations
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ecf689a-b205-5782-8e3e-cb1b809d2f30
+		summarizeBy: none
+		sourceColumn: FallbackObservations
+
+		annotation SummarizationSetBy = User
+
+	column IsSelected
+		dataType: string
+		lineageTag: eb19455e-d5a1-51fc-9e4f-94a8939b4ebe
+		summarizeBy: none
+		sourceColumn: IsSelected
+
+		annotation SummarizationSetBy = User
+
+	partition FactModelSelectionTrials = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("FactModelSelectionTrials", {{"TrialId", type text}, {"DatasetKey", type text}, {"TrialKind", type text}, {"Algorithm", type text}, {"ValidationMacroMAE", type number}, {"ValidationMacroMASE", type number}, {"ValidationMacroRMSSE", type number}, {"ValidationPooledRMSE", type number}, {"ValidationPooledWAPEPercent", type number}, {"ValidationBiasUnits", type number}, {"Observations", Int64.Type}, {"FallbackObservations", Int64.Type}, {"IsSelected", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "findings",
+  "position": {
+    "x": 648,
+    "y": 664,
+    "z": 11,
+    "height": 250,
+    "width": 608,
+    "tabOrder": 11
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimAuditFinding"
+                    }
+                  },
+                  "Property": "FindingId"
+                }
+              },
+              "queryRef": "DimAuditFinding.FindingId",
+              "nativeQueryRef": "FindingId",
+              "active": true,
+              "displayName": "Finding"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimAuditFinding"
+                    }
+                  },
+                  "Property": "Severity"
+                }
+              },
+              "queryRef": "DimAuditFinding.Severity",
+              "nativeQueryRef": "Severity",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimAuditFinding"
+                    }
+                  },
+                  "Property": "Finding"
+                }
+              },
+              "queryRef": "DimAuditFinding.Finding",
+              "nativeQueryRef": "Finding",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimAuditFinding"
+                    }
+                  },
+                  "Property": "Status"
+                }
+              },
+              "queryRef": "DimAuditFinding.Status",
+              "nativeQueryRef": "Status",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Independent audit findings and dispositions'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

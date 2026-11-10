@@ -1,0 +1,154 @@
+/// One row per frozen hypothetical scenario (base plus 16 one-at-a-time changes). Not independent replications.
+table DimScenario
+	lineageTag: 1c9aaf4a-2350-5fa4-84d7-0d079057b973
+
+	column ScenarioKey
+		dataType: string
+		isHidden
+		lineageTag: f5bf9274-fdfb-5dc4-9ddf-0bd1f74a1d94
+		summarizeBy: none
+		sourceColumn: ScenarioKey
+
+		annotation SummarizationSetBy = User
+
+	column Scenario
+		dataType: string
+		lineageTag: 0795662a-34ee-5357-8ea6-84b3cc350283
+		summarizeBy: none
+		sourceColumn: Scenario
+		sortByColumn: ScenarioSort
+
+		annotation SummarizationSetBy = User
+
+	column ScenarioGroup
+		dataType: string
+		lineageTag: 16f4fdac-74d8-5b5a-8aaa-dcf07ed7e2a4
+		summarizeBy: none
+		sourceColumn: ScenarioGroup
+
+		annotation SummarizationSetBy = User
+
+	column ScenarioSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 58641d74-7b5b-51b5-bd49-d3527a9f6029
+		summarizeBy: none
+		sourceColumn: ScenarioSort
+
+		annotation SummarizationSetBy = User
+
+	column ChangedParameter
+		dataType: string
+		lineageTag: 573945f2-5b97-5572-aef3-fbf11041b06b
+		summarizeBy: none
+		sourceColumn: ChangedParameter
+
+		annotation SummarizationSetBy = User
+
+	column IsBase
+		dataType: string
+		lineageTag: 2862ba9d-8a64-5d72-9e67-85c8b5219a4a
+		summarizeBy: none
+		sourceColumn: IsBase
+
+		annotation SummarizationSetBy = User
+
+	column LeadDays
+		dataType: int64
+		formatString: 0
+		lineageTag: d53a42a2-ec71-5b2d-b15f-95e1b895cc74
+		summarizeBy: none
+		sourceColumn: LeadDays
+
+		annotation SummarizationSetBy = User
+
+	column ReviewDays
+		dataType: int64
+		formatString: 0
+		lineageTag: 31ec597c-c01d-5ffe-bae3-d75233fad27b
+		summarizeBy: none
+		sourceColumn: ReviewDays
+
+		annotation SummarizationSetBy = User
+
+	column BufferDays
+		dataType: int64
+		formatString: 0
+		lineageTag: 7323ad12-c560-5408-8174-4d05d89471ba
+		summarizeBy: none
+		sourceColumn: BufferDays
+
+		annotation SummarizationSetBy = User
+
+	column InitialCoverDays
+		dataType: int64
+		formatString: 0
+		lineageTag: d993d6af-84e2-5b61-8b99-60bd995bbb5e
+		summarizeBy: none
+		sourceColumn: InitialCoverDays
+
+		annotation SummarizationSetBy = User
+
+	column HoldingCost
+		dataType: double
+		lineageTag: 648a30be-ab0c-5d72-bf84-6aa07336682d
+		summarizeBy: none
+		sourceColumn: HoldingCost
+
+		annotation SummarizationSetBy = User
+
+	column ShortageCost
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f4276de-1b3f-54d5-803b-46b8ccc8e7d0
+		summarizeBy: none
+		sourceColumn: ShortageCost
+
+		annotation SummarizationSetBy = User
+
+	column FixedOrderCost
+		dataType: int64
+		formatString: 0
+		lineageTag: bfaf0ebf-1f91-57b1-bf00-78f837246740
+		summarizeBy: none
+		sourceColumn: FixedOrderCost
+
+		annotation SummarizationSetBy = User
+
+	column VariableOrderCost
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f032507-ad19-5ebb-bc50-47542e38ad4b
+		summarizeBy: none
+		sourceColumn: VariableOrderCost
+
+		annotation SummarizationSetBy = User
+
+	column TerminalCost
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e1c4497-fa4b-5a46-a861-9efa55661dd1
+		summarizeBy: none
+		sourceColumn: TerminalCost
+
+		annotation SummarizationSetBy = User
+
+	column VariabilityMultiplier
+		dataType: double
+		lineageTag: ac68cd97-578e-5ea1-b5ac-f078c12ee14f
+		summarizeBy: none
+		sourceColumn: VariabilityMultiplier
+
+		annotation SummarizationSetBy = User
+
+	partition DimScenario = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("DimScenario", {{"ScenarioKey", type text}, {"Scenario", type text}, {"ScenarioGroup", type text}, {"ScenarioSort", Int64.Type}, {"ChangedParameter", type text}, {"IsBase", type text}, {"LeadDays", Int64.Type}, {"ReviewDays", Int64.Type}, {"BufferDays", Int64.Type}, {"InitialCoverDays", Int64.Type}, {"HoldingCost", type number}, {"ShortageCost", Int64.Type}, {"FixedOrderCost", Int64.Type}, {"VariableOrderCost", Int64.Type}, {"TerminalCost", Int64.Type}, {"VariabilityMultiplier", type number}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

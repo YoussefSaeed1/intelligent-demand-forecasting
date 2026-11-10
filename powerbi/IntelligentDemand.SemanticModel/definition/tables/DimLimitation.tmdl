@@ -1,0 +1,38 @@
+/// Declared scientific limitations that every interpretation must carry.
+table DimLimitation
+	lineageTag: c27c0753-6563-5b15-a5d5-7dcc824efbb7
+
+	column LimitationId
+		dataType: string
+		lineageTag: 51b1d39c-e5a7-56df-b7a5-0abd4f7bf8de
+		summarizeBy: none
+		sourceColumn: LimitationId
+
+		annotation SummarizationSetBy = User
+
+	column Limitation
+		dataType: string
+		lineageTag: 11660c00-2790-57ad-a97e-1b5ae3519ee3
+		summarizeBy: none
+		sourceColumn: Limitation
+
+		annotation SummarizationSetBy = User
+
+	column SourceDocument
+		dataType: string
+		lineageTag: aaefddf9-9e71-57b5-9b6d-dd9692de8c1f
+		summarizeBy: none
+		sourceColumn: SourceDocument
+
+		annotation SummarizationSetBy = User
+
+	partition DimLimitation = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("DimLimitation", {{"LimitationId", type text}, {"Limitation", type text}, {"SourceDocument", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,92 @@
+/// One row per dataset and forecast model role (Selected ML, MA28, Seasonal Naive).
+table DimForecastModel
+	lineageTag: 921a39c1-aef2-5cbb-aff5-4ab90c61dba5
+
+	column ModelKey
+		dataType: string
+		isHidden
+		lineageTag: 07248c81-2f01-53f0-bdf9-0c4ddcf8ef9a
+		summarizeBy: none
+		sourceColumn: ModelKey
+
+		annotation SummarizationSetBy = User
+
+	column DatasetKey
+		dataType: string
+		isHidden
+		lineageTag: 8f9153c4-77b0-586e-ba1e-7fc9543c89c8
+		summarizeBy: none
+		sourceColumn: DatasetKey
+
+		annotation SummarizationSetBy = User
+
+	column ModelRole
+		dataType: string
+		lineageTag: 653d37c2-65b9-5657-b8d1-cc49289b2b0a
+		summarizeBy: none
+		sourceColumn: ModelRole
+		sortByColumn: ModelRoleSort
+
+		annotation SummarizationSetBy = User
+
+	column ModelRoleKey
+		dataType: string
+		isHidden
+		lineageTag: 4bfe04bd-44b1-5662-9cc9-27817aaf950c
+		summarizeBy: none
+		sourceColumn: ModelRoleKey
+
+		annotation SummarizationSetBy = User
+
+	column ModelRoleSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 96322e63-72ce-5448-a3fe-499abe36d88b
+		summarizeBy: none
+		sourceColumn: ModelRoleSort
+
+		annotation SummarizationSetBy = User
+
+	column Algorithm
+		dataType: string
+		lineageTag: 3a818804-367e-5c9d-9eec-995968c65beb
+		summarizeBy: none
+		sourceColumn: Algorithm
+
+		annotation SummarizationSetBy = User
+
+	column IsSelectedModel
+		dataType: string
+		lineageTag: 7c2d48a6-c43f-50a3-908c-891fc32a56c2
+		summarizeBy: none
+		sourceColumn: IsSelectedModel
+
+		annotation SummarizationSetBy = User
+
+	column ModelDescription
+		dataType: string
+		lineageTag: e0073bbf-a37d-5df1-927e-42790ad58fae
+		summarizeBy: none
+		sourceColumn: ModelDescription
+
+		annotation SummarizationSetBy = User
+
+	column ValidationRunIds
+		dataType: string
+		lineageTag: 1a1e10ce-794a-56c6-85e9-126d5f6383e2
+		summarizeBy: none
+		sourceColumn: ValidationRunIds
+
+		annotation SummarizationSetBy = User
+
+	partition DimForecastModel = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("DimForecastModel", {{"ModelKey", type text}, {"DatasetKey", type text}, {"ModelRole", type text}, {"ModelRoleKey", type text}, {"ModelRoleSort", Int64.Type}, {"Algorithm", type text}, {"IsSelectedModel", type text}, {"ModelDescription", type text}, {"ValidationRunIds", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

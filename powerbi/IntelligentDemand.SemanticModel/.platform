@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "IntelligentDemand"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d5679804-0f7c-5e8b-9881-8b5307c1e923"
+  }
+}

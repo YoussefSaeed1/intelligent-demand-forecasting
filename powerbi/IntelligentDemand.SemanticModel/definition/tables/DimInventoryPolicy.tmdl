@@ -1,0 +1,67 @@
+/// One row per Phase 5 inventory policy. Fixed reorder point is a low-stock, lower-service comparator.
+table DimInventoryPolicy
+	lineageTag: 777af7dc-7735-5f9d-9dbf-4e557cdfedbd
+
+	column PolicyKey
+		dataType: string
+		isHidden
+		lineageTag: 36287ee0-999a-5082-8298-a42a05260c77
+		summarizeBy: none
+		sourceColumn: PolicyKey
+
+		annotation SummarizationSetBy = User
+
+	column Policy
+		dataType: string
+		lineageTag: 3dadd5fa-f514-5283-8f97-ae26a7d881b1
+		summarizeBy: none
+		sourceColumn: Policy
+		sortByColumn: PolicySort
+
+		annotation SummarizationSetBy = User
+
+	column PolicySort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 732fd6d7-a5ff-53cf-a4b8-dda2ba15ceb8
+		summarizeBy: none
+		sourceColumn: PolicySort
+
+		annotation SummarizationSetBy = User
+
+	column ForecastRoleKey
+		dataType: string
+		isHidden
+		lineageTag: 5e765f94-7085-5d18-8a43-e2e81e9140f8
+		summarizeBy: none
+		sourceColumn: ForecastRoleKey
+
+		annotation SummarizationSetBy = User
+
+	column PolicyDescription
+		dataType: string
+		lineageTag: 470f93d2-dc43-5f62-b44c-77e6edc681c5
+		summarizeBy: none
+		sourceColumn: PolicyDescription
+
+		annotation SummarizationSetBy = User
+
+	column IsLowStockComparator
+		dataType: string
+		lineageTag: 592acd9f-e443-57bd-be4c-4dd9b6dbfaf2
+		summarizeBy: none
+		sourceColumn: IsLowStockComparator
+
+		annotation SummarizationSetBy = User
+
+	partition DimInventoryPolicy = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("DimInventoryPolicy", {{"PolicyKey", type text}, {"Policy", type text}, {"PolicySort", Int64.Type}, {"ForecastRoleKey", type text}, {"PolicyDescription", type text}, {"IsLowStockComparator", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

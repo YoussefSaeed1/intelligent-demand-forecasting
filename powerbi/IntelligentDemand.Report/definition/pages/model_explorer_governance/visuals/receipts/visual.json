@@ -1,0 +1,101 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "receipts",
+  "position": {
+    "x": 24,
+    "y": 664,
+    "z": 10,
+    "height": 250,
+    "width": 608,
+    "tabOrder": 10
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactScientificValidation"
+                    }
+                  },
+                  "Property": "CheckId"
+                }
+              },
+              "queryRef": "FactScientificValidation.CheckId",
+              "nativeQueryRef": "CheckId",
+              "active": true,
+              "displayName": "Receipt"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactScientificValidation"
+                    }
+                  },
+                  "Property": "Check"
+                }
+              },
+              "queryRef": "FactScientificValidation.Check",
+              "nativeQueryRef": "Check",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactScientificValidation"
+                    }
+                  },
+                  "Property": "Status"
+                }
+              },
+              "queryRef": "FactScientificValidation.Status",
+              "nativeQueryRef": "Status",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactScientificValidation"
+                    }
+                  },
+                  "Property": "EvidencePath"
+                }
+              },
+              "queryRef": "FactScientificValidation.EvidencePath",
+              "nativeQueryRef": "EvidencePath",
+              "active": true,
+              "displayName": "Evidence"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Verification receipts (status copied from each receipt)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "summary": {
+    "rules": 7,
+    "pass": 7,
+    "warning": 0,
+    "fail": 0,
+    "error": 0,
+    "overall": "PASS",
+    "blocking_rules": [],
+    "layers": [
+      "A"
+    ]
+  },
+  "results": [
+    {
+      "id": "A01",
+      "layer": "A",
+      "description": "Frozen Phase 5 plan self-hash and design files are unchanged",
+      "severity": "CRITICAL",
+      "expected": "63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e",
+      "tolerance": null,
+      "status": "PASS",
+      "actual": "63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e",
+      "evidence": "artifacts/inventory/phase5/plan.json"
+    },
+    {
+      "id": "A02",
+      "layer": "A",
+      "description": "Phase 4 frozen model-selection fingerprint reproduces",
+      "severity": "CRITICAL",
+      "expected": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+      "tolerance": null,
+      "status": "PASS",
+      "actual": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+      "evidence": "artifacts/experiments/phase4/frozen_selection.json"
+    },
+    {
+      "id": "A03",
+      "layer": "A",
+      "description": "Holdout access ledger file hash unchanged, 12 events",
+      "severity": "CRITICAL",
+      "expected": "fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204",
+      "tolerance": null,
+      "status": "PASS",
+      "actual": "fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204 (12 events)",
+      "evidence": "artifacts/experiments/phase4/holdout_access.jsonl"
+    },
+    {
+      "id": "A04",
+      "layer": "A",
+      "description": "All 544 inventory cases completed with authenticated per-series outputs",
+      "severity": "CRITICAL",
+      "expected": 544,
+      "tolerance": null,
+      "status": "PASS",
+      "actual": 544,
+      "evidence": "artifacts/inventory/phase5/runs/*/status.json"
+    },
+    {
+      "id": "A05",
+      "layer": "A",
+      "description": "Every reporting CSV matches the row count and SHA-256 recorded in the data manifest",
+      "severity": "CRITICAL",
+      "expected": null,
+      "tolerance": null,
+      "status": "PASS",
+      "actual": "18 tables match",
+      "evidence": "reports/powerbi/data_manifest.json"
+    },
+    {
+      "id": "A06",
+      "layer": "A",
+      "description": "Every dated reporting row lies inside an approved validation window and before the final-holdout start",
+      "severity": "CRITICAL",
+      "expected": null,
+      "tolerance": null,
+      "status": "PASS",
+      "actual": "0 rows outside approved validation windows",
+      "evidence": "reports/eda/proposed_splits.json"
+    },
+    {
+      "id": "A07",
+      "layer": "A",
+      "description": "Phase 5 forecast sources contain zero fallback observations",
+      "severity": "HIGH",
+      "expected": null,
+      "tolerance": null,
+      "status": "PASS",
+      "actual": 0,
+      "evidence": "artifacts/inventory/phase5/runs/*/status.json"
+    }
+  ]
+}

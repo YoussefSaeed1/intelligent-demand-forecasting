@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "pattern_mae",
+  "position": {
+    "x": 856,
+    "y": 442,
+    "z": 17,
+    "height": 226,
+    "width": 400,
+    "tabOrder": 17
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDemandPattern"
+                    }
+                  },
+                  "Property": "DemandPattern"
+                }
+              },
+              "queryRef": "DimDemandPattern.DemandPattern",
+              "nativeQueryRef": "DemandPattern",
+              "active": true,
+              "displayName": "Demand pattern"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "MAE"
+                }
+              },
+              "queryRef": "_Measures.MAE",
+              "nativeQueryRef": "MAE"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimForecastModel"
+                    }
+                  },
+                  "Property": "ModelRole"
+                }
+              },
+              "queryRef": "DimForecastModel.ModelRole",
+              "nativeQueryRef": "ModelRole",
+              "active": true,
+              "displayName": "Model"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MAE by demand pattern and model'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

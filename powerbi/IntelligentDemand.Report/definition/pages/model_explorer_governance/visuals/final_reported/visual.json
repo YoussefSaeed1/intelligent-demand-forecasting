@@ -1,0 +1,134 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "final_reported",
+  "position": {
+    "x": 648,
+    "y": 392,
+    "z": 9,
+    "height": 260,
+    "width": 608,
+    "tabOrder": 9
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactFinalHoldoutReported"
+                    }
+                  },
+                  "Property": "TrialId"
+                }
+              },
+              "queryRef": "FactFinalHoldoutReported.TrialId",
+              "nativeQueryRef": "TrialId",
+              "active": true,
+              "displayName": "Trial"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactFinalHoldoutReported"
+                    }
+                  },
+                  "Property": "Role"
+                }
+              },
+              "queryRef": "FactFinalHoldoutReported.Role",
+              "nativeQueryRef": "Role",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactFinalHoldoutReported"
+                    }
+                  },
+                  "Property": "MacroMAE"
+                }
+              },
+              "queryRef": "FactFinalHoldoutReported.MacroMAE",
+              "nativeQueryRef": "MacroMAE",
+              "active": true,
+              "displayName": "Macro MAE (reported)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactFinalHoldoutReported"
+                    }
+                  },
+                  "Property": "MacroMASE"
+                }
+              },
+              "queryRef": "FactFinalHoldoutReported.MacroMASE",
+              "nativeQueryRef": "MacroMASE",
+              "active": true,
+              "displayName": "Macro MASE (reported)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactFinalHoldoutReported"
+                    }
+                  },
+                  "Property": "PooledRMSE"
+                }
+              },
+              "queryRef": "FactFinalHoldoutReported.PooledRMSE",
+              "nativeQueryRef": "PooledRMSE",
+              "active": true,
+              "displayName": "Pooled RMSE (reported)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactFinalHoldoutReported"
+                    }
+                  },
+                  "Property": "PooledWAPEPercent"
+                }
+              },
+              "queryRef": "FactFinalHoldoutReported.PooledWAPEPercent",
+              "nativeQueryRef": "PooledWAPEPercent",
+              "active": true,
+              "displayName": "Pooled WAPE % (reported)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Saved one-time final-holdout results (reported as recorded; not a new evaluation)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

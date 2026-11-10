@@ -1,0 +1,115 @@
+/// Validation origin x model role x demand pattern x date. Additive daily components for actual-versus-forecast charts.
+table FactForecastDaily
+	lineageTag: 16c90499-207f-5ffa-bdec-6d977982bb21
+
+	column OriginKey
+		dataType: string
+		isHidden
+		lineageTag: dd8a5b57-4fa5-50a8-a5a7-0d7bf75dc00f
+		summarizeBy: none
+		sourceColumn: OriginKey
+
+		annotation SummarizationSetBy = User
+
+	column ModelKey
+		dataType: string
+		isHidden
+		lineageTag: 595948e4-992b-5089-be70-83e1311f4cd4
+		summarizeBy: none
+		sourceColumn: ModelKey
+
+		annotation SummarizationSetBy = User
+
+	column DatasetKey
+		dataType: string
+		isHidden
+		lineageTag: 6127fac7-53bd-565f-9bcb-50cbc464f0a2
+		summarizeBy: none
+		sourceColumn: DatasetKey
+
+		annotation SummarizationSetBy = User
+
+	column PatternKey
+		dataType: string
+		isHidden
+		lineageTag: 364cbb21-534f-5602-b0e7-cd2d588f56cd
+		summarizeBy: none
+		sourceColumn: PatternKey
+
+		annotation SummarizationSetBy = User
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-mm-dd
+		lineageTag: ddc3943b-946a-536a-9ebe-44c6dd5bb8f0
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+	column Series
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4a5e0125-41d7-5110-9ff1-1e4a0b324246
+		summarizeBy: none
+		sourceColumn: Series
+
+		annotation SummarizationSetBy = User
+
+	column SumActual
+		dataType: double
+		isHidden
+		lineageTag: af0d0ecc-a3b1-59ac-8b6c-9a0b65d655b1
+		summarizeBy: none
+		sourceColumn: SumActual
+
+		annotation SummarizationSetBy = User
+
+	column SumForecast
+		dataType: double
+		isHidden
+		lineageTag: 1ab361ff-b8e1-5fbc-b737-f69427c04af7
+		summarizeBy: none
+		sourceColumn: SumForecast
+
+		annotation SummarizationSetBy = User
+
+	column SumAbsError
+		dataType: double
+		isHidden
+		lineageTag: 3a1fda55-e30d-51c7-9d6d-133071b950dc
+		summarizeBy: none
+		sourceColumn: SumAbsError
+
+		annotation SummarizationSetBy = User
+
+	column SumSquaredError
+		dataType: double
+		isHidden
+		lineageTag: 122ff4c2-53bf-5eb8-aff2-dae80c60a189
+		summarizeBy: none
+		sourceColumn: SumSquaredError
+
+		annotation SummarizationSetBy = User
+
+	column SumError
+		dataType: double
+		isHidden
+		lineageTag: 8f4924db-5cfb-5c68-9c71-eef5c7fae6e0
+		summarizeBy: none
+		sourceColumn: SumError
+
+		annotation SummarizationSetBy = User
+
+	partition FactForecastDaily = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("FactForecastDaily", {{"OriginKey", type text}, {"ModelKey", type text}, {"DatasetKey", type text}, {"PatternKey", type text}, {"Date", type date}, {"Series", Int64.Type}, {"SumActual", type number}, {"SumForecast", type number}, {"SumAbsError", type number}, {"SumSquaredError", type number}, {"SumError", type number}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

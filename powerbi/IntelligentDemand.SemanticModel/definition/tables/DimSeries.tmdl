@@ -1,0 +1,123 @@
+/// One row per series (500 Store Item, 30,490 M5). Demand pattern is an attribute only, to avoid ambiguous paths.
+table DimSeries
+	lineageTag: 827c0be6-8013-5ce6-a613-9e7911be95eb
+
+	column SeriesKey
+		dataType: string
+		isHidden
+		lineageTag: 7125f386-53c1-500a-8a8b-b582b94da148
+		summarizeBy: none
+		sourceColumn: SeriesKey
+
+		annotation SummarizationSetBy = User
+
+	column DatasetKey
+		dataType: string
+		isHidden
+		lineageTag: 74fae297-efa2-5610-9d68-ed0c1cbc3645
+		summarizeBy: none
+		sourceColumn: DatasetKey
+
+		annotation SummarizationSetBy = User
+
+	column SeriesId
+		dataType: string
+		lineageTag: 1106abc4-8446-53fa-ac97-dce29ab3f6cd
+		summarizeBy: none
+		sourceColumn: SeriesId
+
+		annotation SummarizationSetBy = User
+
+	column StoreId
+		dataType: string
+		lineageTag: 4b32994a-9e9e-5dee-844f-43715bac45db
+		summarizeBy: none
+		sourceColumn: StoreId
+
+		annotation SummarizationSetBy = User
+
+	column ItemId
+		dataType: string
+		lineageTag: f4b7581b-2d9f-54a8-abf5-df69ecd78fc3
+		summarizeBy: none
+		sourceColumn: ItemId
+
+		annotation SummarizationSetBy = User
+
+	column DepartmentId
+		dataType: string
+		lineageTag: 7d5affcc-7bf9-5d3e-a829-741fa6150932
+		summarizeBy: none
+		sourceColumn: DepartmentId
+
+		annotation SummarizationSetBy = User
+
+	column CategoryId
+		dataType: string
+		lineageTag: 90d44bd3-671c-55d0-82ba-f5e72b3a0643
+		summarizeBy: none
+		sourceColumn: CategoryId
+
+		annotation SummarizationSetBy = User
+
+	column StateId
+		dataType: string
+		lineageTag: c4786296-0be0-597b-b872-8d1a464a6f77
+		summarizeBy: none
+		sourceColumn: StateId
+
+		annotation SummarizationSetBy = User
+
+	column PatternKey
+		dataType: string
+		isHidden
+		lineageTag: feff0fda-a759-5433-b39f-6ac7a8d1a241
+		summarizeBy: none
+		sourceColumn: PatternKey
+
+		annotation SummarizationSetBy = User
+
+	column TrainingPrefixUnits
+		dataType: double
+		formatString: #,##0
+		lineageTag: 39dfb4e1-0fc0-5d91-b3cf-39f273750dc7
+		summarizeBy: none
+		sourceColumn: TrainingPrefixUnits
+
+		annotation SummarizationSetBy = User
+
+	column TrainingPrefixMeanUnits
+		dataType: double
+		formatString: #,##0.00
+		lineageTag: fcb903af-d1ab-5fb9-8580-078e9c8729ee
+		summarizeBy: none
+		sourceColumn: TrainingPrefixMeanUnits
+
+		annotation SummarizationSetBy = User
+
+	column RetrospectiveSparseGroup
+		dataType: string
+		lineageTag: 6c2f139c-a2d7-5287-92bc-fa153bae02dd
+		summarizeBy: none
+		sourceColumn: RetrospectiveSparseGroup
+
+		annotation SummarizationSetBy = User
+
+	column HasDailyDetail
+		dataType: string
+		lineageTag: cdc13494-8f6c-5575-b9b3-3a9a5d3cc826
+		summarizeBy: none
+		sourceColumn: HasDailyDetail
+
+		annotation SummarizationSetBy = User
+
+	partition DimSeries = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("DimSeries", {{"SeriesKey", type text}, {"DatasetKey", type text}, {"SeriesId", type text}, {"StoreId", type text}, {"ItemId", type text}, {"DepartmentId", type text}, {"CategoryId", type text}, {"StateId", type text}, {"PatternKey", type text}, {"TrainingPrefixUnits", type number}, {"TrainingPrefixMeanUnits", type number}, {"RetrospectiveSparseGroup", type text}, {"HasDailyDetail", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

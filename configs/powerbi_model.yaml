@@ -1,0 +1,532 @@
+# Phase 6 semantic-model specification. src/intelligent_demand/bi/tmdl.py turns this file plus the
+# reporting-data manifest into TMDL. Column data types come from the exported CSVs; everything else
+# (visibility, sorting, formats, folders, relationships, measures) is declared here.
+schema_version: 1
+model_name: IntelligentDemand
+culture: en-GB
+compatibility_level: 1567
+date_columns: [Date, OriginDate, ValidationStart, ValidationEnd, TrainStart, TrainingStart]
+date_table: DimDate
+
+tables:
+  DimDataset:
+    description: One row per dataset. Filters every fact through DatasetKey.
+    sort_by: {Dataset: DatasetSort}
+    hidden: [DatasetKey, DatasetSort]
+  DimValidationOrigin:
+    description: One row per dataset validation origin (four expanding origins per dataset). Never the final holdout.
+    sort_by: {FoldLabel: Fold}
+    hidden: [OriginKey, DatasetKey]
+  DimForecastModel:
+    description: One row per dataset and forecast model role (Selected ML, MA28, Seasonal Naive).
+    sort_by: {ModelRole: ModelRoleSort}
+    hidden: [ModelKey, DatasetKey, ModelRoleKey, ModelRoleSort]
+  DimInventoryPolicy:
+    description: One row per Phase 5 inventory policy. Fixed reorder point is a low-stock, lower-service comparator.
+    sort_by: {Policy: PolicySort}
+    hidden: [PolicyKey, PolicySort, ForecastRoleKey]
+  DimScenario:
+    description: One row per frozen hypothetical scenario (base plus 16 one-at-a-time changes). Not independent replications.
+    sort_by: {Scenario: ScenarioSort}
+    hidden: [ScenarioKey, ScenarioSort]
+  DimDemandPattern:
+    description: Training-prefix demand classification from the Phase 2 EDA.
+    sort_by: {DemandPattern: PatternSort}
+    hidden: [PatternKey, PatternSort]
+  DimDate:
+    description: Calendar for 2016-2017; only validation-window dates carry fact rows.
+    sort_by: {Month: MonthNumber, DayOfWeek: DayOfWeekNumber}
+    hidden: [MonthNumber, DayOfWeekNumber]
+  DimSeries:
+    description: One row per series (500 Store Item, 30,490 M5). Demand pattern is an attribute only, to avoid ambiguous paths.
+    hidden: [SeriesKey, DatasetKey, PatternKey]
+    formats: {TrainingPrefixUnits: "#,##0", TrainingPrefixMeanUnits: "#,##0.00"}
+  FactForecastSeriesOrigin:
+    description: Series x validation origin x model role. Additive error components over 28 daily observations, plus origin-bounded MASE/RMSSE scales.
+    hide_all: true
+  FactForecastDaily:
+    description: Validation origin x model role x demand pattern x date. Additive daily components for actual-versus-forecast charts.
+    hide_all: true
+  FactForecastSeriesDaily:
+    description: Daily actual and forecast for detail series only (all Store Item series; the six predeclared M5 representatives).
+    hide_all: true
+  FactInventoryScenarioResults:
+    description: Inventory case (origin x scenario x policy) x demand pattern. Additive hypothetical NCU costs and units from Phase 5.
+    hide_all: true
+    rename: {AverageOnHand: AverageOnHandSum, AverageInventoryPosition: AverageInventoryPositionSum}
+  FactInventorySeriesBase:
+    description: Series x origin x policy for the base scenario only. Supports paired series comparisons.
+    hide_all: true
+  FactModelSelectionTrials:
+    description: Phase 4 tuning and reference trials with their saved four-origin validation scores (reported).
+    hidden: [DatasetKey]
+    formats: {ValidationMacroMAE: "0.0000", ValidationMacroMASE: "0.0000", ValidationMacroRMSSE: "0.0000", ValidationPooledRMSE: "0.0000", ValidationPooledWAPEPercent: "0.00", ValidationBiasUnits: "0.0000", Observations: "#,##0"}
+  FactFinalHoldoutReported:
+    description: Saved Phase 4 one-time final-holdout results, reported exactly as recorded. Not a new evaluation and never recomputed.
+    hidden: [DatasetKey]
+    formats: {MacroMAE: "0.0000", MacroMASE: "0.0000", MacroRMSSE: "0.0000", PooledRMSE: "0.0000", PooledWAPEPercent: "0.00", Series: "#,##0", Observations: "#,##0"}
+  FactScientificValidation:
+    description: One row per saved verification receipt; status copied from the receipt.
+  DimAuditFinding:
+    description: The 12 independent-audit findings and their recorded dispositions.
+  DimLimitation:
+    description: Declared scientific limitations that every interpretation must carry.
+
+relationships:
+  - [FactForecastSeriesOrigin, SeriesKey, DimSeries, SeriesKey]
+  - [FactForecastSeriesOrigin, OriginKey, DimValidationOrigin, OriginKey]
+  - [FactForecastSeriesOrigin, ModelKey, DimForecastModel, ModelKey]
+  - [FactForecastSeriesOrigin, DatasetKey, DimDataset, DatasetKey]
+  - [FactForecastSeriesOrigin, PatternKey, DimDemandPattern, PatternKey]
+  - [FactForecastDaily, OriginKey, DimValidationOrigin, OriginKey]
+  - [FactForecastDaily, ModelKey, DimForecastModel, ModelKey]
+  - [FactForecastDaily, DatasetKey, DimDataset, DatasetKey]
+  - [FactForecastDaily, PatternKey, DimDemandPattern, PatternKey]
+  - [FactForecastDaily, Date, DimDate, Date]
+  - [FactForecastSeriesDaily, SeriesKey, DimSeries, SeriesKey]
+  - [FactForecastSeriesDaily, OriginKey, DimValidationOrigin, OriginKey]
+  - [FactForecastSeriesDaily, ModelKey, DimForecastModel, ModelKey]
+  - [FactForecastSeriesDaily, DatasetKey, DimDataset, DatasetKey]
+  - [FactForecastSeriesDaily, PatternKey, DimDemandPattern, PatternKey]
+  - [FactForecastSeriesDaily, Date, DimDate, Date]
+  - [FactInventoryScenarioResults, OriginKey, DimValidationOrigin, OriginKey]
+  - [FactInventoryScenarioResults, ScenarioKey, DimScenario, ScenarioKey]
+  - [FactInventoryScenarioResults, PolicyKey, DimInventoryPolicy, PolicyKey]
+  - [FactInventoryScenarioResults, DatasetKey, DimDataset, DatasetKey]
+  - [FactInventoryScenarioResults, PatternKey, DimDemandPattern, PatternKey]
+  - [FactInventorySeriesBase, SeriesKey, DimSeries, SeriesKey]
+  - [FactInventorySeriesBase, OriginKey, DimValidationOrigin, OriginKey]
+  - [FactInventorySeriesBase, PolicyKey, DimInventoryPolicy, PolicyKey]
+  - [FactInventorySeriesBase, DatasetKey, DimDataset, DatasetKey]
+  - [FactInventorySeriesBase, PatternKey, DimDemandPattern, PatternKey]
+  - [FactModelSelectionTrials, DatasetKey, DimDataset, DatasetKey]
+  - [FactFinalHoldoutReported, DatasetKey, DimDataset, DatasetKey]
+
+# Measures live in the Measures table. Scope guards return BLANK instead of mixing datasets,
+# model roles, scenarios or policies, because pooled NCU or error across them is not meaningful.
+measures:
+  # ------------------------------------------------------------- scope guards (hidden)
+  - name: Forecast Scope Valid
+    folder: _Guards
+    hidden: true
+    description: TRUE when exactly one dataset and one model role are in context for forecast metrics.
+    expression: |
+      DISTINCTCOUNT ( FactForecastSeriesOrigin[DatasetKey] ) = 1
+          && DISTINCTCOUNT ( FactForecastSeriesOrigin[ModelKey] ) = 1
+  - name: Inventory Scope Valid
+    folder: _Guards
+    hidden: true
+    description: TRUE when exactly one dataset, one scenario and one policy are in context for inventory metrics.
+    expression: |
+      DISTINCTCOUNT ( FactInventoryScenarioResults[DatasetKey] ) = 1
+          && DISTINCTCOUNT ( FactInventoryScenarioResults[ScenarioKey] ) = 1
+          && DISTINCTCOUNT ( FactInventoryScenarioResults[PolicyKey] ) = 1
+  # ------------------------------------------------------------- forecast accuracy (validation only)
+  - name: Forecast Observations
+    folder: Forecast Accuracy\Coverage
+    format: "#,##0"
+    description: Daily forecast observations in context (28 per series and origin).
+    expression: SUM ( FactForecastSeriesOrigin[Observations] )
+  - name: MAE
+    folder: Forecast Accuracy
+    format: "#,##0.0000"
+    description: Pooled mean absolute error, sum of |forecast - actual| / observations. Validation origins only. Equals the Phase 4 four-origin macro MAE because every series has 28 observations per origin.
+    expression: |
+      IF ( [Forecast Scope Valid],
+          DIVIDE ( SUM ( FactForecastSeriesOrigin[SumAbsError] ), [Forecast Observations] ) )
+  - name: RMSE
+    folder: Forecast Accuracy
+    format: "#,##0.0000"
+    description: Pooled root mean squared error, sqrt(sum of squared errors / observations).
+    expression: |
+      IF ( [Forecast Scope Valid],
+          SQRT ( DIVIDE ( SUM ( FactForecastSeriesOrigin[SumSquaredError] ), [Forecast Observations] ) ) )
+  - name: WAPE
+    folder: Forecast Accuracy
+    format: "0.00%"
+    description: Pooled weighted absolute percentage error, sum |error| / sum actual. Blank when actual demand is zero.
+    expression: |
+      IF ( [Forecast Scope Valid],
+          DIVIDE ( SUM ( FactForecastSeriesOrigin[SumAbsError] ), SUM ( FactForecastSeriesOrigin[SumActual] ) ) )
+  - name: Bias
+    folder: Forecast Accuracy
+    format: "#,##0.0000"
+    description: Mean forecast minus actual per observation (positive means over-forecasting).
+    expression: |
+      IF ( [Forecast Scope Valid],
+          DIVIDE ( SUM ( FactForecastSeriesOrigin[SumError] ), [Forecast Observations] ) )
+  - name: Bias %
+    folder: Forecast Accuracy
+    format: "0.00%"
+    description: Sum of forecast minus actual divided by sum of actual demand.
+    expression: |
+      IF ( [Forecast Scope Valid],
+          DIVIDE ( SUM ( FactForecastSeriesOrigin[SumError] ), SUM ( FactForecastSeriesOrigin[SumActual] ) ) )
+  - name: Macro MASE
+    folder: Forecast Accuracy
+    format: "0.0000"
+    description: Mean over origins of the per-origin mean series MASE (series MAE / lag-7 training scale). Series with an undefined (zero) scale are excluded, matching the Phase 4 definition.
+    expression: |
+      IF ( [Forecast Scope Valid],
+          AVERAGEX (
+              VALUES ( FactForecastSeriesOrigin[OriginKey] ),
+              CALCULATE (
+                  AVERAGEX (
+                      FILTER ( FactForecastSeriesOrigin, NOT ISBLANK ( FactForecastSeriesOrigin[ScaleAbs] ) ),
+                      DIVIDE ( FactForecastSeriesOrigin[SumAbsError], FactForecastSeriesOrigin[Observations] )
+                          / FactForecastSeriesOrigin[ScaleAbs]
+                  )
+              )
+          )
+      )
+  - name: Macro RMSSE
+    folder: Forecast Accuracy
+    format: "0.0000"
+    description: Mean over origins of the per-origin mean series RMSSE (sqrt(series MSE / squared lag-7 training scale)). Undefined scales excluded.
+    expression: |
+      IF ( [Forecast Scope Valid],
+          AVERAGEX (
+              VALUES ( FactForecastSeriesOrigin[OriginKey] ),
+              CALCULATE (
+                  AVERAGEX (
+                      FILTER ( FactForecastSeriesOrigin, NOT ISBLANK ( FactForecastSeriesOrigin[ScaleSquared] ) ),
+                      SQRT (
+                          DIVIDE ( FactForecastSeriesOrigin[SumSquaredError], FactForecastSeriesOrigin[Observations] )
+                              / FactForecastSeriesOrigin[ScaleSquared]
+                      )
+                  )
+              )
+          )
+      )
+  - name: Evaluated Series
+    folder: Forecast Accuracy\Coverage
+    format: "#,##0"
+    description: Distinct series with validation evaluation rows in context.
+    expression: DISTINCTCOUNT ( FactForecastSeriesOrigin[SeriesKey] )
+  - name: Evaluation Coverage
+    folder: Forecast Accuracy\Coverage
+    format: "0.0%"
+    description: Evaluated series as a share of the dataset series population in context.
+    expression: DIVIDE ( [Evaluated Series], SUM ( DimDataset[SeriesCount] ) )
+  - name: Validation Origins Evaluated
+    folder: Forecast Accuracy\Coverage
+    format: "0"
+    description: Distinct validation origins with evaluation rows in context.
+    expression: DISTINCTCOUNT ( FactForecastSeriesOrigin[OriginKey] )
+  - name: MAE Selected ML
+    folder: Forecast Accuracy\Comparisons
+    format: "#,##0.0000"
+    description: MAE of the frozen selected ML model, ignoring any model-role filter.
+    expression: CALCULATE ( [MAE], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "selected_ml" )
+  - name: MAE MA28
+    folder: Forecast Accuracy\Comparisons
+    format: "#,##0.0000"
+    description: MAE of the 28-day moving-average baseline, ignoring any model-role filter.
+    expression: CALCULATE ( [MAE], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "moving_average_28" )
+  - name: MAE Seasonal Naive
+    folder: Forecast Accuracy\Comparisons
+    format: "#,##0.0000"
+    description: MAE of the seasonal-naive baseline, ignoring any model-role filter.
+    expression: CALCULATE ( [MAE], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "seasonal_naive" )
+  - name: ML vs MA28 MAE Change %
+    folder: Forecast Accuracy\Comparisons
+    format: "+0.00%;-0.00%;0.00%"
+    description: Relative MAE change of selected ML versus MA28 (negative means lower error).
+    expression: DIVIDE ( [MAE Selected ML] - [MAE MA28], [MAE MA28] )
+  - name: ML vs Seasonal Naive MAE Change %
+    folder: Forecast Accuracy\Comparisons
+    format: "+0.00%;-0.00%;0.00%"
+    description: Relative MAE change of selected ML versus Seasonal Naive (negative means lower error).
+    expression: DIVIDE ( [MAE Selected ML] - [MAE Seasonal Naive], [MAE Seasonal Naive] )
+  - name: Macro MASE Selected ML
+    folder: Forecast Accuracy\Comparisons
+    format: "0.0000"
+    description: Macro MASE of the selected ML model.
+    expression: CALCULATE ( [Macro MASE], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "selected_ml" )
+  - name: Macro MASE MA28
+    folder: Forecast Accuracy\Comparisons
+    format: "0.0000"
+    description: Macro MASE of MA28. On M5, MA28 has the better macro MASE despite the RF's lower MAE.
+    expression: CALCULATE ( [Macro MASE], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "moving_average_28" )
+  # ------------------------------------------------------------- daily actual vs forecast
+  - name: Actual Units
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0"
+    description: Realised validation sales (a censored-demand proxy). Read from the selected-ML rows because actuals are identical for every model role.
+    expression: |
+      IF ( DISTINCTCOUNT ( FactForecastDaily[DatasetKey] ) = 1,
+          CALCULATE ( SUM ( FactForecastDaily[SumActual] ), REMOVEFILTERS ( DimForecastModel ),
+              DimForecastModel[ModelRoleKey] = "selected_ml" ) )
+  - name: Forecast Units
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0"
+    description: Saved fixed-origin forecast units for the model role in context (not daily refreshed).
+    expression: |
+      IF ( DISTINCTCOUNT ( FactForecastDaily[DatasetKey] ) = 1
+              && DISTINCTCOUNT ( FactForecastDaily[ModelKey] ) = 1,
+          SUM ( FactForecastDaily[SumForecast] ) )
+  - name: Forecast Units Selected ML
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0"
+    description: Saved fixed-origin forecast units of the selected ML model.
+    expression: CALCULATE ( [Forecast Units], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "selected_ml" )
+  - name: Forecast Units MA28
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0"
+    description: Saved fixed-origin forecast units of MA28.
+    expression: CALCULATE ( [Forecast Units], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "moving_average_28" )
+  - name: Forecast Units Seasonal Naive
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0"
+    description: Saved fixed-origin forecast units of Seasonal Naive.
+    expression: CALCULATE ( [Forecast Units], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "seasonal_naive" )
+  - name: Daily MAE
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0000"
+    description: MAE per series-day on the daily fact for one model role.
+    expression: |
+      IF ( DISTINCTCOUNT ( FactForecastDaily[DatasetKey] ) = 1
+              && DISTINCTCOUNT ( FactForecastDaily[ModelKey] ) = 1,
+          DIVIDE ( SUM ( FactForecastDaily[SumAbsError] ), SUM ( FactForecastDaily[Series] ) ) )
+  - name: Series Actual Units
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0"
+    description: Daily realised sales for detail series (all Store Item; six M5 representatives).
+    expression: |
+      CALCULATE ( SUM ( FactForecastSeriesDaily[Actual] ), REMOVEFILTERS ( DimForecastModel ),
+          DimForecastModel[ModelRoleKey] = "selected_ml" )
+  - name: Series Forecast Units
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0"
+    description: Daily saved forecast for detail series and the model role in context.
+    expression: |
+      IF ( DISTINCTCOUNT ( FactForecastSeriesDaily[ModelKey] ) = 1, SUM ( FactForecastSeriesDaily[Forecast] ) )
+  - name: Series Forecast Selected ML
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0"
+    description: Daily saved forecast of the selected ML model for detail series.
+    expression: CALCULATE ( [Series Forecast Units], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "selected_ml" )
+  - name: Series Forecast MA28
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0"
+    description: Daily saved MA28 forecast for detail series.
+    expression: CALCULATE ( [Series Forecast Units], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "moving_average_28" )
+  - name: Series Forecast Seasonal Naive
+    folder: Forecast Accuracy\Daily
+    format: "#,##0.0"
+    description: Daily saved Seasonal Naive forecast for detail series.
+    expression: CALCULATE ( [Series Forecast Units], REMOVEFILTERS ( DimForecastModel ), DimForecastModel[ModelRoleKey] = "seasonal_naive" )
+  # ------------------------------------------------------------- inventory (hypothetical NCU)
+  - name: Series Episodes
+    folder: Inventory\Coverage
+    format: "#,##0"
+    description: Series x 28-day episodes in context.
+    expression: SUM ( FactInventoryScenarioResults[SeriesEpisodes] )
+  - name: Total Simulated Cost (NCU)
+    folder: Inventory\Cost
+    format: "#,##0"
+    description: Sum of hypothetical normalised cost units. Not a realised financial amount.
+    expression: IF ( [Inventory Scope Valid], SUM ( FactInventoryScenarioResults[TotalCost] ) )
+  - name: Mean Cost per Episode (NCU)
+    folder: Inventory\Cost
+    format: "#,##0.00"
+    description: Total simulated cost / series-episodes. The Phase 5 headline unit. Hypothetical, not savings.
+    expression: IF ( [Inventory Scope Valid], DIVIDE ( SUM ( FactInventoryScenarioResults[TotalCost] ), [Series Episodes] ) )
+  - name: Holding Cost per Episode (NCU)
+    folder: Inventory\Cost
+    format: "#,##0.00"
+    description: Holding cost on closing stock per series-episode.
+    expression: IF ( [Inventory Scope Valid], DIVIDE ( SUM ( FactInventoryScenarioResults[HoldingCost] ), [Series Episodes] ) )
+  - name: Ordering Cost per Episode (NCU)
+    folder: Inventory\Cost
+    format: "#,##0.00"
+    description: Fixed plus variable ordering cost per series-episode.
+    expression: IF ( [Inventory Scope Valid], DIVIDE ( SUM ( FactInventoryScenarioResults[OrderingCost] ), [Series Episodes] ) )
+  - name: Unmet Demand Penalty per Episode (NCU)
+    folder: Inventory\Cost
+    format: "#,##0.00"
+    description: Shortage penalty on lost (unmet) units per series-episode.
+    expression: IF ( [Inventory Scope Valid], DIVIDE ( SUM ( FactInventoryScenarioResults[ShortageCost] ), [Series Episodes] ) )
+  - name: Terminal Cost per Episode (NCU)
+    folder: Inventory\Cost
+    format: "#,##0.00"
+    description: Terminal exposure charge on closing stock plus pipeline; zero except in the terminal-charge scenario.
+    expression: IF ( [Inventory Scope Valid], DIVIDE ( SUM ( FactInventoryScenarioResults[TerminalCost] ), [Series Episodes] ) )
+  - name: Cost per Demanded Unit (NCU)
+    folder: Inventory\Cost
+    format: "#,##0.0000"
+    description: Total simulated cost divided by demanded units; a scale-normalised view.
+    expression: IF ( [Inventory Scope Valid], DIVIDE ( SUM ( FactInventoryScenarioResults[TotalCost] ), SUM ( FactInventoryScenarioResults[DemandUnits] ) ) )
+  - name: Fill Rate
+    folder: Inventory\Service
+    format: "0.00%"
+    description: Pooled unit fill rate, fulfilled units / demanded units (not an average of series rates).
+    expression: IF ( [Inventory Scope Valid], DIVIDE ( SUM ( FactInventoryScenarioResults[FulfilledUnits] ), SUM ( FactInventoryScenarioResults[DemandUnits] ) ) )
+  - name: Stockout Days per Episode
+    folder: Inventory\Service
+    format: "0.000"
+    description: Days with unmet demand per 28-day series-episode.
+    expression: IF ( [Inventory Scope Valid], DIVIDE ( SUM ( FactInventoryScenarioResults[StockoutDays] ), [Series Episodes] ) )
+  - name: Average On-Hand Units
+    folder: Inventory\Stock
+    format: "#,##0.00"
+    description: Mean over series-episodes of average daily closing stock.
+    expression: IF ( [Inventory Scope Valid], DIVIDE ( SUM ( FactInventoryScenarioResults[AverageOnHandSum] ), [Series Episodes] ) )
+  - name: Orders per Episode
+    folder: Inventory\Stock
+    format: "0.00"
+    description: Positive orders per series-episode.
+    expression: IF ( [Inventory Scope Valid], DIVIDE ( SUM ( FactInventoryScenarioResults[Orders] ), [Series Episodes] ) )
+  - name: Order Frequency
+    folder: Inventory\Stock
+    format: "0.0%"
+    description: Share of the 28 episode days on which an order is placed.
+    expression: DIVIDE ( [Orders per Episode], 28 )
+  - name: Mean Cost Selected ML (NCU)
+    folder: Inventory\Comparisons
+    format: "#,##0.00"
+    description: Mean cost per episode under the selected-ML order-up-to policy.
+    expression: CALCULATE ( [Mean Cost per Episode (NCU)], REMOVEFILTERS ( DimInventoryPolicy ), DimInventoryPolicy[PolicyKey] = "selected_ml" )
+  - name: Mean Cost MA28 (NCU)
+    folder: Inventory\Comparisons
+    format: "#,##0.00"
+    description: Mean cost per episode under the MA28 order-up-to policy.
+    expression: CALCULATE ( [Mean Cost per Episode (NCU)], REMOVEFILTERS ( DimInventoryPolicy ), DimInventoryPolicy[PolicyKey] = "moving_average_28" )
+  - name: Mean Cost Seasonal Naive (NCU)
+    folder: Inventory\Comparisons
+    format: "#,##0.00"
+    description: Mean cost per episode under the Seasonal Naive order-up-to policy.
+    expression: CALCULATE ( [Mean Cost per Episode (NCU)], REMOVEFILTERS ( DimInventoryPolicy ), DimInventoryPolicy[PolicyKey] = "seasonal_naive" )
+  - name: Mean Cost Fixed ROP (NCU)
+    folder: Inventory\Comparisons
+    format: "#,##0.00"
+    description: Mean cost per episode under the fixed reorder point, a low-stock and lower-service comparator.
+    expression: CALCULATE ( [Mean Cost per Episode (NCU)], REMOVEFILTERS ( DimInventoryPolicy ), DimInventoryPolicy[PolicyKey] = "fixed_reorder_point" )
+  - name: ML vs MA28 Cost Difference (NCU)
+    folder: Inventory\Comparisons
+    format: "+#,##0.00;-#,##0.00;0.00"
+    description: Selected ML minus MA28 mean cost per episode. Negative is a lower hypothetical simulated cost, not a realised saving.
+    expression: '[Mean Cost Selected ML (NCU)] - [Mean Cost MA28 (NCU)]'
+  - name: ML vs MA28 Cost Difference %
+    folder: Inventory\Comparisons
+    format: "+0.00%;-0.00%;0.00%"
+    description: Selected ML minus MA28 mean cost as a share of MA28 mean cost (hypothetical NCU).
+    expression: DIVIDE ( [ML vs MA28 Cost Difference (NCU)], [Mean Cost MA28 (NCU)] )
+  - name: ML vs Seasonal Naive Cost Difference (NCU)
+    folder: Inventory\Comparisons
+    format: "+#,##0.00;-#,##0.00;0.00"
+    description: Selected ML minus Seasonal Naive mean cost per episode (hypothetical NCU).
+    expression: '[Mean Cost Selected ML (NCU)] - [Mean Cost Seasonal Naive (NCU)]'
+  - name: ML vs Seasonal Naive Cost Difference %
+    folder: Inventory\Comparisons
+    format: "+0.00%;-0.00%;0.00%"
+    description: Selected ML minus Seasonal Naive mean cost as a share of Seasonal Naive mean cost.
+    expression: DIVIDE ( [ML vs Seasonal Naive Cost Difference (NCU)], [Mean Cost Seasonal Naive (NCU)] )
+  - name: ML vs MA28 Fill Rate Difference (pp)
+    folder: Inventory\Comparisons
+    format: "+0.00;-0.00;0.00"
+    description: Selected ML minus MA28 pooled fill rate, in percentage points.
+    expression: |
+      100 * ( CALCULATE ( [Fill Rate], REMOVEFILTERS ( DimInventoryPolicy ), DimInventoryPolicy[PolicyKey] = "selected_ml" )
+          - CALCULATE ( [Fill Rate], REMOVEFILTERS ( DimInventoryPolicy ), DimInventoryPolicy[PolicyKey] = "moving_average_28" ) )
+  - name: Origins ML Cheaper than MA28
+    folder: Inventory\Robustness
+    format: "0"
+    description: Validation origins at which selected ML has the lower mean simulated cost than MA28.
+    expression: |
+      IF ( DISTINCTCOUNT ( FactInventoryScenarioResults[DatasetKey] ) = 1,
+          COUNTROWS ( FILTER ( VALUES ( DimValidationOrigin[OriginKey] ), [ML vs MA28 Cost Difference (NCU)] < 0 ) ) + 0 )
+  - name: Scenarios ML Cheaper than MA28
+    folder: Inventory\Robustness
+    format: "0"
+    description: Scenarios (origins pooled) where selected ML has the lower mean cost than MA28. The scenarios reuse the same four origins; this is not a count of independent confirmations.
+    expression: |
+      IF ( DISTINCTCOUNT ( FactInventoryScenarioResults[DatasetKey] ) = 1,
+          COUNTROWS ( FILTER ( VALUES ( DimScenario[ScenarioKey] ), [ML vs MA28 Cost Difference (NCU)] < 0 ) ) + 0 )
+  - name: Scenarios ML Cheaper than Seasonal Naive
+    folder: Inventory\Robustness
+    format: "0"
+    description: Scenarios (origins pooled) where selected ML has the lower mean cost than Seasonal Naive. Not independent replications.
+    expression: |
+      IF ( DISTINCTCOUNT ( FactInventoryScenarioResults[DatasetKey] ) = 1,
+          COUNTROWS ( FILTER ( VALUES ( DimScenario[ScenarioKey] ), [ML vs Seasonal Naive Cost Difference (NCU)] < 0 ) ) + 0 )
+  - name: Series-Origins ML Cheaper than MA28
+    folder: Inventory\Robustness
+    format: "#,##0"
+    description: Base scenario series-origin pairs where selected ML costs less than MA28 (tolerance 1e-8 NCU).
+    expression: |
+      IF ( DISTINCTCOUNT ( FactInventorySeriesBase[DatasetKey] ) = 1,
+          SUMX (
+              SUMMARIZE ( FactInventorySeriesBase, FactInventorySeriesBase[SeriesKey], FactInventorySeriesBase[OriginKey] ),
+              VAR _ml = CALCULATE ( SUM ( FactInventorySeriesBase[TotalCost] ), REMOVEFILTERS ( DimInventoryPolicy ),
+                  DimInventoryPolicy[PolicyKey] = "selected_ml" )
+              VAR _ma = CALCULATE ( SUM ( FactInventorySeriesBase[TotalCost] ), REMOVEFILTERS ( DimInventoryPolicy ),
+                  DimInventoryPolicy[PolicyKey] = "moving_average_28" )
+              RETURN IF ( _ml < _ma - 0.00000001, 1, 0 )
+          ) )
+  - name: Series-Origins ML Costlier than MA28
+    folder: Inventory\Robustness
+    format: "#,##0"
+    description: Base scenario series-origin pairs where selected ML costs more than MA28 (tolerance 1e-8 NCU).
+    expression: |
+      IF ( DISTINCTCOUNT ( FactInventorySeriesBase[DatasetKey] ) = 1,
+          SUMX (
+              SUMMARIZE ( FactInventorySeriesBase, FactInventorySeriesBase[SeriesKey], FactInventorySeriesBase[OriginKey] ),
+              VAR _ml = CALCULATE ( SUM ( FactInventorySeriesBase[TotalCost] ), REMOVEFILTERS ( DimInventoryPolicy ),
+                  DimInventoryPolicy[PolicyKey] = "selected_ml" )
+              VAR _ma = CALCULATE ( SUM ( FactInventorySeriesBase[TotalCost] ), REMOVEFILTERS ( DimInventoryPolicy ),
+                  DimInventoryPolicy[PolicyKey] = "moving_average_28" )
+              RETURN IF ( _ml > _ma + 0.00000001, 1, 0 )
+          ) )
+  # ------------------------------------------------------------- governance
+  - name: Scenario Count
+    folder: Governance
+    format: "0"
+    description: Distinct hypothetical scenarios with results in context.
+    expression: DISTINCTCOUNT ( FactInventoryScenarioResults[ScenarioKey] )
+  - name: Inventory Cases
+    folder: Governance
+    format: "#,##0"
+    description: Distinct completed Phase 5 inventory cases (origin x scenario x policy) in context.
+    expression: DISTINCTCOUNT ( FactInventoryScenarioResults[CaseId] )
+  - name: Selected Forecast Model
+    folder: Governance
+    description: Frozen Phase 4 selected trial for the single dataset in context.
+    expression: SELECTEDVALUE ( DimDataset[SelectedTrial], "Select one dataset" )
+  - name: Verification Receipts
+    folder: Governance
+    format: "0"
+    description: Saved verification receipts loaded into the model.
+    expression: COUNTROWS ( FactScientificValidation )
+  - name: Verification Receipts Passed
+    folder: Governance
+    format: "0"
+    description: Receipts whose own recorded status is "passed".
+    expression: COUNTROWS ( FILTER ( FactScientificValidation, FactScientificValidation[Status] = "passed" ) ) + 0
+  - name: Audit Findings
+    folder: Governance
+    format: "0"
+    description: Independent-audit findings in context.
+    expression: COUNTROWS ( DimAuditFinding )
+  - name: Open Audit Findings
+    folder: Governance
+    format: "0"
+    description: Findings whose recorded status starts with "Open".
+    expression: COUNTROWS ( FILTER ( DimAuditFinding, LEFT ( DimAuditFinding[Status], 4 ) = "Open" ) ) + 0
+  # ------------------------------------------------------------- dynamic titles
+  - name: Title Dataset
+    folder: Titles
+    description: Selected dataset label, or a prompt when none or both are selected.
+    expression: SELECTEDVALUE ( DimDataset[Dataset], "Select one dataset" )
+  - name: Title Forecast Page
+    folder: Titles
+    description: Dynamic title for the forecasting page.
+    expression: '"Forecast accuracy | " & [Title Dataset] & " | validation origins only (not the final holdout)"'
+  - name: Title Inventory Page
+    folder: Titles
+    description: Dynamic title for the inventory page.
+    expression: '"Inventory policies | " & [Title Dataset] & " | " & SELECTEDVALUE ( DimScenario[Scenario], "select one scenario" ) & " | hypothetical NCU"'
+  - name: Title Scenario Page
+    folder: Titles
+    description: Dynamic title for the scenario page.
+    expression: '"Scenario sensitivity | " & [Title Dataset] & " | 17 scenarios share the same four origins"'

@@ -1,0 +1,21 @@
+/// Folder holding the Phase 6 reporting CSVs. Change this one value after moving the project.
+expression DataRoot = "C:\Users\RTX\Desktop\Intelligent Demand Forecasting & Inventory Optimisation\artifacts\powerbi\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: e3bb3a53-311e-5a9a-a192-365437013032
+
+	annotation PBI_ResultType = Text
+
+/// Loads one reporting CSV with an explicit schema: early projection, empty text to null, typed with en-US.
+expression LoadReportingTable =
+		(tableName as text, schema as list) as table =>
+		let
+		    Source = Csv.Document(File.Contents(DataRoot & tableName & ".csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+		    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+		    Projected = Table.SelectColumns(Promoted, List.Transform(schema, each _{0}), MissingField.Error),
+		    Nulls = Table.TransformColumns(Projected, {}, each if _ = "" then null else _),
+		    Typed = Table.TransformColumnTypes(Nulls, schema, "en-US")
+		in
+		    Typed
+	lineageTag: 787eec4c-2a13-5899-a844-48b6ae69b203
+
+	annotation PBI_ResultType = Function
+

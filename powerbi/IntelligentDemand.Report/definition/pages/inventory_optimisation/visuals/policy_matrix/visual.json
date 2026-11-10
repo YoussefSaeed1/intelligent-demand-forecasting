@@ -1,0 +1,207 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "policy_matrix",
+  "position": {
+    "x": 24,
+    "y": 226,
+    "z": 14,
+    "height": 206,
+    "width": 620,
+    "tabOrder": 14
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimInventoryPolicy"
+                    }
+                  },
+                  "Property": "Policy"
+                }
+              },
+              "queryRef": "DimInventoryPolicy.Policy",
+              "nativeQueryRef": "Policy",
+              "active": true,
+              "displayName": "Policy"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Mean Cost per Episode (NCU)"
+                }
+              },
+              "queryRef": "_Measures.Mean Cost per Episode (NCU)",
+              "nativeQueryRef": "Mean Cost per Episode (NCU)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Holding Cost per Episode (NCU)"
+                }
+              },
+              "queryRef": "_Measures.Holding Cost per Episode (NCU)",
+              "nativeQueryRef": "Holding Cost per Episode (NCU)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ordering Cost per Episode (NCU)"
+                }
+              },
+              "queryRef": "_Measures.Ordering Cost per Episode (NCU)",
+              "nativeQueryRef": "Ordering Cost per Episode (NCU)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Unmet Demand Penalty per Episode (NCU)"
+                }
+              },
+              "queryRef": "_Measures.Unmet Demand Penalty per Episode (NCU)",
+              "nativeQueryRef": "Unmet Demand Penalty per Episode (NCU)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Fill Rate"
+                }
+              },
+              "queryRef": "_Measures.Fill Rate",
+              "nativeQueryRef": "Fill Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Stockout Days per Episode"
+                }
+              },
+              "queryRef": "_Measures.Stockout Days per Episode",
+              "nativeQueryRef": "Stockout Days per Episode"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Average On-Hand Units"
+                }
+              },
+              "queryRef": "_Measures.Average On-Hand Units",
+              "nativeQueryRef": "Average On-Hand Units"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Orders per Episode"
+                }
+              },
+              "queryRef": "_Measures.Orders per Episode",
+              "nativeQueryRef": "Orders per Episode"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Cost per Demanded Unit (NCU)"
+                }
+              },
+              "queryRef": "_Measures.Cost per Demanded Unit (NCU)",
+              "nativeQueryRef": "Cost per Demanded Unit (NCU)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Policy cost and service detail (per series-episode)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

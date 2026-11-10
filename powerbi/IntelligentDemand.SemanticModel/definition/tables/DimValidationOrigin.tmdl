@@ -1,0 +1,94 @@
+/// One row per dataset validation origin (four expanding origins per dataset). Never the final holdout.
+table DimValidationOrigin
+	lineageTag: 96ad5825-9fbd-5508-a45d-ea9e99be6fa5
+
+	column OriginKey
+		dataType: string
+		isHidden
+		lineageTag: 5e6850c6-d1f8-5e37-8679-bf4941f7ff72
+		summarizeBy: none
+		sourceColumn: OriginKey
+
+		annotation SummarizationSetBy = User
+
+	column DatasetKey
+		dataType: string
+		isHidden
+		lineageTag: 23cc4fed-d4bc-5638-815d-9e687c4d7b1d
+		summarizeBy: none
+		sourceColumn: DatasetKey
+
+		annotation SummarizationSetBy = User
+
+	column Fold
+		dataType: int64
+		formatString: 0
+		lineageTag: 7307efaa-3e4f-574e-9237-1a859a89106a
+		summarizeBy: none
+		sourceColumn: Fold
+
+		annotation SummarizationSetBy = User
+
+	column FoldLabel
+		dataType: string
+		lineageTag: b44ae4a3-b358-5ca9-a76d-6dee8d39809f
+		summarizeBy: none
+		sourceColumn: FoldLabel
+		sortByColumn: Fold
+
+		annotation SummarizationSetBy = User
+
+	column OriginDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: c196ce52-103c-5e58-8689-d7ad66da049b
+		summarizeBy: none
+		sourceColumn: OriginDate
+
+		annotation SummarizationSetBy = User
+
+	column ValidationStart
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 0dbb9bb7-b6b1-5c8f-912c-f417af33c11e
+		summarizeBy: none
+		sourceColumn: ValidationStart
+
+		annotation SummarizationSetBy = User
+
+	column ValidationEnd
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 824fe85f-c084-5412-8516-6eaa7270fa74
+		summarizeBy: none
+		sourceColumn: ValidationEnd
+
+		annotation SummarizationSetBy = User
+
+	column TrainStart
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 1844e080-b240-5900-8ffc-d2ece2ca71b3
+		summarizeBy: none
+		sourceColumn: TrainStart
+
+		annotation SummarizationSetBy = User
+
+	column OriginLabel
+		dataType: string
+		lineageTag: 611e0376-22d7-504e-ba75-54738b42f616
+		summarizeBy: none
+		sourceColumn: OriginLabel
+
+		annotation SummarizationSetBy = User
+
+	partition DimValidationOrigin = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("DimValidationOrigin", {{"OriginKey", type text}, {"DatasetKey", type text}, {"Fold", Int64.Type}, {"FoldLabel", type text}, {"OriginDate", type date}, {"ValidationStart", type date}, {"ValidationEnd", type date}, {"TrainStart", type date}, {"OriginLabel", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

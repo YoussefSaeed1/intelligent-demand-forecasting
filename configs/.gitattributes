@@ -1,0 +1,2 @@
+# The reporting manifest hashes the exact Power BI configuration bytes.
+powerbi*.yaml -text whitespace=cr-at-eol

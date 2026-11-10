@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "sl_origin",
+  "position": {
+    "x": 252,
+    "y": 78,
+    "z": 5,
+    "height": 52,
+    "width": 200,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimValidationOrigin"
+                    }
+                  },
+                  "Property": "FoldLabel"
+                }
+              },
+              "queryRef": "DimValidationOrigin.FoldLabel",
+              "nativeQueryRef": "FoldLabel",
+              "active": true,
+              "displayName": "Validation origin"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

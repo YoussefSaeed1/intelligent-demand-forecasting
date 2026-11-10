@@ -1,0 +1,76 @@
+/// One row per dataset. Filters every fact through DatasetKey.
+table DimDataset
+	lineageTag: d120567e-5722-5c77-882d-ac0865b6f6b3
+
+	column DatasetKey
+		dataType: string
+		isHidden
+		lineageTag: c81a9ac7-48c7-595f-9939-0795adc25bb3
+		summarizeBy: none
+		sourceColumn: DatasetKey
+
+		annotation SummarizationSetBy = User
+
+	column Dataset
+		dataType: string
+		lineageTag: a9066b9f-4907-5ac1-ba94-e51c5529d486
+		summarizeBy: none
+		sourceColumn: Dataset
+		sortByColumn: DatasetSort
+
+		annotation SummarizationSetBy = User
+
+	column DatasetSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a1c64ac4-9436-5b99-af04-821ec1403f47
+		summarizeBy: none
+		sourceColumn: DatasetSort
+
+		annotation SummarizationSetBy = User
+
+	column DatasetDescription
+		dataType: string
+		lineageTag: d5bc1979-004f-5b04-981b-0f2c3a100981
+		summarizeBy: none
+		sourceColumn: DatasetDescription
+
+		annotation SummarizationSetBy = User
+
+	column SeriesCount
+		dataType: int64
+		formatString: 0
+		lineageTag: c4752a57-a450-5249-af40-7218fb766b1a
+		summarizeBy: none
+		sourceColumn: SeriesCount
+
+		annotation SummarizationSetBy = User
+
+	column SelectedTrial
+		dataType: string
+		lineageTag: 80082e18-814a-5139-8b22-25bf4ec05827
+		summarizeBy: none
+		sourceColumn: SelectedTrial
+
+		annotation SummarizationSetBy = User
+
+	column TrainingStart
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: a21aef99-a587-5b0e-b6ce-3cb6ed16d039
+		summarizeBy: none
+		sourceColumn: TrainingStart
+
+		annotation SummarizationSetBy = User
+
+	partition DimDataset = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("DimDataset", {{"DatasetKey", type text}, {"Dataset", type text}, {"DatasetSort", Int64.Type}, {"DatasetDescription", type text}, {"SeriesCount", Int64.Type}, {"SelectedTrial", type text}, {"TrainingStart", type date}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

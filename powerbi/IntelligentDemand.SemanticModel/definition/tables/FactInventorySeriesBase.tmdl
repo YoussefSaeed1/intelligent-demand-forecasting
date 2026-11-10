@@ -1,0 +1,230 @@
+/// Series x origin x policy for the base scenario only. Supports paired series comparisons.
+table FactInventorySeriesBase
+	lineageTag: a9e33668-d807-53ae-9de8-8fa9117d86c8
+
+	column SeriesKey
+		dataType: string
+		isHidden
+		lineageTag: b72aa5f6-5c60-56a9-b54b-5c6ea3cf4989
+		summarizeBy: none
+		sourceColumn: SeriesKey
+
+		annotation SummarizationSetBy = User
+
+	column DatasetKey
+		dataType: string
+		isHidden
+		lineageTag: ff37c086-6f10-57bf-8bea-2a5eca9052d6
+		summarizeBy: none
+		sourceColumn: DatasetKey
+
+		annotation SummarizationSetBy = User
+
+	column OriginKey
+		dataType: string
+		isHidden
+		lineageTag: 00bb83c0-ce77-5c8b-9f60-a36546d1287d
+		summarizeBy: none
+		sourceColumn: OriginKey
+
+		annotation SummarizationSetBy = User
+
+	column PolicyKey
+		dataType: string
+		isHidden
+		lineageTag: 1d41c54a-f091-5240-89d2-e1b754b667ec
+		summarizeBy: none
+		sourceColumn: PolicyKey
+
+		annotation SummarizationSetBy = User
+
+	column PatternKey
+		dataType: string
+		isHidden
+		lineageTag: 7dc0ae31-95bd-5983-8e90-6d05fdb738ab
+		summarizeBy: none
+		sourceColumn: PatternKey
+
+		annotation SummarizationSetBy = User
+
+	column DemandUnits
+		dataType: double
+		isHidden
+		lineageTag: 601fe833-70fe-561c-a70a-09bd7a127a04
+		summarizeBy: none
+		sourceColumn: DemandUnits
+
+		annotation SummarizationSetBy = User
+
+	column FulfilledUnits
+		dataType: double
+		isHidden
+		lineageTag: fea09e6b-f4c8-5144-8b3c-baeaa6ce49ff
+		summarizeBy: none
+		sourceColumn: FulfilledUnits
+
+		annotation SummarizationSetBy = User
+
+	column UnmetUnits
+		dataType: double
+		isHidden
+		lineageTag: 69338e57-fbe3-5727-b48b-4ba8b995cc72
+		summarizeBy: none
+		sourceColumn: UnmetUnits
+
+		annotation SummarizationSetBy = User
+
+	column ReceivedUnits
+		dataType: double
+		isHidden
+		lineageTag: 977bd26a-0803-5447-a409-7fc6cd8e3f31
+		summarizeBy: none
+		sourceColumn: ReceivedUnits
+
+		annotation SummarizationSetBy = User
+
+	column PlacedUnits
+		dataType: double
+		isHidden
+		lineageTag: 9dfa7355-27fc-5131-ba36-fa1200d1caa9
+		summarizeBy: none
+		sourceColumn: PlacedUnits
+
+		annotation SummarizationSetBy = User
+
+	column HoldingCost
+		dataType: double
+		isHidden
+		lineageTag: 2e2a1633-315d-5e9e-b9bc-aa159ba5a302
+		summarizeBy: none
+		sourceColumn: HoldingCost
+
+		annotation SummarizationSetBy = User
+
+	column ShortageCost
+		dataType: double
+		isHidden
+		lineageTag: f9059846-6ac2-5dc1-886f-682558d16a36
+		summarizeBy: none
+		sourceColumn: ShortageCost
+
+		annotation SummarizationSetBy = User
+
+	column OrderingCost
+		dataType: double
+		isHidden
+		lineageTag: c2a0a641-8ff4-59ba-a9d5-cea8ff9b7385
+		summarizeBy: none
+		sourceColumn: OrderingCost
+
+		annotation SummarizationSetBy = User
+
+	column TerminalCost
+		dataType: double
+		isHidden
+		lineageTag: 4b478bf7-bcfb-5b87-90c7-5c166c4d08bc
+		summarizeBy: none
+		sourceColumn: TerminalCost
+
+		annotation SummarizationSetBy = User
+
+	column TotalCost
+		dataType: double
+		isHidden
+		lineageTag: 25e260c3-98bd-5f44-80df-65e9db03ff08
+		summarizeBy: none
+		sourceColumn: TotalCost
+
+		annotation SummarizationSetBy = User
+
+	column StockoutDays
+		dataType: double
+		isHidden
+		lineageTag: 8c3a181f-ade0-5089-8b00-0845a8a13d8e
+		summarizeBy: none
+		sourceColumn: StockoutDays
+
+		annotation SummarizationSetBy = User
+
+	column Orders
+		dataType: double
+		isHidden
+		lineageTag: 372435e5-9889-5489-8773-f9adeffef5d3
+		summarizeBy: none
+		sourceColumn: Orders
+
+		annotation SummarizationSetBy = User
+
+	column AverageOnHand
+		dataType: double
+		isHidden
+		lineageTag: 3590a04e-8555-51f2-af0f-ab059c4d5ad5
+		summarizeBy: none
+		sourceColumn: AverageOnHand
+
+		annotation SummarizationSetBy = User
+
+	column AverageInventoryPosition
+		dataType: double
+		isHidden
+		lineageTag: 1bc54254-c4d5-5647-8fc5-27e9ed0b3431
+		summarizeBy: none
+		sourceColumn: AverageInventoryPosition
+
+		annotation SummarizationSetBy = User
+
+	column FinalOnHand
+		dataType: double
+		isHidden
+		lineageTag: 33c6570b-dded-5764-9306-e5303af45aea
+		summarizeBy: none
+		sourceColumn: FinalOnHand
+
+		annotation SummarizationSetBy = User
+
+	column FinalPipeline
+		dataType: double
+		isHidden
+		lineageTag: 26cd20c5-7892-5ec6-bc60-c4aea2dbdbb9
+		summarizeBy: none
+		sourceColumn: FinalPipeline
+
+		annotation SummarizationSetBy = User
+
+	column InitialOnHand
+		dataType: double
+		isHidden
+		lineageTag: 466b0ae1-d979-5e6b-9e0b-530e4b8732b4
+		summarizeBy: none
+		sourceColumn: InitialOnHand
+
+		annotation SummarizationSetBy = User
+
+	column ForecastMAE
+		dataType: double
+		isHidden
+		lineageTag: 31023188-bfca-546d-aa17-a32a843e735c
+		summarizeBy: none
+		sourceColumn: ForecastMAE
+
+		annotation SummarizationSetBy = User
+
+	column OriginSampleAllZero
+		dataType: string
+		isHidden
+		lineageTag: 45954fd4-4952-5f81-881b-47d70b6a8d35
+		summarizeBy: none
+		sourceColumn: OriginSampleAllZero
+
+		annotation SummarizationSetBy = User
+
+	partition FactInventorySeriesBase = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("FactInventorySeriesBase", {{"SeriesKey", type text}, {"DatasetKey", type text}, {"OriginKey", type text}, {"PolicyKey", type text}, {"PatternKey", type text}, {"DemandUnits", type number}, {"FulfilledUnits", type number}, {"UnmetUnits", type number}, {"ReceivedUnits", type number}, {"PlacedUnits", type number}, {"HoldingCost", type number}, {"ShortageCost", type number}, {"OrderingCost", type number}, {"TerminalCost", type number}, {"TotalCost", type number}, {"StockoutDays", type number}, {"Orders", type number}, {"AverageOnHand", type number}, {"AverageInventoryPosition", type number}, {"FinalOnHand", type number}, {"FinalPipeline", type number}, {"InitialOnHand", type number}, {"ForecastMAE", type number}, {"OriginSampleAllZero", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

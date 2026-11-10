@@ -1,0 +1,88 @@
+/// Calendar for 2016-2017; only validation-window dates carry fact rows.
+table DimDate
+	lineageTag: 74990f72-5f33-5748-8035-ecfa718ac6e3
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: yyyy-mm-dd
+		lineageTag: a89620d0-13be-579f-a480-291311227b73
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 08d6c13c-5623-5898-ad34-bf253b8dda83
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column MonthNumber
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2645feed-9e2a-5928-986b-e73d8c3b4663
+		summarizeBy: none
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = User
+
+	column Month
+		dataType: string
+		lineageTag: 8ebb85b4-3ba1-5950-b286-bca74bbafa07
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: MonthNumber
+
+		annotation SummarizationSetBy = User
+
+	column YearMonth
+		dataType: string
+		lineageTag: ba4b70c4-5294-5e6b-9095-b81f9608e4c3
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = User
+
+	column DayOfWeekNumber
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2f5ba798-9330-5664-8dc0-fc73c03479b9
+		summarizeBy: none
+		sourceColumn: DayOfWeekNumber
+
+		annotation SummarizationSetBy = User
+
+	column DayOfWeek
+		dataType: string
+		lineageTag: 3823876d-45ac-5b1d-a58c-062c21d9f8be
+		summarizeBy: none
+		sourceColumn: DayOfWeek
+		sortByColumn: DayOfWeekNumber
+
+		annotation SummarizationSetBy = User
+
+	column IsWeekend
+		dataType: string
+		lineageTag: f3e975a5-a737-5797-a1ad-f551a98b8fa1
+		summarizeBy: none
+		sourceColumn: IsWeekend
+
+		annotation SummarizationSetBy = User
+
+	partition DimDate = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("DimDate", {{"Date", type date}, {"Year", Int64.Type}, {"MonthNumber", Int64.Type}, {"Month", type text}, {"YearMonth", type text}, {"DayOfWeekNumber", Int64.Type}, {"DayOfWeek", type text}, {"IsWeekend", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

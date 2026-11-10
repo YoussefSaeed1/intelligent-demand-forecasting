@@ -1,0 +1,54 @@
+/// The 12 independent-audit findings and their recorded dispositions.
+table DimAuditFinding
+	lineageTag: b73734ce-d074-5d58-a63a-57454d35dc62
+
+	column FindingId
+		dataType: string
+		lineageTag: c5f8d2ce-49b7-5a02-a2eb-4cec9ef4cb49
+		summarizeBy: none
+		sourceColumn: FindingId
+
+		annotation SummarizationSetBy = User
+
+	column Severity
+		dataType: string
+		lineageTag: 381463cb-fe91-56a5-bd07-a2eca964e74f
+		summarizeBy: none
+		sourceColumn: Severity
+
+		annotation SummarizationSetBy = User
+
+	column Finding
+		dataType: string
+		lineageTag: a786b0e6-af19-5197-81dd-8f852022e5c4
+		summarizeBy: none
+		sourceColumn: Finding
+
+		annotation SummarizationSetBy = User
+
+	column Disposition
+		dataType: string
+		lineageTag: abe7479c-b5d5-5bcb-ad0e-57aa562565be
+		summarizeBy: none
+		sourceColumn: Disposition
+
+		annotation SummarizationSetBy = User
+
+	column Status
+		dataType: string
+		lineageTag: e6af0baa-e8f6-5d9b-8cc7-89a8be245bb4
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = User
+
+	partition DimAuditFinding = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("DimAuditFinding", {{"FindingId", type text}, {"Severity", type text}, {"Finding", type text}, {"Disposition", type text}, {"Status", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

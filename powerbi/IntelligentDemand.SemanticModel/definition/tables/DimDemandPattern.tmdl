@@ -1,0 +1,50 @@
+/// Training-prefix demand classification from the Phase 2 EDA.
+table DimDemandPattern
+	lineageTag: 7c77e246-8d61-5587-aad1-28b71ef48ae2
+
+	column PatternKey
+		dataType: string
+		isHidden
+		lineageTag: dc28a8ba-860c-52f4-9c14-9cd01347cb70
+		summarizeBy: none
+		sourceColumn: PatternKey
+
+		annotation SummarizationSetBy = User
+
+	column DemandPattern
+		dataType: string
+		lineageTag: b9822081-5b98-511c-82b0-78798ee5a9c7
+		summarizeBy: none
+		sourceColumn: DemandPattern
+		sortByColumn: PatternSort
+
+		annotation SummarizationSetBy = User
+
+	column PatternSort
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 938237ea-762b-547b-841f-7c0a140cc9ac
+		summarizeBy: none
+		sourceColumn: PatternSort
+
+		annotation SummarizationSetBy = User
+
+	column PatternDescription
+		dataType: string
+		lineageTag: 6885e545-a676-5909-9ab0-561cd77ed77d
+		summarizeBy: none
+		sourceColumn: PatternDescription
+
+		annotation SummarizationSetBy = User
+
+	partition DimDemandPattern = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("DimDemandPattern", {{"PatternKey", type text}, {"DemandPattern", type text}, {"PatternSort", Int64.Type}, {"PatternDescription", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

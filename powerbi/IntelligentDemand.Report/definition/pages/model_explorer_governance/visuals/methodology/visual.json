@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "methodology",
+  "position": {
+    "x": 24,
+    "y": 1156,
+    "z": 13,
+    "height": 60,
+    "width": 1232,
+    "tabOrder": 13
+  },
+  "visual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Methodology and provenance: ",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#14213D",
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": "four expanding validation origins per dataset, 28-day fixed-origin forecasts, origin-bounded MASE/RMSSE scales. Every figure reconciles with the saved registry metrics, Phase 4 leaderboard and Phase 5 audit summary (reports/powerbi/qa_results.json). Rebuild: python -m intelligent_demand.bi.export, .bi.tmdl, .bi.report_builder, then .bi.qa.",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#14213D"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

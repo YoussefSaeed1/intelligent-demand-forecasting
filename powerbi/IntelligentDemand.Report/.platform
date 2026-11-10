@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "IntelligentDemand"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7d74d886-fd10-474e-9183-1c84bbf74781"
+  }
+}

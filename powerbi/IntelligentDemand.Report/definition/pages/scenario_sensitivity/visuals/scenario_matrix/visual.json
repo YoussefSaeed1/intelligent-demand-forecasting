@@ -1,0 +1,131 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "scenario_matrix",
+  "position": {
+    "x": 24,
+    "y": 226,
+    "z": 12,
+    "height": 442,
+    "width": 620,
+    "tabOrder": 12
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimScenario"
+                    }
+                  },
+                  "Property": "ScenarioGroup"
+                }
+              },
+              "queryRef": "DimScenario.ScenarioGroup",
+              "nativeQueryRef": "ScenarioGroup",
+              "active": true,
+              "displayName": "Scenario group"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimScenario"
+                    }
+                  },
+                  "Property": "Scenario"
+                }
+              },
+              "queryRef": "DimScenario.Scenario",
+              "nativeQueryRef": "Scenario",
+              "active": true,
+              "displayName": "Scenario"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Mean Cost per Episode (NCU)"
+                }
+              },
+              "queryRef": "_Measures.Mean Cost per Episode (NCU)",
+              "nativeQueryRef": "Mean Cost per Episode (NCU)"
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimInventoryPolicy"
+                    }
+                  },
+                  "Property": "Policy"
+                }
+              },
+              "queryRef": "DimInventoryPolicy.Policy",
+              "nativeQueryRef": "Policy",
+              "active": true,
+              "displayName": "Policy"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mean cost per series-episode by scenario and policy (NCU)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

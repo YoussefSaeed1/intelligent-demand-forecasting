@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ftr_caveat",
+  "position": {
+    "x": 24,
+    "y": 1194,
+    "z": 3,
+    "height": 46,
+    "width": 1232,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Scientific caveat: ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "8pt",
+                      "color": "#c0504d"
+                    }
+                  },
+                  {
+                    "value": "Hypothetical, validation-reused simulation. NCU are normalised cost units, not realised savings. ML was tuned on the same validation origins used here; the 17 scenarios reuse those four origins and are not independent replications. Final-holdout results appear only as saved, reported values.",
+                    "textStyle": {
+                      "fontSize": "8pt",
+                      "color": "#3d4b5c"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

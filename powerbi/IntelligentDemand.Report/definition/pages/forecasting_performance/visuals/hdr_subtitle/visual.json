@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "hdr_subtitle",
+  "position": {
+    "x": 24,
+    "y": 42,
+    "z": 1,
+    "height": 32,
+    "width": 740,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Validation origins only. Saved final-holdout results are shown on the governance page as reported values.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#3D4B5C"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

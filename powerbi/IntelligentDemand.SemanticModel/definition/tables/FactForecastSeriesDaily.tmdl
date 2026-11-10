@@ -1,0 +1,97 @@
+/// Daily actual and forecast for detail series only (all Store Item series; the six predeclared M5 representatives).
+table FactForecastSeriesDaily
+	lineageTag: 51cb4187-2fae-521a-8e07-c1588080599d
+
+	column SeriesKey
+		dataType: string
+		isHidden
+		lineageTag: 76590103-de4a-5c62-9916-7e25e96f7e82
+		summarizeBy: none
+		sourceColumn: SeriesKey
+
+		annotation SummarizationSetBy = User
+
+	column OriginKey
+		dataType: string
+		isHidden
+		lineageTag: bcfdf03b-f760-5542-bf6c-ca3ad3d0fe7a
+		summarizeBy: none
+		sourceColumn: OriginKey
+
+		annotation SummarizationSetBy = User
+
+	column ModelKey
+		dataType: string
+		isHidden
+		lineageTag: 48548c9e-bae5-5c18-8037-53f55fb2f2e3
+		summarizeBy: none
+		sourceColumn: ModelKey
+
+		annotation SummarizationSetBy = User
+
+	column DatasetKey
+		dataType: string
+		isHidden
+		lineageTag: e40fad46-4411-5ba3-b000-9c5656bc2652
+		summarizeBy: none
+		sourceColumn: DatasetKey
+
+		annotation SummarizationSetBy = User
+
+	column PatternKey
+		dataType: string
+		isHidden
+		lineageTag: 7062e86b-42ff-59f3-bbb8-70a081a29aac
+		summarizeBy: none
+		sourceColumn: PatternKey
+
+		annotation SummarizationSetBy = User
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: yyyy-mm-dd
+		lineageTag: 347c2194-1290-5a51-b698-0a20598fbe07
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+	column HorizonDay
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: df53186d-bb61-50c1-9b0b-10a222baa414
+		summarizeBy: none
+		sourceColumn: HorizonDay
+
+		annotation SummarizationSetBy = User
+
+	column Actual
+		dataType: double
+		isHidden
+		lineageTag: 98c3c9c1-9aad-53b2-bd22-421c9d5903cd
+		summarizeBy: none
+		sourceColumn: Actual
+
+		annotation SummarizationSetBy = User
+
+	column Forecast
+		dataType: double
+		isHidden
+		lineageTag: d140e265-e907-52e5-933d-06f0be47f8a5
+		summarizeBy: none
+		sourceColumn: Forecast
+
+		annotation SummarizationSetBy = User
+
+	partition FactForecastSeriesDaily = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("FactForecastSeriesDaily", {{"SeriesKey", type text}, {"OriginKey", type text}, {"ModelKey", type text}, {"DatasetKey", type text}, {"PatternKey", type text}, {"Date", type date}, {"HorizonDay", Int64.Type}, {"Actual", type number}, {"Forecast", type number}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

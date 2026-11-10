@@ -1,0 +1,141 @@
+/// Series x validation origin x model role. Additive error components over 28 daily observations, plus origin-bounded MASE/RMSSE scales.
+table FactForecastSeriesOrigin
+	lineageTag: d4570d3f-b955-5062-931f-dcc504febcd3
+
+	column SeriesKey
+		dataType: string
+		isHidden
+		lineageTag: 1072dfa2-00a3-5c10-aff9-3654236b3198
+		summarizeBy: none
+		sourceColumn: SeriesKey
+
+		annotation SummarizationSetBy = User
+
+	column OriginKey
+		dataType: string
+		isHidden
+		lineageTag: 1c6156ef-592f-51cf-848e-6f82d6612da4
+		summarizeBy: none
+		sourceColumn: OriginKey
+
+		annotation SummarizationSetBy = User
+
+	column ModelKey
+		dataType: string
+		isHidden
+		lineageTag: aa5311b1-eec6-5212-b414-88d72e324877
+		summarizeBy: none
+		sourceColumn: ModelKey
+
+		annotation SummarizationSetBy = User
+
+	column DatasetKey
+		dataType: string
+		isHidden
+		lineageTag: 69678069-d53d-552f-b37f-735cb2eb70aa
+		summarizeBy: none
+		sourceColumn: DatasetKey
+
+		annotation SummarizationSetBy = User
+
+	column PatternKey
+		dataType: string
+		isHidden
+		lineageTag: ae045c07-2acc-540d-bb88-0e40948beab9
+		summarizeBy: none
+		sourceColumn: PatternKey
+
+		annotation SummarizationSetBy = User
+
+	column Observations
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a7da2d6b-9a2a-5c6b-ad10-5652c9cca1a2
+		summarizeBy: none
+		sourceColumn: Observations
+
+		annotation SummarizationSetBy = User
+
+	column SumAbsError
+		dataType: double
+		isHidden
+		lineageTag: e1d8f894-fe9e-5a22-b430-2466f012e5b2
+		summarizeBy: none
+		sourceColumn: SumAbsError
+
+		annotation SummarizationSetBy = User
+
+	column SumSquaredError
+		dataType: double
+		isHidden
+		lineageTag: 402c8ae4-df96-573d-8993-190199b43109
+		summarizeBy: none
+		sourceColumn: SumSquaredError
+
+		annotation SummarizationSetBy = User
+
+	column SumError
+		dataType: double
+		isHidden
+		lineageTag: 228ea207-f7d5-5109-9517-c7b8ed1882b4
+		summarizeBy: none
+		sourceColumn: SumError
+
+		annotation SummarizationSetBy = User
+
+	column SumActual
+		dataType: double
+		isHidden
+		lineageTag: 265f7396-0063-5746-9515-e2b52c81bf86
+		summarizeBy: none
+		sourceColumn: SumActual
+
+		annotation SummarizationSetBy = User
+
+	column SumForecast
+		dataType: double
+		isHidden
+		lineageTag: 4f110291-9ded-595c-bb8a-b1e3c1016d2e
+		summarizeBy: none
+		sourceColumn: SumForecast
+
+		annotation SummarizationSetBy = User
+
+	column ScaleAbs
+		dataType: double
+		isHidden
+		lineageTag: 57c9628d-c6b9-5e31-8d74-7dd11474abea
+		summarizeBy: none
+		sourceColumn: ScaleAbs
+
+		annotation SummarizationSetBy = User
+
+	column ScaleSquared
+		dataType: double
+		isHidden
+		lineageTag: be46c624-16f9-5969-a6ed-6628f5eb7a1b
+		summarizeBy: none
+		sourceColumn: ScaleSquared
+
+		annotation SummarizationSetBy = User
+
+	column OriginSampleAllZero
+		dataType: string
+		isHidden
+		lineageTag: 68704b63-c3c7-543c-b740-a1c8f5b80744
+		summarizeBy: none
+		sourceColumn: OriginSampleAllZero
+
+		annotation SummarizationSetBy = User
+
+	partition FactForecastSeriesOrigin = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("FactForecastSeriesOrigin", {{"SeriesKey", type text}, {"OriginKey", type text}, {"ModelKey", type text}, {"DatasetKey", type text}, {"PatternKey", type text}, {"Observations", Int64.Type}, {"SumAbsError", type number}, {"SumSquaredError", type number}, {"SumError", type number}, {"SumActual", type number}, {"SumForecast", type number}, {"ScaleAbs", type number}, {"ScaleSquared", type number}, {"OriginSampleAllZero", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

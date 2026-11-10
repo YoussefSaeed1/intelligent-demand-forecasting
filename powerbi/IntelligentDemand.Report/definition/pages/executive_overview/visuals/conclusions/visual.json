@@ -1,0 +1,64 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "conclusions",
+  "position": {
+    "x": 24,
+    "y": 588,
+    "z": 20,
+    "height": 84,
+    "width": 1232,
+    "tabOrder": 20
+  },
+  "visual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Store Item: ",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#14213D",
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": "selected LightGBM has the lowest validation MAE (6.31 vs MA28 9.54 and Seasonal Naive 9.15) and the lowest pooled simulated cost (-5.86% vs MA28), but the advantage over MA28 reverses at origin 4 and is only -1.10% against Seasonal Naive.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#14213D"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "M5: ",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#14213D",
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": "the price-free Random Forest lowers validation MAE by 1.33% vs MA28 yet costs +0.85% more NCU than MA28 at all four origins. Fixed reorder point is cheapest on both datasets only because it holds less stock and delivers lower fill.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#14213D"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,91 @@
+# Phase 6 dashboard QA rules. Executed by `python -m intelligent_demand.bi.qa`.
+# Each rule names a check implemented in src/intelligent_demand/bi/qa.py. References come from saved
+# Phase 3-5 evidence (registry metrics, leaderboard, Phase 5 audit summary), never from the export code.
+schema_version: 1
+results: reports/powerbi/qa_results.json
+severities: [CRITICAL, HIGH, MEDIUM, LOW]
+rules:
+  # ---------------------------------------------------------------- Layer A: source evidence
+  - {id: A01, layer: A, check: frozen_plan_hash, severity: CRITICAL, expected: 63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e,
+     description: "Frozen Phase 5 plan self-hash and design files are unchanged"}
+  - {id: A02, layer: A, check: selection_fingerprint, severity: CRITICAL, expected: a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb,
+     description: "Phase 4 frozen model-selection fingerprint reproduces"}
+  - {id: A03, layer: A, check: holdout_ledger, severity: CRITICAL, expected: fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204,
+     description: "Holdout access ledger file hash unchanged, 12 events"}
+  - {id: A04, layer: A, check: inventory_cases_complete, severity: CRITICAL, expected: 544,
+     description: "All 544 inventory cases completed with authenticated per-series outputs"}
+  - {id: A05, layer: A, check: manifest_hashes, severity: CRITICAL,
+     description: "Every reporting CSV matches the row count and SHA-256 recorded in the data manifest"}
+  - {id: A06, layer: A, check: validation_dates_only, severity: CRITICAL,
+     description: "Every dated reporting row lies inside an approved validation window and before the final-holdout start"}
+  - {id: A07, layer: A, check: no_fallback_forecasts, severity: HIGH,
+     description: "Phase 5 forecast sources contain zero fallback observations"}
+  # ---------------------------------------------------------------- Layer B: reporting data
+  - {id: B01, layer: B, check: key_uniqueness, severity: CRITICAL,
+     description: "Declared business keys are unique in every reporting table"}
+  - {id: B02, layer: B, check: referential_integrity, severity: CRITICAL,
+     description: "Every fact foreign key exists in its dimension"}
+  - {id: B03, layer: B, check: forecast_population, severity: CRITICAL,
+     description: "Series-origin forecast fact covers every series x 4 origins x 3 model roles"}
+  - {id: B04, layer: B, check: registry_metric, severity: CRITICAL, tolerance: {rtol: 1.0e-9}, metric: pooled_mae,
+     description: "Per-run pooled MAE equals the saved registry metrics (24 validation runs)"}
+  - {id: B05, layer: B, check: registry_metric, severity: CRITICAL, tolerance: {rtol: 1.0e-9}, metric: pooled_rmse,
+     description: "Per-run pooled RMSE equals the saved registry metrics"}
+  - {id: B06, layer: B, check: registry_metric, severity: CRITICAL, tolerance: {rtol: 1.0e-9}, metric: pooled_wape_percent,
+     description: "Per-run pooled WAPE equals the saved registry metrics"}
+  - {id: B07, layer: B, check: registry_metric, severity: HIGH, tolerance: {rtol: 1.0e-9}, metric: pooled_bias_units,
+     description: "Per-run pooled bias equals the saved registry metrics"}
+  - {id: B08, layer: B, check: registry_metric, severity: HIGH, tolerance: {rtol: 1.0e-6}, metric: macro_mase,
+     description: "Per-run macro MASE (defined series only) equals the saved registry metrics"}
+  - {id: B09, layer: B, check: registry_metric, severity: HIGH, tolerance: {rtol: 1.0e-6}, metric: macro_rmsse,
+     description: "Per-run macro RMSSE (defined series only) equals the saved registry metrics"}
+  - {id: B10, layer: B, check: leaderboard_selected, severity: CRITICAL, tolerance: {rtol: 1.0e-9},
+     description: "Four-origin macro MAE of each selected model equals the Phase 4 leaderboard primary score"}
+  - {id: B11, layer: B, check: daily_vs_series, severity: HIGH, tolerance: {rtol: 1.0e-9},
+     description: "Daily pattern-level forecast fact sums equal the series-origin fact (no double counting)"}
+  - {id: B12, layer: B, check: inventory_vs_audit, severity: CRITICAL, tolerance: {rtol: 1.0e-9},
+     description: "Every inventory case total equals the saved Phase 5 independent audit summary (544 cases)"}
+  - {id: B13, layer: B, check: inventory_series_vs_case, severity: HIGH, tolerance: {rtol: 1.0e-9},
+     description: "Base-scenario series-level inventory fact sums equal the case-level fact"}
+  - {id: B14, layer: B, check: headline_reconciliation, severity: CRITICAL, tolerance: {rtol: 1.0e-9},
+     description: "Base pooled mean cost and fill rate equal the post-audit reconciliation"}
+  - {id: B15, layer: B, check: no_missing_additive, severity: HIGH,
+     description: "Additive fact columns have no missing values; only undefined MASE/RMSSE scales may be empty"}
+  - {id: B16, layer: B, check: scenario_completeness, severity: CRITICAL,
+     description: "17 scenarios x 4 policies x 8 origins present in the scenario fact"}
+  # ---------------------------------------------------------------- Layer C: semantic model (live engine)
+  - {id: C01, layer: C, check: model_row_counts, severity: CRITICAL,
+     description: "Every model table row count after refresh equals the reporting-data manifest"}
+  - {id: C02, layer: C, check: model_relationships, severity: CRITICAL,
+     description: "Exactly the 28 declared relationships exist, all many-to-one, single direction and active"}
+  - {id: C03, layer: C, check: model_measures_valid, severity: CRITICAL, expected: 69,
+     description: "All declared measures exist in the engine with no error state"}
+  - {id: C04, layer: C, check: model_hidden_keys, severity: MEDIUM,
+     description: "All key columns and fact columns are hidden; dimension attributes stay visible"}
+  - {id: C05, layer: C, check: model_date_table, severity: MEDIUM,
+     description: "DimDate is a Time-category table keyed on a unique Date column"}
+  # ---------------------------------------------------------------- Layer D: DAX business logic
+  - {id: D01, layer: D, check: dax_forecast_runs, severity: CRITICAL, tolerance: {rtol: 1.0e-9},
+     description: "DAX MAE, RMSE, WAPE, Bias, Macro MASE and Macro RMSSE per origin and model equal the saved registry metrics (24 runs)"}
+  - {id: D02, layer: D, check: dax_leaderboard, severity: CRITICAL, tolerance: {rtol: 1.0e-9},
+     description: "DAX four-origin metrics of each selected model equal the Phase 4 leaderboard"}
+  - {id: D03, layer: D, check: dax_inventory_cases, severity: CRITICAL, tolerance: {rtol: 1.0e-9},
+     description: "DAX mean cost, fill rate, cost components, stockout days and on-hand per case equal the Phase 5 audit summary (544 cases)"}
+  - {id: D04, layer: D, check: dax_headline, severity: CRITICAL, tolerance: {rtol: 1.0e-9},
+     description: "DAX base pooled mean cost, fill, cost per demanded unit and on-hand per dataset and policy equal the post-audit reconciliation"}
+  - {id: D05, layer: D, check: dax_ml_differences, severity: CRITICAL, tolerance: {rtol: 1.0e-9},
+     description: "DAX ML vs MA28 and ML vs Seasonal Naive cost differences (pooled and per origin) equal the post-audit reconciliation"}
+  - {id: D06, layer: D, check: dax_robustness_counts, severity: CRITICAL,
+     description: "DAX scenario and origin counts where ML is cheaper equal the post-audit reconciliation (17/17, 3/17, 16/17, 17/17)"}
+  - {id: D07, layer: D, check: dax_paired_series, severity: HIGH,
+     description: "DAX base series-origin pairs where ML is cheaper or costlier than MA28 equal the Phase 5 paired audit counts"}
+  - {id: D08, layer: D, check: dax_scope_guards, severity: HIGH,
+     description: "Measures return BLANK when datasets, model roles or scenarios would be mixed"}
+  # ---------------------------------------------------------------- Layer E: report definition (PBIR)
+  - {id: E01, layer: E, check: pbir_validate, severity: CRITICAL, description: "pbi-cli PBIR validation reports a valid report with no errors"}
+  - {id: E02, layer: E, check: pbir_pages, severity: CRITICAL, description: "Five pages in the declared order, Executive Overview active, each with page navigator and visible scientific caveat"}
+  - {id: E03, layer: E, check: pbir_field_references, severity: CRITICAL, description: "Every visual and filter field reference resolves to a model column or measure"}
+  - {id: E04, layer: E, check: pbir_theme, severity: CRITICAL, description: "Custom theme is registered as a CustomTheme resource and the theme file parses"}
+  - {id: E05, layer: E, check: pbir_roles_and_slicers, severity: HIGH, description: "No unsupported Legend roles; Dataset slicers are single-select, default Store Item and share one sync group"}
+  - {id: E06, layer: E, check: pbir_layout, severity: MEDIUM, description: "86 visuals, all inside their page canvas"}
+  - {id: E07, layer: E, check: pbir_wording, severity: CRITICAL, description: "No report text calls simulated cost differences savings except to deny it"}

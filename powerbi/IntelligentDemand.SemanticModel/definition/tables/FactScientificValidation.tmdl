@@ -1,0 +1,54 @@
+/// One row per saved verification receipt; status copied from the receipt.
+table FactScientificValidation
+	lineageTag: 935765a4-2cde-5721-87a9-ca68da7ea67f
+
+	column CheckId
+		dataType: string
+		lineageTag: 0ae39f89-ae6b-5252-9447-dbcd4e6c6991
+		summarizeBy: none
+		sourceColumn: CheckId
+
+		annotation SummarizationSetBy = User
+
+	column Check
+		dataType: string
+		lineageTag: c3ef4022-6359-58ec-89ee-d8bd7418e475
+		summarizeBy: none
+		sourceColumn: Check
+
+		annotation SummarizationSetBy = User
+
+	column Status
+		dataType: string
+		lineageTag: 094de3f3-c82a-503d-aa22-14fc979aeb32
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = User
+
+	column EvidencePath
+		dataType: string
+		lineageTag: 213c4083-c8d4-5a4d-b239-adc8fc90b8aa
+		summarizeBy: none
+		sourceColumn: EvidencePath
+
+		annotation SummarizationSetBy = User
+
+	column EvidenceSha256
+		dataType: string
+		lineageTag: 4a536cf5-3b47-530c-8139-8b36beeb31d7
+		summarizeBy: none
+		sourceColumn: EvidenceSha256
+
+		annotation SummarizationSetBy = User
+
+	partition FactScientificValidation = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("FactScientificValidation", {{"CheckId", type text}, {"Check", type text}, {"Status", type text}, {"EvidencePath", type text}, {"EvidenceSha256", type text}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

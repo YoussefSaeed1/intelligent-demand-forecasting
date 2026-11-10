@@ -1,0 +1,4 @@
+# Phase 6 BI package: long user-facing labels and Power Query/DAX templates read better unwrapped.
+# Extends the project configuration; only the line length differs.
+extend = "../../../pyproject.toml"
+line-length = 125

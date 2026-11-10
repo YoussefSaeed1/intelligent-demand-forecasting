@@ -1,0 +1,119 @@
+{
+  "owner_manual_interactions": "Owner reports navigation, slicers and visuals tested successfully; not independently re-exercised here.",
+  "rules": [
+    {
+      "actual": "63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e",
+      "evidence": "artifacts/inventory/phase5/plan.json",
+      "id": "A01",
+      "layer": "A",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    },
+    {
+      "actual": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+      "evidence": "artifacts/experiments/phase4/frozen_selection.json",
+      "id": "A02",
+      "layer": "A",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    },
+    {
+      "actual": "fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204 (12 events)",
+      "evidence": "artifacts/experiments/phase4/holdout_access.jsonl",
+      "id": "A03",
+      "layer": "A",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    },
+    {
+      "actual": 544,
+      "evidence": "artifacts/inventory/phase5/runs/*/status.json",
+      "id": "A04",
+      "layer": "A",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    },
+    {
+      "actual": "18 tables match",
+      "evidence": "reports/powerbi/data_manifest.json",
+      "id": "A05",
+      "layer": "A",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    },
+    {
+      "actual": "0 rows outside approved validation windows",
+      "evidence": "reports/eda/proposed_splits.json",
+      "id": "A06",
+      "layer": "A",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    },
+    {
+      "actual": 0,
+      "evidence": "artifacts/inventory/phase5/runs/*/status.json",
+      "id": "A07",
+      "layer": "A",
+      "severity": "HIGH",
+      "status": "PASS"
+    },
+    {
+      "actual": "valid=True errors=[] files=94",
+      "evidence": "pbi report validate",
+      "id": "E01",
+      "layer": "E",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    },
+    {
+      "actual": "5 pages; navigator and caveat on every page",
+      "evidence": "pages.json and page visuals",
+      "id": "E02",
+      "layer": "E",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    },
+    {
+      "actual": "146 field references resolve",
+      "evidence": "visual.json and page.json files",
+      "id": "E03",
+      "layer": "E",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    },
+    {
+      "actual": "customTheme=IntelligentDemandAcademic.json items=[{'name': 'IntelligentDemandAcademic.json', 'path': 'IntelligentDemandAcademic.json', 'type': 'CustomTheme'}, {'name': 'CY24SU06', 'path': 'BaseThemes/CY24SU06.json', 'type': 'BaseTheme'}]",
+      "evidence": "report.json",
+      "id": "E04",
+      "layer": "E",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    },
+    {
+      "actual": "no Legend roles; 4 dataset slicers synced",
+      "evidence": "visual.json files",
+      "id": "E05",
+      "layer": "E",
+      "severity": "HIGH",
+      "status": "PASS"
+    },
+    {
+      "actual": "86 visuals; outside canvas ['executive_overview/ftr_caveat', 'forecasting_performance/ftr_caveat', 'inventory_optimisation/ftr_caveat', 'scenario_sensitivity/ftr_caveat']",
+      "evidence": "visual positions",
+      "id": "E06",
+      "layer": "E",
+      "severity": "MEDIUM",
+      "status": "WARNING"
+    },
+    {
+      "actual": "every mention of savings is a denial",
+      "evidence": "visual text",
+      "id": "E07",
+      "layer": "E",
+      "severity": "CRITICAL",
+      "status": "PASS"
+    }
+  ],
+  "scope": "Read-only calls to existing A/E checks, without qa.run() or builder/export writers; no live engine C/D queries. Prior source QA receipt preserved.",
+  "status": "passed"
+}

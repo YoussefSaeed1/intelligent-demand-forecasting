@@ -1,0 +1,63 @@
+# Phase 6 Power BI reporting contract. Descriptive metadata only: every numeric value in the
+# reporting tables is derived from saved Phase 3-5 evidence by src/intelligent_demand/bi/export.py.
+schema_version: 1
+output_directory: artifacts/powerbi/data      # git-ignored; reproducible from local evidence
+manifest: reports/powerbi/data_manifest.json  # tracked: row counts, hashes, source fingerprints
+
+datasets:
+  store_item: {label: Store Item, sort: 1, description: "Kaggle Store Item Demand; 500 store-item daily series"}
+  m5: {label: M5, sort: 2, description: "M5 Walmart; 30,490 store-item daily series, highly intermittent"}
+
+model_roles:
+  selected_ml: {label: Selected ML, sort: 1, description: "Frozen Phase 4 selection (Store Item LightGBM; M5 price-free Random Forest)"}
+  moving_average_28: {label: MA28, sort: 2, description: "Mean of the last 28 observed days, repeated for 28 days"}
+  seasonal_naive: {label: Seasonal Naive, sort: 3, description: "Last 7 observed days tiled four times"}
+
+policies:
+  selected_ml: {label: Selected ML order-up-to, sort: 1, forecast_role: selected_ml, description: "Order-up-to using the selected ML validation forecast"}
+  moving_average_28: {label: MA28 order-up-to, sort: 2, forecast_role: moving_average_28, description: "Order-up-to using the MA28 forecast"}
+  seasonal_naive: {label: Seasonal Naive order-up-to, sort: 3, forecast_role: seasonal_naive, description: "Order-up-to using the Seasonal Naive forecast"}
+  fixed_reorder_point: {label: Fixed reorder point, sort: 4, forecast_role: null, description: "Low-stock, lower-service comparator; fixed (s,Q) from the 56-day history mean; on Store Item it orders at almost every review"}
+
+scenario_groups:
+  base: Base
+  lead_short: Lead time
+  lead_long: Lead time
+  buffer_zero: Safety buffer
+  buffer_high: Safety buffer
+  initial_zero: Initial stock
+  initial_high: Initial stock
+  holding_low: Holding cost
+  holding_high: Holding cost
+  penalty_low: Shortage penalty
+  penalty_high: Shortage penalty
+  ordering_zero: Ordering cost
+  ordering_high: Ordering cost
+  terminal_charge: Terminal exposure
+  variability_low: Demand variability
+  variability_high: Demand variability
+  weekly_review: Review period
+
+demand_patterns:
+  smooth: {label: Smooth, sort: 1, description: "Regular demand (low ADI, low CV2) in the training-prefix EDA"}
+  erratic: {label: Erratic, sort: 2, description: "Regular occurrence, highly variable size"}
+  intermittent: {label: Intermittent, sort: 3, description: "Infrequent demand of stable size"}
+  lumpy: {label: Lumpy, sort: 4, description: "Infrequent and highly variable demand"}
+  all_zero: {label: All zero, sort: 5, description: "No positive sales in the EDA training prefix"}
+  insufficient_positive_history: {label: Insufficient history, sort: 6, description: "Too few positive observations to classify"}
+
+limitations:
+  - {id: L1, text: "Inventory costs are hypothetical normalised cost units (NCU), not realised financial savings.", source: docs/PHASE5_LIMITATIONS.md}
+  - {id: L2, text: "Better forecast accuracy does not guarantee better simulated inventory outcomes.", source: docs/PHASE5_AUDIT_RESPONSE.md}
+  - {id: L3, text: "Store Item selected ML's pooled simulated cost advantage over MA28 reverses at the last validation origin.", source: docs/PHASE5_AUDIT_RESPONSE.md}
+  - {id: L4, text: "The 17 scenarios reuse the same four origins, forecasts and series; they are not independent replications.", source: docs/PHASE5_SENSITIVITY_ANALYSIS.md}
+  - {id: L5, text: "Fixed reorder point is a low-stock comparator whose lower cost comes with lower fill rate.", source: docs/PHASE5_AUDIT_RESPONSE.md}
+  - {id: L6, text: "ML models were tuned and selected on the same validation windows used for these comparisons; baselines were not tuned.", source: docs/PHASE5_AUDIT_RESPONSE.md}
+  - {id: L7, text: "M5 sparse-demand performance differs materially by series segment; MA28 beats the RF on the all-zero-label group.", source: docs/PHASE5_AUDIT_RESPONSE.md}
+  - {id: L8, text: "No actual inventory transactions, supplier lead times or true stockout costs are available; sales proxy censored demand.", source: docs/PHASE5_LIMITATIONS.md}
+
+# Series-level daily actual-versus-forecast detail: every Store Item series, and only the six
+# predeclared Phase 5 representative M5 series (full M5 daily detail would be about 10M rows).
+series_daily_detail:
+  store_item: all
+  m5: phase5_representatives

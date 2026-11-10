@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.1.0/schema.json",
+  "pageOrder": [
+    "executive_overview",
+    "forecasting_performance",
+    "inventory_optimisation",
+    "scenario_sensitivity",
+    "model_explorer_governance"
+  ],
+  "activePageName": "executive_overview"
+}

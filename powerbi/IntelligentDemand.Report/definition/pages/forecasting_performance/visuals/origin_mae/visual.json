@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "origin_mae",
+  "position": {
+    "x": 596,
+    "y": 226,
+    "z": 15,
+    "height": 206,
+    "width": 660,
+    "tabOrder": 15
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimValidationOrigin"
+                    }
+                  },
+                  "Property": "FoldLabel"
+                }
+              },
+              "queryRef": "DimValidationOrigin.FoldLabel",
+              "nativeQueryRef": "FoldLabel",
+              "active": true,
+              "displayName": "Validation origin"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "MAE"
+                }
+              },
+              "queryRef": "_Measures.MAE",
+              "nativeQueryRef": "MAE"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimForecastModel"
+                    }
+                  },
+                  "Property": "ModelRole"
+                }
+              },
+              "queryRef": "DimForecastModel.ModelRole",
+              "nativeQueryRef": "ModelRole",
+              "active": true,
+              "displayName": "Model"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MAE by validation origin and model'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

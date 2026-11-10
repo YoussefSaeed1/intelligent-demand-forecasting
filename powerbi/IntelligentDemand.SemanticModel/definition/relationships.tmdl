@@ -1,0 +1,112 @@
+relationship 2d038f95-c84e-50a7-a7aa-c35090fdddd3
+	fromColumn: FactForecastSeriesOrigin.SeriesKey
+	toColumn: DimSeries.SeriesKey
+
+relationship fd665ffd-5463-5515-b75d-bc53e011e792
+	fromColumn: FactForecastSeriesOrigin.OriginKey
+	toColumn: DimValidationOrigin.OriginKey
+
+relationship 3bca61d1-3ec9-5490-bad2-babc27bfebf7
+	fromColumn: FactForecastSeriesOrigin.ModelKey
+	toColumn: DimForecastModel.ModelKey
+
+relationship 52484f1a-7cb3-5500-9df4-1d0191911ca4
+	fromColumn: FactForecastSeriesOrigin.DatasetKey
+	toColumn: DimDataset.DatasetKey
+
+relationship 145a7cea-cd44-5e1f-b5ea-7c9f19e41282
+	fromColumn: FactForecastSeriesOrigin.PatternKey
+	toColumn: DimDemandPattern.PatternKey
+
+relationship a7e9075e-7b28-580e-9bf4-65de597dd454
+	fromColumn: FactForecastDaily.OriginKey
+	toColumn: DimValidationOrigin.OriginKey
+
+relationship 3de4dcc0-137a-5f70-88a1-2f68050e01b1
+	fromColumn: FactForecastDaily.ModelKey
+	toColumn: DimForecastModel.ModelKey
+
+relationship 70589d14-ae6e-556d-b5f2-29e13a2cb888
+	fromColumn: FactForecastDaily.DatasetKey
+	toColumn: DimDataset.DatasetKey
+
+relationship 24f105de-8a7d-5ed4-a8f8-ba6ef68ba373
+	fromColumn: FactForecastDaily.PatternKey
+	toColumn: DimDemandPattern.PatternKey
+
+relationship d8178f83-6fcf-57f2-bb85-2f78bce6c28c
+	fromColumn: FactForecastDaily.Date
+	toColumn: DimDate.Date
+
+relationship 65093e46-5b94-50a1-8c6a-c40bdbe03102
+	fromColumn: FactForecastSeriesDaily.SeriesKey
+	toColumn: DimSeries.SeriesKey
+
+relationship 91a3d96e-4e0d-5c76-804d-6fe95daaaa27
+	fromColumn: FactForecastSeriesDaily.OriginKey
+	toColumn: DimValidationOrigin.OriginKey
+
+relationship c5e6ab05-e3fb-5318-b38b-fc195e7c35b7
+	fromColumn: FactForecastSeriesDaily.ModelKey
+	toColumn: DimForecastModel.ModelKey
+
+relationship 1492ab31-4d5b-55a5-9a65-71cfe47c90a4
+	fromColumn: FactForecastSeriesDaily.DatasetKey
+	toColumn: DimDataset.DatasetKey
+
+relationship 0e472b02-142d-5d65-9942-b77d030053b7
+	fromColumn: FactForecastSeriesDaily.PatternKey
+	toColumn: DimDemandPattern.PatternKey
+
+relationship 4d6cd1d5-08ec-5ade-83d8-c5ce223c6dde
+	fromColumn: FactForecastSeriesDaily.Date
+	toColumn: DimDate.Date
+
+relationship efdf3ad1-71a9-53a3-a3ba-64f8d18d8aae
+	fromColumn: FactInventoryScenarioResults.OriginKey
+	toColumn: DimValidationOrigin.OriginKey
+
+relationship 8d7fa31f-1447-51d8-8bf0-fb9f6de8d860
+	fromColumn: FactInventoryScenarioResults.ScenarioKey
+	toColumn: DimScenario.ScenarioKey
+
+relationship 18d4bbc4-8448-5b9b-9775-e205cf4aaf81
+	fromColumn: FactInventoryScenarioResults.PolicyKey
+	toColumn: DimInventoryPolicy.PolicyKey
+
+relationship 6fa22563-6f1d-53a6-8057-48b9988ae4d9
+	fromColumn: FactInventoryScenarioResults.DatasetKey
+	toColumn: DimDataset.DatasetKey
+
+relationship d8a3c23c-6ea0-56f0-a844-8536f489827f
+	fromColumn: FactInventoryScenarioResults.PatternKey
+	toColumn: DimDemandPattern.PatternKey
+
+relationship a50b2377-e096-5312-9e04-c170179314c0
+	fromColumn: FactInventorySeriesBase.SeriesKey
+	toColumn: DimSeries.SeriesKey
+
+relationship 02381f86-cbef-540c-a134-8fa878bd6de0
+	fromColumn: FactInventorySeriesBase.OriginKey
+	toColumn: DimValidationOrigin.OriginKey
+
+relationship 6b017883-a93e-5706-8ab1-0b6241606226
+	fromColumn: FactInventorySeriesBase.PolicyKey
+	toColumn: DimInventoryPolicy.PolicyKey
+
+relationship e50f5700-f999-5ab6-ac67-c08a9183a3a2
+	fromColumn: FactInventorySeriesBase.DatasetKey
+	toColumn: DimDataset.DatasetKey
+
+relationship d6e029a3-a67d-5d42-9b13-82a2edfbf095
+	fromColumn: FactInventorySeriesBase.PatternKey
+	toColumn: DimDemandPattern.PatternKey
+
+relationship 3522a9a8-7cde-5f7d-93b0-9f72c4c43009
+	fromColumn: FactModelSelectionTrials.DatasetKey
+	toColumn: DimDataset.DatasetKey
+
+relationship 32952ec4-6749-5918-844a-a8a8869f4f42
+	fromColumn: FactFinalHoldoutReported.DatasetKey
+	toColumn: DimDataset.DatasetKey
+

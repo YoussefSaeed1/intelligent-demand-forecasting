@@ -1,0 +1,154 @@
+# Phase 6 report layout. src/intelligent_demand/bi/report_builder.py builds every page from this file
+# with pbi-cli (visuals, bindings, filters, titles) and applies only textbox text and slicer behaviour
+# as JSON patches. Styling comes from powerbi/theme/IntelligentDemandAcademic.json.
+schema_version: 1
+theme: theme/IntelligentDemandAcademic.json
+canvas: {width: 1280, height: 720}
+footer: >-
+  Hypothetical, validation-reused simulation. NCU are normalised cost units, not realised savings.
+  ML was tuned on the same validation origins used here; the 17 scenarios reuse those four origins and are
+  not independent replications. Final-holdout results appear only as saved, reported values.
+measures: _Measures
+
+pages:
+  - name: executive_overview
+    title: Executive Overview
+    subtitle: Validation-origin evidence for both datasets. Inventory figures are hypothetical NCU, not savings.
+    filters: [{table: DimScenario, column: ScenarioKey, values: [base]}]
+    visuals:
+      - {name: lbl_store, type: textbox, x: 24, y: 70, w: 520, h: 36, text: [{runs: [["Store Item | 500 series | selected LightGBM", {bold: true, size: 12, color: "#1F4E79"}]]}]}
+      - {name: si_model, type: card, x: 24, y: 104, w: 196, h: 84, title: Evaluated series, bind: {field: [Evaluated Series]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [store_item]}]}
+      - {name: si_mae, type: card, x: 228, y: 104, w: 196, h: 84, title: Validation MAE (selected ML), bind: {field: [MAE Selected ML]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [store_item]}]}
+      - {name: si_mae_ma, type: card, x: 432, y: 104, w: 196, h: 84, title: MAE change vs MA28, bind: {field: [ML vs MA28 MAE Change %]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [store_item]}]}
+      - {name: si_mae_sn, type: card, x: 636, y: 104, w: 196, h: 84, title: MAE change vs Seasonal Naive, bind: {field: [ML vs Seasonal Naive MAE Change %]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [store_item]}]}
+      - {name: si_cost_ma, type: card, x: 840, y: 104, w: 204, h: 84, title: Simulated cost vs MA28 (NCU %), bind: {field: [ML vs MA28 Cost Difference %]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [store_item]}]}
+      - {name: si_cost_sn, type: card, x: 1052, y: 104, w: 204, h: 84, title: Simulated cost vs Seasonal Naive (NCU %), bind: {field: [ML vs Seasonal Naive Cost Difference %]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [store_item]}]}
+      - {name: lbl_m5, type: textbox, x: 24, y: 186, w: 520, h: 36, text: [{runs: [["M5 | 30,490 series | price-free Random Forest", {bold: true, size: 12, color: "#2A9D8F"}]]}]}
+      - {name: m5_model, type: card, x: 24, y: 220, w: 196, h: 84, title: Evaluated series, bind: {field: [Evaluated Series]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [m5]}]}
+      - {name: m5_mae, type: card, x: 228, y: 220, w: 196, h: 84, title: Validation MAE (selected ML), bind: {field: [MAE Selected ML]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [m5]}]}
+      - {name: m5_mae_ma, type: card, x: 432, y: 220, w: 196, h: 84, title: MAE change vs MA28, bind: {field: [ML vs MA28 MAE Change %]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [m5]}]}
+      - {name: m5_mae_sn, type: card, x: 636, y: 220, w: 196, h: 84, title: MAE change vs Seasonal Naive, bind: {field: [ML vs Seasonal Naive MAE Change %]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [m5]}]}
+      - {name: m5_cost_ma, type: card, x: 840, y: 220, w: 204, h: 84, title: Simulated cost vs MA28 (NCU %), bind: {field: [ML vs MA28 Cost Difference %]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [m5]}]}
+      - {name: m5_cost_sn, type: card, x: 1052, y: 220, w: 204, h: 84, title: Simulated cost vs Seasonal Naive (NCU %), bind: {field: [ML vs Seasonal Naive Cost Difference %]}, visual_filters: [{table: DimDataset, column: DatasetKey, values: [m5]}]}
+      - {name: origin_robustness, type: clustered_column, x: 24, y: 312, w: 610, h: 270, title: "Selected ML vs MA28 simulated cost difference by validation origin (% NCU, base scenario)", bind: {category: [DimValidationOrigin.FoldLabel], value: [ML vs MA28 Cost Difference %], legend: [DimDataset.Dataset]}}
+      - {name: policy_matrix, type: matrix, x: 646, y: 312, w: 610, h: 270, title: "Cost and service by policy, base scenario (hypothetical NCU)", bind: {row: [DimDataset.Dataset, DimInventoryPolicy.Policy], value: [Mean Cost per Episode (NCU), Fill Rate, Average On-Hand Units]}}
+      - name: conclusions
+        type: textbox
+        x: 24
+        y: 588
+        w: 1232
+        h: 84
+        text:
+          - runs: [["Store Item: ", {bold: true, size: 9}], ["selected LightGBM has the lowest validation MAE (6.31 vs MA28 9.54 and Seasonal Naive 9.15) and the lowest pooled simulated cost (-5.86% vs MA28), but the advantage over MA28 reverses at origin 4 and is only -1.10% against Seasonal Naive.", {size: 9}]]
+          - runs: [["M5: ", {bold: true, size: 9}], ["the price-free Random Forest lowers validation MAE by 1.33% vs MA28 yet costs +0.85% more NCU than MA28 at all four origins. Fixed reorder point is cheapest on both datasets only because it holds less stock and delivers lower fill.", {size: 9}]]
+
+  - name: forecasting_performance
+    title: Forecasting Performance
+    subtitle: Validation origins only. Saved final-holdout results are shown on the governance page as reported values.
+    slicers:
+      - {name: sl_dataset, field: DimDataset.Dataset, x: 24, y: 78, w: 220, h: 52, single: true, default: Store Item, sync: Dataset}
+      - {name: sl_origin, field: DimValidationOrigin.FoldLabel, x: 252, y: 78, w: 200, h: 52}
+      - {name: sl_pattern, field: DimDemandPattern.DemandPattern, x: 460, y: 78, w: 200, h: 52}
+    visuals:
+      - {name: dyn_title, type: card, x: 668, y: 78, w: 588, h: 52, title: Context, bind: {field: [Title Forecast Page]}}
+      - {name: k_mae_ml, type: card, x: 24, y: 140, w: 196, h: 76, title: MAE selected ML, bind: {field: [MAE Selected ML]}}
+      - {name: k_mae_ma, type: card, x: 228, y: 140, w: 196, h: 76, title: MAE MA28, bind: {field: [MAE MA28]}}
+      - {name: k_mae_sn, type: card, x: 432, y: 140, w: 196, h: 76, title: MAE Seasonal Naive, bind: {field: [MAE Seasonal Naive]}}
+      - {name: k_mae_chg, type: card, x: 636, y: 140, w: 196, h: 76, title: ML vs MA28 MAE change, bind: {field: [ML vs MA28 MAE Change %]}}
+      - {name: k_mase_ml, type: card, x: 840, y: 140, w: 204, h: 76, title: Macro MASE selected ML, bind: {field: [Macro MASE Selected ML]}}
+      - {name: k_mase_ma, type: card, x: 1052, y: 140, w: 204, h: 76, title: Macro MASE MA28, bind: {field: [Macro MASE MA28]}}
+      - {name: model_matrix, type: matrix, x: 24, y: 226, w: 560, h: 206, title: Accuracy by model (pooled over selected origins), bind: {row: [DimForecastModel.ModelRole], value: [MAE, RMSE, WAPE, Bias, Macro MASE, Macro RMSSE, Evaluated Series]}}
+      - {name: origin_mae, type: clustered_column, x: 596, y: 226, w: 660, h: 206, title: MAE by validation origin and model, bind: {category: [DimValidationOrigin.FoldLabel], value: [MAE], legend: [DimForecastModel.ModelRole]}}
+      - {name: actual_forecast, type: line, x: 24, y: 442, w: 820, h: 226, title: Actual sales vs saved fixed-origin forecasts (not daily refreshed), bind: {category: [DimDate.Date], value: [Actual Units, Forecast Units Selected ML, Forecast Units MA28, Forecast Units Seasonal Naive]}}
+      - {name: pattern_mae, type: clustered_bar, x: 856, y: 442, w: 400, h: 226, title: MAE by demand pattern and model, bind: {category: [DimDemandPattern.DemandPattern], value: [MAE], legend: [DimForecastModel.ModelRole]}}
+
+  - name: inventory_optimisation
+    title: Inventory Optimisation
+    subtitle: Base scenario. Hypothetical lost-sales simulation in normalised cost units (NCU); differences are not savings.
+    filters: [{table: DimScenario, column: ScenarioKey, values: [base]}]
+    slicers:
+      - {name: sl_dataset, field: DimDataset.Dataset, x: 24, y: 78, w: 220, h: 52, single: true, default: Store Item, sync: Dataset}
+      - {name: sl_origin, field: DimValidationOrigin.FoldLabel, x: 252, y: 78, w: 200, h: 52}
+      - {name: sl_pattern, field: DimDemandPattern.DemandPattern, x: 460, y: 78, w: 200, h: 52}
+    visuals:
+      - {name: dyn_title, type: card, x: 668, y: 78, w: 588, h: 52, title: Context, bind: {field: [Title Inventory Page]}}
+      - {name: k_ml, type: card, x: 24, y: 140, w: 196, h: 76, title: Mean cost selected ML (NCU), bind: {field: [Mean Cost Selected ML (NCU)]}}
+      - {name: k_ma, type: card, x: 228, y: 140, w: 196, h: 76, title: Mean cost MA28 (NCU), bind: {field: [Mean Cost MA28 (NCU)]}}
+      - {name: k_sn, type: card, x: 432, y: 140, w: 196, h: 76, title: Mean cost Seasonal Naive (NCU), bind: {field: [Mean Cost Seasonal Naive (NCU)]}}
+      - {name: k_rop, type: card, x: 636, y: 140, w: 196, h: 76, title: Mean cost fixed ROP (low-stock comparator), bind: {field: [Mean Cost Fixed ROP (NCU)]}}
+      - {name: k_dma, type: card, x: 840, y: 140, w: 204, h: 76, title: ML vs MA28 cost difference, bind: {field: [ML vs MA28 Cost Difference %]}}
+      - {name: k_dsn, type: card, x: 1052, y: 140, w: 204, h: 76, title: ML vs Seasonal Naive cost difference, bind: {field: [ML vs Seasonal Naive Cost Difference %]}}
+      - {name: policy_matrix, type: matrix, x: 24, y: 226, w: 620, h: 206, title: Policy cost and service detail (per series-episode), bind: {row: [DimInventoryPolicy.Policy], value: [Mean Cost per Episode (NCU), Holding Cost per Episode (NCU), Ordering Cost per Episode (NCU), Unmet Demand Penalty per Episode (NCU), Fill Rate, Stockout Days per Episode, Average On-Hand Units, Orders per Episode, Cost per Demanded Unit (NCU)]}}
+      - {name: cost_breakdown, type: column, x: 656, y: 226, w: 600, h: 206, title: Cost components per series-episode (NCU), bind: {category: [DimInventoryPolicy.Policy], value: [Holding Cost per Episode (NCU), Ordering Cost per Episode (NCU), Unmet Demand Penalty per Episode (NCU)]}}
+      - {name: origin_diff, type: clustered_column, x: 24, y: 442, w: 620, h: 226, title: Selected ML cost difference by validation origin (NCU per episode), bind: {category: [DimValidationOrigin.FoldLabel], value: [ML vs MA28 Cost Difference (NCU), ML vs Seasonal Naive Cost Difference (NCU)]}}
+      - {name: cost_service, type: scatter, x: 656, y: 442, w: 600, h: 226, title: "Cost-service trade-off: fill rate vs mean cost by policy", bind: {x: [Fill Rate], y: [Mean Cost per Episode (NCU)], legend: [DimInventoryPolicy.Policy]}}
+
+  - name: scenario_sensitivity
+    title: Scenario & Sensitivity
+    subtitle: 17 frozen one-at-a-time scenarios. They reuse the same four origins and forecasts, so counts are not independent confirmations.
+    slicers:
+      - {name: sl_dataset, field: DimDataset.Dataset, x: 24, y: 78, w: 220, h: 52, single: true, default: Store Item, sync: Dataset}
+      - {name: sl_group, field: DimScenario.ScenarioGroup, x: 252, y: 78, w: 200, h: 52}
+      - {name: sl_origin, field: DimValidationOrigin.FoldLabel, x: 460, y: 78, w: 200, h: 52}
+    visuals:
+      - {name: dyn_title, type: card, x: 668, y: 78, w: 588, h: 52, title: Context, bind: {field: [Title Scenario Page]}}
+      - {name: k_scn, type: card, x: 24, y: 140, w: 300, h: 76, title: Scenarios in context, bind: {field: [Scenario Count]}}
+      - {name: k_scn_ma, type: card, x: 336, y: 140, w: 300, h: 76, title: Scenarios where ML is cheaper than MA28, bind: {field: [Scenarios ML Cheaper than MA28]}}
+      - {name: k_scn_sn, type: card, x: 648, y: 140, w: 300, h: 76, title: Scenarios where ML is cheaper than Seasonal Naive, bind: {field: [Scenarios ML Cheaper than Seasonal Naive]}}
+      - {name: k_cases, type: card, x: 960, y: 140, w: 296, h: 76, title: Completed inventory cases, bind: {field: [Inventory Cases]}}
+      - {name: scenario_matrix, type: matrix, x: 24, y: 226, w: 620, h: 442, title: Mean cost per series-episode by scenario and policy (NCU), bind: {row: [DimScenario.ScenarioGroup, DimScenario.Scenario], column: [DimInventoryPolicy.Policy], value: [Mean Cost per Episode (NCU)]}}
+      - {name: scenario_diff, type: clustered_bar, x: 656, y: 226, w: 600, h: 212, title: Selected ML cost difference by scenario (% NCU), bind: {category: [DimScenario.Scenario], value: [ML vs MA28 Cost Difference %, ML vs Seasonal Naive Cost Difference %]}}
+      - {name: origin_matrix, type: matrix, x: 656, y: 448, w: 600, h: 220, title: ML vs MA28 cost difference by scenario and origin (NCU) - variability across origins, bind: {row: [DimScenario.Scenario], column: [DimValidationOrigin.FoldLabel], value: [ML vs MA28 Cost Difference (NCU)]}}
+
+  - name: model_explorer_governance
+    title: Model Explorer & Scientific Governance
+    subtitle: Series detail, model selection, saved final-holdout results (reported, not recomputed), verification receipts and audit findings.
+    height: 1240
+    slicers:
+      - {name: sl_dataset, field: DimDataset.Dataset, x: 24, y: 78, w: 220, h: 52, single: true, default: Store Item, sync: Dataset}
+      - {name: sl_series, field: DimSeries.SeriesId, x: 252, y: 78, w: 260, h: 52, single: true, visual_filters: [{table: DimSeries, column: HasDailyDetail, values: ["Yes"]}]}
+      - {name: sl_origin, field: DimValidationOrigin.FoldLabel, x: 520, y: 78, w: 200, h: 52}
+    visuals:
+      - {name: series_line, type: line, x: 24, y: 140, w: 1232, h: 240, title: "Series detail: actual vs saved forecasts (all Store Item series; six predeclared M5 representatives)", bind: {category: [DimDate.Date], value: [Series Actual Units, Series Forecast Selected ML, Series Forecast MA28, Series Forecast Seasonal Naive]}}
+      - {name: trials, type: table, x: 24, y: 392, w: 608, h: 260, title: Phase 4 model selection trials (four-origin validation scores), bind: {column: [FactModelSelectionTrials.TrialId, FactModelSelectionTrials.TrialKind, FactModelSelectionTrials.Algorithm, FactModelSelectionTrials.ValidationMacroMAE, FactModelSelectionTrials.ValidationMacroMASE, FactModelSelectionTrials.IsSelected]}}
+      - {name: final_reported, type: table, x: 648, y: 392, w: 608, h: 260, title: Saved one-time final-holdout results (reported as recorded; not a new evaluation), bind: {column: [FactFinalHoldoutReported.TrialId, FactFinalHoldoutReported.Role, FactFinalHoldoutReported.MacroMAE, FactFinalHoldoutReported.MacroMASE, FactFinalHoldoutReported.PooledRMSE, FactFinalHoldoutReported.PooledWAPEPercent]}}
+      - {name: receipts, type: table, x: 24, y: 664, w: 608, h: 250, title: Verification receipts (status copied from each receipt), bind: {column: [FactScientificValidation.CheckId, FactScientificValidation.Check, FactScientificValidation.Status, FactScientificValidation.EvidencePath]}}
+      - {name: findings, type: table, x: 648, y: 664, w: 608, h: 250, title: Independent audit findings and dispositions, bind: {column: [DimAuditFinding.FindingId, DimAuditFinding.Severity, DimAuditFinding.Finding, DimAuditFinding.Status]}}
+      - {name: limitations, type: table, x: 24, y: 926, w: 1232, h: 220, title: Declared scientific limitations, bind: {column: [DimLimitation.LimitationId, DimLimitation.Limitation, DimLimitation.SourceDocument]}}
+      - name: methodology
+        type: textbox
+        x: 24
+        y: 1156
+        w: 1232
+        h: 60
+        text:
+          - runs: [["Methodology and provenance: ", {bold: true}], ["four expanding validation origins per dataset, 28-day fixed-origin forecasts, origin-bounded MASE/RMSSE scales. Every figure reconciles with the saved registry metrics, Phase 4 leaderboard and Phase 5 audit summary (reports/powerbi/qa_results.json). Rebuild: python -m intelligent_demand.bi.export, .bi.tmdl, .bi.report_builder, then .bi.qa.", {}]]
+
+# Friendly labels applied to every column projection (slicer headers, axis titles, table headers).
+display_names:
+  DimValidationOrigin.FoldLabel: Validation origin
+  DimDemandPattern.DemandPattern: Demand pattern
+  DimForecastModel.ModelRole: Model
+  DimInventoryPolicy.Policy: Policy
+  DimScenario.Scenario: Scenario
+  DimScenario.ScenarioGroup: Scenario group
+  DimDataset.Dataset: Dataset
+  DimDate.Date: Date
+  DimSeries.SeriesId: Series
+  FactModelSelectionTrials.TrialId: Trial
+  FactModelSelectionTrials.TrialKind: Kind
+  FactModelSelectionTrials.ValidationMacroMAE: Validation macro MAE
+  FactModelSelectionTrials.ValidationMacroMASE: Validation macro MASE
+  FactModelSelectionTrials.IsSelected: Selected
+  FactFinalHoldoutReported.TrialId: Trial
+  FactFinalHoldoutReported.MacroMAE: Macro MAE (reported)
+  FactFinalHoldoutReported.MacroMASE: Macro MASE (reported)
+  FactFinalHoldoutReported.PooledRMSE: Pooled RMSE (reported)
+  FactFinalHoldoutReported.PooledWAPEPercent: Pooled WAPE % (reported)
+  FactScientificValidation.CheckId: Receipt
+  FactScientificValidation.EvidencePath: Evidence
+  DimAuditFinding.FindingId: Finding
+  DimLimitation.LimitationId: ID
+  DimLimitation.SourceDocument: Source document
+# Cards bound to text measures use a smaller label so long text is not truncated.
+text_cards: [Title Forecast Page, Title Inventory Page, Title Scenario Page]

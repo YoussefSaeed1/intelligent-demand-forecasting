@@ -1,0 +1,653 @@
+{
+  "file_count": 129,
+  "files": [
+    {
+      "bytes": 110,
+      "path": "powerbi/.gitattributes",
+      "sha256": "a07f63ebbe5a2d9df6a3e4e2c604b3145b232494fb7f1b8fea63b343ba3b7f14"
+    },
+    {
+      "bytes": 169,
+      "path": "powerbi/.gitignore",
+      "sha256": "3f498d571fd813f4616aebb13907e36c9a3ccec73cebcdfdf9c2fef71301e9b0"
+    },
+    {
+      "bytes": 260,
+      "path": "powerbi/IntelligentDemand.pbip",
+      "sha256": "b4a45d3675e4169fcf20eba036ce1add0cbccc1cb7cc37bc86779297b5097caf"
+    },
+    {
+      "bytes": 311,
+      "path": "powerbi/IntelligentDemand.Report/.platform",
+      "sha256": "c5e63e3295540ff4c60fadddcb9dfd431bc0260a7d74a259e8d14b99b73f8bb1"
+    },
+    {
+      "bytes": 1701,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/page.json",
+      "sha256": "007a48a7c82f3218e84c538b408805a839895d2c4217f0e9576d6175303a044c"
+    },
+    {
+      "bytes": 2151,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/conclusions/visual.json",
+      "sha256": "29b96611a330216f29c3e09d4602abb4fc0dfe5d7c62578da4ea2db7076a646c"
+    },
+    {
+      "bytes": 1467,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/ftr_caveat/visual.json",
+      "sha256": "3f6b73799d8836a61a62a8719d270d144a4db6423bdf7a33a9170cac30777908"
+    },
+    {
+      "bytes": 407,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/hdr_nav/visual.json",
+      "sha256": "8f18da6df6a7a4383ed5386fda6d99795c1f1fa7f541704fd04527ba05333be4"
+    },
+    {
+      "bytes": 927,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/hdr_subtitle/visual.json",
+      "sha256": "abb5b29ba406cb822cabf41f9153a2870185170f2e161807d09c198651f1772e"
+    },
+    {
+      "bytes": 889,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/hdr_title/visual.json",
+      "sha256": "6c60ccc32353fc227dfa118248799e1726cfbd416e23692259389afaf9952161"
+    },
+    {
+      "bytes": 917,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/lbl_m5/visual.json",
+      "sha256": "84a1a8b609e91126476b83e962ad54822b4c65e1be11c62a9155cf7307aa6be7"
+    },
+    {
+      "bytes": 915,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/lbl_store/visual.json",
+      "sha256": "d75adeb720038e8a1e5490caa556d61f942cd6b88e20a9271889ec5c0575dc7a"
+    },
+    {
+      "bytes": 2989,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/m5_cost_ma/visual.json",
+      "sha256": "a5d493544d5b6938c442712d95e7e3af46398630516714a684356eef28407da6"
+    },
+    {
+      "bytes": 3416,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/m5_cost_sn/visual.json",
+      "sha256": "dc34949271673b93dad4a00659fe24eaa059e7f05ad505e122336a43e2afde70"
+    },
+    {
+      "bytes": 2944,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/m5_mae/visual.json",
+      "sha256": "cb8a6886ae471233019e373e6950469a4c4c1def2b19c9079ecf78a913ffd64f"
+    },
+    {
+      "bytes": 2961,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/m5_mae_ma/visual.json",
+      "sha256": "c241af660da38319e6b9e9c2e3501af36aec393d3ed2ac4ab8a0cf41b7f30027"
+    },
+    {
+      "bytes": 3001,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/m5_mae_sn/visual.json",
+      "sha256": "b2533abb7641fc14c4a982538a33cca3bce1fd05c0efe51ba692ca7a25a28f49"
+    },
+    {
+      "bytes": 2936,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/m5_model/visual.json",
+      "sha256": "08f24e48c79a43ed6a37f3af58810d1704a5ecab21ec8fdf90bb895cc6f0d734"
+    },
+    {
+      "bytes": 2533,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/origin_robustness/visual.json",
+      "sha256": "7933b45e282855874effde0f08e6566429a4826a9ddf6af8d04b3c600d901e90"
+    },
+    {
+      "bytes": 3745,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/policy_matrix/visual.json",
+      "sha256": "dd7bc875f5209673663018c58e8a93a242d102c7972553416d01a4fe88027a17"
+    },
+    {
+      "bytes": 2995,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/si_cost_ma/visual.json",
+      "sha256": "12ecf82ae1e72ff2138e89f5bcaa82df2d617cf63799c9e982ffe30443b601cc"
+    },
+    {
+      "bytes": 3424,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/si_cost_sn/visual.json",
+      "sha256": "f35119ab3093b496f129a1c2bb21c52c0c7b68ad7a39534bfa52c94f0359b4c8"
+    },
+    {
+      "bytes": 2950,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/si_mae/visual.json",
+      "sha256": "8b9eba9df1753ecdb09a87c7ff711b439c2c82dba9c60569c721175b3e322768"
+    },
+    {
+      "bytes": 2967,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/si_mae_ma/visual.json",
+      "sha256": "ecaf861216921022704c7ad3136690fbd5b193a282b83dfa6636354079f8090d"
+    },
+    {
+      "bytes": 3007,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/si_mae_sn/visual.json",
+      "sha256": "19b43a699b02c021e37faf4ce1d1a5db34025d29b1570f90a7b1ea5c25f21026"
+    },
+    {
+      "bytes": 2942,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/executive_overview/visuals/si_model/visual.json",
+      "sha256": "52b30000922786633ce5e236a57fa03d385d204f5ad45c778537b2659dc74edb"
+    },
+    {
+      "bytes": 270,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/page.json",
+      "sha256": "458ae1f06ba3b9b4758635e4f8043639d610c4e35714422202cdd58380e3dcee"
+    },
+    {
+      "bytes": 3244,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/actual_forecast/visual.json",
+      "sha256": "bd3d12c023e3dcdc9cf8a8297388e280540e111f06d8af7b087c93f2d557aa72"
+    },
+    {
+      "bytes": 2086,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/dyn_title/visual.json",
+      "sha256": "ad08b335cad73f451aa69c90270e06e2701ff190e02b728ab81b9b0fcc167283"
+    },
+    {
+      "bytes": 1467,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/ftr_caveat/visual.json",
+      "sha256": "d31ba800b94d4469eeea50dbf945b5c2c7ca6f5f5a118dead89e174657f18a0e"
+    },
+    {
+      "bytes": 407,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/hdr_nav/visual.json",
+      "sha256": "8f18da6df6a7a4383ed5386fda6d99795c1f1fa7f541704fd04527ba05333be4"
+    },
+    {
+      "bytes": 934,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/hdr_subtitle/visual.json",
+      "sha256": "888a258747c882d8894f5cf6695dcb0e8920095e336bc0836c2a688b0b1db692"
+    },
+    {
+      "bytes": 894,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/hdr_title/visual.json",
+      "sha256": "03c849cb0a84c9b0045847804146d7fe5856f50be057373d9278022674296376"
+    },
+    {
+      "bytes": 1560,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/k_mae_chg/visual.json",
+      "sha256": "59b2915b9b5b3846cc1188afa848d99257ebee4b2f0ceb9039dfc9aaf8bb6447"
+    },
+    {
+      "bytes": 1499,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/k_mae_ma/visual.json",
+      "sha256": "74cfff151ccd24041aaf5f343cecfb2d92b1c8596baa1f487e58fba1aaa13c12"
+    },
+    {
+      "bytes": 1526,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/k_mae_ml/visual.json",
+      "sha256": "05b37543d84f0f054ec8618ed1823976d8d595c3ea56ed6d858a479f560f0229"
+    },
+    {
+      "bytes": 1541,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/k_mae_sn/visual.json",
+      "sha256": "979e646a58918b17071b39982fd7a4ea2400cd353c83f649e7321a3eec671293"
+    },
+    {
+      "bytes": 1531,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/k_mase_ma/visual.json",
+      "sha256": "707d131a55a08b1d02885eb6af691a6ac24b1473b0cb681b4354ccc9a5c1bd41"
+    },
+    {
+      "bytes": 1558,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/k_mase_ml/visual.json",
+      "sha256": "845a99b3271ada738e407e17aaac2f5c19f988873977a914b09ba8ac69310aec"
+    },
+    {
+      "bytes": 4814,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/model_matrix/visual.json",
+      "sha256": "49602e3ae1d8ef791a0278fdd8b7cf5d6436cf8e456da456ca54d73d7dd7a36d"
+    },
+    {
+      "bytes": 2413,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/origin_mae/visual.json",
+      "sha256": "6f8ec8d0fbbca51afc5f0041929101cde666075d4ba81a52bdc640e72b7c8de8"
+    },
+    {
+      "bytes": 2411,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/pattern_mae/visual.json",
+      "sha256": "960fde6bd0978a897f879ac86c88f73f4adfdc9baa8c311f42e4e6a04f1cbc64"
+    },
+    {
+      "bytes": 3220,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/sl_dataset/visual.json",
+      "sha256": "198a605fe1f5172a5ba8c4f9c827944d596358108b8810c41b2d199e0cfa578d"
+    },
+    {
+      "bytes": 1379,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/sl_origin/visual.json",
+      "sha256": "716b6b9d4dc57d8f8c7fe84fe9d8b394b9ccfaafada6d06d4047b10837a92b8d"
+    },
+    {
+      "bytes": 1302,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/forecasting_performance/visuals/sl_pattern/visual.json",
+      "sha256": "83539fcab6d3ead399104bb8a4205eba47d66004ee32d48c59b198d455dce298"
+    },
+    {
+      "bytes": 1709,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/page.json",
+      "sha256": "f32cb85aa2e5bf97b14bbe76979af33bb677c378bdedc62107a62cc61276a54f"
+    },
+    {
+      "bytes": 2893,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/cost_breakdown/visual.json",
+      "sha256": "293e4fecc463aeab6e8953a2f43e40541888e18245fe0aac6ee2c65f49b9c9de"
+    },
+    {
+      "bytes": 2484,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/cost_service/visual.json",
+      "sha256": "90c304d4757509c758e1087c59fecc39f9661f8a406857514106767cd7f695b3"
+    },
+    {
+      "bytes": 1702,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/dyn_title/visual.json",
+      "sha256": "00559dcb68ee7b6f1c0fb31428a10272c9473b22de62ef06f638da1006ba2f83"
+    },
+    {
+      "bytes": 1467,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/ftr_caveat/visual.json",
+      "sha256": "3f6b73799d8836a61a62a8719d270d144a4db6423bdf7a33a9170cac30777908"
+    },
+    {
+      "bytes": 407,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/hdr_nav/visual.json",
+      "sha256": "8f18da6df6a7a4383ed5386fda6d99795c1f1fa7f541704fd04527ba05333be4"
+    },
+    {
+      "bytes": 939,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/hdr_subtitle/visual.json",
+      "sha256": "ab99ce7a0f77a2ba882c32242503966c720cfac3c28d2639ba0cc236883942fb"
+    },
+    {
+      "bytes": 893,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/hdr_title/visual.json",
+      "sha256": "59cf8f0aa2d87a3721d7642b0f40c8f4812cfd08e6dfbf2b07fb87cd7e7a8a38"
+    },
+    {
+      "bytes": 1576,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/k_dma/visual.json",
+      "sha256": "86f1500ef3daa860732eec82b50a3b8ad1b0ca4694cc575b7be13ad020588980"
+    },
+    {
+      "bytes": 1617,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/k_dsn/visual.json",
+      "sha256": "648f7d72a0d04e60d59dc80830e0dc3ba7ab191483e4ba71db7be8778fe18de4"
+    },
+    {
+      "bytes": 1543,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/k_ma/visual.json",
+      "sha256": "6769de45e9e3ff852a0a3f249a7adb08cd3027d748f8bc7f98509ed884b40c75"
+    },
+    {
+      "bytes": 1570,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/k_ml/visual.json",
+      "sha256": "43378e70d3feff57d7121b261f70be4b4aa64e538067316f3b0cba0cb84de44b"
+    },
+    {
+      "bytes": 1583,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/k_rop/visual.json",
+      "sha256": "5afef03a71be93196f217eb834078116500f714ef31d85422d69a355e783fd49"
+    },
+    {
+      "bytes": 1585,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/k_sn/visual.json",
+      "sha256": "df3dd99ef3af0a002eed4eebb412d15a9e86f06b4d8024840a109ce2525be88f"
+    },
+    {
+      "bytes": 2537,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/origin_diff/visual.json",
+      "sha256": "1e953b6054351f930c744ff380460ecf7b343880cdba50e3b1f2b88325ec2e36"
+    },
+    {
+      "bytes": 6131,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/policy_matrix/visual.json",
+      "sha256": "1f421ffd9736e202c02152835a0473fbdbfc1878943c61063412222b1f89fb97"
+    },
+    {
+      "bytes": 3220,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/sl_dataset/visual.json",
+      "sha256": "198a605fe1f5172a5ba8c4f9c827944d596358108b8810c41b2d199e0cfa578d"
+    },
+    {
+      "bytes": 1298,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/sl_origin/visual.json",
+      "sha256": "9c71e16238ff1362b50d16e977667e7352246faccbcf42683d974671143bedd2"
+    },
+    {
+      "bytes": 1302,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/inventory_optimisation/visuals/sl_pattern/visual.json",
+      "sha256": "83539fcab6d3ead399104bb8a4205eba47d66004ee32d48c59b198d455dce298"
+    },
+    {
+      "bytes": 278,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/page.json",
+      "sha256": "ae2dd84e3d739b3db2f79580193ad9a358688443df9f0e2255016bf5bc9b7eef"
+    },
+    {
+      "bytes": 4034,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/final_reported/visual.json",
+      "sha256": "56890beec1ba2562cc36a919ab68a30f831cc8abff8c8db47ad9ddf0766d3f75"
+    },
+    {
+      "bytes": 2712,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/findings/visual.json",
+      "sha256": "4cc1b5ac34ea5480640e3e50b78a8fa92b4844e2cb38ad171696e78c27205b89"
+    },
+    {
+      "bytes": 1407,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/ftr_caveat/visual.json",
+      "sha256": "6402a7acd37357a418910fcc734146b3f79d7b629964af308261ffcd4a49894a"
+    },
+    {
+      "bytes": 407,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/hdr_nav/visual.json",
+      "sha256": "8f18da6df6a7a4383ed5386fda6d99795c1f1fa7f541704fd04527ba05333be4"
+    },
+    {
+      "bytes": 958,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/hdr_subtitle/visual.json",
+      "sha256": "85330b47f12eda4847c0cb5b82d388e0aacc531b9aba57ec1260008d8b436b90"
+    },
+    {
+      "bytes": 909,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/hdr_title/visual.json",
+      "sha256": "029fea87574505d49fb1ecd1ba71207002868d93c3f8192640ebc4c57f848f3f"
+    },
+    {
+      "bytes": 2315,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/limitations/visual.json",
+      "sha256": "b1f5bb2fc6875114b6d1912f1aa9a006f0a43194ac412ac23a4ef38656f22fe4"
+    },
+    {
+      "bytes": 1469,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/methodology/visual.json",
+      "sha256": "1a2f2d5866637e54b92b7e3883baf47c82035e521902ee676f7be3e81d9f5567"
+    },
+    {
+      "bytes": 2837,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/receipts/visual.json",
+      "sha256": "8e2875840f831e1b299d5fb58ec41f24561a33586990c3671134372e8ad4a126"
+    },
+    {
+      "bytes": 3303,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/series_line/visual.json",
+      "sha256": "05e1381d0eef2d01f0b95086caf97e1ede74c1909d6335a921c7016a4da6a846"
+    },
+    {
+      "bytes": 3220,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/sl_dataset/visual.json",
+      "sha256": "198a605fe1f5172a5ba8c4f9c827944d596358108b8810c41b2d199e0cfa578d"
+    },
+    {
+      "bytes": 1298,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/sl_origin/visual.json",
+      "sha256": "7f19cea9463bb56e5830057615d3a53addb52637347ef1f89930cd0b1ca48a50"
+    },
+    {
+      "bytes": 4509,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/sl_series/visual.json",
+      "sha256": "9903f859e2b9105d5344111541101dd6a630234577173c6e7fca57da9c66cb82"
+    },
+    {
+      "bytes": 4023,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/model_explorer_governance/visuals/trials/visual.json",
+      "sha256": "0ff922d6a15c9d345c922784ba59a2f9e2e2a6a2dc1846e31da5a099cfac341f"
+    },
+    {
+      "bytes": 346,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/pages.json",
+      "sha256": "7bf1d4c23bc3f6e4ca76ff6f84c7b661411aefeade9354cd31daeef18dec1a8e"
+    },
+    {
+      "bytes": 266,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/page.json",
+      "sha256": "3a7c17573fb14ddc6a5fb3bfd96625bcd47f338a4e646efa2f78899a2dd4f36e"
+    },
+    {
+      "bytes": 1699,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/dyn_title/visual.json",
+      "sha256": "c6642d0f579fbd234f140dc41b25c9e71cae12b95c901de8a5f22dfeb8a45c2e"
+    },
+    {
+      "bytes": 1467,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/ftr_caveat/visual.json",
+      "sha256": "3f6b73799d8836a61a62a8719d270d144a4db6423bdf7a33a9170cac30777908"
+    },
+    {
+      "bytes": 407,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/hdr_nav/visual.json",
+      "sha256": "8f18da6df6a7a4383ed5386fda6d99795c1f1fa7f541704fd04527ba05333be4"
+    },
+    {
+      "bytes": 956,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/hdr_subtitle/visual.json",
+      "sha256": "3a33758b6cc7804c80adef2955b30080e00160bcdba49d9e78c1fce43cc6f31b"
+    },
+    {
+      "bytes": 893,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/hdr_title/visual.json",
+      "sha256": "abf80e9601b69c3c59fd6a77844e4109d792d9c400187440f07a0cbdc2218e27"
+    },
+    {
+      "bytes": 1538,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/k_cases/visual.json",
+      "sha256": "3278140395c4dcc1f3a2edfe2190568f15a128a5fc3b81f75cbc108b703fb889"
+    },
+    {
+      "bytes": 1525,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/k_scn/visual.json",
+      "sha256": "7d5fc584805160c4d35817c6a86c58be481c1f07430e496e28fe5a0429e7ff86"
+    },
+    {
+      "bytes": 1596,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/k_scn_ma/visual.json",
+      "sha256": "be40c91234bc0c51664faa7225f7af0f6329d1edef34fe719276ed486a74b66f"
+    },
+    {
+      "bytes": 1638,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/k_scn_sn/visual.json",
+      "sha256": "8675bea97871f6c2d7c87caa4a745b26c76ab916f05f1e9344d23a0ca80a696f"
+    },
+    {
+      "bytes": 3004,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/origin_matrix/visual.json",
+      "sha256": "55f2cfaa24fc731fc068d52c9717244e64f0e28136b0fcfc9bd2a864014200ce"
+    },
+    {
+      "bytes": 2466,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/scenario_diff/visual.json",
+      "sha256": "bf7b7ef99cd37603a711e6952e1dd0c845214386004129d36edf602b3815cc05"
+    },
+    {
+      "bytes": 3458,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/scenario_matrix/visual.json",
+      "sha256": "f0aeb35aec1fa712d11abb390f114399e3c5dd044e9656c4daa7c6338fb7284c"
+    },
+    {
+      "bytes": 3220,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/sl_dataset/visual.json",
+      "sha256": "198a605fe1f5172a5ba8c4f9c827944d596358108b8810c41b2d199e0cfa578d"
+    },
+    {
+      "bytes": 1290,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/sl_group/visual.json",
+      "sha256": "6a028550fd0cc66e2dc22432026515972dcdfd14a3e621f6b4f3ef48aac5c294"
+    },
+    {
+      "bytes": 1298,
+      "path": "powerbi/IntelligentDemand.Report/definition/pages/scenario_sensitivity/visuals/sl_origin/visual.json",
+      "sha256": "25d94ecffebe3a48095f70776acf310a9382fc1ce5903e7c0ae3353c440ffb45"
+    },
+    {
+      "bytes": 1641,
+      "path": "powerbi/IntelligentDemand.Report/definition/report.json",
+      "sha256": "5d86b4ca4cd6c9df12f523c712c0e10dbee234d97aa13de7221657c5400c4993"
+    },
+    {
+      "bytes": 152,
+      "path": "powerbi/IntelligentDemand.Report/definition/version.json",
+      "sha256": "c8bdd966a85f1eaab4312d2096b6d7b508243e4d7bc5a4d25af3cfcb1056a4e7"
+    },
+    {
+      "bytes": 251,
+      "path": "powerbi/IntelligentDemand.Report/definition.pbir",
+      "sha256": "b928164b8c00d1d86456b97e9ba42878c8e6914796a50ffb21d63436b4b3b5df"
+    },
+    {
+      "bytes": 4995,
+      "path": "powerbi/IntelligentDemand.Report/StaticResources/RegisteredResources/IntelligentDemandAcademic.json",
+      "sha256": "83e0b7f48d96360d2d7da217bf1abf47bd32ffdb717ab768a7325bb1c050dff1"
+    },
+    {
+      "bytes": 317,
+      "path": "powerbi/IntelligentDemand.SemanticModel/.pbi/editorSettings.json",
+      "sha256": "993662478760e2bcbc0184d6260711ae0b7cdb3867354581e7fd56609ca6ec97"
+    },
+    {
+      "bytes": 318,
+      "path": "powerbi/IntelligentDemand.SemanticModel/.platform",
+      "sha256": "b3f4b0cff4159a49d3dc8c5b561e3e8b7460907b1a27e1dd061e30b85ca492e3"
+    },
+    {
+      "bytes": 14267,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/cultures/en-GB.tmdl",
+      "sha256": "17b2d02a678424cb68888f785cbc849cd4a3ff81b976e3b93bbed76d936f9c45"
+    },
+    {
+      "bytes": 39,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/database.tmdl",
+      "sha256": "822c914b643bca32bb20abd8a762df8204a1b9ef02acc2bc7348727f6699cb96"
+    },
+    {
+      "bytes": 1175,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/expressions.tmdl",
+      "sha256": "f97e4555f0df2a40cfec16c3dee473510f81437194ecf8ba0ec560dc8cc831cb"
+    },
+    {
+      "bytes": 848,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/model.tmdl",
+      "sha256": "ff62e5d91e9aa4ab5787ea33535d101657dc8cd8d68438f545c5b8b7b2a3987b"
+    },
+    {
+      "bytes": 3857,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/relationships.tmdl",
+      "sha256": "dc2a42dc3cc5942cdad4733202939b285a189b1b86655284b3dd2abb06cd27d0"
+    },
+    {
+      "bytes": 26274,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/_Measures.tmdl",
+      "sha256": "d9415999c1e462e70df5c2624b5f74c6bd2d2c9aceb51eb2168b21b577d7cb71"
+    },
+    {
+      "bytes": 1372,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/DimAuditFinding.tmdl",
+      "sha256": "969c82d82312c6b935ecd0267c024aa5797203968fa28ce92d61e8e7ee248d0c"
+    },
+    {
+      "bytes": 1961,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/DimDataset.tmdl",
+      "sha256": "4ff3b6132f38bc5402ee8dfb7acbc37ced031309a875dd7dce8d07b7f1cc4a23"
+    },
+    {
+      "bytes": 2175,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/DimDate.tmdl",
+      "sha256": "42cc85773cfd392c3fae05931f8dcd92aee1355b8ee1ba67409f21d9aba64da9"
+    },
+    {
+      "bytes": 1291,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/DimDemandPattern.tmdl",
+      "sha256": "27132b7d1051498060295163f6c5a0c45568a141620246d0708a2ce6cb5106b1"
+    },
+    {
+      "bytes": 2416,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/DimForecastModel.tmdl",
+      "sha256": "df291e21629d94ea58b5185d4ec8bde445de2cc95548d66919f65b24f64203ef"
+    },
+    {
+      "bytes": 1787,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/DimInventoryPolicy.tmdl",
+      "sha256": "95262edc47793a4a0e9eb1111aede5fafd5626d7a1da313fbda11b460b287738"
+    },
+    {
+      "bytes": 990,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/DimLimitation.tmdl",
+      "sha256": "4bc365919b3ff471c71b97a785fdaf6b7d4f65091c7aea4e8fba1e8a192d1d59"
+    },
+    {
+      "bytes": 4101,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/DimScenario.tmdl",
+      "sha256": "4103160717901f45e5b84d67e57e6c7b3f266820508a0fc321f07843a4fd3333"
+    },
+    {
+      "bytes": 3297,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/DimSeries.tmdl",
+      "sha256": "ff23497095133b4a0ad0469fb6dc0b2dcd81094057d08928f37f651755d6e5fe"
+    },
+    {
+      "bytes": 2481,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/DimValidationOrigin.tmdl",
+      "sha256": "d816cb1fade24166aabfda19eaa7ee574608c5be06992af299d8fc7236bc515e"
+    },
+    {
+      "bytes": 3130,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/FactFinalHoldoutReported.tmdl",
+      "sha256": "a660831bc957512a09c3bf1abb387c5577c3c2f7bf63f9df367edf521091b664"
+    },
+    {
+      "bytes": 2891,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/FactForecastDaily.tmdl",
+      "sha256": "303488b3cb801b954dcd5992d5526366812a99526e7a78f36f44129c027360cd"
+    },
+    {
+      "bytes": 2431,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/FactForecastSeriesDaily.tmdl",
+      "sha256": "62bd14dca6a533b12ab8e7bb07eefc52208e4825cecbee5d3bd949c24c669992"
+    },
+    {
+      "bytes": 3635,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/FactForecastSeriesOrigin.tmdl",
+      "sha256": "b724f0f43004013bdd16cc4517ea751c8126833342c59206669f06d386167e62"
+    },
+    {
+      "bytes": 5972,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/FactInventoryScenarioResults.tmdl",
+      "sha256": "a6e9254f313050e09b5a78fe5995bb297490fc32d5be2cee216eaf1fd3428bc4"
+    },
+    {
+      "bytes": 5929,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/FactInventorySeriesBase.tmdl",
+      "sha256": "477716d1d59e24ff8ab7bc9968e1617e78f428ebd78eff9278306bbf89475f4c"
+    },
+    {
+      "bytes": 3568,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/FactModelSelectionTrials.tmdl",
+      "sha256": "110c612341496d4c9a6739702a17df27c8b01e27072884adb3b61495869c00c0"
+    },
+    {
+      "bytes": 1413,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition/tables/FactScientificValidation.tmdl",
+      "sha256": "72352b44a65d5d2c8c87389f7ae0f6ef9a72989fa61b417ee7bf1185910f5e0c"
+    },
+    {
+      "bytes": 170,
+      "path": "powerbi/IntelligentDemand.SemanticModel/definition.pbism",
+      "sha256": "73a1ae4c89d7488f553788adc772a04c805d1c9e0d7333e2b2b5476aad8e5a5f"
+    },
+    {
+      "bytes": 756,
+      "path": "powerbi/README.md",
+      "sha256": "342f564365293872af7c420803beadd2d32e04b05a310cd55bab7bafa7729dfa"
+    },
+    {
+      "bytes": 2658,
+      "path": "powerbi/theme/IntelligentDemandAcademic.json",
+      "sha256": "92d7f62e17807e5f9143c9977950d5cc54cb2d0a69fddf944b2b04279049a23e"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Current PBIP, PBIR, TMDL, themes and shareable project metadata; excludes PBIX binary and local caches/settings. Manual report definitions copied unchanged.",
+  "total_bytes": 292850
+}

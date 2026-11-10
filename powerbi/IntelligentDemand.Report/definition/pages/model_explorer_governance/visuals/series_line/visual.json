@@ -1,0 +1,115 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "series_line",
+  "position": {
+    "x": 24,
+    "y": 140,
+    "z": 7,
+    "height": 240,
+    "width": 1232,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDate"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "DimDate.Date",
+              "nativeQueryRef": "Date",
+              "active": true,
+              "displayName": "Date"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Series Actual Units"
+                }
+              },
+              "queryRef": "_Measures.Series Actual Units",
+              "nativeQueryRef": "Series Actual Units"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Series Forecast Selected ML"
+                }
+              },
+              "queryRef": "_Measures.Series Forecast Selected ML",
+              "nativeQueryRef": "Series Forecast Selected ML"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Series Forecast MA28"
+                }
+              },
+              "queryRef": "_Measures.Series Forecast MA28",
+              "nativeQueryRef": "Series Forecast MA28"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Series Forecast Seasonal Naive"
+                }
+              },
+              "queryRef": "_Measures.Series Forecast Seasonal Naive",
+              "nativeQueryRef": "Series Forecast Seasonal Naive"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Series detail: actual vs saved forecasts (all Store Item series; six predeclared M5 representatives)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

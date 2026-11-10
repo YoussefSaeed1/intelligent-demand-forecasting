@@ -1,0 +1,134 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "trials",
+  "position": {
+    "x": 24,
+    "y": 392,
+    "z": 8,
+    "height": 260,
+    "width": 608,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactModelSelectionTrials"
+                    }
+                  },
+                  "Property": "TrialId"
+                }
+              },
+              "queryRef": "FactModelSelectionTrials.TrialId",
+              "nativeQueryRef": "TrialId",
+              "active": true,
+              "displayName": "Trial"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactModelSelectionTrials"
+                    }
+                  },
+                  "Property": "TrialKind"
+                }
+              },
+              "queryRef": "FactModelSelectionTrials.TrialKind",
+              "nativeQueryRef": "TrialKind",
+              "active": true,
+              "displayName": "Kind"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactModelSelectionTrials"
+                    }
+                  },
+                  "Property": "Algorithm"
+                }
+              },
+              "queryRef": "FactModelSelectionTrials.Algorithm",
+              "nativeQueryRef": "Algorithm",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactModelSelectionTrials"
+                    }
+                  },
+                  "Property": "ValidationMacroMAE"
+                }
+              },
+              "queryRef": "FactModelSelectionTrials.ValidationMacroMAE",
+              "nativeQueryRef": "ValidationMacroMAE",
+              "active": true,
+              "displayName": "Validation macro MAE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactModelSelectionTrials"
+                    }
+                  },
+                  "Property": "ValidationMacroMASE"
+                }
+              },
+              "queryRef": "FactModelSelectionTrials.ValidationMacroMASE",
+              "nativeQueryRef": "ValidationMacroMASE",
+              "active": true,
+              "displayName": "Validation macro MASE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactModelSelectionTrials"
+                    }
+                  },
+                  "Property": "IsSelected"
+                }
+              },
+              "queryRef": "FactModelSelectionTrials.IsSelected",
+              "nativeQueryRef": "IsSelected",
+              "active": true,
+              "displayName": "Selected"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Phase 4 model selection trials (four-origin validation scores)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

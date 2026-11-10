@@ -1,0 +1,11 @@
+{
+  "actual_dax_measures": 69,
+  "actual_relationships": 28,
+  "actual_tmdl_tables": 19,
+  "config_measure_names_match": true,
+  "manual_definition_hashes_unchanged": 127,
+  "relationship_endpoints_match": true,
+  "reporting_lineage_hashes_match": 8,
+  "scope": "Static current TMDL/config/lineage consistency; no live DAX, refresh, target decoding or builders.",
+  "status": "passed"
+}

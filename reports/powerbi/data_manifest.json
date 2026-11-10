@@ -1,0 +1,463 @@
+{
+  "final_holdout_targets_read": false,
+  "plan_sha256": "63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e",
+  "schema_version": 1,
+  "selection_fingerprint": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+  "sources": {
+    "audit_response": {
+      "path": "docs/PHASE5_AUDIT_RESPONSE.md",
+      "sha256": "fb52a784c6f664d45a8962279d71379ee482dbdfde180d3a9c210881d0e288aa"
+    },
+    "execution_contract": {
+      "path": "artifacts/inventory/phase5/execution.json",
+      "sha256": "b38f5545ac883741de62f0672baaf1d3bf18c76836cc418e507a1d37bc2a44a6"
+    },
+    "final_evaluation": {
+      "path": "artifacts/experiments/phase4/final_evaluation.json",
+      "sha256": "8c6011a255af5070d4093f75afc049e2e8d425b71e85fa55d20da463a18f0eba"
+    },
+    "frozen_plan": {
+      "path": "artifacts/inventory/phase5/plan.json",
+      "sha256": "28f6ec4b28bfee4090aeec0d30e57cfdce681f7337767b5e9c7b604909da6f0b"
+    },
+    "frozen_selection": {
+      "path": "artifacts/experiments/phase4/frozen_selection.json",
+      "sha256": "a7f4bc10beb8ed8ad7976990b1f50e96ed050d6c4ec8255ca61b8b5d053ee98b"
+    },
+    "phase5_audit_summary": {
+      "path": "reports/inventory/phase5_summary.json",
+      "sha256": "1d817e56a6aa590dcf5b26a9b25d2a0a831dbcb3e480b39fa8aa0c1909a5ee23"
+    },
+    "reporting_config": {
+      "path": "configs/powerbi.yaml",
+      "sha256": "064d65e6973ae6c83cc3c682108d6df98128f97207aa14b533b05a052c7bd76b"
+    },
+    "trial_leaderboard": {
+      "path": "artifacts/experiments/phase4/trial_leaderboard.json",
+      "sha256": "219700b360f66a27d1f13c5cf9de61ce0048fcabb9c3971db17907654265847b"
+    }
+  },
+  "tables": {
+    "DimAuditFinding": {
+      "bytes": 2163,
+      "columns": [
+        "FindingId",
+        "Severity",
+        "Finding",
+        "Disposition",
+        "Status"
+      ],
+      "file": "artifacts/powerbi/data/DimAuditFinding.csv",
+      "grain": "One row per independent audit finding",
+      "keys": [
+        "FindingId"
+      ],
+      "rows": 12,
+      "sha256": "aae424dd8bb9f7d36138054d166a11d4408e105fffe53d838aadb38187723da4"
+    },
+    "DimDataset": {
+      "bytes": 317,
+      "columns": [
+        "DatasetKey",
+        "Dataset",
+        "DatasetSort",
+        "DatasetDescription",
+        "SeriesCount",
+        "SelectedTrial",
+        "TrainingStart"
+      ],
+      "file": "artifacts/powerbi/data/DimDataset.csv",
+      "grain": "One row per dataset",
+      "keys": [
+        "DatasetKey"
+      ],
+      "rows": 2,
+      "sha256": "7cec72c6a7c540f5b71b0c675fef4924a013df27ba852f2e7db98259a67b6c75"
+    },
+    "DimDate": {
+      "bytes": 28977,
+      "columns": [
+        "Date",
+        "Year",
+        "MonthNumber",
+        "Month",
+        "YearMonth",
+        "DayOfWeekNumber",
+        "DayOfWeek",
+        "IsWeekend"
+      ],
+      "file": "artifacts/powerbi/data/DimDate.csv",
+      "grain": "One row per calendar day 2016-2017",
+      "keys": [
+        "Date"
+      ],
+      "rows": 731,
+      "sha256": "acfbc9ea6fa3372cb11f32ca2109b348f6e70133dcd685435f1ea009200e86a3"
+    },
+    "DimDemandPattern": {
+      "bytes": 469,
+      "columns": [
+        "PatternKey",
+        "DemandPattern",
+        "PatternSort",
+        "PatternDescription"
+      ],
+      "file": "artifacts/powerbi/data/DimDemandPattern.csv",
+      "grain": "One row per training-prefix demand pattern",
+      "keys": [
+        "PatternKey"
+      ],
+      "rows": 6,
+      "sha256": "2c25bd8eaa05475e89c0d5e733bb1c01c9aac8356b3bd57c0f428a9a928f8fa0"
+    },
+    "DimForecastModel": {
+      "bytes": 1702,
+      "columns": [
+        "ModelKey",
+        "DatasetKey",
+        "ModelRole",
+        "ModelRoleKey",
+        "ModelRoleSort",
+        "Algorithm",
+        "IsSelectedModel",
+        "ModelDescription",
+        "ValidationRunIds"
+      ],
+      "file": "artifacts/powerbi/data/DimForecastModel.csv",
+      "grain": "One row per dataset and forecast model role",
+      "keys": [
+        "ModelKey"
+      ],
+      "rows": 6,
+      "sha256": "d1578402923d0671be69ace93d55323f5197fdb22ed3f7811250dc27f204522e"
+    },
+    "DimInventoryPolicy": {
+      "bytes": 567,
+      "columns": [
+        "PolicyKey",
+        "Policy",
+        "PolicySort",
+        "ForecastRoleKey",
+        "PolicyDescription",
+        "IsLowStockComparator"
+      ],
+      "file": "artifacts/powerbi/data/DimInventoryPolicy.csv",
+      "grain": "One row per inventory policy",
+      "keys": [
+        "PolicyKey"
+      ],
+      "rows": 4,
+      "sha256": "1bee473c4a54dccf57d5adc2e9d24bf6c03695686de87b19a2370cd676d2cd4d"
+    },
+    "DimLimitation": {
+      "bytes": 1143,
+      "columns": [
+        "LimitationId",
+        "Limitation",
+        "SourceDocument"
+      ],
+      "file": "artifacts/powerbi/data/DimLimitation.csv",
+      "grain": "One row per declared scientific limitation",
+      "keys": [
+        "LimitationId"
+      ],
+      "rows": 8,
+      "sha256": "9f6564fed4af55d120327950e2b92337ff829617fda6d7ad4317ec63cabfa55d"
+    },
+    "DimScenario": {
+      "bytes": 1660,
+      "columns": [
+        "ScenarioKey",
+        "Scenario",
+        "ScenarioGroup",
+        "ScenarioSort",
+        "ChangedParameter",
+        "IsBase",
+        "LeadDays",
+        "ReviewDays",
+        "BufferDays",
+        "InitialCoverDays",
+        "HoldingCost",
+        "ShortageCost",
+        "FixedOrderCost",
+        "VariableOrderCost",
+        "TerminalCost",
+        "VariabilityMultiplier"
+      ],
+      "file": "artifacts/powerbi/data/DimScenario.csv",
+      "grain": "One row per frozen hypothetical scenario",
+      "keys": [
+        "ScenarioKey"
+      ],
+      "rows": 17,
+      "sha256": "597bccf86a1a2a1d896c921272b7891696c18222c6f6f90ea09b1090e97b1f28"
+    },
+    "DimSeries": {
+      "bytes": 3948048,
+      "columns": [
+        "SeriesKey",
+        "DatasetKey",
+        "SeriesId",
+        "StoreId",
+        "ItemId",
+        "DepartmentId",
+        "CategoryId",
+        "StateId",
+        "PatternKey",
+        "TrainingPrefixUnits",
+        "TrainingPrefixMeanUnits",
+        "RetrospectiveSparseGroup",
+        "HasDailyDetail"
+      ],
+      "file": "artifacts/powerbi/data/DimSeries.csv",
+      "grain": "One row per dataset series",
+      "keys": [
+        "SeriesKey"
+      ],
+      "rows": 30990,
+      "sha256": "67a73463840c7f58342903997ab323616f23dc8310abb58a18aae9a9b49b18f4"
+    },
+    "DimValidationOrigin": {
+      "bytes": 852,
+      "columns": [
+        "OriginKey",
+        "DatasetKey",
+        "Fold",
+        "FoldLabel",
+        "OriginDate",
+        "ValidationStart",
+        "ValidationEnd",
+        "TrainStart",
+        "OriginLabel"
+      ],
+      "file": "artifacts/powerbi/data/DimValidationOrigin.csv",
+      "grain": "One row per dataset validation origin",
+      "keys": [
+        "OriginKey"
+      ],
+      "rows": 8,
+      "sha256": "5c8c17e27336435ff0ae6380b18b9678e8a409821997c963f9f3a3fb446f9376"
+    },
+    "FactFinalHoldoutReported": {
+      "bytes": 1999,
+      "columns": [
+        "DatasetKey",
+        "TrialId",
+        "Algorithm",
+        "Role",
+        "EvidenceType",
+        "MacroMAE",
+        "MacroMASE",
+        "MacroRMSSE",
+        "PooledRMSE",
+        "PooledWAPEPercent",
+        "Series",
+        "Observations"
+      ],
+      "file": "artifacts/powerbi/data/FactFinalHoldoutReported.csv",
+      "grain": "One row per saved final assessment",
+      "keys": [
+        "TrialId"
+      ],
+      "rows": 8,
+      "sha256": "692f96541d84fe037b04a63d2877adbe941c9d8c74c6b240021bac87bf067c08"
+    },
+    "FactForecastDaily": {
+      "bytes": 282783,
+      "columns": [
+        "OriginKey",
+        "ModelKey",
+        "DatasetKey",
+        "PatternKey",
+        "Date",
+        "Series",
+        "SumActual",
+        "SumForecast",
+        "SumAbsError",
+        "SumSquaredError",
+        "SumError"
+      ],
+      "file": "artifacts/powerbi/data/FactForecastDaily.csv",
+      "grain": "Validation origin x model role x demand pattern x target date",
+      "keys": [
+        "OriginKey",
+        "ModelKey",
+        "PatternKey",
+        "Date"
+      ],
+      "rows": 2352,
+      "sha256": "e77f1a3df34649a38528c5d12c2fc4ef355fee203452da9deb3f2c6988b17353"
+    },
+    "FactForecastSeriesDaily": {
+      "bytes": 17991271,
+      "columns": [
+        "SeriesKey",
+        "OriginKey",
+        "ModelKey",
+        "DatasetKey",
+        "PatternKey",
+        "Date",
+        "HorizonDay",
+        "Actual",
+        "Forecast"
+      ],
+      "file": "artifacts/powerbi/data/FactForecastSeriesDaily.csv",
+      "grain": "Detail series x origin x model role x target date",
+      "keys": [
+        "SeriesKey",
+        "OriginKey",
+        "ModelKey",
+        "Date"
+      ],
+      "rows": 170016,
+      "sha256": "b9cf32f4d8ff6fc0c62e1983414cc7e837e62dd85f279f4dc0764e327fa73542"
+    },
+    "FactForecastSeriesOrigin": {
+      "bytes": 59225766,
+      "columns": [
+        "SeriesKey",
+        "OriginKey",
+        "ModelKey",
+        "DatasetKey",
+        "PatternKey",
+        "Observations",
+        "SumAbsError",
+        "SumSquaredError",
+        "SumError",
+        "SumActual",
+        "SumForecast",
+        "ScaleAbs",
+        "ScaleSquared",
+        "OriginSampleAllZero"
+      ],
+      "file": "artifacts/powerbi/data/FactForecastSeriesOrigin.csv",
+      "grain": "Series x validation origin x model role (28 observations each)",
+      "keys": [
+        "SeriesKey",
+        "OriginKey",
+        "ModelKey"
+      ],
+      "rows": 371880,
+      "sha256": "48faef8e2def5cd1cdd73bce8528044893d29788fc60114aadad263521cd9da1"
+    },
+    "FactInventoryScenarioResults": {
+      "bytes": 447097,
+      "columns": [
+        "CaseId",
+        "DatasetKey",
+        "OriginKey",
+        "ScenarioKey",
+        "PolicyKey",
+        "PatternKey",
+        "DemandUnits",
+        "FulfilledUnits",
+        "UnmetUnits",
+        "ReceivedUnits",
+        "PlacedUnits",
+        "HoldingCost",
+        "ShortageCost",
+        "OrderingCost",
+        "TerminalCost",
+        "TotalCost",
+        "StockoutDays",
+        "Orders",
+        "AverageOnHand",
+        "AverageInventoryPosition",
+        "FinalOnHand",
+        "FinalPipeline",
+        "InitialOnHand",
+        "SeriesEpisodes"
+      ],
+      "file": "artifacts/powerbi/data/FactInventoryScenarioResults.csv",
+      "grain": "Inventory case (origin x scenario x policy) x demand pattern",
+      "keys": [
+        "OriginKey",
+        "ScenarioKey",
+        "PolicyKey",
+        "PatternKey"
+      ],
+      "rows": 1904,
+      "sha256": "4243e7b66c5e0d3cb514b8bc2a0187cf93630da2f9fe938f35b95d939b349d40"
+    },
+    "FactInventorySeriesBase": {
+      "bytes": 86268146,
+      "columns": [
+        "SeriesKey",
+        "DatasetKey",
+        "OriginKey",
+        "PolicyKey",
+        "PatternKey",
+        "DemandUnits",
+        "FulfilledUnits",
+        "UnmetUnits",
+        "ReceivedUnits",
+        "PlacedUnits",
+        "HoldingCost",
+        "ShortageCost",
+        "OrderingCost",
+        "TerminalCost",
+        "TotalCost",
+        "StockoutDays",
+        "Orders",
+        "AverageOnHand",
+        "AverageInventoryPosition",
+        "FinalOnHand",
+        "FinalPipeline",
+        "InitialOnHand",
+        "ForecastMAE",
+        "OriginSampleAllZero"
+      ],
+      "file": "artifacts/powerbi/data/FactInventorySeriesBase.csv",
+      "grain": "Series x origin x policy, base scenario only",
+      "keys": [
+        "SeriesKey",
+        "OriginKey",
+        "PolicyKey"
+      ],
+      "rows": 495840,
+      "sha256": "504a4fb1f58e22cf12d24a0aef1fca0d12c790c0510e8955c0f54789897d3ced"
+    },
+    "FactModelSelectionTrials": {
+      "bytes": 4968,
+      "columns": [
+        "TrialId",
+        "DatasetKey",
+        "TrialKind",
+        "Algorithm",
+        "ValidationMacroMAE",
+        "ValidationMacroMASE",
+        "ValidationMacroRMSSE",
+        "ValidationPooledRMSE",
+        "ValidationPooledWAPEPercent",
+        "ValidationBiasUnits",
+        "Observations",
+        "FallbackObservations",
+        "IsSelected"
+      ],
+      "file": "artifacts/powerbi/data/FactModelSelectionTrials.csv",
+      "grain": "One row per Phase 4 trial",
+      "keys": [
+        "TrialId"
+      ],
+      "rows": 27,
+      "sha256": "cb771425a7d14f39ec20557a43aa1b2c60a3b8e4b25c2d4e4de96579a8a0650a"
+    },
+    "FactScientificValidation": {
+      "bytes": 1319,
+      "columns": [
+        "CheckId",
+        "Check",
+        "Status",
+        "EvidencePath",
+        "EvidenceSha256"
+      ],
+      "file": "artifacts/powerbi/data/FactScientificValidation.csv",
+      "grain": "One row per verification receipt",
+      "keys": [
+        "CheckId"
+      ],
+      "rows": 8,
+      "sha256": "d4dd87773b6ee82336105189c4cc76d8e502886874b40b0529b2a96da45600ee"
+    }
+  }
+}

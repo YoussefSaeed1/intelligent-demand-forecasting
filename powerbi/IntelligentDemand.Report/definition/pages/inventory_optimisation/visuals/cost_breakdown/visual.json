@@ -1,0 +1,101 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "cost_breakdown",
+  "position": {
+    "x": 656,
+    "y": 226,
+    "z": 15,
+    "height": 206,
+    "width": 600,
+    "tabOrder": 15
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimInventoryPolicy"
+                    }
+                  },
+                  "Property": "Policy"
+                }
+              },
+              "queryRef": "DimInventoryPolicy.Policy",
+              "nativeQueryRef": "Policy",
+              "active": true,
+              "displayName": "Policy"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Holding Cost per Episode (NCU)"
+                }
+              },
+              "queryRef": "_Measures.Holding Cost per Episode (NCU)",
+              "nativeQueryRef": "Holding Cost per Episode (NCU)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Ordering Cost per Episode (NCU)"
+                }
+              },
+              "queryRef": "_Measures.Ordering Cost per Episode (NCU)",
+              "nativeQueryRef": "Ordering Cost per Episode (NCU)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Unmet Demand Penalty per Episode (NCU)"
+                }
+              },
+              "queryRef": "_Measures.Unmet Demand Penalty per Episode (NCU)",
+              "nativeQueryRef": "Unmet Demand Penalty per Episode (NCU)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cost components per series-episode (NCU)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

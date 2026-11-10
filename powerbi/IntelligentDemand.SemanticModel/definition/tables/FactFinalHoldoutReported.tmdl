@@ -1,0 +1,118 @@
+/// Saved Phase 4 one-time final-holdout results, reported exactly as recorded. Not a new evaluation and never recomputed.
+table FactFinalHoldoutReported
+	lineageTag: ea8b6ede-f3f2-5566-bf2d-97a0c5e394c3
+
+	column DatasetKey
+		dataType: string
+		isHidden
+		lineageTag: 30575091-8116-53d0-89e7-8592421e373e
+		summarizeBy: none
+		sourceColumn: DatasetKey
+
+		annotation SummarizationSetBy = User
+
+	column TrialId
+		dataType: string
+		lineageTag: c96174bc-7112-5dfb-9583-7beb916a9ac2
+		summarizeBy: none
+		sourceColumn: TrialId
+
+		annotation SummarizationSetBy = User
+
+	column Algorithm
+		dataType: string
+		lineageTag: ad87738d-a449-5521-8b3d-faa5b93e9595
+		summarizeBy: none
+		sourceColumn: Algorithm
+
+		annotation SummarizationSetBy = User
+
+	column Role
+		dataType: string
+		lineageTag: 01cefc85-52a4-58ab-9ff3-af538a86cea6
+		summarizeBy: none
+		sourceColumn: Role
+
+		annotation SummarizationSetBy = User
+
+	column EvidenceType
+		dataType: string
+		lineageTag: 54d180b9-e51e-5b27-a93d-9f12958c6e52
+		summarizeBy: none
+		sourceColumn: EvidenceType
+
+		annotation SummarizationSetBy = User
+
+	column MacroMAE
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 5aad621b-21dc-53c0-bb69-c786659f7f6c
+		summarizeBy: none
+		sourceColumn: MacroMAE
+
+		annotation SummarizationSetBy = User
+
+	column MacroMASE
+		dataType: double
+		formatString: 0.0000
+		lineageTag: d631312e-a0d5-554d-b629-d1adf8ad9e38
+		summarizeBy: none
+		sourceColumn: MacroMASE
+
+		annotation SummarizationSetBy = User
+
+	column MacroRMSSE
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 2c118ffb-3000-5685-b058-b681fef1cbc5
+		summarizeBy: none
+		sourceColumn: MacroRMSSE
+
+		annotation SummarizationSetBy = User
+
+	column PooledRMSE
+		dataType: double
+		formatString: 0.0000
+		lineageTag: 689e3bec-97b3-5ee6-be51-308903325e93
+		summarizeBy: none
+		sourceColumn: PooledRMSE
+
+		annotation SummarizationSetBy = User
+
+	column PooledWAPEPercent
+		dataType: double
+		formatString: 0.00
+		lineageTag: b34114be-61e7-55df-b272-34c72acf55ef
+		summarizeBy: none
+		sourceColumn: PooledWAPEPercent
+
+		annotation SummarizationSetBy = User
+
+	column Series
+		dataType: int64
+		formatString: #,##0
+		lineageTag: b773de76-dbfe-5e31-861b-98d9d6597d11
+		summarizeBy: none
+		sourceColumn: Series
+
+		annotation SummarizationSetBy = User
+
+	column Observations
+		dataType: int64
+		formatString: #,##0
+		lineageTag: 5353285b-7f08-5e08-9e88-1372d9f73eb8
+		summarizeBy: none
+		sourceColumn: Observations
+
+		annotation SummarizationSetBy = User
+
+	partition FactFinalHoldoutReported = m
+		mode: import
+		source =
+				let
+				    Source = LoadReportingTable("FactFinalHoldoutReported", {{"DatasetKey", type text}, {"TrialId", type text}, {"Algorithm", type text}, {"Role", type text}, {"EvidenceType", type text}, {"MacroMAE", type number}, {"MacroMASE", type number}, {"MacroRMSSE", type number}, {"PooledRMSE", type number}, {"PooledWAPEPercent", type number}, {"Series", Int64.Type}, {"Observations", Int64.Type}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

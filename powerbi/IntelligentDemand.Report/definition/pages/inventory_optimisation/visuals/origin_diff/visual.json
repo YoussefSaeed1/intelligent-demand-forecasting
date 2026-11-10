@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "origin_diff",
+  "position": {
+    "x": 24,
+    "y": 442,
+    "z": 16,
+    "height": 226,
+    "width": 620,
+    "tabOrder": 16
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimValidationOrigin"
+                    }
+                  },
+                  "Property": "FoldLabel"
+                }
+              },
+              "queryRef": "DimValidationOrigin.FoldLabel",
+              "nativeQueryRef": "FoldLabel",
+              "active": true,
+              "displayName": "Validation origin"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "ML vs MA28 Cost Difference (NCU)"
+                }
+              },
+              "queryRef": "_Measures.ML vs MA28 Cost Difference (NCU)",
+              "nativeQueryRef": "ML vs MA28 Cost Difference (NCU)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "ML vs Seasonal Naive Cost Difference (NCU)"
+                }
+              },
+              "queryRef": "_Measures.ML vs Seasonal Naive Cost Difference (NCU)",
+              "nativeQueryRef": "ML vs Seasonal Naive Cost Difference (NCU)"
+            }
+          ]
+        },
+        "Series": {
+          "projections": []
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Selected ML cost difference by validation origin (NCU per episode)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

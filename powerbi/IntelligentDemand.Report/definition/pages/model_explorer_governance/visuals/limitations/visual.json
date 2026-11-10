@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "limitations",
+  "position": {
+    "x": 24,
+    "y": 926,
+    "z": 12,
+    "height": 220,
+    "width": 1232,
+    "tabOrder": 12
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimLimitation"
+                    }
+                  },
+                  "Property": "LimitationId"
+                }
+              },
+              "queryRef": "DimLimitation.LimitationId",
+              "nativeQueryRef": "LimitationId",
+              "active": true,
+              "displayName": "ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimLimitation"
+                    }
+                  },
+                  "Property": "Limitation"
+                }
+              },
+              "queryRef": "DimLimitation.Limitation",
+              "nativeQueryRef": "Limitation",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimLimitation"
+                    }
+                  },
+                  "Property": "SourceDocument"
+                }
+              },
+              "queryRef": "DimLimitation.SourceDocument",
+              "nativeQueryRef": "SourceDocument",
+              "active": true,
+              "displayName": "Source document"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Declared scientific limitations'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,2 @@
+# Preserve Desktop-authored PBIP/PBIR/TMDL bytes, including manual layout edits.
+* -text whitespace=cr-at-eol

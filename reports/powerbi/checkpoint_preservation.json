@@ -1,0 +1,24 @@
+{
+  "current_pbip_backup": {
+    "backup_kind": "LOCAL BACKUP ON THE SAME DEVICE; not independent off-device backup",
+    "bytes": 292850,
+    "destination": "C:\\Project_Backups\\Demand_Forecasting_Phase6_PBIP_verified_20261110",
+    "files": 129,
+    "inventory_sha256": "7b016185d232e197e230eee66d97c275f95379997200fade3bae065c89466443",
+    "mismatched": 0,
+    "missing": 0,
+    "sidecars": 2,
+    "unexpected": 0
+  },
+  "historical_report_backup": {
+    "files": 97,
+    "missing": 0,
+    "scope": "Owner-provided Claude temporary historical snapshot; differs from current Desktop-saved bytes; retained unchanged.",
+    "sha256_mismatches": 0,
+    "unexpected": 0
+  },
+  "manual_definitions_unchanged": true,
+  "scope": "Current definition snapshot only, not a new scientific experiment backup; reporting CSVs remain local ignored inputs authenticated by data_manifest.json.",
+  "snapshot_date": "2026-11-10",
+  "status": "passed"
+}
