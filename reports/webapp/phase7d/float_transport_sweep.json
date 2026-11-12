@@ -1,0 +1,1112 @@
+{
+  "pairs": 3200,
+  "sessions_extra_float_digits": {
+    "exact": "1",
+    "lossy": "0"
+  },
+  "seconds": 712,
+  "defect_text_lossy": {
+    "pairs_with_altered_inputs": 3200,
+    "pairs_with_any_output_difference": 2701,
+    "pairs_with_material_differences": 182
+  },
+  "fixed_binary_lossy": {
+    "pairs_with_any_difference": 0,
+    "failures": []
+  },
+  "affected_pairs": [
+    {
+      "seriesKey": "m5|4:CA_1FOODS_3_764",
+      "originKey": "m5|3",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_1HOBBIES_1_371",
+      "originKey": "m5|2",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_1HOUSEHOLD_1_072",
+      "originKey": "m5|1",
+      "paths": 257,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_1HOUSEHOLD_2_021",
+      "originKey": "m5|1",
+      "paths": 305,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_1HOUSEHOLD_2_021",
+      "originKey": "m5|4",
+      "paths": 193,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_1HOUSEHOLD_2_155",
+      "originKey": "m5|4",
+      "paths": 87,
+      "example": ".policies[1].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_1HOUSEHOLD_2_291",
+      "originKey": "m5|4",
+      "paths": 110,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_2FOODS_2_117",
+      "originKey": "m5|3",
+      "paths": 183,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_2FOODS_2_148",
+      "originKey": "m5|4",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_2FOODS_3_191",
+      "originKey": "m5|4",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_2FOODS_3_356",
+      "originKey": "m5|1",
+      "paths": 282,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_2FOODS_3_449",
+      "originKey": "m5|4",
+      "paths": 199,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_2HOBBIES_1_084",
+      "originKey": "m5|4",
+      "paths": 95,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_2HOBBIES_1_117",
+      "originKey": "m5|1",
+      "paths": 180,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_2HOBBIES_1_117",
+      "originKey": "m5|3",
+      "paths": 224,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_2HOUSEHOLD_1_155",
+      "originKey": "m5|1",
+      "paths": 196,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3FOODS_2_232",
+      "originKey": "m5|2",
+      "paths": 214,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3FOODS_3_346",
+      "originKey": "m5|4",
+      "paths": 243,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3FOODS_3_541",
+      "originKey": "m5|3",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3FOODS_3_595",
+      "originKey": "m5|3",
+      "paths": 104,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3FOODS_3_654",
+      "originKey": "m5|3",
+      "paths": 207,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3FOODS_3_763",
+      "originKey": "m5|2",
+      "paths": 184,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3HOBBIES_1_043",
+      "originKey": "m5|1",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3HOBBIES_1_224",
+      "originKey": "m5|1",
+      "paths": 193,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3HOBBIES_2_130",
+      "originKey": "m5|4",
+      "paths": 370,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3HOUSEHOLD_1_497",
+      "originKey": "m5|1",
+      "paths": 274,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3HOUSEHOLD_1_516",
+      "originKey": "m5|1",
+      "paths": 101,
+      "example": ".policies[1].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_3HOUSEHOLD_2_459",
+      "originKey": "m5|3",
+      "paths": 101,
+      "example": ".policies[1].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_4FOODS_3_523",
+      "originKey": "m5|2",
+      "paths": 151,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:CA_4HOUSEHOLD_1_416",
+      "originKey": "m5|2",
+      "paths": 184,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1FOODS_1_046",
+      "originKey": "m5|1",
+      "paths": 123,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1FOODS_2_103",
+      "originKey": "m5|1",
+      "paths": 273,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1FOODS_2_249",
+      "originKey": "m5|2",
+      "paths": 292,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1FOODS_2_331",
+      "originKey": "m5|1",
+      "paths": 256,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1FOODS_3_099",
+      "originKey": "m5|3",
+      "paths": 213,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1FOODS_3_223",
+      "originKey": "m5|1",
+      "paths": 229,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1FOODS_3_319",
+      "originKey": "m5|1",
+      "paths": 44,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1FOODS_3_704",
+      "originKey": "m5|2",
+      "paths": 264,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1HOBBIES_1_077",
+      "originKey": "m5|3",
+      "paths": 309,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1HOBBIES_1_233",
+      "originKey": "m5|1",
+      "paths": 151,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1HOUSEHOLD_1_110",
+      "originKey": "m5|4",
+      "paths": 204,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1HOUSEHOLD_1_439",
+      "originKey": "m5|1",
+      "paths": 90,
+      "example": ".policies[1].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_1HOUSEHOLD_1_451",
+      "originKey": "m5|1",
+      "paths": 209,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_2FOODS_2_077",
+      "originKey": "m5|2",
+      "paths": 194,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_2FOODS_2_178",
+      "originKey": "m5|3",
+      "paths": 256,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_2FOODS_2_178",
+      "originKey": "m5|4",
+      "paths": 404,
+      "example": ".policies[0].summary.holding_cost"
+    },
+    {
+      "seriesKey": "m5|4:TX_2HOBBIES_2_052",
+      "originKey": "m5|4",
+      "paths": 52,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_3FOODS_2_206",
+      "originKey": "m5|1",
+      "paths": 170,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_3FOODS_3_205",
+      "originKey": "m5|3",
+      "paths": 472,
+      "example": ".policies[0].summary.holding_cost"
+    },
+    {
+      "seriesKey": "m5|4:TX_3HOUSEHOLD_1_251",
+      "originKey": "m5|2",
+      "paths": 199,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_3HOUSEHOLD_1_327",
+      "originKey": "m5|1",
+      "paths": 214,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_3HOUSEHOLD_1_361",
+      "originKey": "m5|4",
+      "paths": 210,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:TX_3HOUSEHOLD_1_472",
+      "originKey": "m5|2",
+      "paths": 241,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_1FOODS_2_225",
+      "originKey": "m5|3",
+      "paths": 297,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_1FOODS_3_451",
+      "originKey": "m5|3",
+      "paths": 180,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_1HOBBIES_1_295",
+      "originKey": "m5|4",
+      "paths": 224,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_1HOUSEHOLD_1_223",
+      "originKey": "m5|2",
+      "paths": 189,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_1HOUSEHOLD_2_031",
+      "originKey": "m5|4",
+      "paths": 244,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_1HOUSEHOLD_2_062",
+      "originKey": "m5|1",
+      "paths": 201,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_1HOUSEHOLD_2_144",
+      "originKey": "m5|1",
+      "paths": 239,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_1HOUSEHOLD_2_144",
+      "originKey": "m5|3",
+      "paths": 266,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_1HOUSEHOLD_2_144",
+      "originKey": "m5|4",
+      "paths": 179,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_1HOUSEHOLD_2_311",
+      "originKey": "m5|1",
+      "paths": 220,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_2FOODS_3_064",
+      "originKey": "m5|2",
+      "paths": 185,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_2HOBBIES_1_342",
+      "originKey": "m5|2",
+      "paths": 204,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_2HOBBIES_1_342",
+      "originKey": "m5|3",
+      "paths": 332,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_3FOODS_1_161",
+      "originKey": "m5|1",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_3FOODS_1_161",
+      "originKey": "m5|3",
+      "paths": 171,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_3FOODS_3_589",
+      "originKey": "m5|1",
+      "paths": 272,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_3FOODS_3_589",
+      "originKey": "m5|2",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_3FOODS_3_674",
+      "originKey": "m5|2",
+      "paths": 171,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_3HOBBIES_2_105",
+      "originKey": "m5|4",
+      "paths": 143,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_3HOUSEHOLD_1_230",
+      "originKey": "m5|4",
+      "paths": 265,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_3HOUSEHOLD_2_232",
+      "originKey": "m5|1",
+      "paths": 121,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "m5|4:WI_3HOUSEHOLD_2_328",
+      "originKey": "m5|4",
+      "paths": 301,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:11",
+      "originKey": "store_item|2",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:113",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:118",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:12",
+      "originKey": "store_item|3",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:130",
+      "originKey": "store_item|4",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:132",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:134",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:134",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:145",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:146",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:148",
+      "originKey": "store_item|1",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:19",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:21",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:211",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:211",
+      "originKey": "store_item|3",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:213",
+      "originKey": "store_item|1",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:217",
+      "originKey": "store_item|1",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:22",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:221",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:233",
+      "originKey": "store_item|2",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:29",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:31",
+      "originKey": "store_item|1",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:322",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:328",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:33",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:330",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:331",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:332",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:338",
+      "originKey": "store_item|2",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:341",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:341",
+      "originKey": "store_item|4",
+      "paths": 299,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:411",
+      "originKey": "store_item|2",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:419",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:425",
+      "originKey": "store_item|1",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:430",
+      "originKey": "store_item|4",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:436",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:45",
+      "originKey": "store_item|1",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:47",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:51",
+      "originKey": "store_item|4",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:514",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:517",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:526",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:527",
+      "originKey": "store_item|3",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:531",
+      "originKey": "store_item|2",
+      "paths": 177,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:537",
+      "originKey": "store_item|1",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:548",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:550",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:58",
+      "originKey": "store_item|2",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:611",
+      "originKey": "store_item|3",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:612",
+      "originKey": "store_item|4",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:613",
+      "originKey": "store_item|3",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:616",
+      "originKey": "store_item|1",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:620",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:629",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:638",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:64",
+      "originKey": "store_item|4",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:642",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:646",
+      "originKey": "store_item|2",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:711",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:713",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:714",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:721",
+      "originKey": "store_item|3",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:723",
+      "originKey": "store_item|3",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:73",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:731",
+      "originKey": "store_item|2",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:732",
+      "originKey": "store_item|3",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:734",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:734",
+      "originKey": "store_item|3",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:743",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:749",
+      "originKey": "store_item|1",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:81",
+      "originKey": "store_item|1",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:814",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:82",
+      "originKey": "store_item|4",
+      "paths": 257,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:824",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:827",
+      "originKey": "store_item|4",
+      "paths": 299,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:834",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:837",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:841",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:845",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:849",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:86",
+      "originKey": "store_item|3",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:913",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:914",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:914",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:916",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:918",
+      "originKey": "store_item|2",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:919",
+      "originKey": "store_item|2",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:92",
+      "originKey": "store_item|4",
+      "paths": 299,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:921",
+      "originKey": "store_item|1",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:927",
+      "originKey": "store_item|1",
+      "paths": 337,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:93",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:933",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:934",
+      "originKey": "store_item|3",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:94",
+      "originKey": "store_item|3",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:944",
+      "originKey": "store_item|4",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:947",
+      "originKey": "store_item|2",
+      "paths": 106,
+      "example": ".policies[1].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|1:948",
+      "originKey": "store_item|4",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:950",
+      "originKey": "store_item|3",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|1:97",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|2:1013",
+      "originKey": "store_item|2",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|2:1016",
+      "originKey": "store_item|4",
+      "paths": 227,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|2:1032",
+      "originKey": "store_item|4",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|2:1036",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|2:1037",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|2:1048",
+      "originKey": "store_item|1",
+      "paths": 255,
+      "example": ".policies[0].summary.fulfilled_units"
+    },
+    {
+      "seriesKey": "store_item|2:105",
+      "originKey": "store_item|2",
+      "paths": 248,
+      "example": ".policies[0].summary.received_units"
+    },
+    {
+      "seriesKey": "store_item|2:107",
+      "originKey": "store_item|3",
+      "paths": 324,
+      "example": ".policies[0].summary.received_units"
+    }
+  ],
+  "overall": "PASS"
+}

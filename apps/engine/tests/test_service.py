@@ -221,3 +221,32 @@ def test_unexpected_errors_log_the_class_only(client, monkeypatch, caplog):
     assert_no_internals(response)
     logged = "\n".join(r.getMessage() + (r.exc_text or "") for r in caplog.records)
     assert "RuntimeError" in logged and "leaky" not in logged and "aws-1-example" not in logged
+
+
+@pytest.mark.parametrize(
+    ("label", "kwargs", "status"),
+    [
+        ("missing key", {"key": ""}, 401),
+        ("wrong key", {"key": "w" * 40 + "SENSITIVE-KEY-VALUE"}, 401),
+    ],
+)
+def test_early_rejections_are_logged_without_sensitive_values(client, caplog, label, kwargs, status):
+    with caplog.at_level("INFO", logger="engine"):
+        response = post(client, {**BASE_BODY, "note": "BODY-MARKER"}, **kwargs)
+    assert response.status_code == status, label
+    lines = [r.getMessage() for r in caplog.records]
+    assert any(f'"status":{status}' in line and '"path":"/simulate"' in line for line in lines), lines
+    joined = "\n".join(lines)
+    for secret in ("SENSITIVE-KEY-VALUE", KEY, "BODY-MARKER", "x-engine-key"):
+        assert secret not in joined
+
+
+def test_oversized_rejection_is_logged_without_the_body(client, caplog):
+    with caplog.at_level("INFO", logger="engine"):
+        response = client.post("/simulate", content=b'{"x":"' + b"Z" * 9000 + b'"}',
+                               headers={"x-engine-key": KEY, "content-type": "application/json"})
+    assert response.status_code == 413
+    lines = [r.getMessage() for r in caplog.records]
+    assert any('"status":413' in line for line in lines), lines
+    assert "ZZZZ" not in "\n".join(lines) and KEY not in "\n".join(lines)
+    assert response.headers["x-request-id"] and response.headers["cache-control"] == "no-store"

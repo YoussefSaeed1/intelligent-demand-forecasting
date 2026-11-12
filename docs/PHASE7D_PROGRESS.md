@@ -1,12 +1,12 @@
 # Phase 7D progress
 
-Last updated: 2026-11-12. Current subphase: **7D-2 P-3 remediation: owner fixed ENGINE_DATABASE_URL (helper LOGIN OK) and edited ENGINE_SHARED_KEY; engine auth/503 patch committed locally; push + redeploy + live checks pending.**
+Last updated: 2026-11-12. Current subphase: **7D-2 P-3: lossless float-transport fix committed, pushed and auto-deployed; owner production run of E-01..E-08 pending. P-3 NOT closed.**
 
 | Subphase | Status |
 |---|---|
 | 7D-0 pre-deployment readiness | DONE: [report](PHASE7D_PREDEPLOYMENT_REPORT.md), [runbook](PHASE7D_DEPLOYMENT_RUNBOOK.md), [QA plan](PHASE7D_PRODUCTION_QA_PLAN.md), [rollback](PHASE7D_ROLLBACK_PLAN.md) |
 | 7D-1 Supabase | DONE: project, migration, SCRAM role passwords, seed, live gates and independent verification all PASS |
-| 7D-2 engine | P-1, P-2 DONE; P-3 deployed READY at idf-engine.vercel.app; E-01/E-04..E-07 pending owner run; protection scope decision pending |
+| 7D-2 engine | P-1, P-2 DONE; P-3 float-transport fix deployed; production E-01..E-08 re-run pending (owner) |
 | 7D-3 web | NOT STARTED |
 | 7D-4 production QA | NOT STARTED |
 
@@ -218,3 +218,44 @@ Last updated: 2026-11-12. Current subphase: **7D-2 P-3 remediation: owner fixed 
 - Tests: engine 56/56 (51 + 5 new regression cases: key-before-validation ×3, DB login failure → 503 for valid and unknown
   series, class-only error logging); engine package 23/23 with S-02 3,264/3,264 bit-exact (max rel. diff 0.0); web API 19/19
   via the patched local engine; Ruff clean; vendored engine identical; frozen evidence unchanged.
+
+## 7D-2 P-3 E-06 diagnosis (2026-11-12)
+- Deployment `dpl_BzZ4a8sXWD9ARo6QXdvhrw2PwxnU` (commit `e170d98`, fra1) live run 15:36:49Z: E-01..E-05 PASS (simulate 200,
+  unknown series 404), E-07 first 745.7 ms / warm median 417.2 ms (client-side; function time 117-257 ms), E-06 FAIL
+  (`bit_exact_vs_local_engine=false`, `saved_phase5_mismatches={}`).
+- Root cause: Supabase's postgresql.conf sets `extra_float_digits = 0` (pg_settings source "configuration file",
+  boot_val 1, reset_val 0); no role/database override. psycopg receives `double precision` as TEXT, so the engine parses
+  15-significant-digit strings (e.g. historical_mean56 27.9285714285714 instead of 27.928571428571427). Local Postgres uses
+  the default 1 (exact shortest round-trip).
+- Stored data are bit-identical to the local reference (md5 of raw float8send bits over all rows): forecasts
+  8ac4ba74…, validation_actuals f4f8b4ef…, series_origin_mean56 74053a84…, inventory_series_base d41169dc… (equal on both).
+- E-06 case store_item|1:11 origin 1: 1 differing JSON path (`historicalMean56`, rel 1.0e-15); 55/84 forecast inputs
+  altered in the last digits; all integer results equal, hence `saved_phase5_mismatches={}`.
+- Materiality (local reproduction with `-c extra_float_digits=0`, all 3,200 curated series-origin pairs, base scenario,
+  4 policies, 535 s): 2,701 pairs differ somewhere; **182 pairs (5.7%) differ beyond the echoed mean** — integer results
+  change via ceil boundaries (summary.total_cost 680 policy results, initial_on_hand 664, window_turnover 664, daily stock and
+  holding cost). Scientifically material; the strict bit-exact check is justified.
+- E-08 PASS: 14 info lines on the active deployment, 0 errors/warnings, no credentials/URLs/headers/tracebacks; 401/413
+  early returns are not logged (observability gap, not a leak).
+- Proposed fix (applied, see below): read engine inputs in psycopg binary result format (exact IEEE-754, independent of server
+  float settings) + regression tests + log early rejections; web postgres.js text floats to be addressed in 7D-3.
+
+## 7D-2 P-3 lossless float-transport remediation (2026-11-12, approved)
+- `engine_service/data.py`: all four input queries use psycopg binary result format (`binary=True`), so `double precision`
+  arrives as exact IEEE-754 bits regardless of server `extra_float_digits`. No engine, inventory-maths or data change.
+- `engine_service/app.py`: early 401/413/503 rejections now emit the same one-line structured log (id, path, status, ms only).
+- Sweep `tools/phase7d/float_transport_sweep.py` (local reference DB, 3,200 pairs, base scenario, 4 policies, 712 s):
+  defect path (text, `extra_float_digits=0`) alters inputs on 3,200 pairs, any output on 2,701, material outputs on 182
+  (107 store_item, 75 m5); fixed path (binary, same lossy session) **0 differences** in inputs and outputs, bit for bit.
+  Evidence: `reports/webapp/phase7d/float_transport_sweep.json` (overall PASS).
+- Regression tests `apps/engine/tests/test_float_transport.py` 10/10, none skipped: text+`extra_float_digits=0` reproduces
+  the defect (27.9285714285714 vs 27.928571428571427); binary reads preserve every stored bit of means, forecasts, actuals;
+  production loader lossless on a lossy session; 4 known affected pairs (store_item|1:11@2, store_item|1:113@2,
+  m5|4:CA_1FOODS_3_764@3, m5|4:CA_1HOBBIES_1_371@2) confirmed defective on text and bit-exact on binary.
+- Live checker strict: E-06 compares production vs local engine bit-exactly (struct-packed float equality, differing JSON
+  paths listed, no tolerance) on the base pair plus the 4 affected pairs, and saved Phase 5 fields at full precision.
+  Local dry run: 5/5 pairs bit-exact, 0 saved mismatches.
+- Verification: engine 69/69 (none skipped); engine package 23/23 with S-02 3,264/3,264 bit-exact (max rel. diff 0.0);
+  vendored engine identical; frozen evidence (plan/execution/selection/ledger) unchanged; Ruff clean; web API 19/19 via
+  the patched local engine. `reports/webapp/phase7d/live_engine_checks.json` is the pre-fix 15:36Z run (E-06 FAIL).
+- Web (postgres.js) float precision is a known 7D-3 risk, documented in the runbook; frontend unchanged.

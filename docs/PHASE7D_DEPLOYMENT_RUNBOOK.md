@@ -71,6 +71,19 @@ database under 200 MB.
    - Optional: `RATE_LIMIT_SIMULATE_PER_MINUTE`, `RATE_LIMIT_SIMULATE_PER_DAY`, `RATE_LIMIT_READ_PER_MINUTE`.
 3. Deploy, then run the QA plan sections W and S.
 
+**Known risk to resolve before 7D-3 deployment: float precision in the web API (found in 7D-2 P-3).** Supabase's server
+configuration sets `extra_float_digits = 0`, so every `double precision` value read in text format is rounded to 15
+significant digits. The engine was fixed by reading its inputs in binary format. The web app (postgres.js) still reads text:
+- Displayed values (2-4 decimals) are unaffected, but metric ratios and NCU means computed in `/api/v1` from rounded
+  additive components can differ from the local reference in the last digits.
+- The web API tests that reproduce the registry metrics and the post-audit reconciliation could therefore fail or drift
+  against Supabase, and any exact comparison with saved values is unsafe.
+- Planner results are not affected: simulations run in the engine.
+- Proposed fix (7D-3, separate approval): make postgres.js return exact floats, either by setting
+  `extra_float_digits = 3` per transaction (`SET LOCAL` inside the query transaction, compatible with the transaction
+  pooler) or by binary result transfer. Add a regression test that forces `extra_float_digits = 0` locally and requires
+  bit-identical `/api/v1` numeric output. Verify against Supabase before go-live.
+
 ## 7D-4 Production verification
 
 Run the full [production QA plan](PHASE7D_PRODUCTION_QA_PLAN.md). Write `docs/PHASE7D_DEPLOYMENT_RECORD.md` with URLs, versions,

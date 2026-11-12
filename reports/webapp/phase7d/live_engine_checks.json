@@ -1,0 +1,78 @@
+{
+  "checked_utc": "2026-11-12T15:36:49+00:00",
+  "base": "https://idf-engine.vercel.app",
+  "bypass_supplied": true,
+  "first_simulate_ms": 745.7,
+  "first_simulate_status": 200,
+  "gates": {
+    "E-01 health": {
+      "pass": true,
+      "status": 200,
+      "health": {
+        "status": "ok",
+        "engineVersion": "cedc5a31533772fc",
+        "keyConfigured": true
+      },
+      "ms": 403.0
+    },
+    "E-02 protection": {
+      "deployment_url_without_bypass": 401,
+      "deployment_url_with_bypass": 200,
+      "production_domain_without_bypass": 401,
+      "pass": true
+    },
+    "E-03 key": {
+      "pass": true,
+      "wrong_key": 401,
+      "missing_key": 401
+    },
+    "E-04 invalid input": {
+      "pass": true,
+      "observed": {
+        "lead_days_out_of_bounds": 400,
+        "client_supplied_demand": 400,
+        "unknown_series": 404,
+        "dataset_mismatch": 400,
+        "oversized_body": 413
+      },
+      "expected": {
+        "lead_days_out_of_bounds": 400,
+        "client_supplied_demand": 400,
+        "unknown_series": 404,
+        "dataset_mismatch": 400,
+        "oversized_body": 413
+      }
+    },
+    "E-05 simulation": {
+      "pass": true,
+      "status": 200,
+      "engineVersion": "cedc5a31533772fc"
+    },
+    "E-06 parity": {
+      "pass": false,
+      "local_engine_status": 200,
+      "bit_exact_vs_local_engine": false,
+      "saved_phase5_mismatches": {},
+      "totals": {
+        "selected_ml": 2555.0,
+        "moving_average_28": 2772.0,
+        "seasonal_naive": 2900.0,
+        "fixed_reorder_point": 1309.0
+      }
+    },
+    "E-07 latency": {
+      "pass": true,
+      "first_simulate_ms": 745.7,
+      "warm_simulate_ms": [
+        356.6,
+        403.5,
+        417.2,
+        461.1,
+        428.6
+      ],
+      "warm_median_ms": 417.2,
+      "health_ms": 403.0
+    }
+  },
+  "overall": "FAIL"
+}

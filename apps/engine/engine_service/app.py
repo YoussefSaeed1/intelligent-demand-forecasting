@@ -46,23 +46,27 @@ def configured_key():
 async def guard(request: Request, call_next):
     request_id = request.headers.get("x-request-id", "")[:64] or uuid.uuid4().hex
     request.state.request_id = request_id
+    started = time.perf_counter()
+    response = None
     length = request.headers.get("content-length")
     if length is not None and (not length.isdigit() or int(length) > MAX_BODY):
-        return error(413, "payload_too_large", "Request body too large", request_id)
-    if request.method == "POST" and request.url.path == "/simulate":
+        response = error(413, "payload_too_large", "Request body too large", request_id)
+    elif request.method == "POST" and request.url.path == "/simulate":
         # Authenticate from headers BEFORE the body is parsed or validated, so unauthenticated callers learn nothing
         # about the request schema. Constant-time comparison; the handler re-checks as defence in depth.
         key = configured_key()
         if key is None:
-            return error(503, "not_configured", "Simulation service is not configured", request_id)
-        if not hmac.compare_digest(request.headers.get("x-engine-key", "").encode(), key.encode()):
-            return error(401, "unauthorized", "Missing or invalid service credentials", request_id)
-    started = time.perf_counter()
-    try:
-        response = await call_next(request)
-    except Exception as exc:  # never leak internals: class name only, no message or traceback (may carry host names)
-        LOG.error("unhandled error request_id=%s type=%s", request_id, type(exc).__name__)
-        response = error(500, "internal_error", "The simulation could not be completed", request_id)
+            response = error(503, "not_configured", "Simulation service is not configured", request_id)
+        elif not hmac.compare_digest(request.headers.get("x-engine-key", "").encode(), key.encode()):
+            response = error(401, "unauthorized", "Missing or invalid service credentials", request_id)
+    if response is None:
+        try:
+            response = await call_next(request)
+        except Exception as exc:  # never leak internals: class name only, no message or traceback (may carry host names)
+            LOG.error("unhandled error request_id=%s type=%s", request_id, type(exc).__name__)
+            response = error(500, "internal_error", "The simulation could not be completed", request_id)
+    # One structured line for EVERY request, early rejections included: id, path, status, duration only
+    # (never headers, keys, query strings or bodies).
     LOG.info(
         '{"request_id":"%s","path":"%s","status":%d,"ms":%.1f}',
         request_id,

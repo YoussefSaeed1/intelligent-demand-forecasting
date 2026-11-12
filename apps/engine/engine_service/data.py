@@ -44,26 +44,37 @@ def connect(url):
 
 
 def load_inputs(conn, series_key, origin_key):
+    """Load one series-origin's saved inputs with LOSSLESS float transport.
+
+    Every query uses psycopg's binary result format, so double precision values arrive as their exact IEEE-754 bits.
+    Text format is unsafe: Supabase's server configuration sets extra_float_digits=0, which rounds text output to 15
+    significant digits and changed integer planner results for 182 of 3,200 curated series-origin pairs (Phase 7D-2 P-3).
+    """
     dataset = series_key.split("|")[0]
     origin = conn.execute(
-        "select origin_date, validation_start from app.validation_origins where origin_key = %s", (origin_key,)
+        "select origin_date, validation_start from app.validation_origins where origin_key = %s",
+        (origin_key,),
+        binary=True,
     ).fetchone()
     if origin is None:
         raise NotFound("origin")
     demand = conn.execute(
         "select units from app.validation_actuals where series_key = %s and origin_key = %s order by date",
         (series_key, origin_key),
+        binary=True,
     ).fetchall()
     if len(demand) != 28:
         raise NotFound("series")
     mean = conn.execute(
         "select historical_mean56 from app.series_origin_mean56 where series_key = %s and origin_key = %s",
         (series_key, origin_key),
+        binary=True,
     ).fetchone()
     rows = conn.execute(
         "select model_key, forecast from app.forecasts where series_key = %s and origin_key = %s "
         "order by model_key, horizon_day",
         (series_key, origin_key),
+        binary=True,
     ).fetchall()
     forecasts = {}
     for role in FORECAST_ROLES:
