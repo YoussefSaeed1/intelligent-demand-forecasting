@@ -1,0 +1,246 @@
+{
+ "validation_fold_mae": {
+  "store_item_lightgbm_00": [
+   6.492088088665719,
+   6.260136069670047,
+   6.157554588806195,
+   6.322380540737706
+  ],
+  "store_item_seasonal_naive_reference": [
+   9.153214285714286,
+   8.783928571428573,
+   8.577285714285713,
+   10.105428571428572
+  ],
+  "store_item_seasonal_moving_average_reference": [
+   9.131964285714286,
+   7.773892857142857,
+   7.099678571428571,
+   8.341071428571427
+  ],
+  "store_item_holt_winters_additive_01": [
+   6.872005886334718,
+   6.609829902192527,
+   6.770359515583637,
+   7.921101746417289
+  ],
+  "m5_random_forest_02": [
+   0.9986903229382016,
+   1.0195172344666987,
+   1.0345736584988314,
+   1.0274867244328751
+  ],
+  "m5_seasonal_naive_reference": [
+   1.2055755985569039,
+   1.1994494682097177,
+   1.210618235487045,
+   1.2323548704493277
+  ],
+  "m5_moving_average_28_reference": [
+   1.014950033801648,
+   1.0332807343993682,
+   1.0457541281517526,
+   1.0411320038018488
+  ],
+  "m5_tsb_01": [
+   1.0101687994289086,
+   1.0368755531147937,
+   1.0431494049193253,
+   1.0463306519699302
+  ]
+ },
+ "final_holdout": {
+  "store_item": {
+   "store_item_seasonal_moving_average_reference": {
+    "macro_mae": 15.807285714285713,
+    "pooled_rmse": 18.891610949988205,
+    "pooled_wape_percent": 35.65712112838542,
+    "macro_mase": 1.820069244472586,
+    "macro_rmsse": 1.5853869319500067
+   },
+   "store_item_seasonal_naive_reference": {
+    "macro_mae": 12.814642857142857,
+    "pooled_rmse": 16.701995175940596,
+    "pooled_wape_percent": 28.906497980307392,
+    "macro_mase": 1.504507045860958,
+    "macro_rmsse": 1.433303572448867
+   },
+   "store_item_holt_winters_additive_01": {
+    "macro_mae": 10.651093200657884,
+    "pooled_rmse": 13.299054685397643,
+    "pooled_wape_percent": 24.02609323764868,
+    "macro_mase": 1.243443621111095,
+    "macro_rmsse": 1.1269063023088488
+   },
+   "store_item_lightgbm_00": {
+    "macro_mae": 5.434342530628236,
+    "pooled_rmse": 7.06697597219678,
+    "pooled_wape_percent": 12.258461912447542,
+    "macro_mase": 0.6567390423570334,
+    "macro_rmsse": 0.6445638871980043
+   }
+  },
+  "m5": {
+   "m5_seasonal_naive_reference": {
+    "macro_mae": 1.2439722625685237,
+    "pooled_rmse": 2.6768948977123297,
+    "pooled_wape_percent": 86.2181391890005,
+    "macro_mase": 1.8101435299554276,
+    "macro_rmsse": 1.1782638799940646
+   },
+   "m5_moving_average_28_reference": {
+    "macro_mae": 1.0657293123874672,
+    "pooled_rmse": 2.242952959753161,
+    "pooled_wape_percent": 73.86434646339954,
+    "macro_mase": 1.6106176061344133,
+    "macro_rmsse": 0.9048751402500037
+   },
+   "m5_tsb_01": {
+    "macro_mae": 1.063192966557648,
+    "pooled_rmse": 2.208269197884313,
+    "pooled_wape_percent": 73.6885555520047,
+    "macro_mase": 1.6247120192718778,
+    "macro_rmsse": 0.915955327163257
+   },
+   "m5_random_forest_02": {
+    "macro_mae": 1.0472313706239513,
+    "pooled_rmse": 2.201063153675223,
+    "pooled_wape_percent": 72.5822775896259,
+    "macro_mase": 1.6370356807541435,
+    "macro_rmsse": 0.8976460386236976
+   }
+  }
+ },
+ "m5_relative_to_ma28": {
+  "m5_random_forest_02": {
+   "Macro MAE (primary)": -1.735707327227054,
+   "Pooled RMSE": -1.8676185737995898,
+   "Pooled WAPE": -1.7357073272270984,
+   "Macro MASE": 1.6402449916796291,
+   "Macro RMSSE": -0.7989059821345901
+  },
+  "m5_tsb_01": {
+   "Macro MAE (primary)": -0.23799156130341892,
+   "Pooled RMSE": -1.5463437036443595,
+   "Pooled WAPE": -0.23799156130346333,
+   "Macro MASE": 0.875093695969964,
+   "Macro RMSSE": 1.224498985593958
+  }
+ },
+ "inventory_ml_minus_reference_by_origin": {
+  "store_item": {
+   "moving_average_28": [
+    -915.7799999999997,
+    -598.0860000000002,
+    -375.9220000000005,
+    385.21199999999953
+   ],
+   "seasonal_naive": [
+    -200.3040000000001,
+    -158.192,
+    112.82600000000002,
+    -23.426000000000386
+   ]
+  },
+  "m5": {
+   "moving_average_28": [
+    0.3971138078058516,
+    2.3546080682191075,
+    1.6624139061987648,
+    3.175368973433905
+   ],
+   "seasonal_naive": [
+    -16.761954739258755,
+    -9.471695637914053,
+    -5.868153492948494,
+    -11.949754017710717
+   ]
+  }
+ },
+ "inventory_pooled": {
+  "m5": {
+   "fixed_reorder_point": {
+    "average_on_hand": 4.203696469568477,
+    "cost_per_demand_unit": 5.404832748207519,
+    "mean_cost": 205.13720072154806,
+    "pooled_fill_rate": 0.7956339266252013,
+    "stockout_days_per_episode": 2.639078386356182
+   },
+   "moving_average_28": {
+    "average_on_hand": 5.402169915194678,
+    "cost_per_demand_unit": 5.847082223733014,
+    "mean_cost": 221.92251557887832,
+    "pooled_fill_rate": 0.8340333887890455,
+    "stockout_days_per_episode": 2.2050672351590683
+   },
+   "seasonal_naive": {
+    "average_on_hand": 5.813157124115636,
+    "cost_per_demand_unit": 6.18723421170256,
+    "mean_cost": 234.83278123975074,
+    "pooled_fill_rate": 0.8275286303346419,
+    "stockout_days_per_episode": 2.318497868153493
+   },
+   "selected_ml": {
+    "average_on_hand": 5.54020287682144,
+    "cost_per_demand_unit": 5.897073161141942,
+    "mean_cost": 223.8198917677927,
+    "pooled_fill_rate": 0.8391890201578381,
+    "stockout_days_per_episode": 2.1486388979993443
+   }
+  },
+  "store_item": {
+   "fixed_reorder_point": {
+    "average_on_hand": 102.12339285714286,
+    "cost_per_demand_unit": 1.9177688262673371,
+    "mean_cost": 3276.439,
+    "pooled_fill_rate": 0.976763630957398,
+    "stockout_days_per_episode": 2.266
+   },
+   "moving_average_28": {
+    "average_on_hand": 218.51998214285712,
+    "cost_per_demand_unit": 3.7545927218835162,
+    "mean_cost": 6414.5865,
+    "pooled_fill_rate": 0.9838290417591474,
+    "stockout_days_per_episode": 0.971
+   },
+   "seasonal_naive": {
+    "average_on_hand": 207.48273214285712,
+    "cost_per_demand_unit": 3.573804598750691,
+    "mean_cost": 6105.7165,
+    "pooled_fill_rate": 0.9838258224931868,
+    "stockout_days_per_episode": 0.972
+   },
+   "selected_ml": {
+    "average_on_hand": 205.07853571428572,
+    "cost_per_demand_unit": 3.5344277081635904,
+    "mean_cost": 6038.4425,
+    "pooled_fill_rate": 0.9838281637775218,
+    "stockout_days_per_episode": 0.9715
+   }
+  }
+ },
+ "rolling_origin_design": {
+  "store_item": [
+   "2013-01-01",
+   [
+    "2017-08-13",
+    "2017-09-10",
+    "2017-10-08",
+    "2017-11-05"
+   ],
+   "2017-12-03",
+   "2017-12-31"
+  ],
+  "m5": [
+   "2011-01-29",
+   [
+    "2016-01-03",
+    "2016-01-31",
+    "2016-02-28",
+    "2016-03-27"
+   ],
+   "2016-04-24",
+   "2016-05-22"
+  ]
+ }
+}

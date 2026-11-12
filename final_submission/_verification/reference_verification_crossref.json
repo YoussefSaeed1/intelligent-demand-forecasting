@@ -1,0 +1,322 @@
+[
+ {
+  "doi": "10.1016/j.ijforecast.2006.03.001",
+  "title": "Another look at measures of forecast accuracy",
+  "authors": [
+   "Hyndman, Rob J.",
+   "Koehler, Anne B."
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2006,
+  "volume": "22",
+  "issue": "4",
+  "pages": "679-688"
+ },
+ {
+  "doi": "10.1057/palgrave.jors.2601841",
+  "title": "On the categorization of demand patterns",
+  "authors": [
+   "Syntetos, A A",
+   "Boylan, J E",
+   "Croston, J D"
+  ],
+  "journal": "Journal of the Operational Research Society",
+  "year": 2005,
+  "volume": "56",
+  "issue": "5",
+  "pages": "495-503"
+ },
+ {
+  "doi": "10.1016/j.ejor.2011.05.018",
+  "title": "Intermittent demand: Linking forecasting to inventory obsolescence",
+  "authors": [
+   "Teunter, Ruud H.",
+   "Syntetos, Aris A.",
+   "Zied Babai, M."
+  ],
+  "journal": "European Journal of Operational Research",
+  "year": 2011,
+  "volume": "214",
+  "issue": "3",
+  "pages": "606-615"
+ },
+ {
+  "doi": "10.2307/3007885",
+  "title": "Forecasting and Stock Control for Intermittent Demands",
+  "authors": [
+   "Croston, J. D."
+  ],
+  "journal": "Operational Research Quarterly (1970-1977)",
+  "year": 1972,
+  "volume": "23",
+  "issue": "3",
+  "pages": "289"
+ },
+ {
+  "doi": "10.1016/j.ijforecast.2004.10.001",
+  "title": "The accuracy of intermittent demand estimates",
+  "authors": [
+   "Syntetos, Aris A.",
+   "Boylan, John E."
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2005,
+  "volume": "21",
+  "issue": "2",
+  "pages": "303-314"
+ },
+ {
+  "doi": "10.1016/j.ijforecast.2021.11.013",
+  "title": "M5 accuracy competition: Results, findings, and conclusions",
+  "authors": [
+   "Makridakis, Spyros",
+   "Spiliotis, Evangelos",
+   "Assimakopoulos, Vassilios"
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2022,
+  "volume": "38",
+  "issue": "4",
+  "pages": "1346-1364"
+ },
+ {
+  "doi": "10.1023/A:1010933404324",
+  "title": "Random Forests",
+  "authors": [
+   "Breiman, Leo"
+  ],
+  "journal": "Machine Learning",
+  "year": 2001,
+  "volume": "45",
+  "issue": "1",
+  "pages": "5-32"
+ },
+ {
+  "doi": "10.1016/S0169-2070(00)00065-0",
+  "title": "Out-of-sample tests of forecasting accuracy: an analysis and review",
+  "authors": [
+   "Tashman, Leonard J."
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2000,
+  "volume": "16",
+  "issue": "4",
+  "pages": "437-450"
+ },
+ {
+  "doi": "10.1287/mnsc.6.3.324",
+  "title": "Forecasting Sales by Exponentially Weighted Moving Averages",
+  "authors": [
+   "Winters, Peter R."
+  ],
+  "journal": "Management Science",
+  "year": 1960,
+  "volume": "6",
+  "issue": "3",
+  "pages": "324-342"
+ },
+ {
+  "doi": "10.1016/j.ins.2011.12.028",
+  "title": "On the use of cross-validation for time series predictor evaluation",
+  "authors": [
+   "Bergmeir, Christoph",
+   "Benítez, José M."
+  ],
+  "journal": "Information Sciences",
+  "year": 2012,
+  "volume": "191",
+  "issue": null,
+  "pages": "192-213"
+ },
+ {
+  "doi": "10.1016/j.ijforecast.2021.03.004",
+  "title": "Principles and algorithms for forecasting groups of time series: Locality and globality",
+  "authors": [
+   "Montero-Manso, Pablo",
+   "Hyndman, Rob J."
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2021,
+  "volume": "37",
+  "issue": "4",
+  "pages": "1632-1653"
+ },
+ {
+  "doi": "10.1016/j.ijforecast.2019.05.008",
+  "title": "Criteria for classifying forecasting methods",
+  "authors": [
+   "Januschowski, Tim",
+   "Gasthaus, Jan",
+   "Wang, Yuyang",
+   "Salinas, David",
+   "Flunkert, Valentin",
+   "Bohlke-Schneider, Michael",
+   "Callot, Laurent"
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2020,
+  "volume": "36",
+  "issue": "1",
+  "pages": "167-177"
+ },
+ {
+  "doi": "10.1016/S0169-2070(01)00110-8",
+  "title": "A state space framework for automatic forecasting using exponential smoothing methods",
+  "authors": [
+   "Hyndman, Rob J",
+   "Koehler, Anne B",
+   "Snyder, Ralph D",
+   "Grose, Simone"
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2002,
+  "volume": "18",
+  "issue": "3",
+  "pages": "439-454"
+ },
+ {
+  "doi": "10.1016/j.ijforecast.2021.11.001",
+  "title": "Forecasting: theory and practice",
+  "authors": [
+   "Petropoulos, Fotios",
+   "Apiletti, Daniele",
+   "Assimakopoulos, Vassilios",
+   "Babai, Mohamed Zied",
+   "Barrow, Devon K.",
+   "Ben Taieb, Souhaib",
+   "Bergmeir, Christoph",
+   "Bessa, Ricardo J.",
+   "Bijak, Jakub",
+   "Boylan, John E.",
+   "Browell, Jethro",
+   "Carnevale, Claudio",
+   "Castle, Jennifer L.",
+   "Cirillo, Pasquale",
+   "Clements, Michael P.",
+   "Cordeiro, Clara",
+   "Cyrino Oliveira, Fernando Luiz",
+   "De Baets, Shari",
+   "Dokumentov, Alexander",
+   "Ellison, Joanne",
+   "Fiszeder, Piotr",
+   "Franses, Philip Hans",
+   "Frazier, David T.",
+   "Gilliland, Michael",
+   "Gönül, M. Sinan",
+   "Goodwin, Paul",
+   "Grossi, Luigi",
+   "Grushka-Cockayne, Yael",
+   "Guidolin, Mariangela",
+   "Guidolin, Massimo",
+   "Gunter, Ulrich",
+   "Guo, Xiaojia",
+   "Guseo, Renato",
+   "Harvey, Nigel",
+   "Hendry, David F.",
+   "Hollyman, Ross",
+   "Januschowski, Tim",
+   "Jeon, Jooyoung",
+   "Jose, Victor Richmond R.",
+   "Kang, Yanfei",
+   "Koehler, Anne B.",
+   "Kolassa, Stephan",
+   "Kourentzes, Nikolaos",
+   "Leva, Sonia",
+   "Li, Feng",
+   "Litsiou, Konstantia",
+   "Makridakis, Spyros",
+   "Martin, Gael M.",
+   "Martinez, Andrew B.",
+   "Meeran, Sheik",
+   "Modis, Theodore",
+   "Nikolopoulos, Konstantinos",
+   "Önkal, Dilek",
+   "Paccagnini, Alessia",
+   "Panagiotelis, Anastasios",
+   "Panapakidis, Ioannis",
+   "Pavía, Jose M.",
+   "Pedio, Manuela",
+   "Pedregal, Diego J.",
+   "Pinson, Pierre",
+   "Ramos, Patrícia",
+   "Rapach, David E.",
+   "Reade, J. James",
+   "Rostami-Tabar, Bahman",
+   "Rubaszek, Michał",
+   "Sermpinis, Georgios",
+   "Shang, Han Lin",
+   "Spiliotis, Evangelos",
+   "Syntetos, Aris A.",
+   "Talagala, Priyanga Dilini",
+   "Talagala, Thiyanga S.",
+   "Tashman, Len",
+   "Thomakos, Dimitrios",
+   "Thorarinsdottir, Thordis",
+   "Todini, Ezio",
+   "Trapero Arenas, Juan Ramón",
+   "Wang, Xiaoqian",
+   "Winkler, Robert L.",
+   "Yusupova, Alisa",
+   "Ziel, Florian"
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2022,
+  "volume": "38",
+  "issue": "3",
+  "pages": "705-871"
+ },
+ {
+  "doi": "10.1016/j.ijforecast.2019.06.004",
+  "title": "Retail forecasting: Research and practice",
+  "authors": [
+   "Fildes, Robert",
+   "Ma, Shaohui",
+   "Kolassa, Stephan"
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2022,
+  "volume": "38",
+  "issue": "4",
+  "pages": "1283-1318"
+ },
+ {
+  "doi": "10.1016/j.ijforecast.2003.09.015",
+  "title": "Forecasting seasonals and trends by exponentially weighted moving averages",
+  "authors": [
+   "Holt, Charles C."
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2004,
+  "volume": "20",
+  "issue": "1",
+  "pages": "5-10"
+ },
+ {
+  "doi": "10.1016/j.ijforecast.2021.07.007",
+  "title": "The M5 competition: Background, organization, and implementation",
+  "authors": [
+   "Makridakis, Spyros",
+   "Spiliotis, Evangelos",
+   "Assimakopoulos, Vassilios"
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2022,
+  "volume": "38",
+  "issue": "4",
+  "pages": "1325-1336"
+ },
+ {
+  "doi": "10.1016/j.ijforecast.2017.12.004",
+  "title": "What do professional forecasters actually predict?",
+  "authors": [
+   "Nibbering, Didier",
+   "Paap, Richard",
+   "van der Wel, Michel"
+  ],
+  "journal": "International Journal of Forecasting",
+  "year": 2018,
+  "volume": "34",
+  "issue": "2",
+  "pages": "288-311"
+ }
+]
