@@ -1,0 +1,79 @@
+{
+  "files": {
+    ".gitattributes": {
+      "current_sha256": "d6b7194652c14589c2e3d8d854c4641ef3cf115585a9450fd4973a86118f730c",
+      "original_copy": "reports/preservation/phase5_precheckpoint_original/.gitattributes",
+      "original_sha256": "ae5af3cf3cdec3b301dadb662f64b3855a35f317163859515e49e99213b24323",
+      "reason": "Versioned checkpoint metadata only; original scientific bytes retained. Adds an eol=lf rule for experiments/ownership.py so its backup-manifest bytes survive checkout under core.autocrlf=true."
+    },
+    "README.md": {
+      "current_sha256": "7e128edea558b492fd16e9935567879cdb470b90e41faad44770c0ee28105fb6",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/README.md",
+      "original_sha256": "c6abc131acb886cd9d65f8bafaf9a8ba1d4f16b9afbda16f81d36ee5b05a5b18",
+      "reason": "README subsequently edited after Phase 5, most recently at fac4c0ea0e2b5972b6affe185b0fc5941345597a. This overlay records the present documentation bytes without replacing the original frozen hash or archived README.",
+      "prior_overlay_current_sha256": "73b32dd52ec839ca4f76810518f8bff21fd548423d4e1b82486bff832a432055",
+      "current_commit": "fac4c0ea0e2b5972b6affe185b0fc5941345597a",
+      "original_commit": "565f3f4",
+      "rewritten_equivalent_commit": "50f5d05",
+      "commit_mapping": "docs/COMMIT_ID_MAP.md"
+    },
+    "docs/ACADEMIC_REQUIREMENTS.md": {
+      "current_sha256": "873dd0824e5fabb94d9b6042411bb89a7a0328c869cb83b5bacba63330b7fecb",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/docs/ACADEMIC_REQUIREMENTS.md",
+      "original_sha256": "bfe2309c98daf571aaf5b10a3af87f7429ccefc16c17fa1fe24398e03b0be12a",
+      "reason": "Post-audit reporting correction; original bytes archived, results unchanged."
+    },
+    "docs/PHASE5_CLAUDE_AUDIT_HANDOFF.md": {
+      "current_sha256": "ce244d1b7d27cb16060ed3b471925219bb6a812a0cc2cec263e04ca7e58287f6",
+      "original_copy": "reports/preservation/phase5_precheckpoint_original/docs/PHASE5_CLAUDE_AUDIT_HANDOFF.md",
+      "original_sha256": "32ce89e75064062760f2e390ae90221fa711d355a929bd8217c6f76135132b80",
+      "reason": "Checkpoint and audit-status correction; original scientific bytes retained. The pre-audit-remediation text is also archived under phase5_pre_audit."
+    },
+    "docs/PHASE5_COMPLETION_CHECKLIST.md": {
+      "current_sha256": "4db2a648c651d74e54aaf4b1bf716eb0bb3dfe06398af30ed1d409f7df271be0",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/docs/PHASE5_COMPLETION_CHECKLIST.md",
+      "original_sha256": "d67f4a02e707046f438ea0ae7e502b1258c828dd87c64837433aa599273317cb",
+      "reason": "Post-audit reporting correction; original bytes archived, results unchanged."
+    },
+    "docs/PHASE5_INVENTORY_RESULTS.md": {
+      "current_sha256": "dd6c4781fafb4d88465720ff1670a59c10a826066483cf7c48c1f4c88792d134",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/docs/PHASE5_INVENTORY_RESULTS.md",
+      "original_sha256": "2f0cb1ad89544aa65da1dc6bdf04bccc3dd983d1c8235b3b2b9ffb3490de66ed",
+      "reason": "Post-audit reporting correction; original bytes archived, results unchanged."
+    },
+    "docs/PHASE5_LIMITATIONS.md": {
+      "current_sha256": "e7ed62947dee0ef0eeac4af5ae70a1e093805ca7542ae00f2c77c04ebd329abe",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/docs/PHASE5_LIMITATIONS.md",
+      "original_sha256": "b291490a54509149aa55f312454f033747c407141738b246fc2c7c00214959b2",
+      "reason": "Post-audit reporting correction; original bytes archived, results unchanged."
+    },
+    "docs/PHASE5_PROGRESS.md": {
+      "current_sha256": "a99aa018a67db1590c65f545026f44b7492b25c19b31943ff82f36804072a4f9",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/docs/PHASE5_PROGRESS.md",
+      "original_sha256": "0e88ac236731fafb2e63f933d980d3b95d9bdf77d48d0b5a3599929e06fff740",
+      "reason": "Post-audit reporting correction; original bytes archived, results unchanged."
+    },
+    "docs/PHASE5_SENSITIVITY_ANALYSIS.md": {
+      "current_sha256": "d6a3eaaf5e385a7f838f549a9134fd988aec3f26e2d1ee765d0bd027a323fc9f",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/docs/PHASE5_SENSITIVITY_ANALYSIS.md",
+      "original_sha256": "42aed54e8fbb6c8cbbe0229f43920a523123e424d1d5e057e078ee43b78d6812",
+      "reason": "Post-audit reporting correction; original bytes archived, results unchanged."
+    },
+    "docs/ROADMAP.md": {
+      "current_sha256": "2e79b3d66a917b687727a37ef1569b197b72575b63e1565b0be4db26904e3d0b",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/docs/ROADMAP.md",
+      "original_sha256": "edaa6aad3649ccac2c92164211d6521a58da439f175dee6b8a1306e15b22d5c1",
+      "reason": "Post-audit reporting correction; original bytes archived, results unchanged."
+    },
+    "reports/inventory/PHASE5_INVENTORY_REPORT.html": {
+      "current_sha256": "1e82dbbcb7ac1c32ee4603a763bb0303f438bfba5a986f9345558779b59623bf",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/reports/inventory/PHASE5_INVENTORY_REPORT.html",
+      "original_sha256": "6f1f3d974fe8cb48b787cf4e19ea51f62f594ca65ee4d22f609078fd9a4af371",
+      "reason": "Post-audit reporting correction; original bytes archived, results unchanged."
+    }
+  },
+  "schema_version": 1,
+  "scope": "Cumulative documentation provenance overlay. Only the README current hash is updated from the prior overlay. Original frozen manifests, archived originals, scientific code and results are unchanged. Historical overlay hashes remain historical evidence.",
+  "supersedes_for_current_documentation": "reports/preservation/PHASE5_AUDIT_REMEDIATION_OVERLAY.json",
+  "recorded_date": "2026-11-13"
+}
