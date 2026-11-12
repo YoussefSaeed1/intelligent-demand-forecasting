@@ -1,6 +1,5 @@
 # Intelligent Demand Forecasting & Inventory Optimisation
 
-Individual postgraduate Data Science diploma graduation project, Cairo University.
 **Status: Phases 0 to 5 complete and independently audited (verdict CONDITIONAL; 0 Critical, 0 High). Phase 6 has not started.**
 Source files and generated experiment outputs are held locally outside Git. Baseline,
 statistical and global ML milestones and final consolidation passed their gates. Offline tests are separate
