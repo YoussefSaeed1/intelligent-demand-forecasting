@@ -14,6 +14,7 @@ import time
 import uuid
 from pathlib import Path
 
+import psycopg
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
@@ -48,11 +49,19 @@ async def guard(request: Request, call_next):
     length = request.headers.get("content-length")
     if length is not None and (not length.isdigit() or int(length) > MAX_BODY):
         return error(413, "payload_too_large", "Request body too large", request_id)
+    if request.method == "POST" and request.url.path == "/simulate":
+        # Authenticate from headers BEFORE the body is parsed or validated, so unauthenticated callers learn nothing
+        # about the request schema. Constant-time comparison; the handler re-checks as defence in depth.
+        key = configured_key()
+        if key is None:
+            return error(503, "not_configured", "Simulation service is not configured", request_id)
+        if not hmac.compare_digest(request.headers.get("x-engine-key", "").encode(), key.encode()):
+            return error(401, "unauthorized", "Missing or invalid service credentials", request_id)
     started = time.perf_counter()
     try:
         response = await call_next(request)
-    except Exception:  # never leak internals
-        LOG.exception("unhandled error request_id=%s", request_id)
+    except Exception as exc:  # never leak internals: class name only, no message or traceback (may carry host names)
+        LOG.error("unhandled error request_id=%s type=%s", request_id, type(exc).__name__)
         response = error(500, "internal_error", "The simulation could not be completed", request_id)
     LOG.info(
         '{"request_id":"%s","path":"%s","status":%d,"ms":%.1f}',
@@ -108,6 +117,10 @@ def simulate(body: SimulateRequest, request: Request):
         except InsecureDatabaseUrl:
             # Misconfiguration (e.g. missing sslmode=require): refuse without connecting; never echo the URL.
             return error(503, "not_configured", "Simulation service is not configured", request_id)
+        except psycopg.OperationalError as exc:
+            # Login, network or pooler failure. One line, no message text (libpq messages include host names).
+            LOG.warning("database_unavailable request_id=%s sqlstate=%s", request_id, getattr(exc, "sqlstate", None))
+            return error(503, "database_unavailable", "Simulation data is temporarily unavailable", request_id)
         try:
             scenario = scenario_from(body.scenario.engine_parameters())
         except (ValueError, TypeError):

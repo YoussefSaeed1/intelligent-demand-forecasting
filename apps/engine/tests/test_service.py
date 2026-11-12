@@ -184,3 +184,40 @@ def test_insecure_remote_database_url_is_refused_without_connecting(client, monk
     assert response.json()["error"] == "not_configured"
     assert "invalid.example" not in response.text and "placeholder" not in response.text
     assert_no_internals(response)
+
+
+# ---- Phase 7D-2 P-3 regressions (production root cause: wrong database password -> unhandled 500) ----
+
+
+@pytest.mark.parametrize("body", [{}, {"seriesKey": 1}, {"unexpected": "field"}])
+def test_key_is_checked_before_body_validation(client, body):
+    for key in ("", "x" * 48):
+        response = post(client, body, key=key)
+        assert response.status_code == 401, (key, response.text)
+        assert "fields" not in response.json()  # no schema detail for unauthenticated callers
+    assert post(client, body).status_code == 400  # with the right key, validation still applies
+
+
+def test_database_login_failure_is_a_generic_503_for_valid_and_unknown_series(client, monkeypatch):
+    monkeypatch.setenv("ENGINE_DATABASE_URL", "postgresql://engine_api:definitely-wrong@127.0.0.1:54329/webapp")
+    for series in ("store_item|1:11", "store_item|9:999"):
+        response = post(client, {**BASE_BODY, "seriesKey": series})
+        assert response.status_code == 503, response.text
+        assert response.json()["error"] == "database_unavailable"
+        assert "definitely-wrong" not in response.text and "127.0.0.1" not in response.text
+        assert_no_internals(response)
+
+
+def test_unexpected_errors_log_the_class_only(client, monkeypatch, caplog):
+    import engine_service.app as service
+
+    def boom(*args, **kwargs):
+        raise RuntimeError("host aws-1-example.pooler password=leaky")
+
+    monkeypatch.setattr(service, "run_planner", boom)
+    with caplog.at_level("INFO", logger="engine"):
+        response = post(client, BASE_BODY)
+    assert response.status_code == 500 and response.json()["error"] == "internal_error"
+    assert_no_internals(response)
+    logged = "\n".join(r.getMessage() + (r.exc_text or "") for r in caplog.records)
+    assert "RuntimeError" in logged and "leaky" not in logged and "aws-1-example" not in logged
