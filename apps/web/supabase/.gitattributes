@@ -1,0 +1,2 @@
+# Generated migration SQL (generate_schema.py writes LF); keep exact LF bytes on any checkout despite core.autocrlf.
+migrations/*.sql text eol=lf

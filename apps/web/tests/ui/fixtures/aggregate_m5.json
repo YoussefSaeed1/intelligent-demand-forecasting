@@ -1,0 +1,249 @@
+{
+ "meta": {
+  "exportVersion": "2026-11-12.1",
+  "evidence": "validation",
+  "scope": "full research population"
+ },
+ "rows": [
+  {
+   "originKey": "m5|1",
+   "fold": 1,
+   "modelKey": "m5|selected_ml",
+   "role": "selected_ml",
+   "label": "Selected ML",
+   "pattern": "all",
+   "metrics": {
+    "mae": 0.9986903229382015,
+    "rmse": 2.5145803044256687,
+    "wape": 0.7796586029262292,
+    "bias": -0.08233616221667926,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.7284168056015792,
+    "macroRmsse": 0.835724080818978,
+    "series": 30490,
+    "undefinedMaseSeries": 16
+   }
+  },
+  {
+   "originKey": "m5|1",
+   "fold": 1,
+   "modelKey": "m5|moving_average_28",
+   "role": "moving_average_28",
+   "label": "MA28",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.014950033801648,
+    "rmse": 2.5070974245932884,
+    "wape": 0.7923522509616708,
+    "bias": -0.1005013353324275,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.6594587607866802,
+    "macroRmsse": 0.8415947289674026,
+    "series": 30490,
+    "undefinedMaseSeries": 16
+   }
+  },
+  {
+   "originKey": "m5|1",
+   "fold": 1,
+   "modelKey": "m5|seasonal_naive",
+   "role": "seasonal_naive",
+   "label": "Seasonal Naive",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.2055755985569039,
+    "rmse": 3.1281714451069753,
+    "wape": 0.9411700156736086,
+    "bias": -0.05912242889940496,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.8976912193569264,
+    "macroRmsse": 1.106503082701227,
+    "series": 30490,
+    "undefinedMaseSeries": 16
+   }
+  },
+  {
+   "originKey": "m5|2",
+   "fold": 2,
+   "modelKey": "m5|selected_ml",
+   "role": "selected_ml",
+   "label": "Selected ML",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.0195172344666987,
+    "rmse": 2.2869976026136047,
+    "wape": 0.7403299685020857,
+    "bias": -0.08260430650331503,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.7132487803919139,
+    "macroRmsse": 0.874394062067319,
+    "series": 30490,
+    "undefinedMaseSeries": 10
+   }
+  },
+  {
+   "originKey": "m5|2",
+   "fold": 2,
+   "modelKey": "m5|moving_average_28",
+   "role": "moving_average_28",
+   "label": "MA28",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.0332807343993682,
+    "rmse": 2.3288263293072076,
+    "wape": 0.7503244356156913,
+    "bias": -0.09617907510659232,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.6701777611806954,
+    "macroRmsse": 0.8788150546092649,
+    "series": 30490,
+    "undefinedMaseSeries": 10
+   }
+  },
+  {
+   "originKey": "m5|2",
+   "fold": 2,
+   "modelKey": "m5|seasonal_naive",
+   "role": "seasonal_naive",
+   "label": "Seasonal Naive",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.1994494682097174,
+    "rmse": 2.774584284118803,
+    "wape": 0.8709890887563496,
+    "bias": -0.1297521435599494,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.8687512991599522,
+    "macroRmsse": 1.1338019532024055,
+    "series": 30490,
+    "undefinedMaseSeries": 10
+   }
+  },
+  {
+   "originKey": "m5|3",
+   "fold": 3,
+   "modelKey": "m5|selected_ml",
+   "role": "selected_ml",
+   "label": "Selected ML",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.0345736584988314,
+    "rmse": 2.2567267186597495,
+    "wape": 0.7510084236132996,
+    "bias": 0.004650694369743562,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.7226258420157163,
+    "macroRmsse": 0.8812344015546596,
+    "series": 30490,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "m5|3",
+   "fold": 3,
+   "modelKey": "m5|moving_average_28",
+   "role": "moving_average_28",
+   "label": "MA28",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.0457541281517526,
+    "rmse": 2.307282848477235,
+    "wape": 0.7591244497853561,
+    "bias": -0.0004673663496228283,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.6798828487823974,
+    "macroRmsse": 0.8830072105101658,
+    "series": 30490,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "m5|3",
+   "fold": 3,
+   "modelKey": "m5|seasonal_naive",
+   "role": "seasonal_naive",
+   "label": "Seasonal Naive",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.210618235487045,
+    "rmse": 2.7602621666427885,
+    "wape": 0.8788011227251509,
+    "bias": -0.08233964297427727,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.8742765966933241,
+    "macroRmsse": 1.1491406255891696,
+    "series": 30490,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "m5|4",
+   "fold": 4,
+   "modelKey": "m5|selected_ml",
+   "role": "selected_ml",
+   "label": "Selected ML",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.0274867244328751,
+    "rmse": 2.1739527894811626,
+    "wape": 0.7411006233242885,
+    "bias": 0.008484622200950849,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.686964473897645,
+    "macroRmsse": 0.874563079881453,
+    "series": 30490,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "m5|4",
+   "fold": 4,
+   "modelKey": "m5|moving_average_28",
+   "role": "moving_average_28",
+   "label": "MA28",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.0411320038018488,
+    "rmse": 2.218601831496502,
+    "wape": 0.7509426240093697,
+    "bias": -0.008854191069671558,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.6498093154124447,
+    "macroRmsse": 0.8792323423185123,
+    "series": 30490,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "m5|4",
+   "fold": 4,
+   "modelKey": "m5|seasonal_naive",
+   "role": "seasonal_naive",
+   "label": "Seasonal Naive",
+   "pattern": "all",
+   "metrics": {
+    "mae": 1.2323548704493277,
+    "rmse": 2.7594593733845554,
+    "wape": 0.8888669224907192,
+    "bias": -0.03958440706554842,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.8674323629135858,
+    "macroRmsse": 1.158525213660371,
+    "series": 30490,
+    "undefinedMaseSeries": 0
+   }
+  }
+ ]
+}

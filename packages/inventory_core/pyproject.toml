@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "idf-inventory-core"
+version = "1.0.0"
+description = "Byte-identical Phase 5 inventory engine plus a single-series planner wrapper"
+requires-python = ">=3.14,<3.15"
+# Pinned to the exact versions that produced the Phase 5 evidence.
+dependencies = ["numpy==2.5.4", "pandas==3.1.1", "pyyaml==6.0.3"]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "pyarrow==26.0.1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["intelligent_demand*", "inventory_service*"]
+namespaces = true

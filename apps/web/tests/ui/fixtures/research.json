@@ -1,0 +1,711 @@
+{
+ "meta": {
+  "exportVersion": "2026-11-12.1",
+  "ncuNotice": "Hypothetical normalised cost units (NCU); simulated differences are not realised savings."
+ },
+ "provenance": {
+  "exportVersion": "2026-11-12.1",
+  "gitCommit": "987e27f8a56cde6617e44ad8795feec9b97218ef",
+  "planSha256": "63efc59ed0dc2b35b2ad3067fb790c0b42d0c1f279e3f8142519b78c07cce76e",
+  "executionSha256": "b55ba4a0c9c8fafb2ee3997f38d2f31efea99f4157033e70288814a2006c87c3",
+  "selectionFingerprint": "a71ab187aaad10eb3df4ec550ef2bd99b9542064619b35c7629da14eedcb3fdb",
+  "ledgerSha256": "fa2af529b50299b50c8d77d67b0ce70f73fab35e4731a5b825dd27a20e4bc204",
+  "phase6ManifestSha256": "047d9983594f217078efb44d4e1bc7df7c9d89364bcfab0fa0d1317814d0dcc5",
+  "finalHoldoutTargetsRead": false,
+  "curatedM5Sha256": "b8499988bd74bc31308e54a220894f999207165c72835f3b2e5edd14fc66d456"
+ },
+ "limitations": [
+  {
+   "limitationId": "L1",
+   "limitation": "Inventory costs are hypothetical normalised cost units (NCU), not realised financial savings.",
+   "sourceDocument": "docs/PHASE5_LIMITATIONS.md"
+  },
+  {
+   "limitationId": "L2",
+   "limitation": "Better forecast accuracy does not guarantee better simulated inventory outcomes.",
+   "sourceDocument": "docs/PHASE5_AUDIT_RESPONSE.md"
+  },
+  {
+   "limitationId": "L3",
+   "limitation": "Store Item selected ML's pooled simulated cost advantage over MA28 reverses at the last validation origin.",
+   "sourceDocument": "docs/PHASE5_AUDIT_RESPONSE.md"
+  },
+  {
+   "limitationId": "L4",
+   "limitation": "The 17 scenarios reuse the same four origins, forecasts and series; they are not independent replications.",
+   "sourceDocument": "docs/PHASE5_SENSITIVITY_ANALYSIS.md"
+  },
+  {
+   "limitationId": "L5",
+   "limitation": "Fixed reorder point is a low-stock comparator whose lower cost comes with lower fill rate.",
+   "sourceDocument": "docs/PHASE5_AUDIT_RESPONSE.md"
+  },
+  {
+   "limitationId": "L6",
+   "limitation": "ML models were tuned and selected on the same validation windows used for these comparisons; baselines were not tuned.",
+   "sourceDocument": "docs/PHASE5_AUDIT_RESPONSE.md"
+  },
+  {
+   "limitationId": "L7",
+   "limitation": "M5 sparse-demand performance differs materially by series segment; MA28 beats the RF on the all-zero-label group.",
+   "sourceDocument": "docs/PHASE5_AUDIT_RESPONSE.md"
+  },
+  {
+   "limitationId": "L8",
+   "limitation": "No actual inventory transactions, supplier lead times or true stockout costs are available; sales proxy censored demand.",
+   "sourceDocument": "docs/PHASE5_LIMITATIONS.md"
+  }
+ ],
+ "auditFindings": [
+  {
+   "findingId": "F-01",
+   "severity": "Medium",
+   "finding": "Checkpoint not committed; documents contradict each other",
+   "disposition": "README, roadmap, academic requirements, completion checklist, handoff and progress note corrected. Reviewed files committed in one local commit; the hash is not written into committed files. A git-ignored local receipt records it.",
+   "status": "Resolved by this checkpoint"
+  },
+  {
+   "findingId": "F-02",
+   "severity": "Medium",
+   "finding": "No off-device evidence copy",
+   "disposition": "Both backups are local to the same laptop. No copy was made and neither backup was modified. Owner action needed.",
+   "status": "Open; blocks academic submission, not the start of Phase 6"
+  },
+  {
+   "findingId": "F-03",
+   "severity": "Medium",
+   "finding": "Fixed ROP is a degenerate comparator",
+   "disposition": "Described everywhere as a low-stock, low-service comparator, with the Store Item and M5 behaviour reported separately (see section 4). No tuned (s, S) comparator was added because that needs a new experiment.",
+   "status": "Documented; optional future experiment"
+  },
+  {
+   "findingId": "F-04",
+   "severity": "Medium",
+   "finding": "Headline ML result less robust than presented",
+   "disposition": "Per-origin tables, Seasonal Naive comparison, scenario non-independence and the Store Item sign reversal added to results, sensitivity, limitations and the HTML report.",
+   "status": "Resolved in reporting"
+  },
+  {
+   "findingId": "F-05",
+   "severity": "Medium",
+   "finding": "Selection optimism from reused validation origins",
+   "disposition": "Asymmetric tuning disclosed with configuration counts. The bias cannot be quantified because the final holdout is consumed.",
+   "status": "Documented limitation"
+  },
+  {
+   "findingId": "F-06",
+   "severity": "Medium",
+   "finding": "M5 sparse-demand weakness",
+   "disposition": "Subgroup table and wording added; no re-selection.",
+   "status": "Documented limitation"
+  },
+  {
+   "findingId": "F-07",
+   "severity": "Low",
+   "finding": "Volume-weighted mean cost, many ties",
+   "disposition": "Median, tie counts and cost per demanded unit added from saved per-series outputs.",
+   "status": "Resolved in reporting"
+  },
+  {
+   "findingId": "F-08",
+   "severity": "Low",
+   "finding": "Chronology self-recorded; freeze recorded a dirty tree",
+   "disposition": "Unchanged and still disclosed.",
+   "status": "Accepted limitation"
+  },
+  {
+   "findingId": "F-09",
+   "severity": "Low",
+   "finding": "Finite-episode artefacts",
+   "disposition": "Caveats retained and attached to scenario results.",
+   "status": "Accepted limitation"
+  },
+  {
+   "findingId": "F-10",
+   "severity": "Low",
+   "finding": "Environment snapshot not portable; clean-room run untested",
+   "disposition": "No change.",
+   "status": "Open, optional"
+  },
+  {
+   "findingId": "F-11",
+   "severity": "Info",
+   "finding": "Scalar reference shares the input adapter and was amended",
+   "disposition": "Independent replays and exact-integer re-simulation passed; nothing further.",
+   "status": "Closed"
+  },
+  {
+   "findingId": "F-12",
+   "severity": "Info",
+   "finding": "Variability stress changes mean and zeros",
+   "disposition": "Already documented.",
+   "status": "Closed"
+  }
+ ],
+ "demandPatterns": [
+  {
+   "patternKey": "smooth",
+   "demandPattern": "Smooth",
+   "patternSort": 1,
+   "patternDescription": "Regular demand (low ADI, low CV2) in the training-prefix EDA"
+  },
+  {
+   "patternKey": "erratic",
+   "demandPattern": "Erratic",
+   "patternSort": 2,
+   "patternDescription": "Regular occurrence, highly variable size"
+  },
+  {
+   "patternKey": "intermittent",
+   "demandPattern": "Intermittent",
+   "patternSort": 3,
+   "patternDescription": "Infrequent demand of stable size"
+  },
+  {
+   "patternKey": "lumpy",
+   "demandPattern": "Lumpy",
+   "patternSort": 4,
+   "patternDescription": "Infrequent and highly variable demand"
+  },
+  {
+   "patternKey": "all_zero",
+   "demandPattern": "All zero",
+   "patternSort": 5,
+   "patternDescription": "No positive sales in the EDA training prefix"
+  },
+  {
+   "patternKey": "insufficient_positive_history",
+   "demandPattern": "Insufficient history",
+   "patternSort": 6,
+   "patternDescription": "Too few positive observations to classify"
+  }
+ ],
+ "modelSelectionTrials": {
+  "evidence": "validation",
+  "rows": [
+   {
+    "trialId": "m5_lightgbm_00",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "lightgbm",
+    "validationMacroMae": 1.0731372984028256,
+    "validationMacroMase": 1.8068962525903627,
+    "validationMacroRmsse": 0.8870628982214224,
+    "validationPooledRmse": 2.463333749773573,
+    "validationPooledWapePercent": 79.16827012029896,
+    "validationBiasUnits": 0.0013846596863889382,
+    "observations": 3414880,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_lightgbm_01",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "lightgbm",
+    "validationMacroMae": 1.085461604361476,
+    "validationMacroMase": 1.7847667366209874,
+    "validationMacroRmsse": 0.8881136053224793,
+    "validationPooledRmse": 2.548044627370462,
+    "validationPooledWapePercent": 80.07746783864476,
+    "validationBiasUnits": 0.015340742826790158,
+    "observations": 3414880,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_lightgbm_02",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "lightgbm",
+    "validationMacroMae": 1.1057003021248013,
+    "validationMacroMase": 1.8402575386083402,
+    "validationMacroRmsse": 0.8992106589605587,
+    "validationPooledRmse": 2.6397260127536324,
+    "validationPooledWapePercent": 81.5705318611093,
+    "validationBiasUnits": 0.0475577152597297,
+    "observations": 3414880,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_moving_average_28_reference",
+    "datasetKey": "m5",
+    "trialKind": "reference",
+    "algorithm": "moving_average_28",
+    "validationMacroMae": 1.0337792250386544,
+    "validationMacroMase": 1.6648321715405545,
+    "validationMacroRmsse": 0.8706623341013364,
+    "validationPooledRmse": 2.342793087218419,
+    "validationPooledWapePercent": 76.26471752908185,
+    "validationBiasUnits": -0.05150049196457855,
+    "observations": 3414880,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_random_forest_00",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "random_forest",
+    "validationMacroMae": 1.0267481939178014,
+    "validationMacroMase": 1.7598155384663468,
+    "validationMacroRmsse": 0.8695043293511755,
+    "validationPooledRmse": 2.308767280174509,
+    "validationPooledWapePercent": 75.74601915579039,
+    "validationBiasUnits": -0.022108088905304083,
+    "observations": 3414880,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_random_forest_01",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "random_forest",
+    "validationMacroMae": 1.0216927710315755,
+    "validationMacroMase": 1.7416508491965355,
+    "validationMacroRmsse": 0.8672370881586804,
+    "validationPooledRmse": 2.3130771618746198,
+    "validationPooledWapePercent": 75.37306679897199,
+    "validationBiasUnits": -0.05066139131882782,
+    "observations": 3414880,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_random_forest_02",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "random_forest",
+    "validationMacroMae": 1.0200669850841517,
+    "validationMacroMase": 1.7128139754767135,
+    "validationMacroRmsse": 0.8664789060806025,
+    "validationPooledRmse": 2.3115124029178165,
+    "validationPooledWapePercent": 75.25312812827721,
+    "validationBiasUnits": -0.03795128803732497,
+    "observations": 3414880,
+    "fallbackObservations": 0,
+    "isSelected": "Yes"
+   },
+   {
+    "trialId": "m5_random_forest_03",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "random_forest",
+    "validationMacroMae": 1.022929930953508,
+    "validationMacroMase": 1.716865614840982,
+    "validationMacroRmsse": 0.8674560378375953,
+    "validationPooledRmse": 2.317432713169298,
+    "validationPooledWapePercent": 75.46433546611023,
+    "validationBiasUnits": -0.026956055271971795,
+    "observations": 3414880,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_seasonal_naive_reference",
+    "datasetKey": "m5",
+    "trialKind": "reference",
+    "algorithm": "seasonal_naive",
+    "validationMacroMae": 1.2119995431757487,
+    "validationMacroMase": 1.8770378695309473,
+    "validationMacroRmsse": 1.1369927187882933,
+    "validationPooledRmse": 2.859957945565858,
+    "validationPooledWapePercent": 89.41251726374992,
+    "validationBiasUnits": -0.07769965562479501,
+    "observations": 3414880,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_tsb_00",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "tsb",
+    "validationMacroMae": 1.042454921001442,
+    "validationMacroMase": 1.6723170603423627,
+    "validationMacroRmsse": 0.8747817978873611,
+    "validationPooledRmse": 2.3656377544500033,
+    "validationPooledWapePercent": 76.90474732068985,
+    "validationBiasUnits": -0.02733846843237922,
+    "observations": 3414880,
+    "fallbackObservations": 728,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_tsb_01",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "tsb",
+    "validationMacroMae": 1.0341311023582396,
+    "validationMacroMase": 1.6783337616831469,
+    "validationMacroRmsse": 0.8807509387918842,
+    "validationPooledRmse": 2.3301273845860564,
+    "validationPooledWapePercent": 76.29067648021287,
+    "validationBiasUnits": -0.023465921500201277,
+    "observations": 3414880,
+    "fallbackObservations": 728,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_tsb_02",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "tsb",
+    "validationMacroMae": 1.0452967966983233,
+    "validationMacroMase": 1.6727312936925636,
+    "validationMacroRmsse": 0.8730646352841338,
+    "validationPooledRmse": 2.357310764484603,
+    "validationPooledWapePercent": 77.11440025433953,
+    "validationBiasUnits": -0.04195553660335432,
+    "observations": 3414880,
+    "fallbackObservations": 728,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "m5_tsb_03",
+    "datasetKey": "m5",
+    "trialKind": "tuning",
+    "algorithm": "tsb",
+    "validationMacroMae": 1.0489794355924162,
+    "validationMacroMase": 1.6889159170373957,
+    "validationMacroRmsse": 0.8867601150170146,
+    "validationPooledRmse": 2.378522911955471,
+    "validationPooledWapePercent": 77.38607858586055,
+    "validationBiasUnits": -0.007645203639528752,
+    "observations": 3414880,
+    "fallbackObservations": 728,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_holt_winters_additive_00",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "holt_winters_additive",
+    "validationMacroMae": 7.7016504241642,
+    "validationMacroMase": 0.9351998280786599,
+    "validationMacroRmsse": 0.9214670161013164,
+    "validationPooledRmse": 10.24229302810759,
+    "validationPooledWapePercent": 12.622227443867567,
+    "validationBiasUnits": -0.8594910228334104,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_holt_winters_additive_01",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "holt_winters_additive",
+    "validationMacroMae": 7.043324262632043,
+    "validationMacroMase": 0.8544313604922111,
+    "validationMacroRmsse": 0.8449193703050857,
+    "validationPooledRmse": 9.320687258183877,
+    "validationPooledWapePercent": 11.543297333376483,
+    "validationBiasUnits": -0.33368510017250635,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_holt_winters_additive_02",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "holt_winters_additive",
+    "validationMacroMae": 8.133319665889982,
+    "validationMacroMase": 0.9876406407600118,
+    "validationMacroRmsse": 0.9629438182292187,
+    "validationPooledRmse": 10.791959744808961,
+    "validationPooledWapePercent": 13.329689747335587,
+    "validationBiasUnits": 0.704164196231906,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_lightgbm_00",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "lightgbm",
+    "validationMacroMae": 6.308039821969917,
+    "validationMacroMase": 0.7687659028238478,
+    "validationMacroRmsse": 0.7541757898510983,
+    "validationPooledRmse": 8.178518665758851,
+    "validationPooledWapePercent": 10.338240373526027,
+    "validationBiasUnits": 0.037027736588672734,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "Yes"
+   },
+   {
+    "trialId": "store_item_lightgbm_01",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "lightgbm",
+    "validationMacroMae": 6.3458114949988005,
+    "validationMacroMase": 0.7725677313086182,
+    "validationMacroRmsse": 0.758073059399054,
+    "validationPooledRmse": 8.242881837048593,
+    "validationPooledWapePercent": 10.400144331982787,
+    "validationBiasUnits": -0.13633073778182417,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_lightgbm_02",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "lightgbm",
+    "validationMacroMae": 6.587850684882458,
+    "validationMacroMase": 0.8026727301710296,
+    "validationMacroRmsse": 0.7858771810990588,
+    "validationPooledRmse": 8.593067980261017,
+    "validationPooledWapePercent": 10.796822126583224,
+    "validationBiasUnits": -0.5585222131748141,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_lightgbm_03",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "lightgbm",
+    "validationMacroMae": 6.317838246843994,
+    "validationMacroMase": 0.7694746344563954,
+    "validationMacroRmsse": 0.7544159757576923,
+    "validationPooledRmse": 8.191292347681097,
+    "validationPooledWapePercent": 10.354299002591322,
+    "validationBiasUnits": 0.19570326237607388,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_lightgbm_04",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "lightgbm",
+    "validationMacroMae": 6.309805344936392,
+    "validationMacroMase": 0.7692343041079706,
+    "validationMacroRmsse": 0.7551505967436771,
+    "validationPooledRmse": 8.183631605368147,
+    "validationPooledWapePercent": 10.34113388741109,
+    "validationBiasUnits": -0.029524774400041264,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_lightgbm_05",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "lightgbm",
+    "validationMacroMae": 6.590054490213607,
+    "validationMacroMase": 0.802882482106858,
+    "validationMacroRmsse": 0.7858258844358161,
+    "validationPooledRmse": 8.595118357422177,
+    "validationPooledWapePercent": 10.800433941012571,
+    "validationBiasUnits": -0.5170601377493479,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_random_forest_00",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "random_forest",
+    "validationMacroMae": 6.885315930372303,
+    "validationMacroMase": 0.8372514232835456,
+    "validationMacroRmsse": 0.8219105974473282,
+    "validationPooledRmse": 8.990946670433638,
+    "validationPooledWapePercent": 11.284337630200255,
+    "validationBiasUnits": 0.5452723236301936,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_random_forest_01",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "random_forest",
+    "validationMacroMae": 6.8774277806848385,
+    "validationMacroMase": 0.8347689807671183,
+    "validationMacroRmsse": 0.8190772601354528,
+    "validationPooledRmse": 8.991606148487843,
+    "validationPooledWapePercent": 11.271409749293838,
+    "validationBiasUnits": 0.4553240208487165,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_random_forest_02",
+    "datasetKey": "store_item",
+    "trialKind": "tuning",
+    "algorithm": "random_forest",
+    "validationMacroMae": 6.882027380409907,
+    "validationMacroMase": 0.8368448867837783,
+    "validationMacroRmsse": 0.8213851468300923,
+    "validationPooledRmse": 8.983879983754917,
+    "validationPooledWapePercent": 11.278948028842128,
+    "validationBiasUnits": 0.569628228696751,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_seasonal_moving_average_reference",
+    "datasetKey": "store_item",
+    "trialKind": "reference",
+    "algorithm": "seasonal_moving_average",
+    "validationMacroMae": 8.086651785714285,
+    "validationMacroMase": 0.972851289508741,
+    "validationMacroRmsse": 0.9499425181945883,
+    "validationPooledRmse": 10.59976941292323,
+    "validationPooledWapePercent": 13.253205803575609,
+    "validationBiasUnits": 2.8175535714285713,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   },
+   {
+    "trialId": "store_item_seasonal_naive_reference",
+    "datasetKey": "store_item",
+    "trialKind": "reference",
+    "algorithm": "seasonal_naive",
+    "validationMacroMae": 9.154964285714286,
+    "validationMacroMase": 1.1119000170860696,
+    "validationMacroRmsse": 1.091962730487542,
+    "validationPooledRmse": 12.02397010736708,
+    "validationPooledWapePercent": 15.004062128321111,
+    "validationBiasUnits": 0.7970714285714285,
+    "observations": 56000,
+    "fallbackObservations": 0,
+    "isSelected": "No"
+   }
+  ]
+ },
+ "finalHoldout": {
+  "evidence": "reported_final_holdout",
+  "note": "Saved Phase 4 one-time final assessment, reported as recorded; not a new evaluation.",
+  "rows": [
+   {
+    "datasetKey": "m5",
+    "trialId": "m5_random_forest_02",
+    "algorithm": "random_forest",
+    "role": "selected",
+    "evidenceType": "Saved Phase 4 one-time final assessment (reported, not recomputed)",
+    "macroMae": 1.0472313706239513,
+    "macroMase": 1.6370356807541435,
+    "macroRmsse": 0.8976460386236976,
+    "pooledRmse": 2.201063153675223,
+    "pooledWapePercent": 72.5822775896259,
+    "series": 30490,
+    "observations": 853720
+   },
+   {
+    "datasetKey": "m5",
+    "trialId": "m5_moving_average_28_reference",
+    "algorithm": "moving_average_28",
+    "role": "comparator",
+    "evidenceType": "Saved Phase 4 one-time final assessment (reported, not recomputed)",
+    "macroMae": 1.0657293123874672,
+    "macroMase": 1.6106176061344133,
+    "macroRmsse": 0.9048751402500037,
+    "pooledRmse": 2.242952959753161,
+    "pooledWapePercent": 73.86434646339954,
+    "series": 30490,
+    "observations": 853720
+   },
+   {
+    "datasetKey": "m5",
+    "trialId": "m5_seasonal_naive_reference",
+    "algorithm": "seasonal_naive",
+    "role": "comparator",
+    "evidenceType": "Saved Phase 4 one-time final assessment (reported, not recomputed)",
+    "macroMae": 1.2439722625685237,
+    "macroMase": 1.8101435299554276,
+    "macroRmsse": 1.1782638799940646,
+    "pooledRmse": 2.6768948977123297,
+    "pooledWapePercent": 86.2181391890005,
+    "series": 30490,
+    "observations": 853720
+   },
+   {
+    "datasetKey": "m5",
+    "trialId": "m5_tsb_01",
+    "algorithm": "tsb",
+    "role": "comparator",
+    "evidenceType": "Saved Phase 4 one-time final assessment (reported, not recomputed)",
+    "macroMae": 1.063192966557648,
+    "macroMase": 1.6247120192718778,
+    "macroRmsse": 0.915955327163257,
+    "pooledRmse": 2.208269197884313,
+    "pooledWapePercent": 73.6885555520047,
+    "series": 30490,
+    "observations": 853720
+   },
+   {
+    "datasetKey": "store_item",
+    "trialId": "store_item_lightgbm_00",
+    "algorithm": "lightgbm",
+    "role": "selected",
+    "evidenceType": "Saved Phase 4 one-time final assessment (reported, not recomputed)",
+    "macroMae": 5.434342530628236,
+    "macroMase": 0.6567390423570334,
+    "macroRmsse": 0.6445638871980043,
+    "pooledRmse": 7.06697597219678,
+    "pooledWapePercent": 12.258461912447542,
+    "series": 500,
+    "observations": 14000
+   },
+   {
+    "datasetKey": "store_item",
+    "trialId": "store_item_holt_winters_additive_01",
+    "algorithm": "holt_winters_additive",
+    "role": "comparator",
+    "evidenceType": "Saved Phase 4 one-time final assessment (reported, not recomputed)",
+    "macroMae": 10.651093200657884,
+    "macroMase": 1.243443621111095,
+    "macroRmsse": 1.1269063023088488,
+    "pooledRmse": 13.299054685397643,
+    "pooledWapePercent": 24.02609323764868,
+    "series": 500,
+    "observations": 14000
+   },
+   {
+    "datasetKey": "store_item",
+    "trialId": "store_item_seasonal_moving_average_reference",
+    "algorithm": "seasonal_moving_average",
+    "role": "comparator",
+    "evidenceType": "Saved Phase 4 one-time final assessment (reported, not recomputed)",
+    "macroMae": 15.807285714285713,
+    "macroMase": 1.820069244472586,
+    "macroRmsse": 1.5853869319500067,
+    "pooledRmse": 18.891610949988205,
+    "pooledWapePercent": 35.65712112838542,
+    "series": 500,
+    "observations": 14000
+   },
+   {
+    "datasetKey": "store_item",
+    "trialId": "store_item_seasonal_naive_reference",
+    "algorithm": "seasonal_naive",
+    "role": "comparator",
+    "evidenceType": "Saved Phase 4 one-time final assessment (reported, not recomputed)",
+    "macroMae": 12.814642857142857,
+    "macroMase": 1.504507045860958,
+    "macroRmsse": 1.433303572448867,
+    "pooledRmse": 16.701995175940596,
+    "pooledWapePercent": 28.906497980307392,
+    "series": 500,
+    "observations": 14000
+   }
+  ]
+ }
+}

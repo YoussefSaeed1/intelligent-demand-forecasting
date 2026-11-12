@@ -1,0 +1,2 @@
+# Vendored Phase 5 engine files are hash-bound to the frozen execution contract: keep exact bytes.
+src/intelligent_demand/inventory/*.py -text

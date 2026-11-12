@@ -1,0 +1,10 @@
+{
+  "source": "src/intelligent_demand/inventory",
+  "contract": "artifacts/inventory/phase5/execution.json",
+  "execution_sha256": "b55ba4a0c9c8fafb2ee3997f38d2f31efea99f4157033e70288814a2006c87c3",
+  "files": {
+    "__init__.py": "3fc7a960e1e6052dc24e38b60d91790b51e12e4c853e1712a8813a1806186bb2",
+    "design.py": "68171055794dca8dd375f44238c686b21ce8873406a34e7434499dac094721be",
+    "engine.py": "0e764f2b064c93331b4142abf94439fa447bfb6a660f105af20e761e548da6d1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "gate": "S-02",
+  "status": "PASS",
+  "episodes": 3264,
+  "episodes_per_origin_and_dataset": 408,
+  "episodes_816_definition": "6 representatives x 2 datasets x 17 scenarios x 4 policies, per origin",
+  "summary_fields": 23,
+  "bit_exact_episodes": 3264,
+  "max_relative_difference": 0.0,
+  "tolerance": "rtol 1e-9, atol 1e-9"
+}

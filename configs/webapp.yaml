@@ -1,0 +1,30 @@
+# Phase 7 web application: curated demonstration data contract (predeclared, owner-approved 2026-11-12).
+# The M5 subset is drawn ONLY from the training-prefix demand pattern in DimSeries, before any result is read.
+schema_version: 1
+export_version: "2026-11-12.1"
+output_directory: artifacts/webapp/data          # git-ignored
+manifest: reports/webapp/export_manifest.json     # tracked
+history_days: 84                                  # pre-origin window shown in charts (ends on the origin date)
+curation:
+  store_item: all
+  m5:
+    seed: 42
+    strata:                       # training-prefix demand pattern -> series count (total 300)
+      all_zero: 10
+      insufficient_positive_history: 5
+      erratic: 40
+      intermittent: 150
+      lumpy: 60
+      smooth: 35
+    force_include: phase5_representatives   # the six predeclared Phase 5 representatives
+planner_bounds:                   # also enforced by the API (zod) and the engine service (Pydantic)
+  lead_days: [0, 14]
+  review_days: [1, 7]
+  buffer_days: [0, 7]
+  initial_cover_days: [0, 14]
+  holding_cost: [0.1, 5]
+  shortage_cost: [1, 50]
+  fixed_order_cost: [0, 10]
+  variable_order_cost: [0, 1]
+  terminal_cost: [0, 1]
+  variability_multiplier: [0.5, 1.5]

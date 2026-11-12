@@ -1,0 +1,4 @@
+# Extends the project configuration. The vendored engine is excluded so no tool can rewrite its bytes.
+extend = "../../pyproject.toml"
+line-length = 125
+extend-exclude = ["src/intelligent_demand"]

@@ -1,0 +1,3 @@
+# Extends the project configuration; only the line length differs.
+extend = "../../pyproject.toml"
+line-length = 125

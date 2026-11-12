@@ -1,0 +1,158 @@
+{
+ "meta": {
+  "exportVersion": "2026-11-12.1",
+  "evidence": "validation"
+ },
+ "datasets": [
+  {
+   "datasetKey": "store_item",
+   "dataset": "Store Item",
+   "datasetDescription": "Kaggle Store Item Demand; 500 store-item daily series",
+   "seriesCount": 500,
+   "curatedSeries": 500,
+   "selectedTrial": "store_item_lightgbm_00",
+   "trainingStart": "2013-01-01",
+   "testStart": "2017-12-04",
+   "origins": [
+    {
+     "originKey": "store_item|1",
+     "datasetKey": "store_item",
+     "fold": 1,
+     "foldLabel": "Origin 1",
+     "originDate": "2017-08-13",
+     "validationStart": "2017-08-14",
+     "validationEnd": "2017-09-10"
+    },
+    {
+     "originKey": "store_item|2",
+     "datasetKey": "store_item",
+     "fold": 2,
+     "foldLabel": "Origin 2",
+     "originDate": "2017-09-10",
+     "validationStart": "2017-09-11",
+     "validationEnd": "2017-10-08"
+    },
+    {
+     "originKey": "store_item|3",
+     "datasetKey": "store_item",
+     "fold": 3,
+     "foldLabel": "Origin 3",
+     "originDate": "2017-10-08",
+     "validationStart": "2017-10-09",
+     "validationEnd": "2017-11-05"
+    },
+    {
+     "originKey": "store_item|4",
+     "datasetKey": "store_item",
+     "fold": 4,
+     "foldLabel": "Origin 4",
+     "originDate": "2017-11-05",
+     "validationStart": "2017-11-06",
+     "validationEnd": "2017-12-03"
+    }
+   ],
+   "models": [
+    {
+     "modelKey": "store_item|selected_ml",
+     "datasetKey": "store_item",
+     "modelRole": "Selected ML",
+     "modelRoleKey": "selected_ml",
+     "algorithm": "lightgbm",
+     "isSelectedModel": "Yes"
+    },
+    {
+     "modelKey": "store_item|moving_average_28",
+     "datasetKey": "store_item",
+     "modelRole": "MA28",
+     "modelRoleKey": "moving_average_28",
+     "algorithm": "moving_average_28",
+     "isSelectedModel": "No"
+    },
+    {
+     "modelKey": "store_item|seasonal_naive",
+     "datasetKey": "store_item",
+     "modelRole": "Seasonal Naive",
+     "modelRoleKey": "seasonal_naive",
+     "algorithm": "seasonal_naive",
+     "isSelectedModel": "No"
+    }
+   ],
+   "coverageNote": "All 500 research series are available in the demo."
+  },
+  {
+   "datasetKey": "m5",
+   "dataset": "M5",
+   "datasetDescription": "M5 Walmart; 30,490 store-item daily series, highly intermittent",
+   "seriesCount": 30490,
+   "curatedSeries": 300,
+   "selectedTrial": "m5_random_forest_02",
+   "trainingStart": "2011-01-29",
+   "testStart": "2016-04-25",
+   "origins": [
+    {
+     "originKey": "m5|1",
+     "datasetKey": "m5",
+     "fold": 1,
+     "foldLabel": "Origin 1",
+     "originDate": "2016-01-03",
+     "validationStart": "2016-01-04",
+     "validationEnd": "2016-01-31"
+    },
+    {
+     "originKey": "m5|2",
+     "datasetKey": "m5",
+     "fold": 2,
+     "foldLabel": "Origin 2",
+     "originDate": "2016-01-31",
+     "validationStart": "2016-02-01",
+     "validationEnd": "2016-02-28"
+    },
+    {
+     "originKey": "m5|3",
+     "datasetKey": "m5",
+     "fold": 3,
+     "foldLabel": "Origin 3",
+     "originDate": "2016-02-28",
+     "validationStart": "2016-02-29",
+     "validationEnd": "2016-03-27"
+    },
+    {
+     "originKey": "m5|4",
+     "datasetKey": "m5",
+     "fold": 4,
+     "foldLabel": "Origin 4",
+     "originDate": "2016-03-27",
+     "validationStart": "2016-03-28",
+     "validationEnd": "2016-04-24"
+    }
+   ],
+   "models": [
+    {
+     "modelKey": "m5|selected_ml",
+     "datasetKey": "m5",
+     "modelRole": "Selected ML",
+     "modelRoleKey": "selected_ml",
+     "algorithm": "random_forest",
+     "isSelectedModel": "Yes"
+    },
+    {
+     "modelKey": "m5|moving_average_28",
+     "datasetKey": "m5",
+     "modelRole": "MA28",
+     "modelRoleKey": "moving_average_28",
+     "algorithm": "moving_average_28",
+     "isSelectedModel": "No"
+    },
+    {
+     "modelKey": "m5|seasonal_naive",
+     "datasetKey": "m5",
+     "modelRole": "Seasonal Naive",
+     "modelRoleKey": "seasonal_naive",
+     "algorithm": "seasonal_naive",
+     "isSelectedModel": "No"
+    }
+   ],
+   "coverageNote": "300 curated demo series of 30490 in the research population; population statistics use all 30490."
+  }
+ ]
+}

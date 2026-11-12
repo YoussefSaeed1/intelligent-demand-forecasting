@@ -1,0 +1,26 @@
+[project]
+name = "idf-engine-service"
+version = "1.0.0"
+description = "Private FastAPI simulation service for the Phase 7 web application"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "fastapi==0.121.3",
+    "pydantic==2.12.5",
+    "psycopg[binary]==3.2.13",
+    "numpy==2.5.4",
+    "pandas==3.1.1",
+    "pyyaml==6.0.3",
+    "idf-inventory-core==1.0.0",
+]
+
+# The byte-identical Phase 5 engine lives in packages/inventory_core (outside this service root).
+# Vercel builds Python projects with uv, which resolves this relative path source. Requires the Vercel
+# project setting that includes files outside the root directory (to verify in Phase 7D).
+[tool.uv.sources]
+idf-inventory-core = { path = "../../packages/inventory_core" }
+
+[project.optional-dependencies]
+test = ["pytest>=8", "httpx==0.28.1", "pyarrow==26.0.1", "uvicorn==0.38.0"]
+
+[tool.vercel]
+entrypoint = "main:app"

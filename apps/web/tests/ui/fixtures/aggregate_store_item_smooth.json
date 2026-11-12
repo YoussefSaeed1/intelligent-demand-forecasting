@@ -1,0 +1,249 @@
+{
+ "meta": {
+  "exportVersion": "2026-11-12.1",
+  "evidence": "validation",
+  "scope": "full research population"
+ },
+ "rows": [
+  {
+   "originKey": "store_item|1",
+   "fold": 1,
+   "modelKey": "store_item|selected_ml",
+   "role": "selected_ml",
+   "label": "Selected ML",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 6.49208808866572,
+    "rmse": 8.413141636085529,
+    "wape": 0.10008383508692037,
+    "bias": 0.3772961828526668,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 0.7950568195535057,
+    "macroRmsse": 0.7803730463442204,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|1",
+   "fold": 1,
+   "modelKey": "store_item|moving_average_28",
+   "role": "moving_average_28",
+   "label": "MA28",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 10.656948979591837,
+    "rmse": 14.010262182720616,
+    "wape": 0.16429048861264037,
+    "bias": 6.335571428571429,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.256619633127226,
+    "macroRmsse": 1.2118104231651394,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|1",
+   "fold": 1,
+   "modelKey": "store_item|seasonal_naive",
+   "role": "seasonal_naive",
+   "label": "Seasonal Naive",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 9.153214285714286,
+    "rmse": 11.878982039119105,
+    "wape": 0.1411084964614136,
+    "bias": 1.7809285714285714,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.116642197074374,
+    "macroRmsse": 1.0918349745659832,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|2",
+   "fold": 2,
+   "modelKey": "store_item|selected_ml",
+   "role": "selected_ml",
+   "label": "Selected ML",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 6.260136069670048,
+    "rmse": 8.09883873075989,
+    "wape": 0.10316431771115403,
+    "bias": 0.08301910990305297,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 0.7641520107643673,
+    "macroRmsse": 0.7495091791344679,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|2",
+   "fold": 2,
+   "modelKey": "store_item|moving_average_28",
+   "role": "moving_average_28",
+   "label": "MA28",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 9.385137755102042,
+    "rmse": 12.285923274800544,
+    "wape": 0.15466298533369185,
+    "bias": 4.1852857142857145,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.1111010912072559,
+    "macroRmsse": 1.0726286889983794,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|2",
+   "fold": 2,
+   "modelKey": "store_item|seasonal_naive",
+   "role": "seasonal_naive",
+   "label": "Seasonal Naive",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 8.783928571428572,
+    "rmse": 11.385708460296055,
+    "wape": 0.14475531966235727,
+    "bias": 1.357357142857143,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.072110226040251,
+    "macroRmsse": 1.0435379137937881,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|3",
+   "fold": 3,
+   "modelKey": "store_item|selected_ml",
+   "role": "selected_ml",
+   "label": "Selected ML",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 6.157554588806195,
+    "rmse": 7.963387315327102,
+    "wape": 0.10510155184291749,
+    "bias": -0.03833645809472578,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 0.7503295133061326,
+    "macroRmsse": 0.7365549190074099,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|3",
+   "fold": 3,
+   "modelKey": "store_item|moving_average_28",
+   "role": "moving_average_28",
+   "label": "MA28",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 9.093714285714286,
+    "rmse": 11.859219805187653,
+    "wape": 0.15521802846574187,
+    "bias": 2.0945,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.0757877305704884,
+    "macroRmsse": 1.0390370519492451,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|3",
+   "fold": 3,
+   "modelKey": "store_item|seasonal_naive",
+   "role": "seasonal_naive",
+   "label": "Seasonal Naive",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 8.577285714285715,
+    "rmse": 11.096975134821973,
+    "wape": 0.14640325573569823,
+    "bias": -1.0372857142857144,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.0457915408691152,
+    "macroRmsse": 1.0223320963072309,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|4",
+   "fold": 4,
+   "modelKey": "store_item|selected_ml",
+   "role": "selected_ml",
+   "label": "Selected ML",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 6.322380540737704,
+    "rmse": 8.231949450467901,
+    "wape": 0.10549281871354832,
+    "bias": -0.273867888306303,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 0.7655252676713858,
+    "macroRmsse": 0.7502660149182949,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|4",
+   "fold": 4,
+   "modelKey": "store_item|moving_average_28",
+   "role": "moving_average_28",
+   "label": "MA28",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 9.017382653061224,
+    "rmse": 11.916796583659828,
+    "wape": 0.15046059112713384,
+    "bias": -1.345142857142857,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.064078400223785,
+    "macroRmsse": 1.0386254868708986,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  },
+  {
+   "originKey": "store_item|4",
+   "fold": 4,
+   "modelKey": "store_item|seasonal_naive",
+   "role": "seasonal_naive",
+   "label": "Seasonal Naive",
+   "pattern": "smooth",
+   "metrics": {
+    "mae": 10.105428571428572,
+    "rmse": 13.579985272451513,
+    "wape": 0.16861530833827942,
+    "bias": 1.0872857142857142,
+    "mase": null,
+    "rmsse": null,
+    "macroMase": 1.2130561043605377,
+    "macroRmsse": 1.2101459372831664,
+    "series": 500,
+    "undefinedMaseSeries": 0
+   }
+  }
+ ]
+}

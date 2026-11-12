@@ -1,0 +1,9 @@
+{
+ "status": "ok",
+ "exportVersion": "2026-11-12.1",
+ "engine": {
+  "reachable": true,
+  "engineVersion": "cedc5a31533772fc"
+ },
+ "build": "local"
+}

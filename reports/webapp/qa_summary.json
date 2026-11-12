@@ -1,0 +1,61 @@
+{
+  "phase": "7B",
+  "date": "2026-11-12",
+  "export_version": "2026-11-12.1",
+  "git_commit": "987e27f8a56cde6617e44ad8795feec9b97218ef",
+  "overall": "PASS",
+  "data_and_database_gates": {
+    "PASS": 9,
+    "WARNING": 0,
+    "FAIL": 0,
+    "ERROR": 0,
+    "SKIPPED": 0,
+    "overall": "PASS"
+  },
+  "suites": {
+    "packages/inventory_core (S-01..S-08)": {
+      "tests": 23,
+      "passed": 23,
+      "parity": {
+        "gate": "S-02",
+        "status": "PASS",
+        "episodes": 3264,
+        "episodes_per_origin_and_dataset": 408,
+        "episodes_816_definition": "6 representatives x 2 datasets x 17 scenarios x 4 policies, per origin",
+        "summary_fields": 23,
+        "bit_exact_episodes": 3264,
+        "max_relative_difference": 0.0,
+        "tolerance": "rtol 1e-9, atol 1e-9"
+      }
+    },
+    "apps/engine service (A-01..A-04, A-06, A-08)": {
+      "tests": 37,
+      "passed": 37
+    },
+    "apps/web API (A-01..A-08)": {
+      "tests": 18,
+      "passed": 18
+    },
+    "project regression suite (Phases 0-6)": {
+      "tests": 451,
+      "passed": 451
+    }
+  },
+  "static_checks": {
+    "ruff": "passed",
+    "tsc": "passed",
+    "eslint": "passed",
+    "pip_check": "passed",
+    "next_build": "passed",
+    "build_secret_scan": "0 of 5 secret marker values present in .next (client or server)",
+    "export_determinism": "re-export byte-identical for all 20 tables",
+    "vendored_engine_identity": "identical to src/ and the frozen Phase 5 execution contract"
+  },
+  "measured_footprint": {
+    "csv_mb": 42.2,
+    "postgres_app_schema_mb": 137.2,
+    "postgres_database_mb": 145.6,
+    "supabase_free_limit_mb": 500,
+    "rows": 655711
+  }
+}
