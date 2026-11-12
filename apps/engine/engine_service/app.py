@@ -20,7 +20,7 @@ from fastapi.responses import JSONResponse
 from intelligent_demand.inventory import design, engine
 from inventory_service.planner import run_planner, scenario_from
 
-from engine_service.data import NotFound, connect, load_inputs
+from engine_service.data import InsecureDatabaseUrl, NotFound, connect, load_inputs
 from engine_service.schemas import SimulateRequest
 
 LOG = logging.getLogger("engine")
@@ -105,6 +105,9 @@ def simulate(body: SimulateRequest, request: Request):
                 inputs = load_inputs(conn, body.series_key, body.origin_key)
         except NotFound:
             return error(404, "not_found", "Unknown series or origin", request_id)
+        except InsecureDatabaseUrl:
+            # Misconfiguration (e.g. missing sslmode=require): refuse without connecting; never echo the URL.
+            return error(503, "not_configured", "Simulation service is not configured", request_id)
         try:
             scenario = scenario_from(body.scenario.engine_parameters())
         except (ValueError, TypeError):

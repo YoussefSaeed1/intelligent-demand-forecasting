@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "PASS": 9,
+    "WARNING": 0,
+    "FAIL": 0,
+    "ERROR": 0,
+    "SKIPPED": 0,
+    "overall": "PASS"
+  },
+  "results": [
+    {
+      "id": "D-01",
+      "severity": "CRITICAL",
+      "description": "Export files match the manifest; source evidence hashes unchanged",
+      "status": "PASS",
+      "actual": "20 files; mismatched []; source drift []"
+    },
+    {
+      "id": "D-02",
+      "severity": "CRITICAL",
+      "description": "Actuals and forecasts for the 506 Phase 6 detail series equal FactForecastSeriesDaily exactly",
+      "status": "PASS",
+      "actual": "506 series; 56,672 actual and 170,016 forecast rows compared exactly"
+    },
+    {
+      "id": "D-03",
+      "severity": "CRITICAL",
+      "description": "No exported date reaches the final holdout; history ends on the origin; validation rows inside windows",
+      "status": "PASS",
+      "actual": "0 rows outside approved windows (test starts {'store_item': '2017-12-04', 'm5': '2016-04-25'})"
+    },
+    {
+      "id": "D-04",
+      "severity": "CRITICAL",
+      "description": "Aggregates reproduce the 24 registry pooled metrics, macro MASE and the leaderboard primary scores",
+      "status": "PASS",
+      "actual": "122 reference values; max relative difference 6.60e-16"
+    },
+    {
+      "id": "D-05",
+      "severity": "CRITICAL",
+      "description": "Keys unique, foreign keys resolve, curated set matches the predeclared rule",
+      "status": "PASS",
+      "actual": "800 series (500 + 300), strata {'intermittent': 150, 'lumpy': 60, 'erratic': 40, 'smooth': 35, 'all_zero': 10, 'insufficient_positive_history': 5}, 6 representatives, reproducible"
+    },
+    {
+      "id": "D-06",
+      "severity": "HIGH",
+      "description": "Inventory base rows and historical means equal the Phase 5 per-case outputs for curated series",
+      "status": "PASS",
+      "actual": "12,800 series-origin-policy rows; mismatches 0"
+    },
+    {
+      "id": "D-07",
+      "severity": "CRITICAL",
+      "description": "Seeded Postgres row counts equal the manifest; provenance export version matches",
+      "status": "PASS",
+      "actual": "20 tables; mismatches []; version 2026-11-12.1; app schema 137.2 MB incl. indexes and TOAST; database 146.0 MB"
+    },
+    {
+      "id": "A-05",
+      "severity": "CRITICAL",
+      "description": "Roles and RLS: readers can only SELECT app tables; anon/authenticated have no access; writes fail",
+      "status": "PASS",
+      "actual": "24 role/operation probes behaved as designed"
+    },
+    {
+      "id": "A-09",
+      "severity": "HIGH",
+      "description": "Rate-limit function is callable only by webapp_api and stores hashed buckets only",
+      "status": "PASS",
+      "actual": "calls {'webapp_api': True, 'engine_api': 'denied', 'anon': 'denied'}; non-hash bucket rejected"
+    }
+  ]
+}

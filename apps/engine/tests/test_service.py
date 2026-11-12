@@ -174,3 +174,13 @@ def test_service_reproduces_saved_phase5_results(client, dataset, series, scenar
                 assert row[field] != row[field]
             else:
                 assert np.isclose(value, row[field], rtol=1e-9, atol=1e-9), (status["policy"], field)
+
+
+def test_insecure_remote_database_url_is_refused_without_connecting(client, monkeypatch):
+    # Phase 7D-2 P-1: a remote URL without sslmode=require must never be used (libpq 'prefer' can downgrade to plaintext).
+    monkeypatch.setenv("ENGINE_DATABASE_URL", "postgresql://engine_api.ref:placeholder@db.invalid.example:6543/postgres")
+    response = post(client, BASE_BODY)
+    assert response.status_code == 503
+    assert response.json()["error"] == "not_configured"
+    assert "invalid.example" not in response.text and "placeholder" not in response.text
+    assert_no_internals(response)

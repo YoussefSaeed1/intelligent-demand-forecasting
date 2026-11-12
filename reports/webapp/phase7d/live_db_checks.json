@@ -1,0 +1,89 @@
+{
+  "project": "ecxswrwuylenwvsxghxg",
+  "checked_utc": "2026-11-12T14:17:16+00:00",
+  "export_version": "2026-11-12.1",
+  "gates": {
+    "D-07": {
+      "pass": true,
+      "total_rows": 655711,
+      "mismatches": {},
+      "provenance_matches_frozen_hashes": true,
+      "app_schema_mb": 137.2,
+      "database_mb": 149.0
+    },
+    "holdout_boundary": {
+      "pass": true,
+      "rows_on_or_after_test_start": 0
+    },
+    "A-05": {
+      "pass": true,
+      "probes": 30
+    },
+    "A-09": {
+      "pass": true,
+      "webapp_api": "allowed:True",
+      "engine_api": "denied:42501",
+      "anon": "denied:42501",
+      "bad_bucket": "denied:P0001"
+    },
+    "pooler_logins": {
+      "pass": true,
+      "webapp_api": {
+        "current_user": "webapp_api",
+        "statement_timeout": "5s",
+        "port": 6543
+      },
+      "engine_api": {
+        "current_user": "engine_api",
+        "statement_timeout": "5s",
+        "port": 6543
+      }
+    },
+    "client_tls": {
+      "pass": true,
+      "postgres": "tls-encrypted sslmode=require min=TLSv1.2",
+      "webapp_api": "tls-encrypted sslmode=require min=TLSv1.2",
+      "engine_api": "tls-encrypted sslmode=require min=TLSv1.2"
+    }
+  },
+  "unexpected": {},
+  "outcomes": {
+    "anon.select": "denied:42501",
+    "anon.actuals": "denied:42501",
+    "anon.insert": "denied:42501",
+    "anon.update": "denied:42501",
+    "anon.delete": "denied:42501",
+    "anon.ddl": "denied:42501",
+    "anon.rate_limit": "denied:42501",
+    "authenticated.select": "denied:42501",
+    "authenticated.actuals": "denied:42501",
+    "authenticated.insert": "denied:42501",
+    "authenticated.update": "denied:42501",
+    "authenticated.delete": "denied:42501",
+    "authenticated.ddl": "denied:42501",
+    "authenticated.rate_limit": "denied:42501",
+    "service_role.select": "denied:42501",
+    "service_role.actuals": "denied:42501",
+    "service_role.insert": "denied:42501",
+    "service_role.update": "denied:42501",
+    "service_role.delete": "denied:42501",
+    "service_role.ddl": "denied:42501",
+    "service_role.rate_limit": "denied:42501",
+    "webapp_api.select": "allowed",
+    "webapp_api.actuals": "allowed",
+    "webapp_api.insert": "denied:42501",
+    "webapp_api.update": "denied:42501",
+    "webapp_api.delete": "denied:42501",
+    "webapp_api.ddl": "denied:42501",
+    "webapp_api.rate_limit": "allowed:True",
+    "webapp_api.rate_limit_bad_bucket": "denied:P0001",
+    "engine_api.select": "denied:42501",
+    "engine_api.actuals": "allowed",
+    "engine_api.insert": "denied:42501",
+    "engine_api.update": "denied:42501",
+    "engine_api.delete": "denied:42501",
+    "engine_api.ddl": "denied:42501",
+    "engine_api.rate_limit": "denied:42501"
+  },
+  "overall": "PASS"
+}
