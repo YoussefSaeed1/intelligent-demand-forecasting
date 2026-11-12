@@ -87,10 +87,15 @@ settings; none are committed.
 - Costs are normalised units, not money; no savings are claimed.
 - Results come from two public datasets and are not a universal ranking of methods.
 
-## Data and licence
+## Data
 
 The raw Kaggle data is **not** included; download it yourself under each competition's rules. The live app shows a
 curated subset of daily sales for research demonstration only.
+
+## Copyright
+
+© 2026 Youssef Saeed. All rights reserved. The source is published for viewing and assessment only; no licence is
+granted to use, copy, modify or redistribute it.
 
 Graduation project for the Pre‑Master (Postgraduate) Diploma in Data Science, Cairo University, 2026.
 Author: [Youssef Saeed](https://youssefsaeed-portfolio.vercel.app).
