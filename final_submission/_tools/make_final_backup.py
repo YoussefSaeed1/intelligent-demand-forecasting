@@ -44,7 +44,7 @@ EXCLUDE_PARTS = {"node_modules", ".venv", ".next", "__pycache__", ".pytest_cache
 EXCLUDE_SUFFIX = {".pbix", ".pyc"}
 EXCLUDE_NAMES = {".env", ".env.local", ".env.production", "localSettings.json", "cache.abf"}
 SECRET = re.compile(
-    rb"postgres(?:ql)?://[^\s\"'<>@:/]+:[^\s\"'<>@]{6,}@(?!127\.0\.0\.1|localhost)|-----BEGIN [A-Z ]*PRIVATE KEY|sk_live_|"
+    rb"postgres(?:ql)?://[^\s\"'<>@:/]+:[^\s\"'<>@]{6,}@(?!127\.0\.0\.1|localhost)|-----BEGIN [A-Z ]*PRIVATE KEY|sk_" rb"live_|"
     rb"eyJ[A-Za-z0-9_-]{30,}\.[A-Za-z0-9_-]{20,}|x-vercel-protection-bypass\s*[:=]\s*[\"']?[A-Za-z0-9]{24,}"
 )
 
@@ -114,7 +114,7 @@ def main():
         if not p.exists() or sha256(p) != e["sha256"] or p.stat().st_size != e["bytes"]:
             problems.append(e["path"])
     sums = "".join(f"{e['sha256']}  {('' if e.get('kind') else 'files/')}{e['path']}\n" for e in entries)
-    (DEST / "SHA256SUMS.txt").write_text(sums, encoding="utf-8")
+    (DEST / "SHA256SUMS.txt").write_bytes(sums.encode("utf-8"))  # exact LF bytes: the manifest hashes these bytes
     manifest = {
         "kind": "LOCAL BACKUP ON THE SAME DEVICE (Phase 8 essential package); not an off-device copy",
         "created_at_utc": datetime.now(UTC).isoformat(timespec="seconds"),

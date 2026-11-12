@@ -43,7 +43,7 @@ Status as of 2026-11-12. A box is ticked only where the item was executed and ve
 ## D. Preservation
 
 - [x] Existing local backups re-verified: Phase 4 (4,592 files), Phase 5 (2,593), Phase 6 PBIP (129), Phase 7C (208), 0 problems.
-- [ ] Final Phase 8 local backup with Git bundle and SHA-256 manifest, verified (see `08_backup/BACKUP_REPORT.md`).
+- [x] Final Phase 8 local backup with Git bundle and SHA-256 manifest, read-back verified (see `08_backup/BACKUP_REPORT.md`).
 - [ ] **Off-device copy verified** (see the backup report for status; required before submission).
 
 ## E. Before the viva
