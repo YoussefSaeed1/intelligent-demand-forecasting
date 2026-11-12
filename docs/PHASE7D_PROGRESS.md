@@ -1,13 +1,13 @@
 # Phase 7D progress
 
-Last updated: 2026-11-12. Current subphase: **7D-3A COMMITTED and pushed (web-only; engine build guard in place). 7D-3B (`idf-web`) awaiting approval.**
+Last updated: 2026-11-12. Current subphase: **7D-3A CLOSED (`36da979` on private `main`; engine untouched). 7D-3B (`idf-web`) awaiting approval.**
 
 | Subphase | Status |
 |---|---|
 | 7D-0 pre-deployment readiness | DONE: [report](PHASE7D_PREDEPLOYMENT_REPORT.md), [runbook](PHASE7D_DEPLOYMENT_RUNBOOK.md), [QA plan](PHASE7D_PRODUCTION_QA_PLAN.md), [rollback](PHASE7D_ROLLBACK_PLAN.md) |
 | 7D-1 Supabase | DONE: project, migration, SCRAM role passwords, seed, live gates and independent verification all PASS |
 | 7D-2 engine | DONE: P-1, P-2, P-3 accepted; production E-01..E-08 PASS on `9a13fab` (`dpl_7qGSEBPMyeqvJnifA5w6fuUtcorG`) |
-| 7D-3 web | 7D-3A local preparation DONE (engine bypass, lossless float reads, DB URL TLS fix); 7D-3B deployment not started |
+| 7D-3 web | 7D-3A CLOSED (`36da979`); 7D-3B deployment NOT STARTED ([checklist](PHASE7D_3B_CHECKLIST.md)) |
 | 7D-4 production QA | NOT STARTED |
 
 ## Completed operations (7D-0, all read-only)
@@ -308,3 +308,11 @@ Last updated: 2026-11-12. Current subphase: **7D-3A COMMITTED and pushed (web-on
   "Engine build guard"); verified locally against this commit (skip), `e170d98` (build), empty/unknown SHA (build).
   Database URL contract asserted: postgres.js startup parameters for the production URL format are `application_name`
   only.
+
+## 7D-3A closure verification (2026-11-12)
+- `origin/main` = local HEAD `36da979` (fetched; zero diff); repository private (anonymous GitHub API 404); no tags pushed.
+- `idf-engine`: push created `dpl_7AsK3nrJdTUdFf3MVagG21RAAfjP` for `36da979`, CANCELED by the Ignored Build Step
+  ("returned exit code 0", no aliases). Alias `idf-engine.vercel.app` → `dpl_7qGSEBPMyeqvJnifA5w6fuUtcorG` (`9a13fab`),
+  READY. Anonymous `/health` on the production domain and deployment URL 401; anonymous POST 302 to Vercel login.
+  Note: the connector's project `domains` field mirrors the latest deployment record (the canceled one), not the alias.
+- **Verdict: 7D-3A CLOSED.**

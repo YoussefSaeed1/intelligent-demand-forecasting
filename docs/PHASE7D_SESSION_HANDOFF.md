@@ -14,8 +14,8 @@ using roles `webapp_api` / `engine_api`. Region `fra1`. Secrets in Production en
 ## Status
 7D-1 COMPLETE. 7D-2 COMPLETE (P-3 accepted on `9a13fab`, `dpl_7qGSEBPMyeqvJnifA5w6fuUtcorG`, https://idf-engine.vercel.app,
 protection All Deployments). 7D-3A local preparation COMPLETE and verified (engine bypass header, lossless float reads,
-DB URL TLS fix) committed and pushed; `idf-engine` Ignored Build Step guards against web-only rebuilds.
-7D-3B (`idf-web` project, deploy) NOT STARTED.
+DB URL TLS fix) CLOSED at `36da979`; the push's engine build was canceled by the Ignored Build Step and production
+stays on `9a13fab`. 7D-3B NOT STARTED: follow `docs/PHASE7D_3B_CHECKLIST.md`.
 
 ## Next three actions (after approval only)
 1. Confirm `idf-engine` production still points at `9a13fab` after any push (Ignored Build Step; see runbook).
