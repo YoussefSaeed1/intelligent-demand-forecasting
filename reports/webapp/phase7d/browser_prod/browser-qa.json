@@ -1,0 +1,246 @@
+{
+  "base": "https://idf-web.vercel.app",
+  "backend": "real local Postgres and Python engine",
+  "pages": [
+    {
+      "path": "/",
+      "width": 1280,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 4,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "overview_1280.png"
+    },
+    {
+      "path": "/forecasts",
+      "width": 1280,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 0,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "forecasts_1280.png"
+    },
+    {
+      "path": "/planner",
+      "width": 1280,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 1,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "planner_1280.png"
+    },
+    {
+      "path": "/scenarios",
+      "width": 1280,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 0,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "scenarios_1280.png"
+    },
+    {
+      "path": "/research",
+      "width": 1280,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 2,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "research_1280.png"
+    },
+    {
+      "path": "/",
+      "width": 1024,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 4,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "overview_1024.png"
+    },
+    {
+      "path": "/forecasts",
+      "width": 1024,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 0,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "forecasts_1024.png"
+    },
+    {
+      "path": "/planner",
+      "width": 1024,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 1,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "planner_1024.png"
+    },
+    {
+      "path": "/scenarios",
+      "width": 1024,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 0,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "scenarios_1024.png"
+    },
+    {
+      "path": "/research",
+      "width": 1024,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 2,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "research_1024.png"
+    },
+    {
+      "path": "/",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 4,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "overview_390.png"
+    },
+    {
+      "path": "/forecasts",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 0,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "forecasts_390.png"
+    },
+    {
+      "path": "/planner",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 1,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "planner_390.png"
+    },
+    {
+      "path": "/scenarios",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 0,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "scenarios_390.png"
+    },
+    {
+      "path": "/research",
+      "width": 390,
+      "status": 200,
+      "overflow": 0,
+      "violations": [],
+      "copyGate": {
+        "pass": true,
+        "approvedCaveats": 2,
+        "violations": [],
+        "ncuWithoutHypothetical": false,
+        "ropWithoutComparatorLabel": false
+      },
+      "screenshot": "research_390.png"
+    }
+  ],
+  "interactions": [
+    "Real engine run equals saved Phase 5 base totals for 4 policies: Selected ML 2,555 NCU; MA28 2,772 NCU; Seasonal Naive 2,900 NCU; Fixed ROP 1,309 NCU",
+    "Explorer → Planner preserves series/origin; real four-policy run; server CSV downloaded",
+    "Displayed inventory SVG exported as PNG with scientific caption",
+    "Invalid bounds block execution and clear stale results",
+    "Real saved study filters by demand pattern",
+    "Scenario origin filter is URL state; Store Item final-origin reversal shown from real data"
+  ],
+  "interceptedStates": [
+    "engine unavailable: error + labelled precomputed fallback PASS (simulate mocked; fallback GET real)",
+    "loading: PASS (mocked, not integration)",
+    "empty: PASS (mocked, not integration)",
+    "error: PASS (mocked, not integration)"
+  ],
+  "console": []
+}

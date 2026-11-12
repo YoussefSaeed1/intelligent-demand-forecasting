@@ -1,0 +1,276 @@
+{
+  "checkedUtc": "2026-11-12T17:20:31.512Z",
+  "production": "https://idf-web.vercel.app",
+  "overall": "PASS",
+  "gates": {
+    "W-1 byte-identical API vs local reference": {
+      "pass": true,
+      "compared": 21,
+      "results": {
+        "GET /api/v1/datasets": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "6ecbfcc1e37a4016",
+          "localSha": "6ecbfcc1e37a4016",
+          "ms": 515
+        },
+        "GET /api/v1/series?dataset=m5&limit=50": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "6ac21d1075024c5f",
+          "localSha": "6ac21d1075024c5f",
+          "ms": 174
+        },
+        "GET /api/v1/series?dataset=store_item&limit=50": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "5e24940e911df361",
+          "localSha": "5e24940e911df361",
+          "ms": 192
+        },
+        "GET /api/v1/series/m5%257C4%253ACA_1FOODS_3_764": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "36827819939d824e",
+          "localSha": "36827819939d824e",
+          "ms": 287
+        },
+        "GET /api/v1/forecasts?series=store_item%7C1%3A11&origin=store_item%7C1": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "73df88079e44289a",
+          "localSha": "73df88079e44289a",
+          "ms": 239
+        },
+        "GET /api/v1/forecasts?series=m5%7C4%3ACA_1FOODS_3_764&origin=m5%7C3": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "3950d549636fca5e",
+          "localSha": "3950d549636fca5e",
+          "ms": 200
+        },
+        "GET /api/v1/metrics/aggregate?dataset=store_item": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "b65cf410322b8b9f",
+          "localSha": "b65cf410322b8b9f",
+          "ms": 155
+        },
+        "GET /api/v1/metrics/aggregate?dataset=store_item&pattern=lumpy": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "eab5000594695e79",
+          "localSha": "eab5000594695e79",
+          "ms": 135
+        },
+        "GET /api/v1/inventory/study?dataset=store_item": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "6d35bfa985070aaa",
+          "localSha": "6d35bfa985070aaa",
+          "ms": 177
+        },
+        "GET /api/v1/inventory/study?dataset=store_item&scenario=base&pattern=smooth": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "b39a265812bb0d57",
+          "localSha": "b39a265812bb0d57",
+          "ms": 182
+        },
+        "GET /api/v1/metrics/aggregate?dataset=m5": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "749878171dcd2f27",
+          "localSha": "749878171dcd2f27",
+          "ms": 144
+        },
+        "GET /api/v1/metrics/aggregate?dataset=m5&pattern=lumpy": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "6b1c35d9340e7262",
+          "localSha": "6b1c35d9340e7262",
+          "ms": 148
+        },
+        "GET /api/v1/inventory/study?dataset=m5": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "86144cdb4fd1a5d2",
+          "localSha": "86144cdb4fd1a5d2",
+          "ms": 219
+        },
+        "GET /api/v1/inventory/study?dataset=m5&scenario=base&pattern=smooth": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "7a991b9c75e11008",
+          "localSha": "7a991b9c75e11008",
+          "ms": 157
+        },
+        "GET /api/v1/inventory/series-base?series=store_item%7C1%3A11": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "4e5f6a85e8d757c7",
+          "localSha": "4e5f6a85e8d757c7",
+          "ms": 176
+        },
+        "GET /api/v1/inventory/series-base?series=m5%7C4%3ACA_1FOODS_3_764": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "612f8dcc808c0a5b",
+          "localSha": "612f8dcc808c0a5b",
+          "ms": 168
+        },
+        "GET /api/v1/research": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "bdfd2e7de8308b47",
+          "localSha": "bdfd2e7de8308b47",
+          "ms": 195
+        },
+        "POST /api/v1/planner/simulate {\"seriesKey\":\"store_item|1:11\",\"originKey\":\"store_item|1\"}": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "6bce3efe6144fcb4",
+          "localSha": "6bce3efe6144fcb4",
+          "ms": 449
+        },
+        "POST /api/v1/planner/simulate {\"seriesKey\":\"m5|4:CA_1FOODS_3_764\",\"originKey\":\"m5|3\"}": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "59cb30299fbdeb6b",
+          "localSha": "59cb30299fbdeb6b",
+          "ms": 330
+        },
+        "POST /api/v1/planner/simulate {\"seriesKey\":\"store_item|1:11\",\"originKey\":\"store_item|1\",\"policies\":[\"selected_ml\",\"fixed_reorder_point\"],\"scenario\":{\"leadDays\":3,\"shortageCost\":25}}": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "dfbfe79016dd000a",
+          "localSha": "dfbfe79016dd000a",
+          "ms": 264
+        },
+        "POST /api/v1/planner/export {\"seriesKey\":\"store_item|1:11\",\"originKey\":\"store_item|1\"}": {
+          "prod": 200,
+          "local": 200,
+          "identical": true,
+          "prodSha": "b824297bd936bcd0",
+          "localSha": "b824297bd936bcd0",
+          "ms": 334
+        }
+      }
+    },
+    "W-2 health and Phase 5 totals": {
+      "pass": true,
+      "health": {
+        "status": "ok",
+        "engine": {
+          "reachable": true,
+          "engineVersion": "cedc5a31533772fc"
+        },
+        "exportVersion": "2026-11-12.1",
+        "build": "36da9797baa3"
+      },
+      "totals": {
+        "selected_ml": 2555,
+        "moving_average_28": 2772,
+        "seasonal_naive": 2900,
+        "fixed_reorder_point": 1309
+      }
+    },
+    "W-3 validation": {
+      "pass": true,
+      "observed": {
+        "lead_days_out_of_bounds": 400,
+        "client_supplied_demand": 400,
+        "cross_dataset": 400,
+        "not_json": 400,
+        "oversized": 413,
+        "unknown_series": 404,
+        "bad_query": 400,
+        "extra_query": 400,
+        "sql_like_key": 400
+      },
+      "expected": {
+        "lead_days_out_of_bounds": 400,
+        "client_supplied_demand": 400,
+        "cross_dataset": 400,
+        "not_json": 400,
+        "oversized": 413,
+        "unknown_series": 404,
+        "bad_query": 400,
+        "extra_query": 400,
+        "sql_like_key": 400
+      }
+    },
+    "W-4 data scope": {
+      "pass": true,
+      "m5Curated": 300,
+      "finalHoldoutTargetsRead": false,
+      "nonCuratedSeriesStatus": 404
+    },
+    "S-1 security headers": {
+      "pass": true,
+      "page": {
+        "content-security-policy": "frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self'",
+        "x-frame-options": "DENY",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload"
+      }
+    },
+    "S-2 unsupported methods": {
+      "pass": true,
+      "observed": {
+        "delete_simulate": 405,
+        "post_datasets": 405
+      }
+    },
+    "S-3 secret exposure": {
+      "pass": true,
+      "scannedTexts": 107,
+      "clientAssets": 9,
+      "hits": []
+    },
+    "S-4 rate limit": {
+      "pass": true,
+      "allowedBefore429": 19,
+      "retryAfter": "60"
+    },
+    "P-1 latency (client-side, warm)": {
+      "pass": true,
+      "readStudyMs": [
+        232,
+        85,
+        91,
+        82,
+        84
+      ],
+      "readMedianMs": 85,
+      "firstParityCallMs": 515,
+      "simulateParityMs": [
+        449,
+        330,
+        264
+      ]
+    }
+  }
+}

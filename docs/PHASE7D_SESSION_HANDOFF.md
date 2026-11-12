@@ -12,15 +12,15 @@ using roles `webapp_api` / `engine_api`. Region `fra1`. Secrets in Production en
 - Local checkpoint `7000c048900b315e131ba8ccce3350c7dd7e4140`; backup `C:/Project_Backups/Demand_Forecasting_Phase7C_WebApp_verified_20261112`.
 
 ## Status
-7D-1 COMPLETE. 7D-2 COMPLETE (P-3 accepted on `9a13fab`, `dpl_7qGSEBPMyeqvJnifA5w6fuUtcorG`, https://idf-engine.vercel.app,
-protection All Deployments). 7D-3A local preparation COMPLETE and verified (engine bypass header, lossless float reads,
-DB URL TLS fix) CLOSED at `36da979`; the push's engine build was canceled by the Ignored Build Step and production
-stays on `9a13fab`. 7D-3B NOT STARTED: follow `docs/PHASE7D_3B_CHECKLIST.md`.
+Phase 7D COMPLETE. Public app https://idf-web.vercel.app (`idf-web` `prj_r38MRs59MUsJMhpd7DRV42ABdM8t`, production
+`dpl_362iX8C1ZZjJgYAEXPLS4TknU6zL`, commit `36da979`). Engine `9a13fab` (`dpl_7qGSEBPMyeqvJnifA5w6fuUtcorG`) protected for
+All Deployments and unchanged. Evidence: `docs/PHASE7D_DEPLOYMENT_RECORD.md`, `reports/webapp/phase7d/live_web_checks.json`,
+`reports/webapp/phase7d/browser_prod/browser-qa.json`.
 
-## Next three actions (after approval only)
-1. Confirm `idf-engine` production still points at `9a13fab` after any push (Ignored Build Step; see runbook).
-2. Create `idf-web` per runbook; owner enters Production-only secrets incl. `VERCEL_PROTECTION_BYPASS_SECRET`.
-3. Deploy and run QA W/S gates incl. byte-identical numeric responses through the Supavisor pooler.
+## Next actions (optional)
+1. Before demos: open the app (Supabase Free pauses inactive projects); re-run `tools/phase7d/live_web_checks.mjs`.
+2. Demonstrate preview protection with the next real `apps/web` change on a non-production branch.
+3. Upgrade dev-only tooling (vitest) in a separate change.
 
 ## Safe resume commands
 `git status --short; git log --oneline -3` · evidence check snippet in the progress file history (plan/execution/selection/ledger)

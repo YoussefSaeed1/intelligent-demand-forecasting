@@ -1,14 +1,14 @@
 # Phase 7D progress
 
-Last updated: 2026-11-12. Current subphase: **7D-3A CLOSED (`36da979` on private `main`; engine untouched). 7D-3B (`idf-web`) awaiting approval.**
+Last updated: 2026-11-12. Current subphase: **7D COMPLETE: public web app https://idf-web.vercel.app (`36da979`) verified in production (7D-4 PASS; see [deployment record](PHASE7D_DEPLOYMENT_RECORD.md)).**
 
 | Subphase | Status |
 |---|---|
 | 7D-0 pre-deployment readiness | DONE: [report](PHASE7D_PREDEPLOYMENT_REPORT.md), [runbook](PHASE7D_DEPLOYMENT_RUNBOOK.md), [QA plan](PHASE7D_PRODUCTION_QA_PLAN.md), [rollback](PHASE7D_ROLLBACK_PLAN.md) |
 | 7D-1 Supabase | DONE: project, migration, SCRAM role passwords, seed, live gates and independent verification all PASS |
 | 7D-2 engine | DONE: P-1, P-2, P-3 accepted; production E-01..E-08 PASS on `9a13fab` (`dpl_7qGSEBPMyeqvJnifA5w6fuUtcorG`) |
-| 7D-3 web | 7D-3A CLOSED (`36da979`); 7D-3B deployment NOT STARTED ([checklist](PHASE7D_3B_CHECKLIST.md)) |
-| 7D-4 production QA | NOT STARTED |
+| 7D-3 web | DONE: `idf-web` production `dpl_362iX8C1ZZjJgYAEXPLS4TknU6zL` (`36da979`), https://idf-web.vercel.app |
+| 7D-4 production QA | DONE: W/S gates and browser QA PASS; see [deployment record](PHASE7D_DEPLOYMENT_RECORD.md) |
 
 ## Completed operations (7D-0, all read-only)
 - Git: HEAD `7000c048900b315e131ba8ccce3350c7dd7e4140` (`main`); tracked tree clean; `experiments/` untracked; no remote.
@@ -316,3 +316,17 @@ Last updated: 2026-11-12. Current subphase: **7D-3A CLOSED (`36da979` on private
   READY. Anonymous `/health` on the production domain and deployment URL 401; anonymous POST 302 to Vercel login.
   Note: the connector's project `domains` field mirrors the latest deployment record (the canceled one), not the alias.
 - **Verdict: 7D-3A CLOSED.**
+
+## 7D-3B / 7D-4 production deployment and verification (2026-11-12, autonomous execution)
+- `idf-web` created (Next.js, root `apps/web`, `npm ci`, `next build`, Node 24.x, fra1, outside-root OFF, Vercel
+  Authentication for previews only, `ENGINE_URL` plain). Owner entered the four secrets (Sensitive, Production only)
+  after `tools/phase7d/build_web_db_url.py` passed through the real pooler.
+- First deployment `dpl_CFnXeYxehhYGUxY8sXbGBHrzLDRk` ERROR at the ignore step: Vercel treats `git diff` exit 128 (empty
+  previous SHA) as a failure, not "build". Both build guards now exit 1 explicitly for an empty/unknown SHA; verified
+  in a depth-10 clone. Second deployment `dpl_362iX8C1ZZjJgYAEXPLS4TknU6zL` READY.
+- github.com:443 intermittently unreachable from this network: production was deployed from `36da979` (already on
+  GitHub, contains all web code) via the Vercel API; later docs/tool commits are pushed when reachable.
+- Production QA: `reports/webapp/phase7d/live_web_checks.json` overall PASS (21/21 byte-identical, Phase 5 totals,
+  validation, data scope, headers, methods, secret scan, rate limit, latency); browser 15/15, 0 console errors.
+  Not executed in production: real engine/database outage, built-preview protection (see deployment record).
+- Engine unchanged: `9a13fab` / `dpl_7qGSEBPMyeqvJnifA5w6fuUtcorG`, All Deployments protection.
