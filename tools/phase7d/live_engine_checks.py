@@ -1,5 +1,6 @@
 """Phase 7D-2 P-3 production checks for the deployed engine (owner-run; secrets via hidden prompts, never printed/stored).
 
+  $env:ENGINE_DEPLOYMENT_URL = 'https://idf-engine-<id>-<scope>.vercel.app'   # active deployment URL (not a secret)
   .\\apps\\engine\\.venv\\Scripts\\python.exe tools\\phase7d\\live_engine_checks.py
 
 Checks: E-01 health and engine identity; E-02 Vercel protection (deployment URL; production domain if All Deployments);
@@ -10,6 +11,8 @@ reports/webapp/phase7d/live_engine_checks.json.
 
 import getpass
 import json
+import os
+import re
 import statistics
 import struct
 import time
@@ -19,7 +22,9 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 PROD = "https://idf-engine.vercel.app"
-DEPLOYMENT = "https://idf-engine-bpm9f8n8o-youssefsaeed206-3245s-projects.vercel.app"  # active deployment (e170d98)
+# The per-deployment URL changes on every deploy, so it is supplied per run (non-secret) instead of hardcoded.
+DEPLOYMENT = os.environ.get("ENGINE_DEPLOYMENT_URL", "").strip().rstrip("/")
+DEPLOYMENT_PATTERN = re.compile(r"https://idf-engine-[a-z0-9]+-[a-z0-9-]+\.vercel\.app")
 LOCAL = "http://127.0.0.1:8787"
 LOCAL_KEY = "local-test-engine-key-0123456789abcdef0123"  # local test server only
 ENGINE_VERSION = "cedc5a31533772fc"
@@ -175,6 +180,8 @@ def summary_key(policy):
 
 
 def main():
+    if not DEPLOYMENT_PATTERN.fullmatch(DEPLOYMENT):
+        raise SystemExit("Set ENGINE_DEPLOYMENT_URL to the active idf-engine deployment URL (Vercel > Deployments)")
     key = getpass.getpass("idf-engine ENGINE_SHARED_KEY (hidden): ").strip()
     bypass = getpass.getpass("Protection Bypass for Automation secret (hidden; Enter to skip): ").strip() or None
     if len(key) < 32:

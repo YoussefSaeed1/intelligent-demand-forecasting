@@ -8,6 +8,8 @@ export interface ServerEnv {
   databaseUrl: string; // webapp_api role (read-only + rate-limit function), never the service-role key
   engineUrl: string;
   engineKey: string;
+  /** Vercel "Protection Bypass for Automation" secret for the protected engine deployment; null only for a loopback engine. */
+  engineBypassSecret: string | null;
   rateLimitSalt: string;
   simulatePerMinute: number;
   simulatePerDay: number;
@@ -34,10 +36,33 @@ export class ConfigurationError extends Error {
   }
 }
 
+const LOOPBACK = new Set(["127.0.0.1", "localhost", "[::1]"]);
+
+/**
+ * A remote engine must be HTTPS (both secrets travel in headers) and must have the Vercel protection bypass secret,
+ * because the engine deployment is protected for All Deployments. Only a loopback engine (local tests) may omit it.
+ */
+function engineTarget(): { engineUrl: string; engineBypassSecret: string | null } {
+  const engineUrl = required("ENGINE_URL");
+  let url: URL;
+  try {
+    url = new URL(engineUrl);
+  } catch {
+    throw new ConfigurationError("ENGINE_URL");
+  }
+  const loopback = LOOPBACK.has(url.hostname);
+  if (url.username || url.password || url.search || url.hash || !(url.protocol === "https:" || (loopback && url.protocol === "http:"))) {
+    throw new ConfigurationError("ENGINE_URL");
+  }
+  const bypass = process.env.VERCEL_PROTECTION_BYPASS_SECRET ?? "";
+  if (!loopback && bypass.length < 16) throw new ConfigurationError("VERCEL_PROTECTION_BYPASS_SECRET");
+  return { engineUrl, engineBypassSecret: bypass.length > 0 ? bypass : null };
+}
+
 export function serverEnv(): ServerEnv {
   return {
     databaseUrl: required("WEBAPP_DATABASE_URL"),
-    engineUrl: required("ENGINE_URL"),
+    ...engineTarget(),
     engineKey: required("ENGINE_SHARED_KEY", 32),
     rateLimitSalt: required("RATE_LIMIT_SALT", 32),
     simulatePerMinute: positiveInteger("RATE_LIMIT_SIMULATE_PER_MINUTE", 30),

@@ -1,13 +1,13 @@
 # Phase 7D progress
 
-Last updated: 2026-11-12. Current subphase: **7D-2 P-3: lossless float-transport fix committed, pushed and auto-deployed; owner production run of E-01..E-08 pending. P-3 NOT closed.**
+Last updated: 2026-11-12. Current subphase: **7D-3A COMMITTED and pushed (web-only; engine build guard in place). 7D-3B (`idf-web`) awaiting approval.**
 
 | Subphase | Status |
 |---|---|
 | 7D-0 pre-deployment readiness | DONE: [report](PHASE7D_PREDEPLOYMENT_REPORT.md), [runbook](PHASE7D_DEPLOYMENT_RUNBOOK.md), [QA plan](PHASE7D_PRODUCTION_QA_PLAN.md), [rollback](PHASE7D_ROLLBACK_PLAN.md) |
 | 7D-1 Supabase | DONE: project, migration, SCRAM role passwords, seed, live gates and independent verification all PASS |
-| 7D-2 engine | P-1, P-2 DONE; P-3 float-transport fix deployed; production E-01..E-08 re-run pending (owner) |
-| 7D-3 web | NOT STARTED |
+| 7D-2 engine | DONE: P-1, P-2, P-3 accepted; production E-01..E-08 PASS on `9a13fab` (`dpl_7qGSEBPMyeqvJnifA5w6fuUtcorG`) |
+| 7D-3 web | 7D-3A local preparation DONE (engine bypass, lossless float reads, DB URL TLS fix); 7D-3B deployment not started |
 | 7D-4 production QA | NOT STARTED |
 
 ## Completed operations (7D-0, all read-only)
@@ -257,5 +257,54 @@ Last updated: 2026-11-12. Current subphase: **7D-2 P-3: lossless float-transport
   Local dry run: 5/5 pairs bit-exact, 0 saved mismatches.
 - Verification: engine 69/69 (none skipped); engine package 23/23 with S-02 3,264/3,264 bit-exact (max rel. diff 0.0);
   vendored engine identical; frozen evidence (plan/execution/selection/ledger) unchanged; Ruff clean; web API 19/19 via
-  the patched local engine. `reports/webapp/phase7d/live_engine_checks.json` is the pre-fix 15:36Z run (E-06 FAIL).
+  the patched local engine. The pre-fix 15:36Z run (E-06 FAIL) is preserved in commit `9a13fab`; the file now holds the accepted 16:14Z run.
 - Web (postgres.js) float precision is a known 7D-3 risk, documented in the runbook; frontend unchanged.
+
+## 7D-2 P-3 final production verification and acceptance (2026-11-12)
+- Deployment `dpl_7qGSEBPMyeqvJnifA5w6fuUtcorG`: commit `9a13fab`, READY, function region fra1, Python 3.14, aliases
+  `idf-engine.vercel.app` + team/git-main aliases. Project protection unchanged: Vercel Authentication `all`, password
+  protection and trusted IPs off. Env: `ENGINE_DATABASE_URL`, `ENGINE_SHARED_KEY` sensitive, Production only.
+- Owner run 16:14:23Z (`reports/webapp/phase7d/live_engine_checks.json`, overall **PASS**):
+  - E-01 health 200, engineVersion `cedc5a31533772fc`, keyConfigured true.
+  - E-02 deployment URL and production domain without bypass 401; with bypass 200.
+  - E-03 wrong and missing key 401. E-04 400/400/404/400/413 as expected. E-05 200.
+  - E-06 5/5 pairs bit-exact vs the local reference engine (base store_item|1:11@1 + 4 known affected pairs), 0 differing
+    paths, `saved_phase5_mismatches={}`; totals selected_ml 2555, moving_average_28 2772, seasonal_naive 2900,
+    fixed_reorder_point 1309.
+  - E-07 first simulate 761.1 ms, warm 380.7/367.8/378.7/357.2/355.9 ms (median 367.8), health 264.9 ms (client-side
+    from Egypt; function time 114-142 ms warm, 269.6 ms first).
+- E-08 PASS: 19 info lines for the run (16:14:23-16:14:30Z), 0 warnings/errors, `get_runtime_errors` empty. Every line is
+  `{request_id,path,status,ms}` only: no keys, URLs, hosts, headers, query strings, bodies or tracebacks. Early 401 ×2 and
+  413 now logged (observability gap closed). Two unrelated `GET /` 404 lines at 16:11:53Z are Vercel's post-deploy probe.
+- **Verdict: P-3 ACCEPTED; 7D-2 COMPLETE.**
+
+## 7D-3A Next.js production readiness (2026-11-12, local only)
+- Engine client (`apps/web/src/lib/server/engine.ts`, `env.ts`): server-only `VERCEL_PROTECTION_BYPASS_SECRET` sent as
+  `x-vercel-protection-bypass` on /simulate and /health; `x-engine-key` on /simulate only. Remote `ENGINE_URL` must be
+  HTTPS without credentials/query, and the bypass secret is mandatory for any non-loopback engine. `redirect: "manual"`
+  (Vercel login redirects would otherwise forward custom secret headers cross-origin). Engine 401/403 → 502, 503 → 503,
+  timeout → 504, network/other → 502, all `engine_unavailable` with the precomputed-results message (UI fallback
+  unchanged); one structured warning line per failure (request id, reason, engine status only).
+- Logging: `handle()` no longer logs `error.message` (driver errors can carry hosts/users): class, SQLSTATE/errno code
+  and, for configuration errors, the variable name only.
+- Float precision: postgres.js 3.4.7 has no binary result format (Bind sends zero result-format codes). Fix: every
+  repository read runs in `readExact` = `BEGIN READ ONLY` + `set_config('extra_float_digits','3', true)`. Verified on
+  PostgreSQL 17.11 (Supabase is 17.11, setting context `user`): lossy session 27.9285714285714 → 27.928571428571427;
+  setting resets at commit (no pooled-session leak). No role/database setting changed.
+- DB URL: `ssl_min_protocol_version=TLSv1.2` in the URL was forwarded as a startup parameter → FATAL 55P02 (reproduced
+  locally); now applied as Node TLS `minVersion`; remote `sslmode=disable|allow|prefer` rejected.
+- Tests: web 88/88, 0 skipped (UI 34; API 19; precision 24 incl. all 68 float8 columns of schema `app` bit-identical to
+  float8send on a forced `extra_float_digits=0` session, 13 endpoints byte-identical exact vs lossy, API values vs the
+  SHA-256-verified export bit for bit; engine-client 11 with a real local engine and cross-origin redirect target).
+  Mutation checks: removing set_config fails 18 precision tests; following redirects fails 2; dropping the bypass
+  header fails 2. TypeScript, ESLint clean; `next build` PASS without secrets; client bundle contains no secret names,
+  header names or DB code. Browser QA on `next start` with a lossy DB session: 15/15 page×width PASS (no overflow, 0
+  serious/critical axe, copy gate PASS, 0 console errors), real engine run equals Phase 5 totals.
+- Unchanged: engine 69/69; vendored engine identical; frozen evidence UNCHANGED; no Supabase or Vercel change.
+- `npm audit --omit=dev` 0. Full audit: 9 dev-only (vitest 4.0.8 critical advisories for the Vitest UI/browser server,
+  not used; typescript-eslint/minimatch moderate); not deployed.
+- `tools/phase7d/live_engine_checks.py` deployment URL is now supplied per run via `ENGINE_DEPLOYMENT_URL` (validated).
+- Pre-push (approved): `idf-engine` Ignored Build Step set to skip only when no engine build input changed (runbook
+  "Engine build guard"); verified locally against this commit (skip), `e170d98` (build), empty/unknown SHA (build).
+  Database URL contract asserted: postgres.js startup parameters for the production URL format are `application_name`
+  only.

@@ -1,8 +1,8 @@
 {
-  "checked_utc": "2026-11-12T15:36:49+00:00",
+  "checked_utc": "2026-11-12T16:14:23+00:00",
   "base": "https://idf-engine.vercel.app",
   "bypass_supplied": true,
-  "first_simulate_ms": 745.7,
+  "first_simulate_ms": 761.1,
   "first_simulate_status": 200,
   "gates": {
     "E-01 health": {
@@ -13,7 +13,7 @@
         "engineVersion": "cedc5a31533772fc",
         "keyConfigured": true
       },
-      "ms": 403.0
+      "ms": 264.9
     },
     "E-02 protection": {
       "deployment_url_without_bypass": 401,
@@ -49,30 +49,66 @@
       "engineVersion": "cedc5a31533772fc"
     },
     "E-06 parity": {
-      "pass": false,
-      "local_engine_status": 200,
-      "bit_exact_vs_local_engine": false,
+      "pairs": {
+        "store_item|1:11 @ store_item|1": {
+          "prod_status": 200,
+          "local_status": 200,
+          "bit_exact": true,
+          "differing_paths": [],
+          "differing_path_count": 0
+        },
+        "store_item|1:11 @ store_item|2": {
+          "prod_status": 200,
+          "local_status": 200,
+          "bit_exact": true,
+          "differing_paths": [],
+          "differing_path_count": 0
+        },
+        "store_item|1:113 @ store_item|2": {
+          "prod_status": 200,
+          "local_status": 200,
+          "bit_exact": true,
+          "differing_paths": [],
+          "differing_path_count": 0
+        },
+        "m5|4:CA_1FOODS_3_764 @ m5|3": {
+          "prod_status": 200,
+          "local_status": 200,
+          "bit_exact": true,
+          "differing_paths": [],
+          "differing_path_count": 0
+        },
+        "m5|4:CA_1HOBBIES_1_371 @ m5|2": {
+          "prod_status": 200,
+          "local_status": 200,
+          "bit_exact": true,
+          "differing_paths": [],
+          "differing_path_count": 0
+        }
+      },
       "saved_phase5_mismatches": {},
+      "bit_exact_vs_local_engine": true,
       "totals": {
         "selected_ml": 2555.0,
         "moving_average_28": 2772.0,
         "seasonal_naive": 2900.0,
         "fixed_reorder_point": 1309.0
-      }
+      },
+      "pass": true
     },
     "E-07 latency": {
       "pass": true,
-      "first_simulate_ms": 745.7,
+      "first_simulate_ms": 761.1,
       "warm_simulate_ms": [
-        356.6,
-        403.5,
-        417.2,
-        461.1,
-        428.6
+        380.7,
+        367.8,
+        378.7,
+        357.2,
+        355.9
       ],
-      "warm_median_ms": 417.2,
-      "health_ms": 403.0
+      "warm_median_ms": 367.8,
+      "health_ms": 264.9
     }
   },
-  "overall": "FAIL"
+  "overall": "PASS"
 }

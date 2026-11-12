@@ -65,24 +65,49 @@ database under 200 MB.
 2. **Owner, Production only:**
    - `WEBAPP_DATABASE_URL`: `webapp_api.<ref>` transaction pooler, port 6543, with
      `?sslmode=require&ssl_min_protocol_version=TLSv1.2` (postgres.js also enforces `ssl: "require"` for non-local hosts).
-   - `ENGINE_URL`: the engine **production domain**, not a per-deployment URL.
+   - `ENGINE_URL`: the engine **production domain** `https://idf-engine.vercel.app`, not a per-deployment URL.
    - `ENGINE_SHARED_KEY`: the same value as the engine.
+   - `VERCEL_PROTECTION_BYPASS_SECRET`: the engine project's Protection Bypass for Automation secret (the engine stays
+     protected for All Deployments). Required for any non-loopback `ENGINE_URL`; missing → generic 503 `not_configured`.
    - `RATE_LIMIT_SALT`: new secret.
    - Optional: `RATE_LIMIT_SIMULATE_PER_MINUTE`, `RATE_LIMIT_SIMULATE_PER_DAY`, `RATE_LIMIT_READ_PER_MINUTE`.
 3. Deploy, then run the QA plan sections W and S.
 
-**Known risk to resolve before 7D-3 deployment: float precision in the web API (found in 7D-2 P-3).** Supabase's server
-configuration sets `extra_float_digits = 0`, so every `double precision` value read in text format is rounded to 15
-significant digits. The engine was fixed by reading its inputs in binary format. The web app (postgres.js) still reads text:
-- Displayed values (2-4 decimals) are unaffected, but metric ratios and NCU means computed in `/api/v1` from rounded
-  additive components can differ from the local reference in the last digits.
-- The web API tests that reproduce the registry metrics and the post-audit reconciliation could therefore fail or drift
-  against Supabase, and any exact comparison with saved values is unsafe.
-- Planner results are not affected: simulations run in the engine.
-- Proposed fix (7D-3, separate approval): make postgres.js return exact floats, either by setting
-  `extra_float_digits = 3` per transaction (`SET LOCAL` inside the query transaction, compatible with the transaction
-  pooler) or by binary result transfer. Add a regression test that forces `extra_float_digits = 0` locally and requires
-  bit-identical `/api/v1` numeric output. Verify against Supabase before go-live.
+**Float precision in the web API (found in 7D-2 P-3; fixed locally in 7D-3A, pending Supabase verification).**
+Supabase's server configuration sets `extra_float_digits = 0`; postgres.js 3.4.7 always requests TEXT results (its Bind
+message sends zero result-format codes, so binary float transport is not available). Every read in
+`apps/web/src/lib/server/repository.ts` now runs through `readExact` (`db.ts`): a `READ ONLY` transaction whose first
+statement is `select set_config('extra_float_digits', '3', true)`. PostgreSQL 17.11 (same version locally and on
+Supabase; the setting has context `user`) then emits shortest exact round-trip text, which JavaScript parses to the
+identical double. The setting is transaction-scoped (compatible with the transaction pooler; verified not to leak).
+Regression tests: `apps/web/tests/precision.test.ts` (whole-database float8send bit comparison on a forced
+`extra_float_digits=0` session; byte-identical API responses exact vs lossy; API values vs the hash-verified export).
+
+**Database URL (fixed in 7D-3A).** postgres.js forwards unknown URL parameters to the server as startup parameters, so
+`ssl_min_protocol_version=TLSv1.2` made PostgreSQL reject the connection (55P02, reproduced locally). `db.ts` now
+consumes `sslmode` / `ssl_min_protocol_version` as Node TLS options (remote: TLS always, minimum TLS 1.2, `require`
+semantics as for the engine) and rejects `sslmode=disable|allow|prefer` for remote hosts.
+
+**`WEBAPP_DATABASE_URL` contract (web, postgres.js):**
+`postgresql://webapp_api.<ref>:<url-encoded password>@<transaction-pooler host>:6543/postgres?sslmode=require&ssl_min_protocol_version=TLSv1.2`
+- User `webapp_api.<ref>` (Supavisor tenant form), port 6543 (transaction mode; the client uses `prepare: false`).
+- `sslmode` and `ssl_min_protocol_version` are consumed by `connectionOptions` and never sent as startup parameters (the
+  client's startup parameters are only `application_name`, asserted in `precision.test.ts`). TLS 1.2 minimum is enforced
+  by Node's `tls.connect({ minVersion: "TLSv1.2" })`; remote hosts always use TLS even without `sslmode`.
+- Any other query parameter WOULD be forwarded as a server startup parameter: add none.
+
+**Engine build guard (7D-3A push).** Vercel's native "skip unaffected projects" needs npm/yarn/pnpm/Bun workspaces; this
+repository has none (Python engine), so every push counted as a global change and would rebuild `idf-engine`. The engine
+project's Ignored Build Step is therefore:
+`git diff --quiet "$VERCEL_GIT_PREVIOUS_SHA" HEAD -- :/apps/engine :/packages :/pyproject.toml :/vercel.json :/.vercelignore`
+It skips (exit 0) only when none of the engine's build inputs (`apps/engine/**`, `packages/**` incl. the uv path source
+`packages/inventory_core`, root config) changed since the last successful deployment. Empty or unknown previous SHA
+(first deploy, or more than 10 commits since, beyond Vercel's depth-10 clone) exits 128 and BUILDS (fail-safe).
+Redeploy/promote from the dashboard can bypass it ("Use project's Ignore Build Step" checkbox).
+
+**7D-3B gate (before go-live):** after deployment, verify through the Supavisor transaction pooler that `/api/v1`
+numeric responses equal the local reference byte for byte (W gates), and that a production simulate passes the engine's
+Vercel protection with the bypass secret.
 
 ## 7D-4 Production verification
 
@@ -92,8 +117,10 @@ a successful build alone is not.
 
 ## Environment variable names (no values)
 
-- Web: `WEBAPP_DATABASE_URL`, `ENGINE_URL`, `ENGINE_SHARED_KEY`, `RATE_LIMIT_SALT`, optional `RATE_LIMIT_*`.
+- Web: `WEBAPP_DATABASE_URL`, `ENGINE_URL`, `ENGINE_SHARED_KEY`, `VERCEL_PROTECTION_BYPASS_SECRET`, `RATE_LIMIT_SALT`,
+  optional `RATE_LIMIT_*`.
 - Engine: `ENGINE_DATABASE_URL`, `ENGINE_SHARED_KEY`, optional `ENGINE_MAX_CONCURRENCY`.
-- Laptop only (transient): `WEBAPP_OWNER_DATABASE_URL`.
+- Laptop only (transient): `WEBAPP_OWNER_DATABASE_URL`; `ENGINE_DEPLOYMENT_URL` (non-secret, for
+  `tools/phase7d/live_engine_checks.py`).
 
 Never prefix any of these with `NEXT_PUBLIC_`.

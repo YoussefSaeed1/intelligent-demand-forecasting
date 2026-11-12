@@ -12,17 +12,15 @@ using roles `webapp_api` / `engine_api`. Region `fra1`. Secrets in Production en
 - Local checkpoint `7000c048900b315e131ba8ccce3350c7dd7e4140`; backup `C:/Project_Backups/Demand_Forecasting_Phase7C_WebApp_verified_20261112`.
 
 ## Status
-7D-1 COMPLETE. P-1 `8c54c3c`; P-2 pushed to private `YoussefSaeed1/intelligent-demand-forecasting`. P-3: `idf-engine`
-(`prj_ZkgvGobCJHntKWcrevCAgRlcsmX6`, https://idf-engine.vercel.app, protection All Deployments). Pre-fix run: E-06 FAIL from
-Supabase `extra_float_digits=0` (15-digit text floats). Lossless binary-transport fix committed, pushed and auto-deployed;
-sweep 3,200 pairs with 0 differences. **P-3 NOT closed** until the owner's production E-01..E-08 run passes.
+7D-1 COMPLETE. 7D-2 COMPLETE (P-3 accepted on `9a13fab`, `dpl_7qGSEBPMyeqvJnifA5w6fuUtcorG`, https://idf-engine.vercel.app,
+protection All Deployments). 7D-3A local preparation COMPLETE and verified (engine bypass header, lossless float reads,
+DB URL TLS fix) committed and pushed; `idf-engine` Ignored Build Step guards against web-only rebuilds.
+7D-3B (`idf-web` project, deploy) NOT STARTED.
 
 ## Next three actions (after approval only)
-1. Owner: start the local reference engine on 8787 and run `tools/phase7d/live_engine_checks.py` (hidden prompts: engine
-   key + bypass); Claude then checks runtime logs (E-08, within 1 h Hobby retention).
-2. On PASS: close P-3 in the progress file. On FAIL: diagnose; never loosen the bit-exact comparison.
-3. 7D-3 web project only after separate approval; first fix the postgres.js float-precision risk (runbook). Never re-apply
-   or re-seed the database.
+1. Confirm `idf-engine` production still points at `9a13fab` after any push (Ignored Build Step; see runbook).
+2. Create `idf-web` per runbook; owner enters Production-only secrets incl. `VERCEL_PROTECTION_BYPASS_SECRET`.
+3. Deploy and run QA W/S gates incl. byte-identical numeric responses through the Supavisor pooler.
 
 ## Safe resume commands
 `git status --short; git log --oneline -3` · evidence check snippet in the progress file history (plan/execution/selection/ledger)

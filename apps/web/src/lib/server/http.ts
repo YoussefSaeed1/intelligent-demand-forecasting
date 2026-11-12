@@ -62,9 +62,14 @@ export async function handle(request: Request, run: (id: string) => Promise<Resp
                            { status: error.status, headers });
     }
     const configuration = error instanceof ConfigurationError;
+    // Never the message text: driver and network errors can carry host names, user names or URL fragments.
+    // A configuration error logs only the variable NAME; others log the error class and its SQLSTATE/errno code.
+    const code = (error as { code?: unknown } | null)?.code;
     console.error(JSON.stringify({ requestId: id, path: new URL(request.url).pathname,
                                    error: configuration ? "configuration" : "unhandled",
-                                   detail: error instanceof Error ? error.message : String(error) }));
+                                   variable: configuration ? error.variable : undefined,
+                                   errorClass: error instanceof Error ? error.name : typeof error,
+                                   code: typeof code === "string" ? code.slice(0, 32) : undefined }));
     return Response.json({ error: configuration ? "not_configured" : "internal_error",
                            message: "The request could not be completed", requestId: id },
                          { status: configuration ? 503 : 500, headers: { "cache-control": "no-store", "x-request-id": id } });
