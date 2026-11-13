@@ -27,7 +27,8 @@ Phase 6 (Power BI), Phase 7 (web application and deployment) and Phase 8 (submis
 Open before academic submission (see
 [remaining risks](../final_submission/07_checklists/REMAINING_RISKS_AND_FOLLOW_UP.md)):
 
-- F-02: a verified off-device copy of the Phase 4, Phase 5 and Phase 8 backups.
+- F-02: not pursued. The owner deleted the local backups on 2026-11-13; the Git-ignored evidence exists only in the
+  local project folder, so an independent verified copy would be needed before any assessment.
 - R-01: the owner's recorded review of the Kaggle data-use terms, including the public display of curated sales.
 - External validation by the supervisor or examiners. The AI-assisted audits do not replace it.
 

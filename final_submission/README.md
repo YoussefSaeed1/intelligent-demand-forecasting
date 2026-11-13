@@ -6,7 +6,7 @@ Intelligent Demand Forecasting & Inventory Optimisation. Prepared 2026-11-12.
 |---|---|---|
 | 1 | Final scientific audit report | `01_audits/FINAL_SCIENTIFIC_AUDIT.md` |
 | 2 | Technical and security audit report | `01_audits/TECHNICAL_SECURITY_AUDIT.md` |
-| 3 | Verified backup and integrity manifest | `08_backup/BACKUP_REPORT.md` (the backup itself is in `C:\Project_Backups\`) |
+| 3 | Verified backup and integrity manifest | `08_backup/BACKUP_REPORT.md` (the backup was deleted by the owner on 2026-11-13; see the status update in the report) |
 | 4 | Academic research paper | `03_paper/IDF_Research_Paper.docx` |
 | 5 | Academic presentation | `04_presentation/IDF_Viva_Presentation.pptx` |
 | 6 | Speaker notes and live demo script | `05_speaker_notes/SPEAKER_NOTES_AND_DEMO_SCRIPT.md` |

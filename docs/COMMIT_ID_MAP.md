@@ -3,7 +3,8 @@
 On 2026-11-13 the messages of the commits below were edited to remove co-author trailers (and one phrase in
 `565f3f4`). File contents are unchanged: every rewritten commit has the same tree, author, committer and dates as
 the original, so all evidence hashes remain valid. Documents and backups written before this date cite the original
-IDs; use this table to find the equivalent commit. The original history is kept in the verified local backups.
+IDs; use this table to find the equivalent commit. The original history was kept in the verified local backups, which the owner deleted on 2026-11-13; it is no
+longer preserved.
 
 | Original | Current | Subject |
 |---|---|---|
