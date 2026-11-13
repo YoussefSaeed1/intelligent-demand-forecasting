@@ -1,6 +1,6 @@
-Cairo University
+Research Paper
 
-Postgraduate Diploma in Data Science: Graduation Project
+Research Project
 
 Intelligent Demand Forecasting and Inventory Optimisation
 

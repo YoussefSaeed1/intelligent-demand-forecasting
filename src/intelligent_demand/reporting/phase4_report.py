@@ -704,7 +704,7 @@ td:first-child,th:first-child{text-align:left}.table{overflow:auto}figure{margin
 img{width:100%;height:auto}figcaption{font-size:14px;color:#43566b}p{max-width:100ch}
 .caveat{padding:18px;background:#fff4df;border-left:4px solid #b45309}
 @media(max-width:650px){main{padding:20px}h1{font-size:1.9rem}}
-</style><main><p class="eyebrow">CAIRO UNIVERSITY · FORECASTING RESEARCH</p>
+</style><main><p class="eyebrow">FORECASTING RESEARCH</p>
 <h1>Phase 4: optimisation and final assessment</h1>
 <p>Exploratory analysis → validation → tuning → frozen selection → final holdout.</p><nav>"""
     body += "".join(f'<a href="#{slug}">{html.escape(title)}</a>' for slug, title, _ in sections)

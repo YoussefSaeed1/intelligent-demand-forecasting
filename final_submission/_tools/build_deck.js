@@ -24,11 +24,11 @@ const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE"; // 13.33 x 7.5 in
 pres.title = "Intelligent Demand Forecasting and Inventory Optimisation";
 pres.author = "Youssef Saeed";
-pres.company = "Cairo University";
+pres.company = "";
 pres.theme = { headFontFace: THEME.headFontFace, bodyFontFace: THEME.bodyFontFace };
 const C = pres.SchemeColor;
 
-const FOOT = "Cairo University · Postgraduate Data Science · Intelligent Demand Forecasting and Inventory Optimisation";
+const FOOT = "Intelligent Demand Forecasting and Inventory Optimisation";
 pres.defineSlideMaster({
   title: "DARK", background: { color: HEX.navy },
   objects: [{ placeholder: { options: { name: "title", type: "title", x: 0.8, y: 2.3, w: 11.7, h: 1.6, fontSize: 40, bold: true,
@@ -78,7 +78,7 @@ pres.addSection({ title: "Introduction" });
 let s = slide("DARK", "Introduction", "Intelligent Demand Forecasting and Inventory Optimisation",
   "Good morning. My project asks a simple business question with a careful scientific answer: does machine-learning forecasting beat simple rules for daily retail demand, and what would that mean for inventory? I tested this on two public retail datasets under one governed protocol, evaluated the final models exactly once on a sealed holdout, simulated four replenishment policies, and deployed the evidence as a public research application. I will spend about twenty minutes and then take questions.");
 s.addText("A governed comparison of statistical and machine-learning forecasts, a hypothetical inventory simulation and a deployed research application", { placeholder: "body" });
-text(s, "Youssef Saeed  ·  Postgraduate Diploma in Data Science, Cairo University  ·  November 2026", { x: 0.8, y: 6.3, w: 11.7, h: 0.4, fontSize: 14, color: "CADCFC" });
+text(s, "Youssef Saeed  ·  November 2026", { x: 0.8, y: 6.3, w: 11.7, h: 0.4, fontSize: 14, color: "CADCFC" });
 
 // ------------------------------------------------------------------ 2 Problem
 s = slide("CONTENT", "Introduction", "Every order is a bet on tomorrow's demand",

@@ -1,7 +1,7 @@
 <!-- Slide number: 1 -->
 Intelligent Demand Forecasting and Inventory Optimisation
 A governed comparison of statistical and machine-learning forecasts, a hypothetical inventory simulation and a deployed research application
-Youssef Saeed  ·  Postgraduate Diploma in Data Science, Cairo University  ·  November 2026
+Youssef Saeed  ·  November 2026
 
 ### Notes:
 Good morning. My project asks a simple business question with a careful scientific answer: does machine-learning forecasting beat simple rules for daily retail demand, and what would that mean for inventory? I tested this on two public retail datasets under one governed protocol, evaluated the final models exactly once on a sealed holdout, simulated four replenishment policies, and deployed the evidence as a public research application. I will spend about twenty minutes and then take questions.

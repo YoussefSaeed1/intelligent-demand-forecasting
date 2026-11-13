@@ -1,6 +1,6 @@
 # Intelligent Demand Forecasting & Inventory Optimisation
 
-Individual postgraduate Data Science diploma project, Cairo University.
+Individual Data Science project.
 
 ## Problem statement
 

@@ -1,0 +1,35 @@
+{
+  "purpose": "Records files whose bytes changed solely to remove an institutional affiliation line or label (University / programme wording). No scientific content, results, or numbers changed. Prior frozen hashes in earlier manifests remain as originally recorded and are not rewritten.",
+  "files": {
+    "reports/inventory/original_documents/README.md": {
+      "previous_sha256_in_git_blob": "45a60a43bfdfb2dc8ee563873fe4885d376b2f2d0a595c9ce1d65692b6f43340",
+      "current_sha256_working_tree": "d4195762ebfb9204c79be6c302d3fe9176f54f75c5754a74252779120407e431",
+      "change": "removed university/programme wording only"
+    },
+    "reports/inventory/original_documents/phase5_pre_audit/README.md": {
+      "previous_sha256_in_git_blob": "c6abc131acb886cd9d65f8bafaf9a8ba1d4f16b9afbda16f81d36ee5b05a5b18",
+      "current_sha256_working_tree": "7eb091bfd1380182f5386eef543c3fc1e9132811688e534a0ad7d0ca747bc9b0",
+      "change": "removed university/programme wording only"
+    },
+    "reports/post_audit/original_source/README.md": {
+      "previous_sha256_in_git_blob": "358b178535edfc7ca542217d5a902b0eb67c4c402ec4c010565b9f6c6a264421",
+      "current_sha256_working_tree": "71f258274742c31a484d79f8f74eeff85175ece3ddd36d5a9fc2c5c851fd5069",
+      "change": "removed university/programme wording only"
+    },
+    "docs/PROJECT_PROPOSAL.md": {
+      "previous_sha256_in_git_blob": "7afb9b397683069947ca726d189cb09a06e856b6ecbb2b54bf2eeef4a24646e5",
+      "current_sha256_working_tree": "fa2e5083f78249579453bc42919da93024ae632b33d74ea9b6d7e949c429b6ce",
+      "change": "removed university/programme wording only"
+    },
+    "reports/forecasting/PHASE4_FORECASTING_REPORT.html": {
+      "previous_sha256_in_git_blob": "2acf7a2e7ad021843ccbf519c1f58b09c07260f6c16c51d44e2b3b8ddba14873",
+      "current_sha256_working_tree": "22b270918331608a30b4ce21955eca62cf996fa656701e37139481604c81a066",
+      "change": "removed university/programme wording only"
+    },
+    "src/intelligent_demand/reporting/phase4_report.py": {
+      "previous_sha256_in_git_blob": "89d486f335a6887614a761a98592b7379af23480e51ccd1e1af59085c62897e4",
+      "current_sha256_working_tree": "d09a63106254321b123775351704fa72a01da73836d46d858b2e6c9478504ab1",
+      "change": "removed university/programme wording only"
+    }
+  }
+}
