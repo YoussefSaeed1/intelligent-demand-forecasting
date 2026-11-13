@@ -6,6 +6,10 @@ reproducible protocol, then tests the forecasts in a hypothetical inventory simu
 
 **Live research app:** https://idf-web.vercel.app
 
+**Status:** Phases 0–7 are complete and the Phase 8 submission package is prepared. The independent audit verdict
+remains CONDITIONAL, with owner actions still open. See the
+[full technical README](../README.md#project-status-by-phase).
+
 ![Power BI report: Executive Overview](assets/powerbi-executive-overview.jpg)
 
 ## Key results
@@ -25,7 +29,7 @@ order-up-to policies react to the forecast level as well as to its error.
 
 | Area | Contents |
 |---|---|
-| [`src/intelligent_demand/`](../src/intelligent_demand) | Data ingestion and audits, feature engineering, 13 forecasting methods (naive and seasonal baselines, exponential smoothing, ARIMA/SARIMA, Croston/SBA/TSB, global random forest and LightGBM), rolling-origin evaluation, inventory simulation |
+| [`src/intelligent_demand/`](../src/intelligent_demand) | Data ingestion and audits, feature engineering, 15 forecasting methods (13 on full populations: naive and seasonal baselines, exponential smoothing, Croston/SBA/TSB, global random forest and LightGBM; ARIMA/SARIMA on declared series subsets), rolling-origin evaluation, inventory simulation |
 | [`configs/`](../configs) | Experiment configurations |
 | [`tests/`](../tests) | Offline test suite, including leakage tests that poison future values |
 | [`powerbi/`](../powerbi) | Five-page Power BI report as a PBIP project (69 DAX measures, 43-rule QA) |
@@ -76,7 +80,8 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m intelligent_demand audit-store-item
 ```
 
-Web app: see [`apps/web/README.md`](../apps/web/README.md). Copy `.env.example` and supply your own database
+Web app and engine: see the [application architecture](../docs/PHASE7_APPLICATION_ARCHITECTURE.md) and the
+[deployment runbook](../docs/PHASE7D_DEPLOYMENT_RUNBOOK.md). Copy `.env.example` and supply your own database
 settings; none are committed.
 
 ## Limitations

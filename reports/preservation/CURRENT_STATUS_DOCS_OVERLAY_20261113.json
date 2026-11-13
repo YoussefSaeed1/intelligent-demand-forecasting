@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-11-13",
+  "scope": "Current-status documentation update after Phases 6 to 8. Only README.md and docs/ROADMAP.md change. Original frozen manifests, archived originals, scientific code, data, models and results are unchanged. Earlier overlays remain historical evidence.",
+  "supersedes_for_current_documentation": "reports/preservation/PHASE5_README_PROVENANCE_OVERLAY_20261113.json",
+  "previous_commit": "fc27f35a92f8c746bbc662f1e6e41aac99f70bdd",
+  "files": {
+    "README.md": {
+      "current_sha256": "76cf802a97648b3170c474cfc40c31854a52c1d07818ed711c6cf3ecd388258a",
+      "prior_overlay_current_sha256": "7e128edea558b492fd16e9935567879cdb470b90e41faad44770c0ee28105fb6",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/README.md",
+      "original_sha256": "c6abc131acb886cd9d65f8bafaf9a8ba1d4f16b9afbda16f81d36ee5b05a5b18",
+      "reason": "Rewritten to report verified current status of Phases 0 to 8, the CONDITIONAL audit verdict and open owner actions. The previous text is retained in Git at the previous_commit (git show fc27f35:README.md)."
+    },
+    "docs/ROADMAP.md": {
+      "current_sha256": "c048335ab54d57e8de8440ce73d80177b170ec4b750529b6b5248a8b9c88d32b",
+      "prior_overlay_current_sha256": "2e79b3d66a917b687727a37ef1569b197b72575b63e1565b0be4db26904e3d0b",
+      "original_copy": "reports/inventory/original_documents/phase5_pre_audit/docs/ROADMAP.md",
+      "original_sha256": "edaa6aad3649ccac2c92164211d6521a58da439f175dee6b8a1306e15b22d5c1",
+      "reason": "Current-status section inserted above the previous content; the previous table and notes follow byte-for-byte under a Historical heading."
+    }
+  },
+  "known_issue": "The archived README original (reports/inventory/original_documents/phase5_pre_audit/README.md) no longer hashes to original_sha256 because commit 0313f8e removed an affiliation line from it (see IDENTITY_TEXT_REMOVAL_OVERLAY_20261113.json). The original bytes remain in Git history and in the verified local backups. Not changed here."
+}

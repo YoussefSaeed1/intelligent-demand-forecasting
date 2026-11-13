@@ -1,5 +1,45 @@
 # Phased roadmap
 
+## Current status (updated 2026-11-13)
+
+All planned phases are complete. The independent audit verdict for Phases 0 to 5 remains **CONDITIONAL**, and
+the submission-readiness items listed below are still open. This section is the current status. The table and
+notes under [Historical roadmap](#historical-roadmap-recorded-at-the-phase-5-audit-response-checkpoint) are kept
+unchanged as the record written at the Phase 5 checkpoint.
+
+| Phase | Current status | Evidence |
+|---|---|---|
+| 0 Foundation | Complete | Package, configuration and offline tests |
+| 1 Acquisition and validation | Complete, 2026-11-06 | [DATASETS.md](DATASETS.md), [VALIDATION.md](VALIDATION.md) |
+| 2 Advanced EDA and experimental design | Complete | [EDA_FINDINGS.md](EDA_FINDINGS.md), [protocol](FORECASTING_EXPERIMENTAL_PROTOCOL.md) (written as "proposed" in Phase 2; executed unchanged in Phases 3 and 4) |
+| 3 Forecasting implementation | Complete | [PHASE3_BENCHMARK_REPORT.md](PHASE3_BENCHMARK_REPORT.md), [PHASE3_INTEGRITY_REVIEW.md](PHASE3_INTEGRITY_REVIEW.md) |
+| 4 Model optimisation and final evaluation | Complete, 2026-11-07 | [PHASE4_FINAL_EVALUATION.md](PHASE4_FINAL_EVALUATION.md), [PHASE4_COMPLETION_CHECKLIST.md](PHASE4_COMPLETION_CHECKLIST.md) |
+| Independent audit of Phases 0 to 5 | Complete, 2026-11-10; verdict CONDITIONAL (0 Critical, 0 High, 6 Medium, 4 Low, 2 Informational) | [Audit](CLAUDE_INDEPENDENT_AUDIT_PHASES_0_5.md), [response](PHASE5_AUDIT_RESPONSE.md) |
+| 5 Hypothetical inventory scenarios | Complete: 17 scenarios, four policies, 544 cases | [PHASE5_INVENTORY_RESULTS.md](PHASE5_INVENTORY_RESULTS.md), [PHASE5_COMPLETION_CHECKLIST.md](PHASE5_COMPLETION_CHECKLIST.md) |
+| 6 Power BI report | Complete, 2026-11-10: five pages, 86 visuals, 69 DAX measures; 43-rule QA 42 pass, 1 cosmetic warning, 0 fail | [PHASE6_CHECKPOINT.md](PHASE6_CHECKPOINT.md), [PHASE6_QA_RESULTS.md](PHASE6_QA_RESULTS.md) |
+| 7A–7C Web application | Complete, 2026-11-12 | [PHASE7_CHECKPOINT.md](PHASE7_CHECKPOINT.md), [PHASE7C_QA_REPORT.md](PHASE7C_QA_REPORT.md) |
+| 7D Deployment | Complete, 2026-11-12: <https://idf-web.vercel.app> public; engine protected | [PHASE7D_DEPLOYMENT_RECORD.md](PHASE7D_DEPLOYMENT_RECORD.md) |
+| 8 Final submission package | Prepared, 2026-11-13; owner actions open | [final_submission/README.md](../final_submission/README.md) |
+
+The historical plan below combined "BI and academic submission" as a single Phase 6. In practice the work ran as
+Phase 6 (Power BI), Phase 7 (web application and deployment) and Phase 8 (submission package).
+
+Open before academic submission (see
+[remaining risks](../final_submission/07_checklists/REMAINING_RISKS_AND_FOLLOW_UP.md)):
+
+- F-02: a verified off-device copy of the Phase 4, Phase 5 and Phase 8 backups.
+- R-01: the owner's recorded review of the Kaggle data-use terms, including the public display of curated sales.
+- External validation by the supervisor or examiners. The AI-assisted audits do not replace it.
+
+Accepted limitations from the audit (F-05, F-06, F-08, F-09) remain in force, as do the reporting rules for every
+output: show per-origin comparisons, do not treat the 17 scenarios as independent confirmations, and never call
+simulated cost differences savings.
+
+## Historical roadmap (recorded at the Phase 5 audit-response checkpoint)
+
+Preserved without edits. Statements such as "Future", "unstarted" and "nothing was pushed" describe the project
+at that checkpoint, not its current state.
+
 | Phase | Status and deliverables | Acceptance criteria |
 |---|---|---|
 | 0 Foundation | Complete: package, configuration, tests and project plans | Import/config checks, local environment and offline tests verified |

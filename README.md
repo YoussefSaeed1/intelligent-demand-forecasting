@@ -1,313 +1,263 @@
 # Intelligent Demand Forecasting & Inventory Optimisation
 
-**Status: Phases 0 to 5 complete and independently audited (verdict CONDITIONAL; 0 Critical, 0 High). Phase 6 has not started.**
-Source files and generated experiment outputs are held locally outside Git. Baseline,
-statistical and global ML milestones and final consolidation passed their gates. Offline tests are separate
-from real-data evidence; see [VALIDATION.md](docs/VALIDATION.md).
+**Current status (2026-11-13): Phases 0 to 7 are complete, and the Phase 8 submission package has been prepared.
+The research web application is deployed at <https://idf-web.vercel.app>. The independent audit verdict is still
+CONDITIONAL (0 Critical, 0 High findings), and several owner actions remain open; see
+[Independent review and outstanding conditions](#independent-review-and-outstanding-conditions).**
 
-## Problem and research objectives
+Earlier versions of this README described development checkpoints (for example "Phase 6 has not started",
+"no dashboard yet" and "nothing was pushed"). Those statements were true when they were written and have since
+been superseded. See [Historical checkpoints](#historical-checkpoints) for where those records are kept.
+GitHub renders [`.github/README.md`](.github/README.md) as the public landing page. This file is the full
+technical README.
 
-Retail planning must balance uncertain future sales with stock availability and inventory
-cost. This project will compare reproducible daily forecasting approaches on two published
-datasets and investigate their implications under explicitly assumed inventory scenarios.
-Observed sales may be constrained by availability; they are not necessarily latent demand.
+## Project status by phase
 
-The academic priorities are data provenance and quality, preprocessing, baselines,
-systematic hyperparameter search, chronological evaluation, comparison, interpretation,
-and reproducibility. Cross-dataset comparisons require compatible tasks and definitions.
+| Phase | Status | Evidence |
+|---|---|---|
+| 0 Foundation | Complete | Package, configuration and offline tests ([roadmap](docs/ROADMAP.md)) |
+| 1 Acquisition and validation | Complete (2026-11-06) | [Datasets](docs/DATASETS.md), [validation](docs/VALIDATION.md), `reports/data_quality/` |
+| 2 EDA and experimental design | Complete | [EDA findings](docs/EDA_FINDINGS.md), [protocol](docs/FORECASTING_EXPERIMENTAL_PROTOCOL.md) |
+| 3 Forecasting implementation | Complete | [Benchmark report](docs/PHASE3_BENCHMARK_REPORT.md), [integrity review](docs/PHASE3_INTEGRITY_REVIEW.md) |
+| 4 Optimisation and final evaluation | Complete (2026-11-07) | [Final evaluation](docs/PHASE4_FINAL_EVALUATION.md), [checklist](docs/PHASE4_COMPLETION_CHECKLIST.md) |
+| Independent audit of Phases 0 to 5 | Complete (2026-11-10), verdict **CONDITIONAL** | [Audit](docs/CLAUDE_INDEPENDENT_AUDIT_PHASES_0_5.md), [response](docs/PHASE5_AUDIT_RESPONSE.md) |
+| 5 Hypothetical inventory simulation | Complete | [Results](docs/PHASE5_INVENTORY_RESULTS.md), [checklist](docs/PHASE5_COMPLETION_CHECKLIST.md) |
+| 6 Power BI report | Complete (2026-11-10) | [Checkpoint](docs/PHASE6_CHECKPOINT.md), [QA results](docs/PHASE6_QA_RESULTS.md) |
+| 7A–7C Web application | Complete (2026-11-12) | [Checkpoint](docs/PHASE7_CHECKPOINT.md), [QA report](docs/PHASE7C_QA_REPORT.md) |
+| 7D Deployment | Complete (2026-11-12) | [Deployment record](docs/PHASE7D_DEPLOYMENT_RECORD.md), [progress](docs/PHASE7D_PROGRESS.md) |
+| 8 Final submission package | Prepared (2026-11-13); owner actions open | [Package](final_submission/README.md), [remaining risks](final_submission/07_checklists/REMAINING_RISKS_AND_FOLLOW_UP.md) |
 
-## Datasets and acquisition
+"Complete" means the phase's deliverables exist in this repository and passed the gates recorded in the linked
+evidence. It does not mean the project is approved without conditions, and it does not stand in for external
+examination.
 
-- [Store Item Demand Forecasting Challenge](https://www.kaggle.com/competitions/demand-forecasting-kernels-only/data)
-- [M5 Forecasting Accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data)
+## Overview and architecture
 
-Store Item supplies 500 daily store/product series; M5 supplies 30,490 Walmart series.
-Both source layouts, canonical outputs and exact quantities passed independent local
-audits. They provide separate benchmarks; direct model transfer is not established.
+The project asks whether machine learning forecasts daily retail demand better than simple baselines, and what
+the difference would mean for replenishment under explicitly assumed inventory conditions. Observed sales may be
+limited by availability, so they are treated as a proxy for demand, not as latent demand.
 
-Use the official Kaggle client after configuring user-level authentication and manually
-reviewing competition rules. [DATASETS.md](docs/DATASETS.md) contains secure setup,
-expected files, verification and troubleshooting. Local source schemas now pass validation;
-detailed data-use restrictions still require the user's recorded review of competition rules.
+```text
+Kaggle sources ──> ingestion and audits ──> canonical Parquet ──> EDA and frozen protocol
+                                                              └─> forecasting (Phases 3–4) ──> sealed final holdout
+                                                              └─> inventory simulation (Phase 5)
+Saved evidence ──> Power BI PBIP report (Phase 6)
+Saved evidence ──> curated export ──> Supabase PostgreSQL ──> Next.js web app (idf-web)
+                                                          └─> FastAPI engine (idf-engine, frozen Phase 5 engine)
+```
+
+The research pipeline runs locally in Python. The Power BI report and the web application read only saved,
+hash-verified evidence. They do not retrain or reselect any model. See the
+[architecture figure](final_submission/figures/fig_architecture.png) and
+[application architecture](docs/PHASE7_APPLICATION_ARCHITECTURE.md).
+
+## Datasets and methodology
+
+- [Store Item Demand Forecasting Challenge](https://www.kaggle.com/competitions/demand-forecasting-kernels-only/data):
+  500 daily store/item series, 913,000 rows, 2013–2017.
+- [M5 Forecasting Accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data): 30,490 Walmart
+  series, 59,181,090 rows, 2011–2016. 68.8% of series-days in the EDA prefix have zero sales.
+
+Raw data is not redistributed. Download it yourself under each competition's rules
+([DATASETS.md](docs/DATASETS.md)). The two datasets are separate benchmarks, and direct model transfer between
+them is not established.
+
+Methodology: hashed acquisition and quality audits; training-prefix EDA; four expanding 28-day validation
+origins and one final 28-day holdout; leakage-safe, origin-bounded lag and calendar features; a seeded, fixed
+search budget; and a frozen, fingerprinted model choice scored once on the holdout and recorded in a
+hash-chained ledger. Price, event and SNAP features were excluded from Phase 4 models because their publication
+timing could not be verified. See [experimental design](docs/EXPERIMENTAL_DESIGN.md),
+[metric definitions](docs/METRIC_DEFINITIONS.md) and [feature availability](docs/PHASE4_FEATURE_AVAILABILITY.md).
+
+## Forecasting models and evaluation
+
+Phase 3 defines 15 methods. Thirteen are evaluated on full populations: five baselines (naive, seasonal naive,
+28-day and seasonal moving averages, zero), exponential smoothing (SES, Holt, Holt-Winters), Croston, SBA, TSB,
+and global Random Forest and LightGBM. ARIMA and SARIMA run only on declared 53/51-series statistical subsets.
+Phase 4 evaluated 27 fixed cases (23 tuning configurations and 4 references) over 108 validation fold runs and
+45,177,440 forecasts, then sealed 3,470,880 final forecasts across eight selected model/comparator evaluations
+before either holdout was opened (selection fingerprint `a71ab187…`, 12-event ledger).
+
+| Selected method (final holdout) | Macro MAE | Pooled RMSE | Pooled WAPE % | Best simple baseline (MAE) | Gain |
+|---|---:|---:|---:|---|---:|
+| Store Item LightGBM | 5.434343 | 7.066976 | 12.258462 | Seasonal naive (12.814643) | 57.59% |
+| M5 price-free Random Forest | 1.047231 | 2.201063 | 72.582278 | 28-day moving average (1.065729) | 1.74% |
+
+On M5, MA28 has a better macro MASE than the Random Forest (1.6106 vs 1.6370), so the M5 ranking depends on the
+metric. These are predictive benchmark results on two histories. They are not evidence of statistical
+significance or of inventory savings. Details: [tuning](docs/PHASE4_TUNING_RESULTS.md),
+[frozen selection](docs/PHASE4_FROZEN_MODEL_SELECTION.md), [final evaluation](docs/PHASE4_FINAL_EVALUATION.md),
+[scientific review](docs/PHASE4_SCIENTIFIC_REVIEW.md).
+
+## Inventory simulation and limitations
+
+A deterministic lost-sales simulator compares four replenishment policies (selected ML, MA28 and seasonal-naive
+forecast-driven order-up-to policies, plus a fixed reorder-point comparator) across 17 predefined scenarios:
+544 cases and 8,429,280 series-episodes, reported in normalised cost units (NCU). Lead times, costs, initial
+stock and buffers are assumptions, not measurements.
+
+| Base scenario, pooled over four origins | ML − MA28 | ML − Seasonal naive |
+|---|---:|---:|
+| Store Item | −376.14 NCU (−5.86%); reverses at origin 4 (+385.21) | −67.27 NCU (−1.10%); ML costlier at origin 3 |
+| M5 | +1.90 NCU (+0.85%); ML costlier at all four origins | −11.01 NCU (−4.69%) |
+
+Reporting rules from the independent audit apply to every output. Per-origin ML, MA28 and seasonal-naive
+results are shown together. The 17 scenarios are not independent confirmations, because they share the same
+four origins and forecasts. Fixed reorder point is a low-stock, low-service comparator, not the best policy.
+Simulated cost differences are never realised savings. The inventory study reuses validation windows that were
+also used for model selection, which favours ML (F-05).
+
+Read the [results](docs/PHASE5_INVENTORY_RESULTS.md), [protocol](docs/INVENTORY_SIMULATION_PROTOCOL.md),
+[sensitivity analysis](docs/PHASE5_SENSITIVITY_ANALYSIS.md) and [limitations](docs/PHASE5_LIMITATIONS.md).
+
+## Power BI report
+
+[`powerbi/`](powerbi/README.md) holds a five-page PBIP project: Executive Overview, Forecasting Performance,
+Inventory Optimisation, Scenario & Sensitivity, and Model Explorer & Governance. It has 86 visuals, 69 DAX
+measures, 19 model tables and 28 relationships. The full 43-rule QA passed 42 rules, with 1 cosmetic warning
+(E06, caveat footers about 0.4 px beyond the canvas) and 0 failures. DAX values reconcile with the saved
+scientific evidence ([QA results](docs/PHASE6_QA_RESULTS.md)). The later Phase 6 checkpoint re-ran Layers A and E
+only, and does not claim a new full-engine run ([checkpoint](docs/PHASE6_CHECKPOINT.md)). The `DataRoot`
+parameter must point at the local reporting CSVs, which are not committed. See
+[DAX catalogue](docs/PHASE6_DAX_MEASURE_CATALOGUE.md) and [dashboard guide](docs/PHASE6_POWERBI_DASHBOARD.md).
+
+## Web application and forecasting engine
+
+- **Web application (`apps/web`)**: Next.js 16 research explorer with five pages (Executive Overview, Forecast
+  Explorer, Inventory Planner, Scenario Comparison, Research & Methodology). It reads curated evidence from Supabase
+  PostgreSQL through read-only roles: all 500 Store Item series and 300 of the 30,490 M5 series. It never reads
+  final-holdout targets.
+- **Engine (`apps/engine`)**: a FastAPI service that runs the frozen Phase 5 engine. The engine is vendored
+  byte-identically in [`packages/inventory_core`](packages/inventory_core). It is reachable only
+  server-to-server, behind a shared key and Vercel Authentication.
+- Live simulations were verified byte-for-byte against the local reference. Two defects were found and fixed
+  before go-live: database float rounding to 15 digits (182 of 3,200 cases affected) and a rejected TLS startup
+  parameter.
+
+Specifications: [API](docs/PHASE7_API_SPECIFICATION.md), [data contract](docs/PHASE7_DATA_CONTRACT.md),
+[schema](docs/PHASE7_SUPABASE_SCHEMA_DESIGN.md), [backend results](docs/PHASE7B_BACKEND_RESULTS.md),
+[quality gates](docs/PHASE7_QUALITY_GATES.md).
+
+## Deployment
+
+| Component | URL | Access |
+|---|---|---|
+| Research web application | <https://idf-web.vercel.app> | Public |
+| Simulation engine | `https://idf-engine.vercel.app` | Protected by design. Anonymous requests return 401; only the web application calls it |
+| Database | Supabase `idf-research-explorer` (eu-central-1, Free) | Private; least-privilege roles through the transaction pooler |
+
+The Phase 7D record documents production QA on 2026-11-12, against web build `36da979` (rewritten as `9685e8d`,
+see [COMMIT_ID_MAP.md](docs/COMMIT_ID_MAP.md)). It recorded 21/21 API responses byte-identical to the local
+reference, browser QA 15/15, and passing header, secret-scan and rate-limit checks
+([record](docs/PHASE7D_DEPLOYMENT_RECORD.md), [runbook](docs/PHASE7D_DEPLOYMENT_RUNBOOK.md),
+[rollback plan](docs/PHASE7D_ROLLBACK_PLAN.md)).
+
+Since then, the web app was redeployed from `04f5731`, which changed only page text (removing institutional
+wording). A health check on 2026-11-13 returned `status ok`, build `04f5731a9571`, engine reachable, and engine
+version `cedc5a31533772fc` (unchanged frozen engine). The full 7D production QA suite has not been re-run against
+that build. Supabase Free pauses idle projects, so open the app before any demonstration.
+
+## Reproducibility and testing
+
+Windows PowerShell, from the project root (Python 3.11+; the recorded environment used 3.14):
 
 ```powershell
-.\.venv\Scripts\python.exe -m intelligent_demand check-access --dataset all
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[dev,boosting]"
+.\.venv\Scripts\python.exe -m ruff check src tests
+.\.venv\Scripts\python.exe -m pytest
+
+# Data is not redistributed: review the competition rules on Kaggle first
 .\.venv\Scripts\python.exe -m intelligent_demand download-data --dataset all
-.\.venv\Scripts\python.exe -m intelligent_demand discover-data --dataset all
-.\.venv\Scripts\python.exe -m intelligent_demand profile-data --dataset all
 .\.venv\Scripts\python.exe -m intelligent_demand audit-store-item
 ```
 
-Select `store_item` or `m5` instead of `all` to process one source. Downloads stage and
-validate the archive, skip existing structurally valid files by default, compare stored
-hashes when available, and replace raw files only with explicit `--force`. No rules are
-accepted automatically. Profiling publishes reconciled observed daily sales to
-`data/processed/<dataset>/daily_sales.parquet`. It does not clean, impute or model.
-Reports and status JSON live in `reports/data_quality/`; selected small validation
-reports are allowlisted in Git. Raw data, Parquet outputs and large generated tables
-remain ignored. Five selected Phase 2 figures (comparison, price coverage, M5 classes,
-SNAP and departments, PNG/SVG) are retained; other figures stay local and can be regenerated.
+Large data, models, predictions and generated figures are Git-ignored and held in verified local backups. Use
+the read-only, saved-evidence commands in [PHASE4_REPRODUCIBILITY.md](docs/PHASE4_REPRODUCIBILITY.md) and
+[PHASE5_INVENTORY_RESULTS.md](docs/PHASE5_INVENTORY_RESULTS.md) rather than re-running experiments.
+Environment notes: [VALIDATION.md](docs/VALIDATION.md); snapshot: `docs/environment-freeze.txt`.
 
-## Phase 2 EDA and proposed experiments
+Recorded test evidence:
 
-```powershell
-.\.venv\Scripts\python.exe -m intelligent_demand eda --dataset all --settings configs/eda.yaml
-```
+- Python suite: 352 tests at Phase 4.
+- Web: 88/88 (UI 34, API 19, precision 24, engine client 11), plus TypeScript, ESLint and `next build` (Phase 7D-3A).
+- Engine: 69/69.
+- Power BI QA: 42 pass, 1 warning.
 
-This command reads verified Parquet without rewriting it. All series enter training-
-prefix EDA; four 28-day validation windows and the final 28 days are reserved before
-detailed target exploration. Full-history exceptions are integrity reconciliation and
-label-free price coverage. The enhanced presentation produces 39 reusable tables and
-29 PNG/SVG figure pairs,
-dataset/comparison reports and validation evidence under `reports/eda/` and
-`reports/figures/phase2/`. The original 24-figure analytical run took 132.60 seconds and peaked at
-1.123 GiB worker working set. No forecasting models are trained.
+Phase 8 independently recomputed validation MAE and the Phase 5 totals from saved outputs, with a discrepancy of
+0.0 ([scientific audit](final_submission/01_audits/FINAL_SCIENTIFIC_AUDIT.md)).
 
-Read [EDA findings](docs/EDA_FINDINGS.md) and the
-[proposed forecasting protocol](docs/FORECASTING_EXPERIMENTAL_PROTOCOL.md) for actual
-results, exact splits, model candidates, metrics, leakage rules and limitations.
+Re-run on 2026-11-13 from a fresh clone (Linux, Python 3.13, no local data or artefacts): 448 passed and 3 failed.
+All three failures are environment-specific, not regressions:
 
-Review all charts in the [offline HTML report](reports/eda/EDA_VISUAL_REVIEW.html),
-with its [figure index](reports/eda/VISUALISATION_INDEX.md) and
-[visual QA summary](reports/eda/VISUAL_QA_SUMMARY.md). Open the HTML in a browser;
-keep `reports/eda/` and `reports/figures/` together. No server or internet is needed.
+- Two inventory-runner tests read the Windows-only `psutil` field `peak_wset`.
+- One Phase 4 report test needs the Git-ignored `artifacts/experiments/phase4/plan.json`.
 
-To refresh only figures and the report from existing validated summaries, without
-rerunning full EDA, downloading data or rewriting canonical Parquet:
+Ruff reports 0 findings in `src/` and `tests/`, and 101 line-length (E501) findings in the `final_submission/`
+helper scripts. Clean-machine retraining has not been tested (audit finding F-10).
 
-```powershell
-.\.venv\Scripts\python.exe -m intelligent_demand.exploration.visual_review --refresh-figures
-```
+## Independent review and outstanding conditions
 
-Omit `--refresh-figures` to verify the existing images against comparison renders.
-The added SNAP/department/extreme-value views use existing training summaries; event
-and SNAP associations remain descriptive, and the final evaluation targets stay protected.
+- **Independent audit of Phases 0 to 5 (2026-11-10): CONDITIONAL.** 0 Critical, 0 High, 6 Medium, 4 Low and
+  2 Informational findings. Work could proceed under reporting conditions. Finding dispositions are in
+  [PHASE5_AUDIT_RESPONSE.md](docs/PHASE5_AUDIT_RESPONSE.md). The verdict has not been upgraded to unconditional.
+- **Phase 8 reviews (2026-11-12/13):** a scientific self-audit ("scientifically sound within its stated scope"),
+  a technical and security self-audit, and a second-pass review in two separate AI contexts
+  ([final_submission/01_audits/](final_submission/01_audits/INDEPENDENT_REVIEW.md)). These are AI-assisted
+  reviews, not external human examination.
 
-## Proposed methodology
+Open items, as recorded in the [remaining risks](final_submission/07_checklists/REMAINING_RISKS_AND_FOLLOW_UP.md)
+and the [submission checklist](final_submission/07_checklists/REPRODUCIBILITY_AND_SUBMISSION_CHECKLIST.md):
 
-Acquire and hash source files; profile keys, dates, missingness, zeros and duplicates;
-validate dataset-specific transformations into a provisional long daily schema; perform
-training-only EDA; construct leakage-safe lag/calendar features; establish naive and weekly
-seasonal naive baselines; compare suitable exponential smoothing/ARIMA-family and
-scikit-learn models and CPU LightGBM with fixed initial configurations.
-Use systematic search on rolling validation folds, freeze choices, then assess the final
-chronological holdout. See [experimental design](docs/EXPERIMENTAL_DESIGN.md).
+1. **F-02: no verified off-device copy** of the 6.5 GB Phase 4/5 evidence or of the Phase 8 backup. All backups
+   are on the same laptop. This blocks submission readiness.
+2. **R-01: the owner's review of the Kaggle data-use terms is not yet recorded.** This now includes whether the
+   public app may display curated daily sales.
+3. External validation by the supervisor or examiners, supervisor name on the title page, and programme
+   format requirements.
+4. Not tested in production: engine and database outage handling, and built-preview protection.
+5. Accepted limitations: selection optimism from reused validation windows (F-05), M5 sparse-demand weakness
+   (F-06), self-recorded holdout chronology (F-08), finite-episode effects (F-09), and censored demand.
 
-## Phase 3 forecasting
-
-The model registry, origin-bounded data access, complete prediction persistence,
-pooled/macro metrics, coverage and restart-safe local experiment registry are implemented.
-Five baselines, eight statistical/intermittent methods and two global ML methods are
-implemented and executed under independent milestone gates. Statistical ARIMA/SARIMA
-use declared training-only 53/51-series subsets; the other methods evaluate all
-500/30,490 series. ML training is resource bounded, while evaluation remains complete.
-
-```powershell
-.\.venv\Scripts\python.exe -m intelligent_demand forecast-plan
-.\.venv\Scripts\python.exe -m intelligent_demand forecast-models
-```
-
-These read-only commands validate the original four 28-day validation origins and list
-all 15 model definitions. They read configuration/protocol metadata, not canonical
-targets, and execute no models. Their ordinary target reader still cannot access protected final targets; the separately authorised Phase 4C assessment is complete.
-
-The original Phase 3 execution used these sequential commands. For review, use the saved-evidence commands in the Phase 4 reproducibility guide instead:
-
-```powershell
-.\.venv\Scripts\python.exe -m intelligent_demand.experiments.benchmark run --phase 3b
-.\.venv\Scripts\python.exe -m intelligent_demand.experiments.benchmark run --phase 3c
-.\.venv\Scripts\python.exe -m intelligent_demand.experiments.benchmark run --phase 3d
-```
-
-Each next milestone requires the previous independent audit and automated gate.
-Read [baseline results](docs/BASELINE_RESULTS.md),
-[statistical results](docs/STATISTICAL_RESULTS.md), [ML results](docs/ML_RESULTS.md),
-and [feature availability](docs/FEATURE_AVAILABILITY.md). At the Phase 3 checkpoint, systematic tuning and
-final holdout evaluation had not yet occurred. The completed Phase 4 results are linked below. Large models, predictions, caches and figures
-remain local and ignored. The subsequent final scientific integrity review authorises
-a secure local Phase 3 checkpoint; no push or upload is authorised.
-
-Open the [offline forecasting benchmark report](reports/forecasting/PHASE3_BENCHMARK_REPORT.html)
-in your browser, keeping the `reports/forecasting/` and `reports/figures/` directories
-together. The [scientific report](docs/PHASE3_BENCHMARK_REPORT.md),
-[model comparison](docs/PHASE3_MODEL_COMPARISON.md) and
-[limitations](docs/PHASE3_LIMITATIONS.md) retain actual values, populations and caveats.
-Final validation: 318 tests; Ruff and pip check passed; 224 saved evaluations
-independently reconciled; all nine source hashes unchanged. Browser automation cannot
-preview local file URLs, but PNG/SVG decoding, visual inspection and relative-link
-validation are performed locally.
-
-The subsequent [final scientific integrity review](docs/PHASE3_INTEGRITY_REVIEW.md)
-recalculated all saved comparisons and audited exact training-sample reproducibility.
-The current suite has **320 passing tests**. M5 RF's small mean lead over MA28 does
-not extend to a majority of individual series; price publication latency remains a
-conditional research assumption. A secure local checkpoint is authorised after review;
-That review preceded the now-completed, separately authorised Phase 4 assessment.
-
-See [forecasting engine](docs/FORECASTING_ENGINE.md),
-[metric definitions](docs/METRIC_DEFINITIONS.md) and
-[Phase 3 progress](docs/PHASE3_PROGRESS.md). The existing experimental protocol is preserved.
-The [integrity review](docs/PHASE3A_INTEGRITY_REVIEW.md) records the fixes, validation
-results and capacity limits for the authorised local checkpoint.
-
-Inventory work will compare baseline and forecast-driven policies with assumed lead times
-and costs. It will report scenario outcomes, not actual business savings. Power BI exports
-and four planned pages are described in [powerbi/README.md](powerbi/README.md).
-
-## Technology and local setup
-
-Python 3.11 is preferred; packaging allows 3.11–3.14. The initial machine has a usable
-Python 3.14.0 interpreter; portability to 3.11 requires a separate validation run.
-Runtime: pandas, NumPy, SciPy, scikit-learn, statsmodels, matplotlib, seaborn, PyArrow,
-PyYAML, python-dotenv and the official Kaggle package. Development: JupyterLab, Pytest and Ruff.
-Optional extras:
-boosting (LightGBM), tuning (Optuna), explain (SHAP), tracking (MLflow).
-
-Run from the project root in PowerShell; activation is unnecessary:
-
-```powershell
-# On a machine with the Python launcher and Python 3.11 installed:
-py -3.11 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -e ".[dev]"
-.\.venv\Scripts\python.exe -m intelligent_demand --config configs/default.yaml
-.\.venv\Scripts\python.exe -m ruff check .
-.\.venv\Scripts\python.exe -m pytest
-```
-
-If `.venv` already exists, skip creation. Select `.venv/Scripts/python.exe` in VS Code.
-Install the Python and Ruff VS Code extensions manually if needed. `.env.example` contains
-comments only. Project settings have no environment overrides; the official Kaggle client
-separately inherits authentication from the terminal environment or user-level storage.
-Configuration lives in `configs/default.yaml`; paths resolve from its parent project directory.
-
-## Structure
+## Repository structure
 
 ```text
-configs/                  Central experiment settings
-data/{raw,interim,processed}/{store_item,m5}/  Ignored local data
-src/intelligent_demand/
-  config.py, __main__.py   Validated configuration and dataset-free check
-  ingestion/              Official-client acquisition, file inventory and source adapters
-  validation/             Incremental quality checks, reports and Parquet reconciliation
-  preprocessing/          Future dataset-specific cleaning
-  exploration/            Population EDA, figures, reports and saved-output validation
-  features/               Shifted, origin-safe recursive features and validated caches
-  models/                 Baselines, statistical/intermittent, RF and LightGBM adapters
-  tuning/                 Frozen seeded search, final selection authority and one-time assessment
-  evaluation/             Validated folds, prediction publication, grouped metrics and coverage
-  experiments/            Origin data capabilities, configuration, registry and orchestration
-  inventory/              Future scenario simulation
-  reporting/              Verified benchmark reports, figures and offline HTML
-  utils/                  Future shared utilities only when justified
-notebooks/                Future numbered exploratory notebooks
-artifacts/{models,experiments}/  Ignored generated artefacts
-reports/{figures,exports}/      Ignored generated outputs
-powerbi/                  Reporting plan; no dashboard yet
-tests/                    Configuration, ingestion, independent audits and EDA/metric tests
-docs/                     Proposal, design, provenance and roadmap
+configs/                  Experiment, inventory, Power BI and web-export settings
+src/intelligent_demand/   Ingestion, validation, EDA, features, models, tuning, evaluation,
+                          experiments, inventory simulation, BI export/QA, preservation, reporting
+tests/                    Offline Python test suite (including leakage and evidence-integrity tests)
+powerbi/                  Five-page Power BI PBIP project (semantic model and report definitions)
+apps/web/                 Next.js research application (idf-web)
+apps/engine/              FastAPI simulation engine (idf-engine)
+packages/inventory_core/  Byte-identical vendored copy of the frozen Phase 5 engine
+tools/phase7d/            Deployment verification tools
+reports/                  Selected small reports, QA evidence and hash-bound provenance manifests
+docs/                     Phase-by-phase design, results, audits, checkpoints and roadmap
+final_submission/         Paper, presentation, audits, traceability, checklists and backup report
+data/, artifacts/         Git-ignored local data and generated artefacts
 ```
 
-## Reproducibility
+## Historical checkpoints
 
-Keep raw inputs immutable and outside Git; record checksums, source version, acquisition
-date and restrictions. Record code revision, Python/package versions, configuration,
-seeds, split dates, horizon and selected series for every future experiment. Do not tune
-on the test set. Dependency ranges in pyproject are not a lock; the verified environment
-snapshot in `docs/environment-freeze.txt`, when available, records this setup only.
-No licence is granted for source datasets by this repository. Academic requirements
-and optional enhancements are tracked separately in [ACADEMIC_REQUIREMENTS.md](docs/ACADEMIC_REQUIREMENTS.md).
+Each phase was closed by a checkpoint document written at that time. Those documents are preserved unchanged
+and describe the project as it was then. For example, the Phase 5 and Phase 6 checkpoints state that later phases
+had not started and that nothing had been pushed. Read them as dated records, not as current status:
 
-Current scope: Phase 5 hypothetical inventory simulation is complete. It was authorised under the
-[limited conditional forecasting gate](docs/CLAUDE_FOCUSED_FORECASTING_GATE.md) and then
-reviewed by a broader independent Claude audit of Phases 0 to 5
-([report](docs/CLAUDE_INDEPENDENT_AUDIT_PHASES_0_5.md), verdict CONDITIONAL). Phase 6 may proceed
-only under the reporting conditions in [the audit response](docs/PHASE5_AUDIT_RESPONSE.md).
-Off-device backup remains outstanding before academic submission.
-See [ROADMAP.md](docs/ROADMAP.md) and the Phase 5 gate receipts for actual progress.
+- Phase 3: [progress](docs/PHASE3_PROGRESS.md), [3A review](docs/PHASE3A_INTEGRITY_REVIEW.md)
+- Phase 4: [checkpoint preservation](docs/PHASE4_CHECKPOINT_PRESERVATION.md), [internal audit](docs/CODEX_INTERNAL_AUDIT_PHASES_0_4.md),
+  [post-audit remediation](docs/POST_AUDIT_REMEDIATION_REPORT.md)
+- Phase 5: [progress](docs/PHASE5_PROGRESS.md), [backup preservation](docs/PHASE5_BACKUP_PRESERVATION.md)
+- Phase 6: [checkpoint](docs/PHASE6_CHECKPOINT.md)
+- Phase 7: [checkpoint](docs/PHASE7_CHECKPOINT.md), [7D progress](docs/PHASE7D_PROGRESS.md)
+- Roadmap: [current status and historical table](docs/ROADMAP.md)
 
-Verified setup results and environment limitations: [VALIDATION.md](docs/VALIDATION.md).
+The previous text of this README (current to Phase 5) is kept in Git history at commit `fc27f35`
+(`git show fc27f35:README.md`). Earlier archived copies are under `reports/inventory/original_documents/` and
+`reports/post_audit/original_source/`. This update is recorded in
+[`reports/preservation/CURRENT_STATUS_DOCS_OVERLAY_20261113.json`](reports/preservation/CURRENT_STATUS_DOCS_OVERLAY_20261113.json).
+Commit IDs written before 2026-11-13 map to the current history through [COMMIT_ID_MAP.md](docs/COMMIT_ID_MAP.md).
 
-## Phase 4 optimisation and final assessment
+## Copyright
 
-All 27 fixed cases (23 tuning configurations and four references), 108 validation
-fold runs and 45,177,440 forecasts passed independent reconciliation. Primary
-selection used four-origin macro MAE on full populations, with seed 42 and a
-fixed budget. All Phase 4 ML is price-free. The frozen final choices are Store
-Item LightGBM and M5 Random Forest; 3,470,880 forecasts across eight selected
-model/comparator evaluations were sealed before either holdout was opened. Each
-canonical holdout was read once, with subsequent saved-actual audit reads logged.
-
-| Selected method | Final macro MAE | Pooled RMSE | Pooled WAPE % |
-|---|---:|---:|---:|
-| Store Item LightGBM | 5.434343 | 7.066976 | 12.258462 |
-| M5 price-free Random Forest | 1.047231 | 2.201063 | 72.582278 |
-
-M5 RF improves final MAE by 1.735707% over MA28; MA28 has better macro MASE.
-These are predictive benchmark results, not proof of significance or inventory
-savings. Store Item retained its initial LightGBM configuration; additional search
-did not improve its validation MAE. No post-holdout model changes were made.
-
-The complete suite passed **352 tests**; Ruff, pip check, source/protocol hashes,
-forecast grids, ledger and independent metric checks passed. The offline report
-contains 11 PNG/SVG figure pairs and verified local links. Automated browser
-rendering was unavailable under the local-file navigation policy.
-
-- [Offline scientific report](reports/forecasting/PHASE4_FORECASTING_REPORT.html)
-- [Tuning results](docs/PHASE4_TUNING_RESULTS.md)
-- [Frozen selection](docs/PHASE4_FROZEN_MODEL_SELECTION.md)
-- [Final assessment](docs/PHASE4_FINAL_EVALUATION.md)
-- [Scientific interpretation and metric trade-offs](docs/PHASE4_SCIENTIFIC_REVIEW.md)
-- [Feature availability](docs/PHASE4_FEATURE_AVAILABILITY.md)
-- [Safe reproducibility commands](docs/PHASE4_REPRODUCIBILITY.md)
-- [Completion checklist](docs/PHASE4_COMPLETION_CHECKLIST.md)
-- [Independent audit package guide](docs/PHASE4_AUDIT_PACKAGE.md)
-
-Phase 4 development was subsequently checkpointed locally at
-`54a689b7cb07970556bbf2fc164adf934307eab8`. Raw/canonical datasets,
-models, predictions and training caches remain local and ignored. No Phase 5,
-Claude invocation, Git push or new repository creation was performed.
-
-The subsequent [internal audit](docs/CODEX_INTERNAL_AUDIT_PHASES_0_4.md) and
-[post-audit remediation](docs/POST_AUDIT_REMEDIATION_REPORT.md) preserve that
-scientific baseline while adding forward-looking ingestion/ownership safeguards.
-Use the [read-only evidence verification and handoff](docs/CLAUDE_AUDIT_HANDOFF.md)
-for the preserved assessment; modified runtime code is not the historical frozen
-program. A verified local backup on the same device is recorded; off-device backup
-remains outstanding. The subsequent limited conditional review permitted Phase 5; the broader
-independent audit of Phases 0 to 5 has since been completed (see the Phase 5 section).
-
-
-## Phase 5 hypothetical inventory simulations
-
-The frozen design evaluates four policies on all 500 Store Item and 30,490 M5
-series, at each of four original validation origins. Seventeen predefined
-scenarios give 544 cases. Selected ML is unchanged LightGBM / price-free RF;
-no forecasting model was fitted, tuned or reselected and no final holdout
-was used. Costs, lead times, initial stocks and buffers are hypothetical.
-Fixed-origin 28-day forecasts support finite episodes, not daily reforecasting.
-Base results show stockholding/service trade-offs; ML does not uniformly
-minimise cost. These validation windows were reused after forecasting selection.
-After the independent audit, headline comparisons always show selected ML, MA28 and Seasonal Naive
-by validation origin; the 17 scenarios are not independent confirmations; and simulated cost
-differences are never realised savings.
-
-- [Offline inventory report](reports/inventory/PHASE5_INVENTORY_REPORT.html)
-- [Inventory results and safe commands](docs/PHASE5_INVENTORY_RESULTS.md)
-- [Design and timing](docs/INVENTORY_SIMULATION_PROTOCOL.md)
-- [Sensitivity analysis](docs/PHASE5_SENSITIVITY_ANALYSIS.md)
-- [Limitations](docs/PHASE5_LIMITATIONS.md)
-- [Actual completion gates](docs/PHASE5_COMPLETION_CHECKLIST.md)
-- [Broader independent audit handoff](docs/PHASE5_CLAUDE_AUDIT_HANDOFF.md)
-- [Independent audit of Phases 0 to 5](docs/CLAUDE_INDEPENDENT_AUDIT_PHASES_0_5.md)
-- [Audit response, finding dispositions and corrected comparisons](docs/PHASE5_AUDIT_RESPONSE.md)
-
-Phase 5 and the audit response are checkpointed in one local commit
-(`feat: complete phase 5 and document independent audit findings`; find it with `git log -1`).
-Nothing was pushed. No Phase 6/7 work is authorised here. Detailed inventory outputs remain
-local and Git-ignored; the local inventory records their hashes but is not an independent
-backup. Both evidence backups are on the same laptop, so off-device protection is still required
-before academic submission. Phase 4 original evidence and its same-device backup are unchanged.
-Use `reports/inventory/post_audit_documentation_overlay.json` with the read-only evidence
-verifier, and `intelligent_demand.preservation.phase5_post_audit` with
-`reports/preservation/PHASE5_AUDIT_REMEDIATION_OVERLAY.json` for the Phase 5 backup; the earlier
-overlays are preserved and describe the pre-audit documents.
+© 2026 Youssef Saeed. All rights reserved. The source is published for viewing and assessment only; no licence is
+granted to use, copy, modify or redistribute it. No licence is granted for the source datasets.
