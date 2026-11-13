@@ -97,5 +97,4 @@ curated subset of daily sales for research demonstration only.
 © 2026 Youssef Saeed. All rights reserved. The source is published for viewing and assessment only; no licence is
 granted to use, copy, modify or redistribute it.
 
-Graduation project for the Pre‑Master (Postgraduate) Diploma in Data Science, Cairo University, 2026.
 Author: [Youssef Saeed](https://youssefsaeed-portfolio.vercel.app).

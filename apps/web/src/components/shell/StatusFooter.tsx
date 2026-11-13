@@ -17,7 +17,7 @@ export function StatusFooter() {
           {data?.engine.engineVersion && <> · <code>{data.engine.engineVersion}</code></>}</span>
         <span>Build <code>{data?.build ?? "—"}</code></span>
         <Link href="/research#limitations" className="text-brand underline-offset-2 hover:underline">Known limitations</Link>
-        <span className="basis-full sm:basis-auto">Academic project (Cairo University). Costs are hypothetical normalised cost units, not realised savings.</span>
+        <span className="basis-full sm:basis-auto">Research project. Costs are hypothetical normalised cost units, not realised savings.</span>
       </div>
     </footer>
   );

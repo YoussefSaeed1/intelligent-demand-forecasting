@@ -1,6 +1,6 @@
 # Final scientific audit (Phase 8)
 
-Project: Intelligent Demand Forecasting & Inventory Optimisation (Cairo University, postgraduate Data Science).
+Project: Intelligent Demand Forecasting & Inventory Optimisation.
 Audit date: 2026-11-12. Repository HEAD at audit start: `9453f28` (private `main`).
 Auditor: Claude, acting as the project's research engineer. **This is a self-review by the same assistant that
 built much of Phases 7 to 8, not an external examination.** Where an earlier independent audit exists it is cited

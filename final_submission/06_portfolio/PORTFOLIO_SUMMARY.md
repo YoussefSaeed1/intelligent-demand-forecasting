@@ -1,6 +1,6 @@
 # Intelligent Demand Forecasting & Inventory Optimisation
 
-*Postgraduate Data Science graduation project, Cairo University (2026). Publication-safe summary: it contains no
+*Research project (2026). Publication-safe summary: it contains no
 credentials, infrastructure identifiers or dataset files. The source repository remains private.*
 
 **Live research application:** https://idf-web.vercel.app

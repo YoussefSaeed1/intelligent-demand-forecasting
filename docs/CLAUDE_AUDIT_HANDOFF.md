@@ -5,8 +5,7 @@ or treat this internal remediation as an independent scientific sign-off.
 
 ## Project and versions
 
-Intelligent Demand Forecasting & Inventory Optimisation, Cairo University
-Postgraduate Diploma in Data Science. Original Phase 4 checkpoint:
+Intelligent Demand Forecasting & Inventory Optimisation. Original Phase 4 checkpoint:
 `54a689b7cb07970556bbf2fc164adf934307eab8` (58 files).
 The initial remediation commit is
 `b9ff00d20460b6e91dcec28947d55b461ce71e59`, with message
