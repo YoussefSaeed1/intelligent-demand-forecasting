@@ -172,7 +172,9 @@ py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m intelligent_demand audit-store-item
 ```
 
-Large data, models, predictions and generated figures are Git-ignored and held in verified local backups. Use
+Large data, models, predictions and generated figures are Git-ignored and kept only in the owner's local project
+folder. The verified local backups were deleted by the owner on 2026-11-13, so no independent copy of this
+evidence exists. Use
 the read-only, saved-evidence commands in [PHASE4_REPRODUCIBILITY.md](docs/PHASE4_REPRODUCIBILITY.md) and
 [PHASE5_INVENTORY_RESULTS.md](docs/PHASE5_INVENTORY_RESULTS.md) rather than re-running experiments.
 Environment notes: [VALIDATION.md](docs/VALIDATION.md); snapshot: `docs/environment-freeze.txt`.
@@ -209,8 +211,9 @@ helper scripts. Clean-machine retraining has not been tested (audit finding F-10
 Open items, as recorded in the [remaining risks](final_submission/07_checklists/REMAINING_RISKS_AND_FOLLOW_UP.md)
 and the [submission checklist](final_submission/07_checklists/REPRODUCIBILITY_AND_SUBMISSION_CHECKLIST.md):
 
-1. **F-02: no verified off-device copy** of the 6.5 GB Phase 4/5 evidence or of the Phase 8 backup. All backups
-   are on the same laptop. This blocks submission readiness.
+1. **F-02 (off-device copy): not pursued.** The owner deleted the local backups on 2026-11-13. The Phase 4/5
+   evidence (about 6.5 GB) now exists only in the Git-ignored folders of the local project copy. If the project is
+   assessed, re-create and verify an independent copy first.
 2. **R-01: the owner's review of the Kaggle data-use terms is not yet recorded.** This now includes whether the
    public app may display curated daily sales.
 3. External validation by the supervisor or examiners, supervisor name on the title page, and programme

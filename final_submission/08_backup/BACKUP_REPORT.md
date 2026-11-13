@@ -1,5 +1,11 @@
 # Phase 8 backup and integrity report
 
+> **Status update, 2026-11-13 (after this report):** the owner deleted the backups in `C:\Project_Backups\`,
+> including the Phase 4, 5, 6, 7C and Phase 8 copies listed below. The Git-ignored evidence (models, predictions,
+> simulation outputs) remains only in the local project folder, with no independent copy. Finding F-02 was not
+> resolved; it was not pursued. The original pre-rewrite Git history held in the Phase 8 bundle is no longer
+> preserved. The report below is kept unchanged as the record of what was verified at the time.
+
 Date: 2026-11-13. Builder: `final_submission/_tools/make_final_backup.py`.
 
 ## Final backup (VERIFIED, same device)
