@@ -9,7 +9,7 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "sw
 export const metadata: Metadata = {
   title: { default: "DemandIQ — Intelligent Demand & Inventory Analytics", template: "%s · DemandIQ" },
   description:
-    "Research explorer for a Cairo University graduation project: validated demand forecasts and bounded, hypothetical inventory simulations.",
+    "Research explorer: validated demand forecasts and bounded, hypothetical inventory simulations.",
   robots: { index: false, follow: false },
 };
 

@@ -1,7 +1,6 @@
 # Final submission package (Phase 8)
 
-Intelligent Demand Forecasting & Inventory Optimisation. Cairo University, postgraduate Data Science graduation
-project. Prepared 2026-11-12.
+Intelligent Demand Forecasting & Inventory Optimisation. Prepared 2026-11-12.
 
 | # | Deliverable | Location |
 |---|---|---|

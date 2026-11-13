@@ -1,5 +1,5 @@
 /// Folder holding the Phase 6 reporting CSVs. Change this one value after moving the project.
-expression DataRoot = "C:\Users\RTX\Desktop\Intelligent Demand Forecasting & Inventory Optimisation\artifacts\powerbi\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression DataRoot = "D:\Data\Documents\Projects\Intelligent Demand Forecasting & Inventory Optimisation\artifacts\powerbi\data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: e3bb3a53-311e-5a9a-a192-365437013032
 
 	annotation PBI_ResultType = Text
