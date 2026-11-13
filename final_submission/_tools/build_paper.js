@@ -117,8 +117,8 @@ const add = (...xs) => xs.flat().forEach((x) => body.push(x));
 // Title page
 add(
   new Paragraph({ children: [], spacing: { before: 1800 } }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 240 }, children: [new TextRun({ text: "Cairo University", size: 28, bold: true })] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 1000 }, children: [new TextRun({ text: "Postgraduate Diploma in Data Science: Graduation Project", size: 24 })] }),
+  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 240 }, children: [new TextRun({ text: "Research Paper", size: 28, bold: true })] }),
+  new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 1000 }, children: [new TextRun({ text: "Research Project", size: 24 })] }),
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 360 }, children: [new TextRun({ text: "Intelligent Demand Forecasting and Inventory Optimisation", size: 44, bold: true })] }),
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 1200 }, children: [new TextRun({ text: "A governed comparison of statistical and machine-learning forecasts on two retail datasets, with a hypothetical inventory simulation and a deployed research application", size: 26, italics: true })] }),
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 120 }, children: [new TextRun({ text: "Youssef Saeed", size: 26, bold: true })] }),
@@ -458,7 +458,7 @@ add(
 
 // ---------------------------------------------------------------- document
 const doc = new Document({
-  creator: "Youssef Saeed", title: "Intelligent Demand Forecasting and Inventory Optimisation", description: "Graduation project research paper",
+  creator: "Youssef Saeed", title: "Intelligent Demand Forecasting and Inventory Optimisation", description: "Research paper",
   features: { updateFields: true },
   styles: {
     default: { document: { run: { font: FONT, size: 23 } } },
